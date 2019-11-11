@@ -62,12 +62,12 @@
         <translation>Gavimo adresai</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Tai jūsų PIVX adresai mokėjimų išsiuntimams. Visada patikrinkite sumą ir gavėjo adresą prieš siųsdami monetas.</translation>
+        <source>These are your ALQO addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Tai jūsų ALQO adresai mokėjimų išsiuntimams. Visada patikrinkite sumą ir gavėjo adresą prieš siųsdami monetas.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Tai jūsų PIVX adresai mokėjimų gavimams. Rekomenduojama naudoti naują adresą kiekvienam pavedimui.</translation>
+        <source>These are your ALQO addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Tai jūsų ALQO adresai mokėjimų gavimams. Rekomenduojama naudoti naują adresą kiekvienam pavedimui.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -176,16 +176,16 @@
         <translation>Patvirtinkite piniginės užšifravimą.</translation>
     </message>
     <message>
-        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>Dabar PIVX išsijungs, kad būtų užbaigtas šifravimo procesas. Atminkite, kad jūsų piniginės užšifravimas negali visiškai apsaugoti jūsų PIV nuo kenkėjiškų programų, užkrėsto jūsų kompiuterio.</translation>
+        <source>ALQO will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ALQOs from being stolen by malware infecting your computer.</source>
+        <translation>Dabar ALQO išsijungs, kad būtų užbaigtas šifravimo procesas. Atminkite, kad jūsų piniginės užšifravimas negali visiškai apsaugoti jūsų ALQO nuo kenkėjiškų programų, užkrėsto jūsų kompiuterio.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Ar tikrai norite užšifruoti savo piniginę?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
-        <translation>Įspėjimas: jei užšifruosite savo piniginę ir prarasite slaptafrazę, jūs &lt;b&gt;PRARASITE VISUS SAVO PIV&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ALQO&lt;/b&gt;!</source>
+        <translation>Įspėjimas: jei užšifruosite savo piniginę ir prarasite slaptafrazę, jūs &lt;b&gt;PRARASITE VISUS SAVO ALQO&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -254,12 +254,12 @@
         <translation>Adresas:</translation>
     </message>
     <message>
-        <source>Enter a PIVX Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <source>Enter a ALQO Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
         <translation>Įveskite Pivx adresą, kurį norėtumėte užšifruoti naudojant BIP 38. Vidiniame laukelyje įrašykite slaptą frazę. Paspauskite užšifruoti, jei norite gauti užšifruotą privatųjį raktą.</translation>
     </message>
     <message>
-        <source>The PIVX address to encrypt</source>
-        <translation>PIVX adresas, kurį norite užšifruoti</translation>
+        <source>The ALQO address to encrypt</source>
+        <translation>ALQO adresas, kurį norite užšifruoti</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -290,8 +290,8 @@
         <translation>Kopijuoti dabartinį parašą</translation>
     </message>
     <message>
-        <source>Encrypt the private key for this PIVX address</source>
-        <translation>Užšifruoti šio PIVX adreso privatų raktą</translation>
+        <source>Encrypt the private key for this ALQO address</source>
+        <translation>Užšifruoti šio ALQO adreso privatų raktą</translation>
     </message>
     <message>
         <source>Reset all fields</source>
@@ -433,8 +433,8 @@
         <translation>Naršyti pavedimų istoriją</translation>
     </message>
     <message>
-        <source>Privacy Actions for zPIV</source>
-        <translation>zPIV Saugumo Veiksmai </translation>
+        <source>Privacy Actions for zALQO</source>
+        <translation>zALQO Saugumo Veiksmai </translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -641,12 +641,12 @@
         <translation>Skirtukų įrankių juosta</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
-        <source>Send coins to a PIVX address</source>
-        <translation>Siųsti monetas į PIVX adresą</translation>
+        <source>Send coins to a ALQO address</source>
+        <translation>Siųsti monetas į ALQO adresą</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and pivx: URIs)</source>
@@ -665,24 +665,24 @@
         <translation>Naršyti masternod'us</translation>
     </message>
     <message>
-        <source>&amp;About PIVX Core</source>
-        <translation>&amp;Apie PIVX Core</translation>
+        <source>&amp;About ALQO</source>
+        <translation>&amp;Apie ALQO</translation>
     </message>
     <message>
-        <source>Show information about PIVX Core</source>
-        <translation>Rodyti informaciją apie PIVX Core</translation>
+        <source>Show information about ALQO</source>
+        <translation>Rodyti informaciją apie ALQO</translation>
     </message>
     <message>
-        <source>Modify configuration options for PIVX</source>
-        <translation>Keisti PIVX konfigūravimo parinktis</translation>
+        <source>Modify configuration options for ALQO</source>
+        <translation>Keisti ALQO konfigūravimo parinktis</translation>
     </message>
     <message>
-        <source>Sign messages with your PIVX addresses to prove you own them</source>
-        <translation>Pasirašykite pranešimus naudodami savo PIVX adresus, kad įrodytumėte, kad juos turite</translation>
+        <source>Sign messages with your ALQO addresses to prove you own them</source>
+        <translation>Pasirašykite pranešimus naudodami savo ALQO adresus, kad įrodytumėte, kad juos turite</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified PIVX addresses</source>
-        <translation>Patvirtinkite pranešimus, kad jie būtų pasirašyti su nurodytais PIVX adresais</translation>
+        <source>Verify messages to ensure they were signed with specified ALQO addresses</source>
+        <translation>Patvirtinkite pranešimus, kad jie būtų pasirašyti su nurodytais ALQO adresais</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -713,8 +713,8 @@
         <translation>Atidaryti Masternod'o konfigūracijos failą</translation>
     </message>
     <message>
-        <source>Open a PIVX: URI or payment request</source>
-        <translation>Atidaryti PIVX: URI arba mokėjimo prašymą</translation>
+        <source>Open a ALQO: URI or payment request</source>
+        <translation>Atidaryti ALQO: URI arba mokėjimo prašymą</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -725,12 +725,12 @@
         <translation>Blokų naršyklės langas</translation>
     </message>
     <message>
-        <source>Show the PIVX Core help message to get a list with possible PIVX command-line options</source>
-        <translation>Rodyti PIVX Core žinyną, kad gautumėte sąrašą su galimomis PIVX komandinės eilutės parinktimis</translation>
+        <source>Show the ALQO help message to get a list with possible ALQO command-line options</source>
+        <translation>Rodyti ALQO žinyną, kad gautumėte sąrašą su galimomis ALQO komandinės eilutės parinktimis</translation>
     </message>
     <message>
-        <source>PIVX Core client</source>
-        <translation>PIVX Core piniginė</translation>
+        <source>ALQO client</source>
+        <translation>ALQO piniginė</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1098,8 +1098,8 @@ MultiSend: %1</translation>
         <translation>Ši etiketė taps raudona, jei gavėjas gaus sumą mažesnę už %1</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Gali skirtis +/- %1 upiv kiekvienoje įvestyje.</translation>
+        <source>Can vary +/- %1 ualqo per input.</source>
+        <translation>Gali skirtis +/- %1 ualqo kiekvienoje įvestyje.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1153,8 +1153,8 @@ MultiSend: %1</translation>
         <translation>Keisti siuntimo adresą</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>Įvestas adresas "%1" nėra galiojantis PIVX adresas.</translation>
+        <source>The entered address "%1" is not a valid ALQO address.</source>
+        <translation>Įvestas adresas "%1" nėra galiojantis ALQO adresas.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1210,16 +1210,16 @@ MultiSend: %1</translation>
         <translation>versija</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bitai)</translation>
     </message>
     <message>
-        <source>About PIVX Core</source>
-        <translation>Apie PIVX Core</translation>
+        <source>About ALQO</source>
+        <translation>Apie ALQO</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1265,16 +1265,16 @@ MultiSend: %1</translation>
         <translation>Sveiki</translation>
     </message>
     <message>
-        <source>Welcome to PIVX Core.</source>
-        <translation>Sveiki atvykę į PIVX Core</translation>
+        <source>Welcome to ALQO.</source>
+        <translation>Sveiki atvykę į ALQO</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where PIVX Core will store its data.</source>
-        <translation>Kadangi programa paleista pirmą kartą, galite pasirinkti kur PIVX Core saugos savo duomenis.</translation>
+        <source>As this is the first time the program is launched, you can choose where ALQO will store its data.</source>
+        <translation>Kadangi programa paleista pirmą kartą, galite pasirinkti kur ALQO saugos savo duomenis.</translation>
     </message>
     <message>
-        <source>PIVX Core will download and store a copy of the PIVX block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>PIVX Core atsisiųs ir saugos PIVX blockchain'o kopiją. Šiame kataloge bus saugomas ne mažesnis kaip %1GB duomenų kiekis, kuris laikui bėgant augs. Piniginė taip pat bus saugoma šiame kataloge.</translation>
+        <source>ALQO will download and store a copy of the ALQO block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>ALQO atsisiųs ir saugos ALQO blockchain'o kopiją. Šiame kataloge bus saugomas ne mažesnis kaip %1GB duomenų kiekis, kuris laikui bėgant augs. Piniginė taip pat bus saugoma šiame kataloge.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1285,8 +1285,8 @@ MultiSend: %1</translation>
         <translation>Naudoti pasirinktą duomenų katalogą:</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1427,12 +1427,12 @@ MultiSend: %1</translation>
         <translation>Įveskite adresą kuriam norite siųsti</translation>
     </message>
     <message>
-        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other PIVX addresses after it matures.
-To Add: enter percentage to give and PIVX address to add to the MultiSend vector.
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other ALQO addresses after it matures.
+To Add: enter percentage to give and ALQO address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</source>
-        <translation>MultiSend leidžia automatiškai išsiųsti iki 100% jūsų stake'inimo ar masternod'ų atlygio į kitus PIVX adresus.
-Norėdami pridėti: įveskite pateiktą procentą ir PIVX adresą, kurį norite pridėti prie MultiSend sąrašo.
+        <translation>MultiSend leidžia automatiškai išsiųsti iki 100% jūsų stake'inimo ar masternod'ų atlygio į kitus ALQO adresus.
+Norėdami pridėti: įveskite pateiktą procentą ir ALQO adresą, kurį norite pridėti prie MultiSend sąrašo.
 Norėdami ištrinti: įveskite adresą, kurį norite ištrinti, ir paspauskite ištrinti
 MultiSend nebus aktyvuotas, nebent paspausite "Įjungti"</translation>
     </message>
@@ -1604,8 +1604,8 @@ MultiSend nebus aktyvuotas, nebent paspausite "Įjungti"</translation>
         <translation>Adresas / Suma:</translation>
     </message>
     <message>
-        <source>Add destinations to send PIV to</source>
-        <translation>Pridėkite vietas, kurioms norite siųsti PIV</translation>
+        <source>Add destinations to send ALQO to</source>
+        <translation>Pridėkite vietas, kurioms norite siųsti ALQO</translation>
     </message>
     <message>
         <source>Add &amp;Destination</source>
@@ -1730,12 +1730,12 @@ MultiSend nebus aktyvuotas, nebent paspausite "Įjungti"</translation>
         <translation>Ekspertas</translation>
     </message>
     <message>
-        <source>Automatically start PIVX after logging in to the system.</source>
-        <translation>Automatiškai paleisti PIVX prisijungus prie sistemos.</translation>
+        <source>Automatically start ALQO after logging in to the system.</source>
+        <translation>Automatiškai paleisti ALQO prisijungus prie sistemos.</translation>
     </message>
     <message>
-        <source>&amp;Start PIVX on system login</source>
-        <translation>&amp;Paleisti PIVX sistemai įsijungiant</translation>
+        <source>&amp;Start ALQO on system login</source>
+        <translation>&amp;Paleisti ALQO sistemai įsijungiant</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1762,8 +1762,8 @@ MultiSend nebus aktyvuotas, nebent paspausite "Įjungti"</translation>
         <translation>&amp;Tinklas</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting PIVX.</source>
-        <translation>Čia galite nustatyti vartotojo sąsajos kalbą. Šis nustatymas įsigalios iš naujo paleidus "PIVX".</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting ALQO.</source>
+        <translation>Čia galite nustatyti vartotojo sąsajos kalbą. Šis nustatymas įsigalios iš naujo paleidus "ALQO".</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
@@ -1776,28 +1776,28 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Įrašyti prievadą naudojant &amp;UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of PIV units to zPIV</source>
-        <translation>Įgalinti automatinį konvertavimą iš PIV į zPIV</translation>
+        <source>Enable automatic minting of ALQO units to zALQO</source>
+        <translation>Įgalinti automatinį konvertavimą iš ALQO į zALQO</translation>
     </message>
     <message>
-        <source>Enable zPIV Automint</source>
-        <translation>Įgalinti zPIV Automatinį nukaldinima</translation>
+        <source>Enable zALQO Automint</source>
+        <translation>Įgalinti zALQO Automatinį nukaldinima</translation>
     </message>
     <message>
-        <source>Percentage of incoming PIV which get automatically converted to zPIV via Zerocoin Protocol (min: 10%)</source>
-        <translation>Procentas gauto PIV, kuris automatiškai bus konvertuotas į zPIV naudojant Zerocoin Protokolą (min: 10%)</translation>
+        <source>Percentage of incoming ALQO which get automatically converted to zALQO via Zerocoin Protocol (min: 10%)</source>
+        <translation>Procentas gauto ALQO, kuris automatiškai bus konvertuotas į zALQO naudojant Zerocoin Protokolą (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zPIV</source>
-        <translation>Automatiškai sukurtų zPIV procentas</translation>
+        <source>Percentage of autominted zALQO</source>
+        <translation>Automatiškai sukurtų zALQO procentas</translation>
     </message>
     <message>
-        <source>Preferred Automint zPIV Denomination</source>
-        <translation>Pageidautinas zPIV Automatinio Nukaldinimo Nominalas</translation>
+        <source>Preferred Automint zALQO Denomination</source>
+        <translation>Pageidautinas zALQO Automatinio Nukaldinimo Nominalas</translation>
     </message>
     <message>
-        <source>Connect to the PIVX network through a SOCKS5 proxy.</source>
-        <translation>Jungtis prie PIVX tinklo naudojant SOCKS5 tarpinį serverį.</translation>
+        <source>Connect to the ALQO network through a SOCKS5 proxy.</source>
+        <translation>Jungtis prie ALQO tinklo naudojant SOCKS5 tarpinį serverį.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1915,8 +1915,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Bendras balansas, įskaitant visas nepasiekiamas monetas.</translation>
     </message>
     <message>
-        <source>PIV Balance</source>
-        <translation>PIV Balansas</translation>
+        <source>ALQO Balance</source>
+        <translation>ALQO Balansas</translation>
     </message>
     <message>
         <source>Pending:</source>
@@ -1939,18 +1939,18 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Dabartinis bendras užrakintas balansas tik žiūrėjimo adresuose</translation>
     </message>
     <message>
-        <source>Your current PIVX balance, unconfirmed and immature transactions included</source>
-        <translation>Jūsų dabartinis PIVX balansas, įskaitant nepatvirtintus ir nesubrendusius sandorius</translation>
+        <source>Your current ALQO balance, unconfirmed and immature transactions included</source>
+        <translation>Jūsų dabartinis ALQO balansas, įskaitant nepatvirtintus ir nesubrendusius sandorius</translation>
     </message>
     <message>
-        <source>zPIV Balance</source>
-        <translation>zPIV Balansas</translation>
+        <source>zALQO Balance</source>
+        <translation>zALQO Balansas</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zPIV are spendable.</source>
+These zALQO are spendable.</source>
         <translation>Subrendę: daugiau nei 20 patvirtinimų ir daugiau nei 1 konvertacija to pačio nominalo, kai jis jau buvo konvertuotas.
-Šiuos zPIV galima išleisti.</translation>
+Šiuos zALQO galima išleisti.</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -1959,8 +1959,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo po to, kai buvo konvertuotas.</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the PIVX network after a connection is established, but this process has not completed yet.</source>
-        <translation>Rodoma informacija gali būti pasenusi. Jūsų piniginė automatiškai sinchronizuojasi su PIVX tinklu po ryšio aktyvavimo, tačiau šis procesas dar nebaigtas.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ALQO network after a connection is established, but this process has not completed yet.</source>
+        <translation>Rodoma informacija gali būti pasenusi. Jūsų piniginė automatiškai sinchronizuojasi su ALQO tinklu po ryšio aktyvavimo, tačiau šis procesas dar nebaigtas.</translation>
     </message>
     <message>
         <source>OVERVIEW</source>
@@ -2003,8 +2003,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Prienamas išleidimui:</translation>
     </message>
     <message>
-        <source>Locked PIV or Masternode collaterals. These are excluded from zPIV minting.</source>
-        <translation>Užrakinti PIV arba Masternode užstatai. Jie yra neįtraukti į zPIV kalimą.</translation>
+        <source>Locked ALQO or Masternode collaterals. These are excluded from zALQO minting.</source>
+        <translation>Užrakinti ALQO arba Masternode užstatai. Jie yra neįtraukti į zALQO kalimą.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2096,8 +2096,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Zerocoin Veiksmai:</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the PIVX network after a connection is established, but this process has not completed yet.</source>
-        <translation>Rodoma informacija gali būti pasenusi. Jūsų piniginė automatiškai sinchronizuojasi su PIVX tinklu po ryšio aktyvavimo, tačiau šis procesas dar nebaigtas.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ALQO network after a connection is established, but this process has not completed yet.</source>
+        <translation>Rodoma informacija gali būti pasenusi. Jūsų piniginė automatiškai sinchronizuojasi su ALQO tinklu po ryšio aktyvavimo, tačiau šis procesas dar nebaigtas.</translation>
     </message>
     <message>
         <source>Mint Zerocoin</source>
@@ -2108,8 +2108,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -2128,12 +2128,12 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>PRIVATUMAS</translation>
     </message>
     <message>
-        <source>zPIV Control</source>
+        <source>zALQO Control</source>
         <translation>zPiv Kontrolė</translation>
     </message>
     <message>
-        <source>zPIV Selected:</source>
-        <translation>Pasirinkta zPIV:</translation>
+        <source>zALQO Selected:</source>
+        <translation>Pasirinkta zALQO:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2152,8 +2152,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Prieinamas Balansas: </translation>
     </message>
     <message>
-        <source>0 zPIV</source>
-        <translation>0 zPIV</translation>
+        <source>0 zALQO</source>
+        <translation>0 zALQO</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -2192,8 +2192,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Zerocoin Statistika:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zPIV</source>
-        <translation>Bendras balansas, įskaitant nepatvirtintą ir nesubrendusį zPIV</translation>
+        <source>Total Balance including unconfirmed and immature zALQO</source>
+        <translation>Bendras balansas, įskaitant nepatvirtintą ir nesubrendusį zALQO</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2362,12 +2362,12 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Konvertavimo Statusas: Geras</translation>
     </message>
     <message>
-        <source>zPIV Spend #: </source>
-        <translation>zPIV Išleidimas #:</translation>
+        <source>zALQO Spend #: </source>
+        <translation>zALQO Išleidimas #:</translation>
     </message>
     <message>
-        <source>zPIV Mint</source>
-        <translation>zPIV Konvertavimas</translation>
+        <source>zALQO Mint</source>
+        <translation>zALQO Konvertavimas</translation>
     </message>
     <message>
         <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
@@ -2488,8 +2488,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Suma</translation>
     </message>
     <message>
-        <source>Enter a PIVX address (e.g. %1)</source>
-        <translation>Įveskite PIVX adresą (pvz. %1)</translation>
+        <source>Enter a ALQO address (e.g. %1)</source>
+        <translation>Įveskite ALQO adresą (pvz. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2524,8 +2524,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>N/A</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     </context>
 <context>
@@ -2670,8 +2670,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Iš:</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Sveiki atvykę į PIVX RPC konsolę.</translation>
+        <source>Welcome to the ALQO RPC console.</source>
+        <translation>Sveiki atvykę į ALQO RPC konsolę.</translation>
     </message>
     <message>
         <source>never</source>
@@ -2850,8 +2850,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Pasirinktinio pakeitimo adresas</translation>
     </message>
     <message>
-        <source>0 PIV</source>
-        <translation>0 PIV</translation>
+        <source>0 ALQO</source>
+        <translation>0 ALQO</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -3007,8 +3007,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The PIVX address to sign the message with</source>
-        <translation>PIVX adresas, kuriuo pasirašyti žinute</translation>
+        <source>The ALQO address to sign the message with</source>
+        <translation>ALQO adresas, kuriuo pasirašyti žinute</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -3031,16 +3031,16 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Kopijuoti dabartinį parašą</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this PIVX address</source>
-        <translation>Pažymėkite žinutę, kad įrodytumėte, jog jūs šio PIVX adreso savininkas</translation>
+        <source>Sign the message to prove you own this ALQO address</source>
+        <translation>Pažymėkite žinutę, kad įrodytumėte, jog jūs šio ALQO adreso savininkas</translation>
     </message>
     <message>
-        <source>The PIVX address the message was signed with</source>
-        <translation>PIVX adresas, kurio buvo pasirašyta žinutė</translation>
+        <source>The ALQO address the message was signed with</source>
+        <translation>ALQO adresas, kurio buvo pasirašyta žinutė</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
-        <translation>Patikrinkite pranešimą, kad jis būtų pasirašytas su nurodytu PIVX adresu</translation>
+        <source>Verify the message to ensure it was signed with the specified ALQO address</source>
+        <translation>Patikrinkite pranešimą, kad jis būtų pasirašytas su nurodytu ALQO adresu</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -3078,8 +3078,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     </context>
 <context>
@@ -3304,8 +3304,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     </context>
 <context>
@@ -3335,8 +3335,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Klaida kraunant wallet.dat: Piniginė yra sugadinta</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of PIVX Core</source>
-        <translation>Klaida kraunant wallet.dat: Piniginė reikalauja naujesnės PIVX Core versijos</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of ALQO</source>
+        <translation>Klaida kraunant wallet.dat: Piniginė reikalauja naujesnės ALQO versijos</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -3511,8 +3511,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Piniginė %s yra ne duomenų kataloge %s</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart PIVX Core to complete</source>
-        <translation>Piniginę reikia perrašyti: paleiskite PIVX Core iš naujo</translation>
+        <source>Wallet needed to be rewritten: restart ALQO to complete</source>
+        <translation>Piniginę reikia perrašyti: paleiskite ALQO iš naujo</translation>
     </message>
     <message>
         <source>Wallet options:</source>

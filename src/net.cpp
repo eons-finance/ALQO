@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/alqo-config.h"
 #endif
 
 #include "net.h"
@@ -14,7 +14,9 @@
 #include "addrman.h"
 #include "chainparams.h"
 #include "clientversion.h"
+#include "consensus/validation.h"
 #include "miner.h"
+#include "net_processing.h"
 #include "obfuscation.h"
 #include "primitives/transaction.h"
 #include "scheduler.h"

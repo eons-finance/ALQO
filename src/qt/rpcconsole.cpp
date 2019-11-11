@@ -13,15 +13,13 @@
 #include "peertablemodel.h"
 
 #include "chainparams.h"
-#include "main.h"
+#include "validation.h"
 #include "rpc/client.h"
 #include "rpc/server.h"
 #include "util.h"
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
 #endif // ENABLE_WALLET
-
-#include <openssl/crypto.h>
 
 #include <univalue.h>
 
@@ -239,17 +237,17 @@ void RPCExecutor::request(const QString& command)
             strPrint = result.write(2);
 
         emit reply(RPCConsole::CMD_REPLY, QString::fromStdString(strPrint));
-    } catch (UniValue& objError) {
+    } catch (const UniValue& objError) {
         try // Nice formatting for standard-format error
         {
             int code = find_value(objError, "code").get_int();
             std::string message = find_value(objError, "message").get_str();
             emit reply(RPCConsole::CMD_ERROR, QString::fromStdString(message) + " (code " + QString::number(code) + ")");
-        } catch (std::runtime_error&) // raised when converting to invalid type, i.e. missing code or message
+        } catch (const std::runtime_error&) // raised when converting to invalid type, i.e. missing code or message
         {                             // Show raw JSON object
             emit reply(RPCConsole::CMD_ERROR, QString::fromStdString(objError.write()));
         }
-    } catch (std::exception& e) {
+    } catch (const std::exception& e) {
         emit reply(RPCConsole::CMD_ERROR, QString("Error: ") + QString::fromStdString(e.what()));
     }
 }
@@ -286,10 +284,9 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHi
     connect(ui->btn_resync, SIGNAL(clicked()), this, SLOT(walletResync()));
 
     // set library version labels
-    ui->openSSLVersion->setText(SSLeay_version(SSLEAY_VERSION));
 #ifdef ENABLE_WALLET
     std::string strPathCustom = GetArg("-backuppath", "");
-    std::string strzPIVPathCustom = GetArg("-zpivbackuppath", "");
+    std::string strzALQOPathCustom = GetArg("-zpivbackuppath", "");
     int nCustomBackupThreshold = GetArg("-custombackupthreshold", DEFAULT_CUSTOMBACKUPTHRESHOLD);
 
     if(!strPathCustom.empty()) {
@@ -298,13 +295,13 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHi
         ui->wallet_custombackuppath->show();
     }
 
-    if(!strzPIVPathCustom.empty()) {
-        ui->wallet_customzpivbackuppath->setText(QString::fromStdString(strzPIVPathCustom));
+    if(!strzALQOPathCustom.empty()) {
+        ui->wallet_customzpivbackuppath->setText(QString::fromStdString(strzALQOPathCustom));
         ui->wallet_customzpivbackuppath_label->setVisible(true);
         ui->wallet_customzpivbackuppath->setVisible(true);
     }
 
-    if((!strPathCustom.empty() || !strzPIVPathCustom.empty()) && nCustomBackupThreshold > 0) {
+    if((!strPathCustom.empty() || !strzALQOPathCustom.empty()) && nCustomBackupThreshold > 0) {
         ui->wallet_custombackupthreshold->setText(QString::fromStdString(std::to_string(nCustomBackupThreshold)));
         ui->wallet_custombackupthreshold_label->setVisible(true);
         ui->wallet_custombackupthreshold->setVisible(true);
@@ -640,7 +637,7 @@ void RPCConsole::clear()
     QString clsKey = "Ctrl-L";
 #endif
 
-    message(CMD_REPLY, (tr("Welcome to the PIVX RPC console.") + "<br>" +
+    message(CMD_REPLY, (tr("Welcome to the ALQO RPC console.") + "<br>" +
                         tr("Use up and down arrows to navigate history, and %1 to clear screen.").arg("<b>"+clsKey+"</b>") + "<br>" +
                         tr("Type <b>help</b> for an overview of available commands.") +
                         "<br><span class=\"secwarning\"><br>" +

@@ -72,6 +72,7 @@ public:
     bool SkipProofOfWorkCheck() const { return fSkipProofOfWorkCheck; }
     /** Make standard checks */
     bool RequireStandard() const { return fRequireStandard; }
+    int64_t TargetTimespan() const { return nTargetTimespan; }
     int64_t TargetSpacing() const { return nTargetSpacing; }
 
     /** returns the coinbase maturity **/
@@ -88,6 +89,7 @@ public:
     CAmount MaxMoneyOut() const { return nMaxMoneyOut; }
     /** The masternode count that we will allow the see-saw reward payments to be off by */
     int MasternodeCountDrift() const { return nMasternodeCountDrift; }
+    int MasternodeCollateralLimit() const { return nMasternodeCollateralLimit; }
     /** Make miner stop after a block is found. In RPC, don't return until nGenProcLimit blocks are generated */
     bool MineBlocksOnDemand() const { return fMineBlocksOnDemand; }
     /** In the future use NetworkIDString() for RPC fields */
@@ -111,6 +113,7 @@ public:
     std::string ObfuscationPoolDummyAddress() const { return strObfuscationPoolDummyAddress; }
     int64_t StartMasternodePayments() const { return nStartMasternodePayments; }
     int64_t Budget_Fee_Confirmations() const { return nBudget_Fee_Confirmations; }
+    int64_t Masternode_Collateral() const { return nMasternodeCollateral; }
 
     CBaseChainParams::Network NetworkID() const { return networkID; }
 
@@ -164,11 +167,13 @@ protected:
     int nEnforceBlockUpgradeMajority;
     int nRejectBlockOutdatedMajority;
     int nToCheckBlockUpgradeMajority;
+    int64_t nTargetTimespan;
     int64_t nTargetSpacing;
     int nLastPOWBlock;
     int64_t nPivxBadBlockTime;
     unsigned int nPivxBadBlocknBits;
     int nMasternodeCountDrift;
+    int nMasternodeCollateralLimit;
     int nMaturity;
     int nStakeMinDepth;
     int nFutureTimeDriftPoW;
@@ -213,6 +218,7 @@ protected:
     int nZerocoinStartTime;
     int nZerocoinRequiredStakeDepth;
     int64_t nProposalEstablishmentTime;
+    int64_t nMasternodeCollateral;
 
     int nBlockEnforceSerialRange;
     int nBlockRecalculateAccumulators;

@@ -8,7 +8,7 @@
 
 #include "base58.h"
 #include "key.h"
-#include "main.h"
+#include "validation.h"
 #include "net.h"
 #include "sync.h"
 #include "timedata.h"
@@ -120,7 +120,8 @@ public:
         MASTERNODE_WATCHDOG_EXPIRED,
         MASTERNODE_POSE_BAN,
         MASTERNODE_VIN_SPENT,
-        MASTERNODE_POS_ERROR
+        MASTERNODE_POS_ERROR,
+        MASTERNODE_MISSING
     };
 
     CTxIn vin;

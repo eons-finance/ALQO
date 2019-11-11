@@ -3,10 +3,10 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_PEERTABLEMODEL_H
-#define BITCOIN_QT_PEERTABLEMODEL_H
+#ifndef ALQO_QT_PEERTABLEMODEL_H
+#define ALQO_QT_PEERTABLEMODEL_H
 
-#include "main.h"
+#include "validation.h"
 #include "net.h"
 
 #include <QAbstractTableModel>
@@ -78,4 +78,4 @@ private:
     QTimer* timer;
 };
 
-#endif // BITCOIN_QT_PEERTABLEMODEL_H
+#endif // ALQO_QT_PEERTABLEMODEL_H

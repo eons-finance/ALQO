@@ -12,7 +12,7 @@
 #include "walletmodel.h"
 
 #include "init.h"
-#include "main.h"
+#include "validation.h"
 #include "primitives/transaction.h"
 #include "protocol.h"
 #include "script/script.h"
@@ -74,13 +74,18 @@ extern double NSAppKitVersionNumber;
 #endif
 #endif
 
-#define URI_SCHEME "pivx"
+#define URI_SCHEME "alqo"
 
 namespace GUIUtil
 {
 QString dateTimeStr(const QDateTime& date)
 {
     return date.date().toString(Qt::SystemLocaleShortDate) + QString(" ") + date.toString("hh:mm");
+}
+
+QString dateTimeStrWithSeconds(const QDateTime& date)
+{
+    return date.date().toString(Qt::SystemLocaleShortDate) + QString(" ") + date.toString("hh:mm:ss");
 }
 
 QString dateTimeStr(qint64 nTime)
@@ -95,6 +100,37 @@ QFont bitcoinAddressFont()
     return font;
 }
 
+/**
+ * Parse a string into a number of base monetary units and
+ * return validity.
+ * @note Must return 0 if !valid.
+ */
+CAmount parseValue(const QString& text, int displayUnit, bool* valid_out)
+{
+    CAmount val = 0;
+    bool valid = BitcoinUnits::parse(displayUnit, text, &val);
+    if (valid) {
+        if (val < 0 || val > BitcoinUnits::maxMoney())
+            valid = false;
+    }
+    if (valid_out)
+        *valid_out = valid;
+    return valid ? val : 0;
+}
+
+QString formatBalance(CAmount amount, int nDisplayUnit, bool isZpiv){
+    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, isZpiv)) : BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, isZpiv);
+}
+
+bool requestUnlock(WalletModel* walletModel, AskPassphraseDialog::Context context, bool relock){
+    // Request unlock if wallet was locked or unlocked for mixing:
+    WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
+    if (encStatus == walletModel->Locked) {
+        return WalletModel::UnlockContext(walletModel->requestUnlock(context, relock)).isValid();
+    }
+    return true;
+}
+
 void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 {
     parent->setFocusProxy(widget);
@@ -102,7 +138,7 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
     widget->setFont(bitcoinAddressFont());
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a PIVX address (e.g. %1)").arg("D7VFR83SQbiezrW72hjcWJtcfip5krte2Z"));
+    widget->setPlaceholderText(QObject::tr("Enter a ALQO address (e.g. %1)").arg("D7VFR83SQbiezrW72hjcWJtcfip5krte2Z"));
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
 }
@@ -118,7 +154,7 @@ void setupAmountWidget(QLineEdit* widget, QWidget* parent)
 
 bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
 {
-    // return if URI is not valid or is no PIVX: URI
+    // return if URI is not valid or is no ALQO: URI
     if (!uri.isValid() || uri.scheme() != QString(URI_SCHEME))
         return false;
 
@@ -149,7 +185,7 @@ bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
             fShouldReturnFalse = false;
         } else if (i->first == "amount") {
             if (!i->second.isEmpty()) {
-                if (!BitcoinUnits::parse(BitcoinUnits::PIV, i->second, &rv.amount)) {
+                if (!BitcoinUnits::parse(BitcoinUnits::ALQO, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -167,9 +203,9 @@ bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
 
 bool parseBitcoinURI(QString uri, SendCoinsRecipient* out)
 {
-    // Convert pivx:// to pivx:
+    // Convert alqo:// to alqo:
     //
-    //    Cannot handle this later, because pivx:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because alqo:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
     if (uri.startsWith(URI_SCHEME "://", Qt::CaseInsensitive)) {
         uri.replace(0, std::strlen(URI_SCHEME) + 3, URI_SCHEME ":");
@@ -184,7 +220,7 @@ QString formatBitcoinURI(const SendCoinsRecipient& info)
     int paramCount = 0;
 
     if (info.amount) {
-        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::PIV, info.amount, false, BitcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::ALQO, info.amount, false, BitcoinUnits::separatorNever));
         paramCount++;
     }
 
@@ -339,40 +375,44 @@ bool isObscured(QWidget* w)
     return !(checkPoint(QPoint(0, 0), w) && checkPoint(QPoint(w->width() - 1, 0), w) && checkPoint(QPoint(0, w->height() - 1), w) && checkPoint(QPoint(w->width() - 1, w->height() - 1), w) && checkPoint(QPoint(w->width() / 2, w->height() / 2), w));
 }
 
-void openDebugLogfile()
+bool openDebugLogfile()
 {
     boost::filesystem::path pathDebug = GetDataDir() / "debug.log";
 
     /* Open debug.log with the associated application */
     if (boost::filesystem::exists(pathDebug))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathDebug)));
+        return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathDebug)));
+    return false;
 }
 
-void openConfigfile()
+bool openConfigfile()
 {
     boost::filesystem::path pathConfig = GetConfigFile();
 
-    /* Open pivx.conf with the associated application */
+    /* Open alqo.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
+        return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
+    return false;
 }
 
-void openMNConfigfile()
+bool openMNConfigfile()
 {
     boost::filesystem::path pathConfig = GetMasternodeConfigFile();
 
     /* Open masternode.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
+        return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
+    return false;
 }
 
-void showBackups()
+bool showBackups()
 {
     boost::filesystem::path pathBackups = GetDataDir() / "backups";
 
     /* Open folder with default browser */
     if (boost::filesystem::exists(pathBackups))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
+        return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
+    return false;
 }
 
 void SubstituteFonts(const QString& language)
@@ -570,12 +610,12 @@ bool DHMSTableWidgetItem::operator<(QTableWidgetItem const& item) const
 #ifdef WIN32
 boost::filesystem::path static StartupShortcutPath()
 {
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "PIVX.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "ALQO.lnk";
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for PIVX.lnk
+    // check for ALQO.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -649,7 +689,7 @@ boost::filesystem::path static GetAutostartDir()
 
 boost::filesystem::path static GetAutostartFilePath()
 {
-    return GetAutostartDir() / "pivx.desktop";
+    return GetAutostartDir() / "alqo.desktop";
 }
 
 bool GetStartOnSystemStartup()
@@ -685,10 +725,10 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         boost::filesystem::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out | std::ios_base::trunc);
         if (!optionFile.good())
             return false;
-        // Write a pivx.desktop file to the autostart directory:
+        // Write a alqo.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
-        optionFile << "Name=PIVX\n";
+        optionFile << "Name=ALQO\n";
         optionFile << "Exec=" << pszExePath << " -min\n";
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -709,7 +749,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the pivx app
+    // loop through the list of startup items and try to find the alqo app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for (int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -754,7 +794,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
 
     if (fAutoStart && !foundItem) {
-        // add pivx app to startup item list
+        // add alqo app to startup item list
         LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitcoinAppUrl, NULL, NULL);
     } else if (!fAutoStart && foundItem) {
         // remove item
@@ -802,7 +842,7 @@ bool isExternal(QString theme)
     if (theme.isEmpty())
         return false;
 
-    return (theme.operator!=("default"));
+    return (theme.operator!=("default") && theme.operator!=("default-dark"));
 }
 
 // Open CSS when configured
@@ -811,7 +851,7 @@ QString loadStyleSheet()
     QString styleSheet;
     QSettings settings;
     QString cssName;
-    QString theme = settings.value("theme", "").toString();
+    QString theme = settings.value("theme", "default-dark").toString();
 
     if (isExternal(theme)) {
         // External CSS

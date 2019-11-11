@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_WALLETVIEW_H
-#define BITCOIN_QT_WALLETVIEW_H
+#ifndef ALQO_QT_WALLETVIEW_H
+#define ALQO_QT_WALLETVIEW_H
 
 #include "amount.h"
 #include "askpassphrasedialog.h"
@@ -67,7 +67,6 @@ private:
     OverviewPage* overviewPage;
     QWidget* transactionsPage;
     ReceiveCoinsDialog* receiveCoinsPage;
-    PrivacyDialog* privacyPage;
     GovernancePage* governancePage;
     SendCoinsDialog* sendCoinsPage;
     BlockExplorer* explorerWindow;
@@ -89,8 +88,6 @@ public slots:
     void gotoMasternodePage();
     /** Switch to explorer page */
     void gotoBlockExplorerPage();
-    /** Switch to privacy page */
-    void gotoPrivacyPage();
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
@@ -136,7 +133,7 @@ public slots:
     /** Show progress dialog e.g. for rescan */
     void showProgress(const QString& title, int nProgress);
 
-    /** Update selected PIV amount from transactionview */
+    /** Update selected ALQO amount from transactionview */
     void trxAmount(QString amount);
 
 signals:
@@ -150,4 +147,4 @@ signals:
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
 };
 
-#endif // BITCOIN_QT_WALLETVIEW_H
+#endif // ALQO_QT_WALLETVIEW_H

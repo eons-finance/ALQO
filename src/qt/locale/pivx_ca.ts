@@ -62,12 +62,12 @@
         <translation>Adreces de recepció</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Aquestes són les teves adreces PIVX per fer enviar pagaments. Sempre comprova l'import i l'adreça de recepció abans d'enviar les monedes.</translation>
+        <source>These are your ALQO addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Aquestes són les teves adreces ALQO per fer enviar pagaments. Sempre comprova l'import i l'adreça de recepció abans d'enviar les monedes.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Aquestes són les teves adreces PIVX per rebre pagaments. Es recomana utilitzar noves adreces de recepció per cada transacció.</translation>
+        <source>These are your ALQO addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Aquestes són les teves adreces ALQO per rebre pagaments. Es recomana utilitzar noves adreces de recepció per cada transacció.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -168,15 +168,15 @@
         <translation>Confirma l'encriptació del moneder</translation>
     </message>
     <message>
-        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>PIVX es tancarà per finalitzar el procés d'encriptació. Recorda que encriptant el teu moneder no protegeix els teus PIV de ser robats si el teu ordinador està infectat amb programari maliciós.</translation>
+        <source>ALQO will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ALQOs from being stolen by malware infecting your computer.</source>
+        <translation>ALQO es tancarà per finalitzar el procés d'encriptació. Recorda que encriptant el teu moneder no protegeix els teus ALQO de ser robats si el teu ordinador està infectat amb programari maliciós.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Estàs segur que vols encriptar el moneder?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ALQO&lt;/b&gt;!</source>
         <translation>Avís: Si encripteu el vostre moneder i perdeu la contrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES PIVS&lt;/b&gt;!</translation>
     </message>
     <message>
@@ -421,12 +421,12 @@
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
-        <source>Send coins to a PIVX address</source>
-        <translation>Envia monedes a una adreça PIVX</translation>
+        <source>Send coins to a ALQO address</source>
+        <translation>Envia monedes a una adreça ALQO</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -437,8 +437,8 @@
         <translation>&amp;Masternodes</translation>
     </message>
     <message>
-        <source>&amp;About PIVX Core</source>
-        <translation>&amp;Sobre PIVX Core</translation>
+        <source>&amp;About ALQO</source>
+        <translation>&amp;Sobre ALQO</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -461,8 +461,8 @@
         <translation>Obre el fitxer de configuració del Masternode</translation>
     </message>
     <message>
-        <source>PIVX Core client</source>
-        <translation>Client PIVX core</translation>
+        <source>ALQO client</source>
+        <translation>Client ALQO core</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -805,8 +805,8 @@
         <translation>Edita l'adreça d'enviament</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>L'adreça introduïda "%1" no és una adreça PIVX vàlida.</translation>
+        <source>The entered address "%1" is not a valid ALQO address.</source>
+        <translation>L'adreça introduïda "%1" no és una adreça ALQO vàlida.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -862,16 +862,16 @@
         <translation>versió</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About PIVX Core</source>
-        <translation>Sobre PIVX Core</translation>
+        <source>About ALQO</source>
+        <translation>Sobre ALQO</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -917,12 +917,12 @@
         <translation>Benvingut</translation>
     </message>
     <message>
-        <source>Welcome to PIVX Core.</source>
-        <translation>Benvingut a PIVX Core.</translation>
+        <source>Welcome to ALQO.</source>
+        <translation>Benvingut a ALQO.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where PIVX Core will store its data.</source>
-        <translation>Al ser el primer cop que s'inicia el programa, pots escollir on es desaran les dades del PIVX Core.</translation>
+        <source>As this is the first time the program is launched, you can choose where ALQO will store its data.</source>
+        <translation>Al ser el primer cop que s'inicia el programa, pots escollir on es desaran les dades del ALQO.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -933,8 +933,8 @@
         <translation>Usar una carpeta de dades personalitzada:</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1152,8 +1152,8 @@
         <translation>Expert</translation>
     </message>
     <message>
-        <source>Automatically start PIVX after logging in to the system.</source>
-        <translation>Inicia PIVX automàticament després d'identificar-te en el sistema.</translation>
+        <source>Automatically start ALQO after logging in to the system.</source>
+        <translation>Inicia ALQO automàticament després d'identificar-te en el sistema.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1240,16 +1240,16 @@
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     <message>
         <source>Reset</source>
         <translation>Restableix</translation>
     </message>
     <message>
-        <source>0 zPIV</source>
-        <translation>0 zPIV</translation>
+        <source>0 zALQO</source>
+        <translation>0 zALQO</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1326,8 +1326,8 @@
         <translation>%1 ms</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     </context>
 <context>
@@ -1650,8 +1650,8 @@
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>PIVX Core is shutting down...</source>
-        <translation>PIVX Core s'està tancant...</translation>
+        <source>ALQO is shutting down...</source>
+        <translation>ALQO s'està tancant...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -1716,8 +1716,8 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -1906,8 +1906,8 @@
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     </context>
 <context>

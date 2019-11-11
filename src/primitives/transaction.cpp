@@ -9,7 +9,7 @@
 
 #include "chain.h"
 #include "hash.h"
-#include "main.h"
+#include "validation.h"
 #include "tinyformat.h"
 #include "utilstrencodings.h"
 #include "transaction.h"
@@ -302,6 +302,11 @@ unsigned int CTransaction::CalculateModifiedSize(unsigned int nTxSize) const
             nTxSize -= offset;
     }
     return nTxSize;
+}
+
+unsigned int CTransaction::GetTotalSize() const
+{
+    return ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION);
 }
 
 std::string CTransaction::ToString() const

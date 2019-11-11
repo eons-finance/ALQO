@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINUNITS_H
-#define BITCOIN_QT_BITCOINUNITS_H
+#ifndef ALQO_QT_BITCOINUNITS_H
+#define ALQO_QT_BITCOINUNITS_H
 
 #include "amount.h"
 
@@ -16,6 +16,10 @@
 #define REAL_THIN_SP_CP 0x2009
 #define REAL_THIN_SP_UTF8 "\xE2\x80\x89"
 #define REAL_THIN_SP_HTML "&thinsp;"
+
+#define COMMA_CP 0x2C
+#define COMMA_UTF8 "\x2C"
+#define COMMA_HTML "&#44;"
 
 // U+200A HAIR SPACE = UTF-8 E2 80 8A
 #define HAIR_SP_CP 0x200A
@@ -43,7 +47,7 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** PIVX unit definitions. Encapsulates parsing and formatting
+/** ALQO unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
 class BitcoinUnits : public QAbstractListModel
@@ -53,13 +57,13 @@ class BitcoinUnits : public QAbstractListModel
 public:
     explicit BitcoinUnits(QObject* parent);
 
-    /** PIVX units.
+    /** ALQO units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit {
-        PIV,
-        mPIV,
-        uPIV
+        ALQO,
+        mALQO,
+        uALQO
     };
 
     enum SeparatorStyle {
@@ -79,7 +83,7 @@ public:
     //! Identifier, e.g. for image names
     static QString id(int unit);
     //! Short name
-    static QString name(int unit);
+    static QString name(int unit, bool isZpiv = false);
     //! Longer description
     static QString description(int unit);
     //! Number of Satoshis (1e-8) per unit
@@ -87,14 +91,14 @@ public:
     //! Number of decimals left
     static int decimals(int unit);
     //! Format as string
-    static QString format(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard);
+    static QString format(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard, bool cleanRemainderZeros = true);
     static QString simpleFormat(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard);
     //! Format as string (with unit)
     static QString formatWithUnit(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard);
     static QString formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard);
     //! Format as string (with unit) but floor value up to "digits" settings
-    static QString floorWithUnit(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard);
-    static QString floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard);
+    static QString floorWithUnit(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard, bool cleanRemainderZeros = false, bool isZALQO = false);
+    static QString floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign = false, SeparatorStyle separators = separatorStandard, bool cleanRemainderZeros = false, bool isZALQO = false);
     //! Parse string to coin amount
     static bool parse(int unit, const QString& value, CAmount* val_out);
     //! Gets title for amount column including current display unit if optionsModel reference available */
@@ -130,4 +134,4 @@ private:
 };
 typedef BitcoinUnits::Unit BitcoinUnit;
 
-#endif // BITCOIN_QT_BITCOINUNITS_H
+#endif // ALQO_QT_BITCOINUNITS_H
