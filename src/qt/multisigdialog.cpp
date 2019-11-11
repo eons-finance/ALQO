@@ -416,7 +416,7 @@ bool MultisigDialog::createMultisigTransaction(std::vector<CTxIn> vUserIn, std::
         }
 
         if(totalIn < totalOut){
-            throw std::runtime_error("Not enough PIV provided as input to complete transaction (including fee).");
+            throw std::runtime_error("Not enough ALQO provided as input to complete transaction (including fee).");
         }
 
         //calculate change amount
@@ -481,7 +481,7 @@ bool MultisigDialog::createMultisigTransaction(std::vector<CTxIn> vUserIn, std::
             tx.vout.at(changeIndex).nValue -= fee;
             feeStringRet = strprintf("%d",((double)fee)/COIN).c_str();
         }else{
-            throw std::runtime_error("Not enough PIV provided to cover fee");
+            throw std::runtime_error("Not enough ALQO provided to cover fee");
         }
 
         //clear junk from script sigs
@@ -780,7 +780,7 @@ bool MultisigDialog::createRedeemScript(int m, std::vector<std::string> vKeys, C
         for(std::vector<std::string>::iterator it = vKeys.begin(); it != vKeys.end(); ++it) {
             std::string keyString = *it;
 #ifdef ENABLE_WALLET
-            // Case 1: PIVX address and we have full public key:
+            // Case 1: ALQO address and we have full public key:
             CBitcoinAddress address(keyString);
             if (pwalletMain && address.IsValid()) {
                 CKeyID keyID;

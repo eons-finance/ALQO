@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_COINCONTROLDIALOG_H
-#define BITCOIN_QT_COINCONTROLDIALOG_H
+#ifndef ALQO_QT_COINCONTROLDIALOG_H
+#define ALQO_QT_COINCONTROLDIALOG_H
 
 #include "amount.h"
 
@@ -48,6 +48,7 @@ public:
 
     void setModel(WalletModel* model);
     void updateDialogLabels();
+    void updateView();
 
     // static because also called from sendcoinsdialog
     static void updateLabels(WalletModel*, QDialog*);
@@ -71,17 +72,14 @@ private:
     QAction* unlockAction;
 
     void sortView(int, Qt::SortOrder);
-    void updateView();
 
     enum {
         COLUMN_CHECKBOX,
         COLUMN_AMOUNT,
         COLUMN_LABEL,
         COLUMN_ADDRESS,
-        COLUMN_TYPE,
         COLUMN_DATE,
         COLUMN_CONFIRMATIONS,
-        COLUMN_PRIORITY,
         COLUMN_TXHASH,
         COLUMN_VOUT_INDEX,
     };
@@ -100,17 +98,15 @@ private slots:
     void clipboardFee();
     void clipboardAfterFee();
     void clipboardBytes();
-    void clipboardPriority();
     void clipboardLowOutput();
     void clipboardChange();
     void radioTreeMode(bool);
     void radioListMode(bool);
     void viewItemChanged(QTreeWidgetItem*, int);
     void headerSectionClicked(int);
-    void buttonBoxClicked(QAbstractButton*);
     void buttonSelectAllClicked();
     void buttonToggleLockClicked();
     void updateLabelLocked();
 };
 
-#endif // BITCOIN_QT_COINCONTROLDIALOG_H
+#endif // ALQO_QT_COINCONTROLDIALOG_H

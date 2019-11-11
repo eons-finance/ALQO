@@ -352,7 +352,7 @@ public:
      */
     int64_t GetZcMints(libzerocoin::CoinDenomination denom) const
     {
-        return mapZerocoinSupply.at(denom);
+        return 0;
     }
 
     /**
@@ -362,7 +362,7 @@ public:
      */
     int64_t GetZcMintsAmount(libzerocoin::CoinDenomination denom) const
     {
-        return libzerocoin::ZerocoinDenominationToAmount(denom) * GetZcMints(denom);
+        return 0;
     }
 
     bool MintedDenomination(libzerocoin::CoinDenomination denom) const
