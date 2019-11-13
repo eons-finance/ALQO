@@ -3,12 +3,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "masternode.h"
-#include "addrman.h"
-#include "masternodeman.h"
 #include "obfuscation.h"
-#include "sync.h"
-#include "util.h"
 
 // keep track of the scanning errors I've seen
 std::map<uint256, int> mapSeenMasternodeScanningErrors;

@@ -12,7 +12,6 @@
 
 #include "hash.h"
 #include "sync.h"
-#include "uint256.h"
 #include "random.h"
 #include "util.h"
 #include "utilstrencodings.h"
@@ -30,7 +29,6 @@
 
 #include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
-#include <boost/thread.hpp>
 
 #if !defined(HAVE_MSG_NOSIGNAL) && !defined(MSG_NOSIGNAL)
 #define MSG_NOSIGNAL 0

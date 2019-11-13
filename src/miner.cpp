@@ -7,33 +7,15 @@
 
 #include "miner.h"
 
-#include "amount.h"
-#include "consensus/consensus.h"
-#include "consensus/validation.h"
-#include "hash.h"
-#include "validation.h"
-#include "masternode-sync.h"
-#include "net.h"
-#include "pow.h"
-#include "primitives/block.h"
-#include "primitives/transaction.h"
-#include "timedata.h"
-#include "util.h"
 #include "utilmoneystr.h"
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
 #endif
-#include "validation.h"
-#include "validationinterface.h"
-#include "masternode-payments.h"
-#include "zpiv/accumulators.h"
 #include "blocksignature.h"
 #include "spork.h"
 #include "zpivchain.h"
 
 
-#include <boost/thread.hpp>
-#include <boost/tuple/tuple.hpp>
 
 
 //////////////////////////////////////////////////////////////////////////////

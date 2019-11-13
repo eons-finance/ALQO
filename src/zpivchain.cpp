@@ -3,9 +3,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "zpivchain.h"
-#include "zpiv/zpivmodule.h"
-#include "consensus/validation.h"
-#include "validation.h"
 #include "txdb.h"
 #include "guiinterface.h"
 

@@ -3,39 +3,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "net_processing.h"
 
 #include "alert.h"
 #include "addrman.h"
-#include "chain.h"
-#include "chainparams.h"
-#include "consensus/consensus.h"
-#include "consensus/validation.h"
 #include "consensus/merkle.h"
-#include "hash.h"
-#include "guiinterface.h"
-#include "init.h"
 #include "masternode-budget.h"
-#include "masternode-payments.h"
-#include "masternode-sync.h"
-#include "net.h"
-#include "netbase.h"
-#include "primitives/block.h"
-#include "primitives/transaction.h"
-#include "random.h"
-#include "tinyformat.h"
-#include "txmempool.h"
-#include "spork.h"
 #include "sporkdb.h"
 #include "swifttx.h"
-#include "util.h"
-#include "utilmoneystr.h"
-#include "utilstrencodings.h"
-#include "validation.h"
-#include "validationinterface.h"
 
 #include <boost/lexical_cast.hpp>
-#include <boost/thread.hpp>
 
 using namespace std;
 
