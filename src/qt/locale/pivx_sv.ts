@@ -4304,7 +4304,7 @@ Var tålmodig...</translation>
         <translation>Dash Core utvecklarna</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>ALQO utvecklarna</translation>
     </message>
     <message>

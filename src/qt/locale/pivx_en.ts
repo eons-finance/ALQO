@@ -9618,7 +9618,7 @@ Are you sure?
     </message>
     <message>
         <location line="+1"/>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

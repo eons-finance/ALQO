@@ -4016,7 +4016,7 @@ Please be patient...</source>
         <translation>Разработчики Dash Core</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>Разработчики ALQO</translation>
     </message>
     <message>

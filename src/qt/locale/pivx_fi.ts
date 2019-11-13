@@ -2137,7 +2137,7 @@
         <translation>Dash Core kehittäjät</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>ALQO core kehittäjät</translation>
     </message>
     <message>

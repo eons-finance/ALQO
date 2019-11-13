@@ -4018,7 +4018,7 @@ Please be patient...</source>
         <translation>Dash Core 개발자</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>ALQO 개발자</translation>
     </message>
     <message>

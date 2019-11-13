@@ -4282,7 +4282,7 @@ Proszę być cierpliwym...</translation>
         <translation>Twórcy Dash Core</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>Twórcy ALQO</translation>
     </message>
     <message>

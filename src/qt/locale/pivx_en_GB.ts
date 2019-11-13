@@ -4136,8 +4136,8 @@ Please be patient...</translation>
         <translation>The Dash Core developers</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
-        <translation>The ALQO developers</translation>
+        <source>The PIVX developers</source>
+        <translation>The PIVX developers</translation>
     </message>
     <message>
         <source>[testnet]</source>

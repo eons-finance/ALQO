@@ -3007,7 +3007,7 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Os desenvolvedores do Dash Core</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>Os desenvolvedores do ALQO</translation>
     </message>
     <message>

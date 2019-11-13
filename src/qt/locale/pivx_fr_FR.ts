@@ -4286,7 +4286,7 @@ S'il vous plaît soyez patient ...</translation>
         <translation>Les développeurs Dash Core</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>Les développeurs ALQO</translation>
     </message>
     <message>

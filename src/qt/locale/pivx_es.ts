@@ -4063,7 +4063,7 @@ Por favor espere...</translation>
         <translation>Los desarrolladores de Dash Core</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>Los desarrolladores de ALQO</translation>
     </message>
     <message>

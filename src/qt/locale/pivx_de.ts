@@ -4012,7 +4012,7 @@ Bitte haben Sie etwas Geduld...</translation>
         <translation>Die Dash Core Entwickler</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>Die ALQO Entwickler</translation>
     </message>
     <message>

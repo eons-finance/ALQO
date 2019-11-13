@@ -4207,7 +4207,7 @@ Wees alsjeblieft geduldig...</translation>
         <translation>De Dash Kernontwikkelaars</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>De ALQO Kernontwikkelaars</translation>
     </message>
     <message>
