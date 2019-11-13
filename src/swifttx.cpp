@@ -5,17 +5,6 @@
 
 #include "swifttx.h"
 
-#include "activemasternode.h"
-#include "base58.h"
-#include "key.h"
-#include "masternodeman.h"
-#include "net.h"
-#include "obfuscation.h"
-#include "protocol.h"
-#include "spork.h"
-#include "sync.h"
-#include "util.h"
-#include "validationinterface.h"
 #include <boost/foreach.hpp>
 
 

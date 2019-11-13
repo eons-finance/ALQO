@@ -6,14 +6,8 @@
 
 #include "txdb.h"
 
-#include "validation.h"
-#include "pow.h"
-#include "uint256.h"
-#include "zpiv/accumulators.h"
 
-#include <stdint.h>
 
-#include <boost/thread.hpp>
 
 
 void static BatchWriteCoins(CLevelDBBatch& batch, const uint256& hash, const CCoins& coins)

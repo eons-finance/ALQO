@@ -3,22 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "obfuscation.h"
-#include "coincontrol.h"
-#include "init.h"
-#include "validation.h"
-#include "masternodeman.h"
-#include "script/sign.h"
 #include "swifttx.h"
-#include "guiinterface.h"
-#include "util.h"
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/foreach.hpp>
 
-#include <algorithm>
-#include <boost/assign/list_of.hpp>
 #include <openssl/rand.h>
 
 

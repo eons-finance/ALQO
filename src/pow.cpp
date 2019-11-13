@@ -5,14 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "pow.h"
 
 #include "chain.h"
-#include "chainparams.h"
-#include "primitives/block.h"
-#include "uint256.h"
-#include "util.h"
-#include "validation.h"
 
 unsigned int Lwma3CalculateNextWorkRequired(const CBlockIndex* pindexLast)
 {

@@ -9,16 +9,10 @@
 #include "chainparams.h"
 #include "clientversion.h"
 #include "net.h"
-#include "pubkey.h"
 #include "timedata.h"
 #include "guiinterface.h"
-#include "util.h"
 
-#include <algorithm>
-#include <map>
-#include <stdint.h>
 
-#include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/thread.hpp>
 

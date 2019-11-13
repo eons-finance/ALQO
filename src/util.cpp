@@ -11,19 +11,12 @@
 
 #include "util.h"
 
-#include "allocators.h"
 #include "chainparamsbase.h"
 #include "random.h"
 #include "sync.h"
 #include "utilstrencodings.h"
-#include "utiltime.h"
 
-#include <stdarg.h>
 
-#include <boost/date_time/posix_time/posix_time.hpp>
-#include <openssl/bio.h>
-#include <openssl/buffer.h>
-#include <openssl/evp.h>
 
 
 #ifndef WIN32
@@ -75,16 +68,10 @@
 #include <sys/prctl.h>
 #endif
 
-#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
-#include <boost/algorithm/string/join.hpp>
-#include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
 #include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
 #include <boost/program_options/detail/config_file.hpp>
-#include <boost/program_options/parsers.hpp>
 #include <boost/thread.hpp>
 #include <openssl/conf.h>
-#include <openssl/crypto.h>
 #include <openssl/rand.h>
 
 
