@@ -26,7 +26,7 @@
 #define COPYRIGHT_STR " " STRINGIZE(COPYRIGHT_YEAR) " The ALQO Core Developers"
 
 /**
- * pivxd-res.rc includes this file, but it cannot cope with real c++ code.
+ * alqod-res.rc includes this file, but it cannot cope with real c++ code.
  * WINDRES_PREPROC is defined to indicate that its pre-processor is running.
  * Anything other than a define should be guarded below.
  */

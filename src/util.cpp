@@ -205,7 +205,7 @@ bool LogAcceptCategory(const char* category)
             const std::vector<std::string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new std::set<std::string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "pivx" is a composite category enabling all ALQO-related debug output
+            // "alqo" is a composite category enabling all ALQO-related debug output
             if (ptrCategory->count(std::string("pivx"))) {
                 ptrCategory->insert(std::string("obfuscation"));
                 ptrCategory->insert(std::string("swiftx"));
@@ -373,7 +373,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "pivx";
+    const char* pszModule = "alqo";
 #endif
     if (pex)
         return strprintf(
@@ -461,7 +461,7 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "pivx.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "alqo.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -480,7 +480,7 @@ void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet,
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good()) {
-        // Create empty pivx.conf if it does not exist
+        // Create empty alqo.conf if it does not exist
         FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
         if (configFile != NULL)
             fclose(configFile);
@@ -491,7 +491,7 @@ void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet,
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it) {
-        // Don't overwrite existing settings so command line settings override pivx.conf
+        // Don't overwrite existing settings so command line settings override alqo.conf
         std::string strKey = std::string("-") + it->string_key;
         std::string strValue = it->value[0];
         InterpretNegativeSetting(strKey, strValue);
@@ -506,7 +506,7 @@ void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet,
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "pivxd.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "alqod.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

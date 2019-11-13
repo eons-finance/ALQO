@@ -653,8 +653,8 @@
         <translation>ALQO 주소로 입금하기</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>결제 요청 (QR 코드 및 pivx: URI 생성)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>결제 요청 (QR 코드 및 alqo: URI 생성)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -872,8 +872,8 @@ Address: %4
         <translation>텍스트라벨</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>모든 트랜잭션이 표시되지는 않습니다. 모든 트랜잭션을 보려면 구성 파일 (pivx.conf)에 txindex = 1을 설정해야합니다.</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>모든 트랜잭션이 표시되지는 않습니다. 모든 트랜잭션을 보려면 구성 파일 (alqo.conf)에 txindex = 1을 설정해야합니다.</translation>
     </message>
 </context>
 <context>
@@ -1823,9 +1823,9 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>지원 언어가 없거나 번역이 불완전한가요? 번역을 도와주세요 :
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/alqo-project/alqo-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -2134,12 +2134,12 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
         <translation>자동 생성기능이 현재 작동중 그리고 </translation>
     </message>
     <message>
-        <source>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</source>
-        <translation>자동생성 기능을 사용하지 않으시려면, pivx.conf 화일에 enablezeromint=0 를 추가하세요.</translation>
+        <source>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</source>
+        <translation>자동생성 기능을 사용하지 않으시려면, alqo.conf 화일에 enablezeromint=0 를 추가하세요.</translation>
     </message>
     <message>
         <source>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf</source>
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in alqo.conf</source>
         <translation>자동 저장 기능이 현재 사용 중지되었습니다 .
 자동 변환을 사용하려면 pivotx.conf에서 'enablezeromint = 0'에서 'enablezeromint = 1'로 변경하십시오.</translation>
     </message>
@@ -2167,7 +2167,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf<
         <translation>잘못된 결제 주소 %1</translation>
     </message>
     <message>
-        <source>Cannot start pivx: click-to-pay handler</source>
+        <source>Cannot start alqo: click-to-pay handler</source>
         <translation>ALQO을 시작할 수 없습니다: 결제하기 위한 클릭 처리</translation>
     </message>
     <message>
@@ -2418,8 +2418,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <source>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to pivx.conf
-- disable: add 'enablezeromint=0' to pivx.conf
+- enable: add 'enablezeromint=1' to alqo.conf
+- disable: add 'enablezeromint=0' to alqo.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
@@ -2428,8 +2428,8 @@ To change the percentage (no restart required):
         <translation>현재 zALQO 자동 생성 상태를 보여줍니다.
 
 자동생성 상태를 변경하시려면 (지갑 재시작 필요함):
-- 활성화: 'enablezeromint=1' 를 pivx.conf 파일에 추가
-- 비활성화: 'enablezeromint=0' 를 pivx.conf 파일에 추가
+- 활성화: 'enablezeromint=1' 를 alqo.conf 파일에 추가
+- 비활성화: 'enablezeromint=0' 를 alqo.conf 파일에 추가
 
 자동 생성 비율 변경하시려면 (지갑 재시작 필요없음):
 - 메뉴 설정-&gt;옵션-&gt;zALQO 자동생성 비율
@@ -4638,7 +4638,7 @@ Please be patient...</source>
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = tx 메타 데이터 유지 예 : 계정 소유자 및 지불 요청 정보, 2 = tx 메타 데이터 삭제)</translation>

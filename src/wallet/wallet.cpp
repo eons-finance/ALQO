@@ -2224,7 +2224,7 @@ bool CWallet::CreateTransaction(const std::vector<std::pair<CScript, CAmount> >&
                 if (nChange > 0) {
                     // Fill a vout to ourself
                     // TODO: pass in scriptChange instead of reservekey so
-                    // change transaction isn't always pay-to-pivx-address
+                    // change transaction isn't always pay-to-alqo-address
                     CScript scriptChange;
                     bool combineChange = false;
 
@@ -4816,7 +4816,7 @@ void CWallet::PrecomputeSpends()
     // We don't even need to worry about this code.. no zPIV.
     /*
     LogPrintf("Precomputer started\n");
-    RenameThread("pivx-precomputer");
+    RenameThread("alqo-precomputer");
 
     CWalletDB walletdb("precomputes.dat", "cr+");
 

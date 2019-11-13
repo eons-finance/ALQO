@@ -625,8 +625,8 @@
         <translation>Pošaljite kovanice na ALQO adresu</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Zahtjev za plaćanja (generira QR kodove i pivx: URI)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Zahtjev za plaćanja (generira QR kodove i alqo: URI)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -1567,7 +1567,7 @@
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>Error</source>
         <translation>Greška</translation>

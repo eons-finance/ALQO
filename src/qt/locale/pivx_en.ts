@@ -1107,7 +1107,7 @@ for staking</source>
     </message>
     <message>
         <location line="+11"/>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1418,7 +1418,7 @@ Address: %4
     </message>
     <message>
         <location filename="../blockexplorer.cpp" line="+480"/>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2838,7 +2838,7 @@ Please wait few more minutes.</source>
 on a remote server to your clipboard.
 
 
-You will only have to paste the data in the pivx.conf file
+You will only have to paste the data in the alqo.conf file
 of your remote server and start it, then start the Masternode using
 this controller wallet (select the Masternode in the list and press &quot;start&quot;).
 </source>
@@ -3729,7 +3729,7 @@ Please be patient after clicking import.</source>
     <message>
         <location line="+21"/>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4155,13 +4155,13 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
     </message>
     <message>
         <location line="+1"/>
-        <source>To disable AutoMint add &apos;enablezeromint=0&apos; in pivx.conf.</source>
+        <source>To disable AutoMint add &apos;enablezeromint=0&apos; in alqo.conf.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>AutoMint is currently disabled.
-To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1&apos; in pivx.conf</source>
+To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1&apos; in alqo.conf</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4307,7 +4307,7 @@ Address: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>Cannot start pivx: click-to-pay handler</source>
+        <source>Cannot start alqo: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4645,8 +4645,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <source>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add &apos;enablezeromint=1&apos; to pivx.conf
-- disable: add &apos;enablezeromint=0&apos; to pivx.conf
+- enable: add &apos;enablezeromint=1&apos; to alqo.conf
+- disable: add &apos;enablezeromint=0&apos; to alqo.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
@@ -8166,7 +8166,7 @@ Verify that you have installed a predetermined text editor.</source>
                            you can disable the automatic minting in your ALQO wallet by
                            going to Settings-&gt;Options and deselecting “Enable zALQO Automint”.
                            If you are not making use of the ALQO-QT or GUI you can simply open
-                           your pivx.conf file and add &lt;i&gt;enablezeromint=0&lt;/i&gt; Without the quotation
+                           your alqo.conf file and add &lt;i&gt;enablezeromint=0&lt;/i&gt; Without the quotation
                            marks and restart your wallet to disable automint.&lt;/p&gt;
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
                            You can read more about zALQO in the
@@ -10925,7 +10925,7 @@ ALQO Wallet</source>
     </message>
 </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <location filename="../pivxstrings.cpp" line="+15"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
