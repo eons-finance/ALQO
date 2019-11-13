@@ -9,6 +9,7 @@
 #endif
 
 #include "tinyformat.h"
+#include "utiltime.h"
 
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/thread.hpp>

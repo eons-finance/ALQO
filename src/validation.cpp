@@ -6,20 +6,64 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "validation.h"
 
+#include "zpiv/accumulators.h"
+#include "zpiv/accumulatormap.h"
 
+#include "addrman.h"
+#include "amount.h"
 #include "alert.h"
 #include "blocksignature.h"
+#include "chainparams.h"
+#include "checkpoints.h"
 #include "checkqueue.h"
+#include "consensus/consensus.h"
+#include "consensus/merkle.h"
+#include "consensus/validation.h"
+#include "hash.h"
+#include "init.h"
+#include "kernel.h"
+#include "libzerocoin/Denominations.h"
 #include "masternode-budget.h"
+#include "masternode-payments.h"
+#include "masternodeman.h"
+#include "net.h"
+#include "netbase.h"
+#include "net_processing.h"
+#include "obfuscation.h"
+#include "pow.h"
+#include "spork.h"
+#include "sporkdb.h"
 #include "swifttx.h"
+#include "primitives/block.h"
+#include "primitives/transaction.h"
+#include "random.h"
+#include "script/script.h"
 #include "script/sigcache.h"
+#include "script/standard.h"
+#include "timedata.h"
+#include "tinyformat.h"
 #include "txdb.h"
+#include "txmempool.h"
+#include "guiinterface.h"
+#include "undo.h"
+#include "util.h"
 #include "utilmoneystr.h"
+#include "utilstrencodings.h"
+#include "validationinterface.h"
+#include "zpivchain.h"
+#include "zpiv/zerocoin.h"
 
+#include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/thread.hpp>
 #include <boost/foreach.hpp>
 
+#include <atomic>
+#include <queue>
+#include <sstream>
 
 using namespace boost;
 using namespace std;

@@ -4,6 +4,9 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "alert.h"
+#include "sync.h"
+#include "clientversion.h"
+#include "util.h"
 #include "validation.h"
 
 CCriticalSection cs_warnings;

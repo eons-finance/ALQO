@@ -8,7 +8,12 @@
 
 #include "tinyformat.h"
 
+#include <cstdlib>
+#include <cstring>
+#include <errno.h>
+#include <limits>
 
+#include <openssl/bio.h>
 #include <openssl/buffer.h>
 #include <openssl/evp.h>
 

@@ -3,8 +3,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "crypter.h"
 
+#include "script/script.h"
+#include "script/standard.h"
+#include "util.h"
 #include "init.h"
+#include "uint256.h"
 
 #include <openssl/aes.h>
 #include <openssl/evp.h>

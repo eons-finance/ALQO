@@ -6,9 +6,17 @@
 #include "bloom.h"
 
 
+#include "chainparams.h"
+#include "hash.h"
+#include "libzerocoin/bignum.h"
+#include "libzerocoin/CoinSpend.h"
+#include "primitives/transaction.h"
+#include "script/script.h"
 #include "script/standard.h"
+#include "streams.h"
 
 #include <math.h>
+#include <stdlib.h>
 
 
 #define LN2SQUARED 0.4804530139182014246671025263266649717305529515945455

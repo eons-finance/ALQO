@@ -5,8 +5,13 @@
 
 #include <boost/assign/list_of.hpp>
 
+#include "db.h"
 #include "kernel.h"
+#include "script/interpreter.h"
 #include "timedata.h"
+#include "util.h"
+#include "stakeinput.h"
+#include "utilmoneystr.h"
 #include "zpivchain.h"
 
 // Hard checkpoints of stake modifiers to ensure they are deterministic
