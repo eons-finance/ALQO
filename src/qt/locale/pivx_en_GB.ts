@@ -653,8 +653,8 @@
         <translation>Send coins to a ALQO address</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Request payments (generates QR codes and pivx: URIs)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Request payments (generates QR codes and alqo: URIs)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -872,8 +872,8 @@ Address: %4
         <translation>TextLabel</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</translation>
     </message>
 </context>
 <context>
@@ -1893,9 +1893,9 @@ Please be patient after clicking import.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/alqo-project/alqo-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -2213,14 +2213,14 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
         <translation>AutoMint is currently enabled and set to </translation>
     </message>
     <message>
-        <source>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</source>
-        <translation>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</translation>
+        <source>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</source>
+        <translation>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</translation>
     </message>
     <message>
         <source>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf</source>
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in alqo.conf</source>
         <translation>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf</translation>
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in alqo.conf</translation>
     </message>
 </context>
 <context>
@@ -2246,8 +2246,8 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf<
         <translation>Invalid payment address %1</translation>
     </message>
     <message>
-        <source>Cannot start pivx: click-to-pay handler</source>
-        <translation>Cannot start pivx: click-to-pay handler</translation>
+        <source>Cannot start alqo: click-to-pay handler</source>
+        <translation>Cannot start alqo: click-to-pay handler</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid ALQO address or malformed URI parameters.</source>
@@ -2497,8 +2497,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <source>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to pivx.conf
-- disable: add 'enablezeromint=0' to pivx.conf
+- enable: add 'enablezeromint=1' to alqo.conf
+- disable: add 'enablezeromint=0' to alqo.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
@@ -2507,8 +2507,8 @@ To change the percentage (no restart required):
         <translation>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to pivx.conf
-- disable: add 'enablezeromint=0' to pivx.conf
+- enable: add 'enablezeromint=1' to alqo.conf
+- disable: add 'enablezeromint=0' to alqo.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
@@ -4136,8 +4136,8 @@ Please be patient...</translation>
         <translation>The Dash Core developers</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
-        <translation>The ALQO developers</translation>
+        <source>The PIVX developers</source>
+        <translation>The PIVX developers</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -4759,7 +4759,7 @@ Please be patient...</translation>
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</translation>

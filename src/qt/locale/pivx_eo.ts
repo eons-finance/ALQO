@@ -649,8 +649,8 @@
         <translation>Sendu mono al ALQO addreso</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Peto pagojn (generas QR kodojn kaj pivx: URIs)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Peto pagojn (generas QR kodojn kaj alqo: URIs)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -868,8 +868,8 @@ Muktisendi: %1</translation>
         <translation>Tekstetikedo</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Ĉiuj transakcio ne estos montri. Peor vidi ĉiuj transakcio bezonas agordi txindekso=1 en la agordo dosiero (pivx.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Ĉiuj transakcio ne estos montri. Peor vidi ĉiuj transakcio bezonas agordi txindekso=1 en la agordo dosiero (alqo.conf).</translation>
     </message>
 </context>
 <context>
@@ -1633,9 +1633,9 @@ Muktisendi: %1</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>Ĉu mankas lingvon aŭ nekompleta tradukado? Helpu la  tradukcio ĉi tie:
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/alqo-project/alqo-project-translations</translation>
     </message>
     <message>
         <source>Connect to the ALQO network through a SOCKS5 proxy.</source>
@@ -2370,7 +2370,7 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>La Dash kerno programistoj</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>La ALQO kerno programistoj</translation>
     </message>
     </context>
@@ -2557,7 +2557,7 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>Connect through SOCKS5 proxy</source>
         <translation>Konekti per SOCKS5 prokurilo</translation>

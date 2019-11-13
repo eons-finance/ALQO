@@ -649,7 +649,7 @@
         <translation>Изпратете монети до ALQO адрес</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
         <translation>Поискай плащане (генерира QR кодове и  ALQO:URI)</translation>
     </message>
     <message>
@@ -868,8 +868,8 @@ Address: %4
         <translation>ТекстовЕтикет</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Не всички преводи ще бъдат показани. За да разгледате всички преводи, трябва да зададете txindex=1 в конфигурационния файл (pivx.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Не всички преводи ще бъдат показани. За да разгледате всички преводи, трябва да зададете txindex=1 в конфигурационния файл (alqo.conf).</translation>
     </message>
 </context>
 <context>
@@ -1819,9 +1819,9 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>Липсващ език или непълен превод? Помогнете с преводите тук:
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/alqo-project/alqo-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -2123,14 +2123,14 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <translation>АвтоЕмисията е включена и настроена на</translation>
     </message>
     <message>
-        <source>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</source>
-        <translation>Да изключите АвтоЕмисия добавете  'enablezeromint=0' в pivx.conf файла.</translation>
+        <source>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</source>
+        <translation>Да изключите АвтоЕмисия добавете  'enablezeromint=0' в alqo.conf файла.</translation>
     </message>
     <message>
         <source>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf</source>
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in alqo.conf</source>
         <translation>АвтоЕмисия е изключено.
-За да включите АвтоЕмисия сменете 'enablezeromint=0' на 'enablezeromint=1' в pivx.conf файла.</translation>
+За да включите АвтоЕмисия сменете 'enablezeromint=0' на 'enablezeromint=1' в alqo.conf файла.</translation>
     </message>
 </context>
 <context>
@@ -2156,8 +2156,8 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf<
         <translation>Грешен адрес за плащане %1</translation>
     </message>
     <message>
-        <source>Cannot start pivx: click-to-pay handler</source>
-        <translation>Провал при стартирането на pivx: click-to-pay обработвател</translation>
+        <source>Cannot start alqo: click-to-pay handler</source>
+        <translation>Провал при стартирането на alqo: click-to-pay обработвател</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid ALQO address or malformed URI parameters.</source>
@@ -2407,8 +2407,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <source>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to pivx.conf
-- disable: add 'enablezeromint=0' to pivx.conf
+- enable: add 'enablezeromint=1' to alqo.conf
+- disable: add 'enablezeromint=0' to alqo.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
@@ -2417,8 +2417,8 @@ To change the percentage (no restart required):
         <translation>Покажи състоянието на автоматичното zALQO емитиране.
 
 За да пормените състоянието (изисква рестарт):
-- вклчване: добавете 'enablezeromint=1' в pivx.conf
-- изключване: добавете 'enablezeromint=0' в pivx.conf
+- вклчване: добавете 'enablezeromint=1' в alqo.conf
+- изключване: добавете 'enablezeromint=0' в alqo.conf
 
 За промяна в процентите (не изисква рестарт):
 - меню Настройки -&gt; Опции -&gt; Процент на автоемитиран zALQO
@@ -4005,7 +4005,7 @@ Please be patient...</source>
         <translation>Dash Core разработчици</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>ALQO разработчици</translation>
     </message>
     <message>
@@ -4624,7 +4624,7 @@ Please be patient...</source>
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = пази мета данните от преводи, например собственик на акаунта и ифнормация за изисквани плащания, 2 = изхръвли мета данните от преводи)</translation>

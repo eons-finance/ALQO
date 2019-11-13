@@ -573,8 +573,8 @@
         <translation>Lähetä kolikkoja ALQO osoitteeseen</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Pyydä maksuja (Generoi QR koodeja ja pivx: URIja)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Pyydä maksuja (Generoi QR koodeja ja alqo: URIja)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -2137,7 +2137,7 @@
         <translation>Dash Core kehittäjät</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>ALQO core kehittäjät</translation>
     </message>
     <message>
@@ -2440,7 +2440,7 @@
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>Varoitus: Verkko ei näytä olevan samaa mieltä! Jotkin mainaajat saattavat kokea ongelmia.</translation>

@@ -282,7 +282,7 @@ QT_TRANSLATE_NOOP("alqo-core", "Connect to a node to retrieve peer addresses, an
 QT_TRANSLATE_NOOP("alqo-core", "Connection options:"),
 QT_TRANSLATE_NOOP("alqo-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
 QT_TRANSLATE_NOOP("alqo-core", "Copyright (C) 2014-%i The Dash Core Developers"),
-QT_TRANSLATE_NOOP("alqo-core", "Copyright (C) 2015-%i The PIVX Developers"),
+QT_TRANSLATE_NOOP("alqo-core", "Copyright (C) 2015-%i The ALQO Developers"),
 QT_TRANSLATE_NOOP("alqo-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("alqo-core", "Could not parse masternode.conf"),
 QT_TRANSLATE_NOOP("alqo-core", "Couldn't generate the accumulator witness"),

@@ -427,7 +427,7 @@ bool SendWidget::sendZpiv(QList<SendCoinsRecipient> recipients){
         return true;
     } else {
         QString body;
-        if (receipt.GetStatus() == ZPIV_SPEND_V1_SEC_LEVEL) {
+        if (receipt.GetStatus() == ZALQO_SPEND_V1_SEC_LEVEL) {
             body = tr("Version 1 zPIV require a security level of 100 to successfully spend.");
         } else {
             int nNeededSpends = receipt.GetNeededSpends(); // Number of spends we would need for this transaction

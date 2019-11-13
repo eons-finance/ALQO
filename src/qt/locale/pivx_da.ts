@@ -649,7 +649,7 @@
         <translation>Send mønter til en ALQO adresse</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
         <translation>Anmod om betaling (genrerer QR kode og ALQO URL)</translation>
     </message>
     <message>
@@ -868,8 +868,8 @@ Adresse: %4
         <translation>Tekstmærke</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Ikke alle transaktioner vil blive vist. For at vise alle transaktioner må De sætte "txindex=1" i konfigurationsfilen (pivx.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Ikke alle transaktioner vil blive vist. For at vise alle transaktioner må De sætte "txindex=1" i konfigurationsfilen (alqo.conf).</translation>
     </message>
 </context>
 <context>
@@ -1837,9 +1837,9 @@ Vær tålmodig efter at du har klikket på import.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>Det valgte sprog mangler, eller oversættelsen er mangelfuld. Hjælp ved at bidrage med oversættelser her:
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/alqo-project/alqo-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -2148,14 +2148,14 @@ Hvis AutoMint er aktiveret, vil denne procentdel sætte sig omkring den konfigur
         <translation>AutoMint er i øjeblikket aktiveret og indstillet til</translation>
     </message>
     <message>
-        <source>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</source>
-        <translation>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</translation>
+        <source>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</source>
+        <translation>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</translation>
     </message>
     <message>
         <source>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf</source>
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in alqo.conf</source>
         <translation>AutoMint er for øjeblikket deaktiveret
-For at aktivere AutoMint-ændring 'enablezeromint = 0' til 'enablezeromint = 1' i pivx.conf</translation>
+For at aktivere AutoMint-ændring 'enablezeromint = 0' til 'enablezeromint = 1' i alqo.conf</translation>
     </message>
 </context>
 <context>
@@ -2181,7 +2181,7 @@ For at aktivere AutoMint-ændring 'enablezeromint = 0' til 'enablezeromint = 1' 
         <translation>Ugyldig betalingsadresse: %1</translation>
     </message>
     <message>
-        <source>Cannot start pivx: click-to-pay handler</source>
+        <source>Cannot start alqo: click-to-pay handler</source>
         <translation>Kan ikke starte ALQO "klik for at betale" systemet</translation>
     </message>
     <message>
@@ -2432,8 +2432,8 @@ Uplettet: bekræftet, men mindre end 1 minutter med samme betegnelse, efter at d
         <source>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to pivx.conf
-- disable: add 'enablezeromint=0' to pivx.conf
+- enable: add 'enablezeromint=1' to alqo.conf
+- disable: add 'enablezeromint=0' to alqo.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
@@ -2442,8 +2442,8 @@ To change the percentage (no restart required):
         <translation>Vis den aktuelle status for automatisk zALQO minting.øj
 
 For at ændre status (genstart kræves):.
-- aktiver: tilføj 'enablezeromint = 1' til pivx.conf
-- deaktiver: tilføj 'enablezeromint = 0' til pivx.conf
+- aktiver: tilføj 'enablezeromint = 1' til alqo.conf
+- deaktiver: tilføj 'enablezeromint = 0' til alqo.conf
 
 For at ændre procentdelen (ingen genstart kræves):.
 - menu Indstillinger-&gt; Indstillinger-&gt; Procentdel af automatiseret zALQO
@@ -4034,7 +4034,7 @@ Vær tålmodig...</translation>
         <translation>DASH "core" udviklerne</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>ALQO "core" udviklerne</translation>
     </message>
     <message>
@@ -4653,7 +4653,7 @@ Vær tålmodig...</translation>
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = beholdtx metadata. For eksempel information om kontoejer og betalngsanmodninger, 2 = drop TX metadata)</translation>

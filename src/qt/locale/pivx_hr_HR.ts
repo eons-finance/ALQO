@@ -649,8 +649,8 @@
         <translation>Pošaljite kovanice na ALQO adresu</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Zahtjev za plaćanje (generira QR kodove i pivx: URI)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Zahtjev za plaćanje (generira QR kodove i alqo: URI)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -868,8 +868,8 @@ Višestruko slanje: %1</translation>
         <translation>TextLabel</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Nisu prikazane sve transakcije. Za pregled svih transakcija morate postaviti txindex = 1 u konfiguracijskoj datoteci (pivx.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Nisu prikazane sve transakcije. Za pregled svih transakcija morate postaviti txindex = 1 u konfiguracijskoj datoteci (alqo.conf).</translation>
     </message>
 </context>
 <context>
@@ -1821,9 +1821,9 @@ Budite strpljivi nakon što kliknete uvoz.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>Jezik nedostaje ili prijevod nije potpun? Pomozite s prijevodima ovdje:
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/alqo-project/alqo-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -2134,14 +2134,14 @@ Ako je omogućeno automatsko navođenje, ovaj postotak će se podmiriti oko konf
         <translation>AutoMint je trenutno omogućen i podešen na</translation>
     </message>
     <message>
-        <source>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</source>
-        <translation>Da biste onemogućili AutoMint, dodajte 'enablezeromint=0' u pivx.conf.</translation>
+        <source>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</source>
+        <translation>Da biste onemogućili AutoMint, dodajte 'enablezeromint=0' u alqo.conf.</translation>
     </message>
     <message>
         <source>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf</source>
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in alqo.conf</source>
         <translation>AutoMint je trenutno onemogućen.
-Da biste omogućili, promjenite postavke AutoMint 'enablezeromint=0' na 'enablezeromint=1' u pivx.conf</translation>
+Da biste omogućili, promjenite postavke AutoMint 'enablezeromint=0' na 'enablezeromint=1' u alqo.conf</translation>
     </message>
 </context>
 <context>
@@ -2167,8 +2167,8 @@ Da biste omogućili, promjenite postavke AutoMint 'enablezeromint=0' na 'enablez
         <translation>Nevažeća adresa za plaćanje %1</translation>
     </message>
     <message>
-        <source>Cannot start pivx: click-to-pay handler</source>
-        <translation>Ne može se pokrenuti pivx: clik-to-pay handler</translation>
+        <source>Cannot start alqo: click-to-pay handler</source>
+        <translation>Ne može se pokrenuti alqo: clik-to-pay handler</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid ALQO address or malformed URI parameters.</source>
@@ -2418,8 +2418,8 @@ Nezreli: potvrđeno, ali manje od 1 minta iste denominacije nakon mintanja</tran
         <source>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to pivx.conf
-- disable: add 'enablezeromint=0' to pivx.conf
+- enable: add 'enablezeromint=1' to alqo.conf
+- disable: add 'enablezeromint=0' to alqo.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
@@ -2428,8 +2428,8 @@ To change the percentage (no restart required):
         <translation>Pokažite trenutačni status automatskog zALQO mintanja.
 
 Da biste promijenili status (potrebno je ponovno pokretanje):
-- omogući: dodajte 'enablezeromint = 1' u pivx.conf
-- onemogućiti: dodajte 'enablezeromint = 0' na pivx.conf
+- omogući: dodajte 'enablezeromint = 1' u alqo.conf
+- onemogućiti: dodajte 'enablezeromint = 0' na alqo.conf
 
 Promjena postotka (nije potrebno ponovno pokretanje):
 - izbornik Postavke-&gt; Opcije-&gt; Postotak zALQO</translation>
@@ -4018,7 +4018,7 @@ Please be patient...</source>
         <translation>Dash Core programeri</translation>
     </message>
     <message>
-        <source>The ALQO developers</source>
+        <source>The PIVX developers</source>
         <translation>ALQO programeri</translation>
     </message>
     <message>
@@ -4638,7 +4638,7 @@ Please be patient...</source>
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = zadržite metapodatke tx, npr. Vlasnika računa i podatke o zahtjevu za plaćanje, 2 = odbaci meta podataka tx)</translation>

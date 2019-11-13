@@ -30,7 +30,7 @@
 #include <boost/thread/exceptions.hpp>
 #include <boost/thread/condition_variable.hpp> // for boost::thread_interrupted
 
-//PIVX only features
+//ALQO only features
 
 extern bool fMasterNode;
 extern bool fLiteMode;
