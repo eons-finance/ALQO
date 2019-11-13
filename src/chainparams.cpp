@@ -131,7 +131,7 @@ public:
 
         nTargetSpacing = 2 * 60;
         nTargetTimespan = 20 * 60;
-        nLastPOWBlock = 1000;
+        nLastPOWBlock = 200;
         nMasternodeCollateral = 10000 * COIN;
 
         nBudget_Fee_Confirmations = 6;

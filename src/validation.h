@@ -353,11 +353,6 @@ bool IsTransactionInChain(const uint256& txId, int& nHeightTx, CTransaction& tx)
 bool IsTransactionInChain(const uint256& txId, int& nHeightTx);
 bool IsBlockHashInChain(const uint256& hashBlock);
 bool ValidOutPoint(const COutPoint out, int nHeight);
-void AddWrappedSerialsInflation();
-void RecalculateZPIVSpent();
-void RecalculateZPIVMinted();
-bool RecalculatePIVSupply(int nHeightStart);
-bool ReindexAccumulators(std::list<uint256>& listMissingCheckpoints, std::string& strError);
 bool AreInputsStandard(const CTransaction& tx, const CCoinsViewCache& mapInputs); // only needed for test/script_P2SH_tests.cpp
 
 /** Check for standard transaction types
