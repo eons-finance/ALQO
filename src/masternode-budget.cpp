@@ -3,9 +3,17 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "init.h"
+#include "validation.h"
 
+#include "addrman.h"
+#include "chainparams.h"
 #include "masternode-budget.h"
+#include "masternode-sync.h"
+#include "masternode.h"
+#include "masternodeman.h"
 #include "obfuscation.h"
+#include "util.h"
 #include <boost/filesystem.hpp>
 
 CBudgetManager budget;

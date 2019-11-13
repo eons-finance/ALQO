@@ -9,10 +9,18 @@
 #include "config/alqo-config.h"
 #endif
 
+#include "net.h"
 
 #include "addrman.h"
+#include "chainparams.h"
+#include "clientversion.h"
+#include "consensus/validation.h"
+#include "miner.h"
+#include "net_processing.h"
 #include "obfuscation.h"
+#include "primitives/transaction.h"
 #include "scheduler.h"
+#include "guiinterface.h"
 
 #ifdef WIN32
 #include <string.h>
@@ -27,7 +35,9 @@
 #include <miniupnpc/upnperrors.h>
 #endif
 
+#include <boost/thread.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/thread.hpp>
 
 // Dump addresses to peers.dat every 15 minutes (900s)
 #define DUMP_ADDRESSES_INTERVAL 900

@@ -5,9 +5,17 @@
 
 #include "base58.h"
 
+#include "hash.h"
+#include "uint256.h"
 
 #include <assert.h>
+#include <boost/variant/apply_visitor.hpp>
+#include <boost/variant/static_visitor.hpp>
+#include <sstream>
+#include <stdint.h>
 #include <string.h>
+#include <string>
+#include <vector>
 
 /** All alphanumeric characters except for "0", "I", "O", and "l" */
 static const char* pszBase58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";

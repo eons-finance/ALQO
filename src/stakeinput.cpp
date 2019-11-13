@@ -2,7 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "zpiv/accumulators.h"
+#include "chain.h"
 #include "zpiv/deterministicmint.h"
+#include "validation.h"
+#include "stakeinput.h"
 #include "wallet/wallet.h"
 
 CZPivStake::CZPivStake(const libzerocoin::CoinSpend& spend)

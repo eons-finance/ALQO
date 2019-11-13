@@ -15,7 +15,8 @@
 #include "spork.h"
 #include "zpivchain.h"
 
-
+#include <boost/thread.hpp>	
+#include <boost/tuple/tuple.hpp>
 
 
 //////////////////////////////////////////////////////////////////////////////

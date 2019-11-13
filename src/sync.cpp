@@ -3,8 +3,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "sync.h"
 
+#include <memory>
+#include <set>
 
+#include "util.h"
+#include "utilstrencodings.h"
 
 #include <stdio.h>
 
