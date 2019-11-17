@@ -219,7 +219,7 @@ bool LogAcceptCategory(const char* category)
             ptrCategory.reset(new std::set<std::string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
             // "alqo" is a composite category enabling all ALQO-related debug output
-            if (ptrCategory->count(std::string("pivx"))) {
+            if (ptrCategory->count(std::string("alqo"))) {
                 ptrCategory->insert(std::string("obfuscation"));
                 ptrCategory->insert(std::string("swiftx"));
                 ptrCategory->insert(std::string("masternode"));
@@ -409,7 +409,7 @@ boost::filesystem::path GetDefaultDataDir()
 // Windows < Vista: C:\Documents and Settings\Username\Application Data\ALQO
 // Windows >= Vista: C:\Users\Username\AppData\Roaming\ALQO
 // Mac: ~/Library/Application Support/ALQO
-// Unix: ~/.pivx
+// Unix: ~/.alqo
 #ifdef WIN32
     // Windows
     return GetSpecialFolderPath(CSIDL_APPDATA) / "ALQO";
@@ -427,7 +427,7 @@ boost::filesystem::path GetDefaultDataDir()
     return pathRet / "ALQO";
 #else
     // Unix
-    return pathRet / ".pivx";
+    return pathRet / ".alqo";
 #endif
 #endif
 }

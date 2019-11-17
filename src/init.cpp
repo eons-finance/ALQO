@@ -1662,13 +1662,7 @@ bool AppInit2()
         }
         fVerifyingBlocks = false;
 
-        //Inititalize zPIVWallet
-        uiInterface.InitMessage(_("Syncing zPIV wallet..."));
-
-        pwalletMain->InitAutoConvertAddresses();
-
-        bool fEnableZPivBackups = GetBoolArg("-backupzpiv", true);
-        pwalletMain->setZPivAutoBackups(fEnableZPivBackups);
+        pwalletMain->setZPivAutoBackups(false);
 
         //Load zerocoin mint hashes to memory
         pwalletMain->zpivTracker->Init();
