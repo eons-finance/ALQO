@@ -376,16 +376,7 @@ void BitcoinApplication::createSplashScreen(const NetworkStyle* networkStyle)
 
 bool BitcoinApplication::createTutorialScreen()
 {
-    WelcomeContentWidget* widget = new WelcomeContentWidget();
-
-    connect(widget, &WelcomeContentWidget::onLanguageSelected, [this](){
-        updateTranslation();
-    });
-
-    widget->exec();
-    bool ret = widget->isOk;
-    widget->deleteLater();
-    return ret;
+    return true;
 }
 
 void BitcoinApplication::updateTranslation(){
