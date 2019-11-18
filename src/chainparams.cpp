@@ -96,7 +96,7 @@ libzerocoin::ZerocoinParams* CChainParams::Zerocoin_Params(bool useModulusV1) co
 bool CChainParams::HasStakeMinAgeOrDepth(const int contextHeight, const uint32_t contextTime,
         const int utxoFromBlockHeight, const uint32_t utxoFromBlockTime) const
 {
-        return (utxoFromBlockTime + 3600 <= contextTime);
+        return (utxoFromBlockTime + 600 <= contextTime);
 }
 
 class CMainParams : public CChainParams
@@ -174,9 +174,15 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1573420000;
+        genesis.nTime = 1574101543;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 948651;
+        genesis.nNonce = 0;
+
+        while (genesis.GetHash() > uint256S("00000ffff0000000000000000000000000000000000000000000000000000000")) {
+          genesis.nNonce++;
+          if (genesis.nNonce % 16 == 0) printf("\rnonce %08x", genesis.nNonce);
+        }
+        printf("\n%s\n", genesis.ToString().c_str());
         hashGenesisBlock = genesis.GetHash();
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 83);

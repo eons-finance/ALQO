@@ -52,7 +52,7 @@ unsigned int Lwma3CalculateNextWorkRequired(const CBlockIndex* pindexLast)
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
-    if (pindexLast->nHeight + 1 <= 150)
+    if (pindexLast->nHeight + 1 <= 161)
         return Params().ProofOfWorkLimit().GetCompact();
     return Lwma3CalculateNextWorkRequired(pindexLast);
 }
