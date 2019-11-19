@@ -1870,7 +1870,7 @@ HH        RECEIVE
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="label-address-box"] {
-    color:#ffffff;
+    color:#000000;
     background-color: #26000000;
     font-size:22px;
     padding:10px 10px;
@@ -1937,7 +1937,7 @@ QComboBox[cssClass="btn-combo-edit"] {
     padding:10px 20px 10px 10px;
     font-size:16px;
     border:1px solid #ffffff;
-    color: #ffffff;
+    color: #000000;
     text-align: right;
 }
 
@@ -2284,7 +2284,7 @@ QLineEdit[cssClass="edit-primary-dialog"] {
     font-size:18px;
     border-radius: 2px;
     padding:8px;
-    color: #ffffff;
+    color: #000000;
 }
 
 QLineEdit[cssClass="edit-primary-dialog"]:focus {
