@@ -138,6 +138,7 @@ BITCOIN_CORE_H = \
   masternode-sync.h \
   masternodeman.h \
   masternodeconfig.h \
+  messagesigner.h \
   miner.h \
   mruset.h \
   netbase.h \
@@ -228,6 +229,7 @@ libbitcoin_server_a_SOURCES = \
   httpserver.cpp \
   init.cpp \
   leveldbwrapper.cpp \
+  masternodeconfig.cpp \
   miner.cpp \
   net.cpp \
   net_processing.cpp \
@@ -282,6 +284,7 @@ libbitcoin_wallet_a_SOURCES = \
   masternode-sync.cpp \
   masternodeconfig.cpp \
   masternodeman.cpp \
+  messagesigner.cpp \
   wallet/rpcdump.cpp \
   wallet/rpcwallet.cpp \
   kernel.cpp \

@@ -1084,14 +1084,14 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
 
 int64_t GetBlockValue(int nHeight)
 {
-    if (nHeight <= 160)
-        return 500000 * COIN;
-    return 5 * COIN;
+    if (nHeight <= 161)
+        return 500000 * COIN;  // 161 x 500000 = 81.5m (ALQO chainswap)
+    return 5 * COIN;           // and 5 per block for each block after
 }
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
-    return blockValue * 0.5;
+    return blockValue * 0.6;
 }
 
 bool IsInitialBlockDownload()
