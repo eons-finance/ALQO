@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_info">
       <attribute name="title">
@@ -425,7 +425,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../ALQO.qrc">
+            <iconset resource="../pivx.qrc">
              <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="shortcut">
