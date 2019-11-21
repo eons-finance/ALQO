@@ -545,7 +545,7 @@ QPushButton[cssClass="btn-check-theme"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -556,7 +556,7 @@ QPushButton[cssClass="btn-check-theme-dark"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-dark") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -566,7 +566,7 @@ QPushButton[cssClass="btn-check-theme-light"] {
     qproperty-icon: url("://ic-check-theme-light") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -806,12 +806,12 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-title-white"] {
-    color:#ffffff;
+    color:#000000;
     font-size:16px;
 }
 
 *[cssClass="text-content-white"] {
-    color:#ffffff;
+    color:#000000;
     font-size:16px;
 }
 
@@ -826,12 +826,12 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="btn-subtitle-grey"] {
-    color:#ffffff;
+    color:#000000;
     font-size:17px;
 }
 
 *[cssClass="text-subtitle"] {
-    color:#B3ffffff;
+    color:#B3000000;
     font-size:14px;
 }
 
@@ -842,28 +842,28 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
 *[cssClass="text-body1"] {
-    color:#ffffff;
+    color:#000000;
     font-size:17px;
 }
 
 *[cssClass="text-body2"] {
-    color:#ffffff;
+    color:#000000;
     font-size:14px;
 }
 
 *[cssClass="text-main-light"] {
-    color:#B3ffffff;
+    color:#B3000000;
     font-size:17px;
 }
 
 *[cssClass="text-main-grey"] {
-    color:#ffffff;
+    color:#000000;
     font-size:17px;
 }
 
 
 *[cssClass="text-main-settings"] {
-    color:#ffffff;
+    color:#000000;
     font-size:18px;
 }
 
@@ -878,7 +878,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-main-grey-big"] {
-    color:#ffffff;
+    color:#000000;
     font-size:24px;
 }
 
@@ -2741,7 +2741,7 @@ HH        Tooltip
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
-QToolTip { color: white; background-color: #b088ff; border: none;padding:10px; border-radius:2px;}
+QToolTip { color: black; background-color: #b088ff; border: none;padding:10px; border-radius:2px;}
 
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
@@ -2749,7 +2749,7 @@ HH        ROW LIST
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container-list-menu"]{
-    background-color:white;
+    background-color:black;
     border-radius:2px;
     padding:15px;
     border: 1px solid #bababa;
@@ -2845,7 +2845,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     background-position:center;
     background-repeat:no-repeat;
     selection-background-color:#33b088ff;
-    selection-color: white;
+    selection-color: black;
     font-size:14px;
     border-radius:0px;
     color: #ffffff;

@@ -192,6 +192,9 @@
         </item>
         <item>
          <widget class="QListView" name="listView">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
           <property name="selectionMode">
            <enum>QAbstractItemView::NoSelection</enum>
           </property>
@@ -350,6 +353,9 @@
           </item>
           <item>
            <widget class="QCheckBox" name="checkBoxStake">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 0);</string>
+            </property>
             <property name="text">
              <string>CheckBox</string>
             </property>
@@ -378,6 +384,9 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
              <string>CheckBox</string>
