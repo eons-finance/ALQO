@@ -545,7 +545,7 @@ QPushButton[cssClass="btn-check-theme"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -556,7 +556,7 @@ QPushButton[cssClass="btn-check-theme-dark"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-dark") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -566,7 +566,7 @@ QPushButton[cssClass="btn-check-theme-light"] {
     qproperty-icon: url("://ic-check-theme-light") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -1196,7 +1196,7 @@ QPushButton[cssClass="btn-edit-primary"] {
     font-size:18px;
     border-radius: 2px;
     padding:8px;
-    color: #ffffff;
+    color: #000000;
     text-align:left;
 }
 
@@ -1223,7 +1223,7 @@ QPushButton[cssClass="btn-edit-primary-folder"] {
     border-radius: 2px;
     padding:8px;
     padding-right: 34px;
-    color: #ffffff;
+    color: #000000;
     text-align:left;
 }
 
@@ -2731,7 +2731,7 @@ HH        Tooltip
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
-QToolTip { color: white; background-color: #000000; border: none;padding:10px; border-radius:2px;}
+QToolTip { color: black; background-color: #000000; border: none;padding:10px; border-radius:2px;}
 
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
@@ -2739,7 +2739,7 @@ HH        ROW LIST
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container-list-menu"]{
-    background-color:white;
+    background-color:black;
     border-radius:2px;
     padding:15px;
     border: 1px solid #bababa;
@@ -2835,7 +2835,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     background-position:center;
     background-repeat:no-repeat;
     selection-background-color:#33000000;
-    selection-color: white;
+    selection-color: black;
     font-size:14px;
     border-radius:0px;
     color: #ffffff;

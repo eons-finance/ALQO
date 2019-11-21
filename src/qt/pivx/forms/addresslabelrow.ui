@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">color: rgb(0, 0, 0);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -53,7 +56,7 @@
       <item>
        <widget class="QLabel" name="lblLabel">
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string>Bob Allen</string>
@@ -76,7 +79,7 @@
       <item>
        <widget class="QLabel" name="lblAddress">
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string>DN6i46dytMPVhV1JMGZFuQBh7BZZ6nNLox</string>
@@ -92,7 +95,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="resource.qrc">
+         <iconset>
           <normaloff>://ic-menu-hover</normaloff>://ic-menu-hover</iconset>
         </property>
         <property name="iconSize">
