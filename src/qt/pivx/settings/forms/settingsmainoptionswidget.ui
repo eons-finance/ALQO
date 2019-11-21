@@ -328,6 +328,9 @@
           <property name="text">
            <string>CheckBox</string>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -350,6 +353,9 @@
          <widget class="QCheckBox" name="checkBoxMinClose">
           <property name="text">
            <string>CheckBox</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
           </property>
          </widget>
         </item>

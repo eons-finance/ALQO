@@ -12,43 +12,43 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="container-border-light"] {
-    background-color:#ffffff;
-    border:  1px solid #33ffffff;
+    background-color:#FFFFFF;
+    border:  1px solid #bababa;
     border-radius:2px;
 }
 
 *[cssClass="container_right"] {
-    background-color:#ffffff;
-    border-left:  1px solid #33ffffff;
+    background-color:#FFFFFF;
+    border-left:  1px solid #bababa;
 }
 
 *[cssClass="container-right"] {
-    background-color:#ffffff;
-    border-left:  1px solid #33ffffff;
+    background-color:#FFFFFF;
+    border-left:  1px solid #bababa;
 }
 
 *[cssClass="container-square"] {
-    background-color:#ffffff;
-    border:  1px solid #33ffffff;
+    background-color:#FFFFFF;
+    border:  1px solid #bababa;
 }
 
 *[cssClass="container-options"] {
-    background-color:#ffffff;
+    background-color:#FFFFFF;
     border-bottom: 1px solid #bababa;
 }
 
 *[cssClass="container-divider"] {
-    background-color:#B3ffffff;
+    background-color:#bababa;
 }
 
 *[cssClass="container-purple"] {
-    background-color:#000000;
+    background-color:#5c4b7d;
     border:  0;
 }
 
 *[cssClass="container-border-purple"] {
-    background-color:#ffffff;
-    border:  1px solid #000000;
+    background-color:#FFFFFF;
+    border:  1px solid #5c4b7d;
     border-radius:2px;
 }
 
@@ -545,7 +545,7 @@ QPushButton[cssClass="btn-check-theme"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -556,7 +556,7 @@ QPushButton[cssClass="btn-check-theme-dark"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-dark") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -566,7 +566,7 @@ QPushButton[cssClass="btn-check-theme-light"] {
     qproperty-icon: url("://ic-check-theme-light") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:white;
+    color:black;
     border-radius:2px;
 }
 
@@ -1223,7 +1223,7 @@ QPushButton[cssClass="btn-edit-primary-folder"] {
     border-radius: 2px;
     padding:8px;
     padding-right: 34px;
-    color: #ffffff;
+    color: #000000;
     text-align:left;
 }
 
@@ -1265,7 +1265,7 @@ QLineEdit[cssClass="edit-primary-book"]:hover {
     padding:8px;
     padding-right: 12px;
     padding-left:12px;
-    color: #ffffff;
+    color: #000000;
     text-align:left;
 }
 
@@ -1548,8 +1548,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container-splash"] {
     background-color:transparent;
-    border-image: url("://bg-splash-png") 0 0 0 0 stretch stretch;
-    border-radius: 4px;
+    background-image: url("://bg-splash-png");
 }
 
 *[cssClass="img-splash-logo"] {
@@ -1560,7 +1559,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="bg-progress"] {
-    border-top:2px solid #000000 ;
+    border-top:2px solid #b088ff ;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 4px;
@@ -1574,7 +1573,7 @@ QProgressBar[cssClass="progress-splash"]::chunk:horizontal {
     x2: 1,
     y2: 0.5,
     stop: 0 #80211a2f,
-    stop: 1 #80000000,
+    stop: 1 #80b088ff,
     stop: 2 #80211a2f,);
     margin-right: 2px;
 }
@@ -2196,23 +2195,9 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
 *[cssClass="coin-icon-piv"] {
-    qproperty-icon: url("://ic-coin-piv") off,
-    url("://ic-coin-piv") on ;
-    qproperty-iconSize: 24px 24px;
-    background-color: #ffffff;
-    border:  2px solid #ffffff;
-    border-radius: 12px;
 }
 
 *[cssClass="coin-icon-zpiv"] {
-    qproperty-icon: url("://ic-coin-zpiv") off,
-    url("://ic-coin-zpiv") on ;
-    qproperty-iconSize: 24px 24px;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-color: #ffffff;
-    border:  2px solid #ffffff;
-    border-radius: 12px;
 }
 
 
@@ -2731,7 +2716,7 @@ HH        Tooltip
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
-QToolTip { color: white; background-color: #000000; border: none;padding:10px; border-radius:2px;}
+QToolTip { color: black; background-color: #000000; border: none;padding:10px; border-radius:2px;}
 
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
@@ -2739,7 +2724,7 @@ HH        ROW LIST
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container-list-menu"]{
-    background-color:white;
+    background-color:black;
     border-radius:2px;
     padding:15px;
     border: 1px solid #bababa;
@@ -2835,7 +2820,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     background-position:center;
     background-repeat:no-repeat;
     selection-background-color:#33000000;
-    selection-color: white;
+    selection-color: black;
     font-size:14px;
     border-radius:0px;
     color: #ffffff;
