@@ -584,9 +584,13 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 
             LogPrintf("CPUMiner : proof-of-stake block was signed %s \n", pblock->GetHash().ToString().c_str());
             SetThreadPriority(THREAD_PRIORITY_NORMAL);
-            if (!ProcessBlockFound(pblock, *pwallet, reservekey)) {
+            bool fSuccess = ProcessBlockFound(pblock, *pwallet, reservekey);
+            if (!fSuccess) {
                 fLastLoopOrphan = true;
                 continue;
+            } else {
+                // Rest for a minute after successful block to preserve close quick
+                MilliSleep(60 * 1000 + GetRand(1 * 60 * 1000));
             }
             SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
