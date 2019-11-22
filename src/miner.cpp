@@ -206,8 +206,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             double dPriority = 0;
             CAmount nTotalIn = 0;
             bool fMissingInputs = false;
-            uint256 txid = tx.GetHash();
-            bool hasZerocoinSpends = tx.HasZerocoinSpendInputs();
+            bool hasZerocoinSpends = false;
             if (hasZerocoinSpends)
                 nTotalIn = tx.GetZerocoinSpent();
 
@@ -450,9 +449,6 @@ CBlockTemplate* CreateNewBlockWithKey(CReserveKey& reservekey, CWallet* pwallet)
     CPubKey pubkey;
     if (!reservekey.GetReservedKey(pubkey))
         return nullptr;
-
-    const int nHeightNext = chainActive.Tip()->nHeight + 1;
-    static int nLastPOWBlock = Params().LAST_POW_BLOCK();
 
     CScript scriptPubKey = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
     return CreateNewBlock(scriptPubKey, pwallet, false);
