@@ -263,7 +263,7 @@ bool StartMasternodeEntry(UniValue& statusObjRet, CMasternodeBroadcast& mnbRet, 
     CMasternode* pmn = mnodeman.Find(vin);
     if (pmn != NULL) {
         if (strCommand == "missing") return false;
-        if (strCommand == "disabled" && pmn->IsEnabled()) return false;
+        if (strCommand == "disabled" && pmn->IsEnabled(true)) return false;
     }
 
     fSuccessRet = activeMasternode.CreateBroadcast(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), errorMessage, mnbRet);
