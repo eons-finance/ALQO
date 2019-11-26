@@ -19,7 +19,6 @@
 #include "compat/sanity.h"
 #include "httpserver.h"
 #include "httprpc.h"
-#include "invalid.h"
 #include "key.h"
 #include "main.h"
 #include "masternode-budget.h"
@@ -1462,88 +1461,6 @@ bool AppInit2()
                 if (fTxIndex != GetBoolArg("-txindex", true)) {
                     strLoadError = _("You need to rebuild the database using -reindex to change -txindex");
                     break;
-                }
-
-                // Populate list of invalid/fraudulent outpoints that are banned from the chain
-                invalid_out::LoadOutpoints();
-                invalid_out::LoadSerials();
-
-                // Drop all information from the zerocoinDB and repopulate
-                if (GetBoolArg("-reindexzerocoin", false)) {
-                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
-                        uiInterface.InitMessage(_("Reindexing zerocoin database..."));
-                        std::string strError = ReindexZerocoinDB();
-                        if (strError != "") {
-                            strLoadError = strError;
-                            break;
-                        }
-                    }
-                }
-
-                // Wrapped serials inflation check
-                bool reindexDueWrappedSerials = false;
-                bool reindexZerocoin = false;
-                int chainHeight = chainActive.Height();
-                if(Params().NetworkID() == CBaseChainParams::MAIN && chainHeight > Params().Zerocoin_Block_EndFakeSerial()) {
-
-                    // Supply needs to be exactly GetSupplyBeforeFakeSerial + GetWrapppedSerialInflationAmount
-                    CBlockIndex* pblockindex = chainActive[Params().Zerocoin_Block_EndFakeSerial() + 1];
-                    CAmount zpivSupplyCheckpoint = Params().GetSupplyBeforeFakeSerial() + GetWrapppedSerialInflationAmount();
-
-                    if (pblockindex->GetZerocoinSupply() < zpivSupplyCheckpoint) {
-                        // Trigger reindex due wrapping serials
-                        LogPrintf("Current GetZerocoinSupply: %d vs %d\n", pblockindex->GetZerocoinSupply()/COIN , zpivSupplyCheckpoint/COIN);
-                        reindexDueWrappedSerials = true;
-                    } else if (pblockindex->GetZerocoinSupply() > zpivSupplyCheckpoint) {
-                        // Trigger global zPIV reindex
-                        reindexZerocoin = true;
-                        LogPrintf("Current GetZerocoinSupply: %d vs %d\n", pblockindex->GetZerocoinSupply()/COIN , zpivSupplyCheckpoint/COIN);
-                    }
-
-                }
-
-                // Reindex only for wrapped serials inflation.
-                if (reindexDueWrappedSerials)
-                    AddWrappedSerialsInflation();
-
-                // Recalculate money supply for blocks that are impacted by accounting issue after zerocoin activation
-                if (GetBoolArg("-reindexmoneysupply", false) || reindexZerocoin) {
-                    if (chainHeight > Params().Zerocoin_StartHeight()) {
-                        RecalculateZPIVMinted();
-                        RecalculateZPIVSpent();
-                    }
-                    // Recalculate from the zerocoin activation or from scratch.
-                    RecalculatePIVSupply(reindexZerocoin ? Params().Zerocoin_StartHeight() : 1);
-                }
-
-                // Check Recalculation result
-                if(Params().NetworkID() == CBaseChainParams::MAIN && chainHeight > Params().Zerocoin_Block_EndFakeSerial()) {
-                    CBlockIndex* pblockindex = chainActive[Params().Zerocoin_Block_EndFakeSerial() + 1];
-                    CAmount zpivSupplyCheckpoint = Params().GetSupplyBeforeFakeSerial() + GetWrapppedSerialInflationAmount();
-                    if (pblockindex->GetZerocoinSupply() != zpivSupplyCheckpoint)
-                        return InitError(strprintf("ZerocoinSupply Recalculation failed: %d vs %d", pblockindex->GetZerocoinSupply()/COIN , zpivSupplyCheckpoint/COIN));
-                }
-
-                // Force recalculation of accumulators.
-                if (GetBoolArg("-reindexaccumulators", false)) {
-                    if (chainHeight > Params().Zerocoin_Block_V2_Start()) {
-                        CBlockIndex *pindex = chainActive[Params().Zerocoin_Block_V2_Start()];
-                        while (pindex->nHeight < chainActive.Height()) {
-                            if (!count(listAccCheckpointsNoDB.begin(), listAccCheckpointsNoDB.end(),
-                                       pindex->nAccumulatorCheckpoint))
-                                listAccCheckpointsNoDB.emplace_back(pindex->nAccumulatorCheckpoint);
-                            pindex = chainActive.Next(pindex);
-                        }
-                        // PIVX: recalculate Accumulator Checkpoints that failed to database properly
-                        if (!listAccCheckpointsNoDB.empty()) {
-                            uiInterface.InitMessage(_("Calculating missing accumulators..."));
-                            LogPrintf("%s : finding missing checkpoints\n", __func__);
-
-                            std::string strError;
-                            if (!ReindexAccumulators(listAccCheckpointsNoDB, strError))
-                                return InitError(strError);
-                        }
-                    }
                 }
 
                 if (!fReindex) {

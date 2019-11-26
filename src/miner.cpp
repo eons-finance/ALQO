@@ -26,7 +26,6 @@
 #include "zpiv/accumulators.h"
 #include "blocksignature.h"
 #include "spork.h"
-#include "invalid.h"
 #include "zpivchain.h"
 
 
@@ -276,13 +275,6 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                     porphan->setDependsOn.insert(txin.prevout.hash);
                     nTotalIn += mempool.mapTx[txin.prevout.hash].GetTx().vout[txin.prevout.n].nValue;
                     continue;
-                }
-
-                //Check for invalid/fraudulent inputs. They shouldn't make it through mempool, but check anyways.
-                if (invalid_out::ContainsOutPoint(txin.prevout)) {
-                    LogPrintf("%s : found invalid input %s in tx %s", __func__, txin.prevout.ToString(), tx.GetHash().ToString());
-                    fMissingInputs = true;
-                    break;
                 }
 
                 const CCoins* coins = view.AccessCoins(txin.prevout.hash);
