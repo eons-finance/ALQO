@@ -14,8 +14,7 @@
 #include "utilmoneystr.h"
 #include "zpivchain.h"
 
-// v1 modifier interval.
-static const int64_t OLD_MODIFIER_INTERVAL = 2087;
+#include <vector>
 
 // Hard checkpoints of stake modifiers to ensure they are deterministic
 static std::map<int, unsigned int> mapStakeModifierCheckpoints =
@@ -38,9 +37,17 @@ static bool GetLastStakeModifier(const CBlockIndex* pindex, uint64_t& nStakeModi
 // Get selection interval section (in seconds)
 static int64_t GetStakeModifierSelectionIntervalSection(int nSection)
 {
-    assert(nSection >= 0 && nSection < 64);
-    int64_t a = MODIFIER_INTERVAL  * 63 / (63 + ((63 - nSection) * (MODIFIER_INTERVAL_RATIO - 1)));
-    return a;
+    assert (nSection >= 0 && nSection < 64);
+    return (MODIFIER_INTERVAL * 63 / (63 + ((63 - nSection) * (MODIFIER_INTERVAL_RATIO - 1))));
+}
+
+// Get stake modifier selection interval (in seconds)
+static int64_t GetStakeModifierSelectionInterval()
+{
+    int64_t nSelectionInterval = 0;
+    for (int nSection=0; nSection < 64; nSection++)
+        nSelectionInterval += GetStakeModifierSelectionIntervalSection(nSection);
+    return nSelectionInterval;
 }
 
 // select a block from the candidate blocks in vSortedByTimestamp, excluding
@@ -172,10 +179,10 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexPrev, uint64_t& nStakeMod
 
     // Sort candidate blocks by timestamp
     std::vector<std::pair<int64_t, uint256> > vSortedByTimestamp;
-    vSortedByTimestamp.reserve(64 * MODIFIER_INTERVAL  / Params().TargetSpacing());
-    int64_t nSelectionIntervalStart = (pindexPrev->GetBlockTime() / MODIFIER_INTERVAL ) * MODIFIER_INTERVAL  - OLD_MODIFIER_INTERVAL;
+    vSortedByTimestamp.reserve(64 * MODIFIER_INTERVAL / Params().TargetSpacing());
+    int64_t nSelectionInterval = GetStakeModifierSelectionInterval();
+    int64_t nSelectionIntervalStart = (pindexPrev->GetBlockTime() / MODIFIER_INTERVAL) * MODIFIER_INTERVAL - nSelectionInterval;
     const CBlockIndex* pindex = pindexPrev;
-
     while (pindex && pindex->GetBlockTime() >= nSelectionIntervalStart) {
         vSortedByTimestamp.push_back(std::make_pair(pindex->GetBlockTime(), pindex->GetBlockHash()));
         pindex = pindex->pprev;
@@ -208,7 +215,7 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexPrev, uint64_t& nStakeMod
     }
 
     // Print selection map for visualization of the selected blocks
-    if (GetBoolArg("-printstakemodifier", false)) {
+    {
         std::string strSelectionMap = "";
         // '-' indicates proof-of-work blocks not selected
         strSelectionMap.insert(0, pindexPrev->nHeight - nHeightFirstCandidate + 1, '-');
@@ -226,9 +233,7 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexPrev, uint64_t& nStakeMod
         }
         LogPrintf("%s : selection height [%d, %d] map %s\n", __func__, nHeightFirstCandidate, pindexPrev->nHeight, strSelectionMap.c_str());
     }
-    if (GetBoolArg("-printstakemodifier", false)) {
-        LogPrintf("%s : new modifier=%s time=%s\n", __func__, std::to_string(nStakeModifierNew).c_str(), DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexPrev->GetBlockTime()).c_str());
-    }
+    LogPrintf("%s : new modifier=%s time=%s\n", __func__, std::to_string(nStakeModifierNew).c_str(), DateTimeStrFormat("%Y-%m-%d %H:%M:%S", pindexPrev->GetBlockTime()).c_str());
 
     nStakeModifier = nStakeModifierNew;
     fGeneratedStakeModifier = true;
@@ -254,19 +259,19 @@ bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64_t& nStakeModifier, int
     CBlockIndex* pindexNext = chainActive[pindex->nHeight + 1];;
 
     // loop to find the stake modifier later by a selection interval
-    do {
+    while (nStakeModifierTime < pindexFrom->GetBlockTime() + GetStakeModifierSelectionInterval()) {
         if (!pindexNext) {
             // Should never happen
-            return error("%s : Null pindexNext, current block %s ", __func__, pindex->phashBlock->GetHex());
+            return error("Null pindexNext\n");
         }
+
         pindex = pindexNext;
+        pindexNext = chainActive[pindexNext->nHeight + 1];
         if (pindex->GeneratedStakeModifier()) {
             nStakeModifierHeight = pindex->nHeight;
             nStakeModifierTime = pindex->GetBlockTime();
         }
-        pindexNext = chainActive[pindex->nHeight + 1];
-    } while (nStakeModifierTime < pindexFrom->GetBlockTime() + OLD_MODIFIER_INTERVAL);
-
+    }
     nStakeModifier = pindex->nStakeModifier;
     return true;
 }
@@ -486,7 +491,6 @@ bool CheckProofOfStake(const CBlock block, uint256& hashProofOfStake, std::uniqu
 // Check whether the coinstake timestamp meets protocol
 bool CheckCoinStakeTimestamp(int64_t nTimeBlock, int64_t nTimeTx)
 {
-    // v0.3 protocol
     return (nTimeBlock == nTimeTx);
 }
 
@@ -507,7 +511,6 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
 // Check stake modifier hard checkpoints
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum)
 {
-    if (Params().NetworkID() != CBaseChainParams::MAIN) return true; // Testnet has no checkpoints
     if (mapStakeModifierCheckpoints.count(nHeight)) {
         return nStakeModifierChecksum == mapStakeModifierCheckpoints[nHeight];
     }
