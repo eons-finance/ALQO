@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both pivxd and pivx-qt, to make it harder for attackers to
+ * for both alqod and alqo-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("PIVX Core");
+const std::string CLIENT_NAME("ALQO Core");
 
 /**
  * Client version number
@@ -84,6 +84,11 @@ static std::string FormatVersion(int nVersion)
         return strprintf("%d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100);
     else
         return strprintf("%d.%d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, nVersion % 100);
+}
+
+std::string FormatVersionFriendly()
+{
+    return FormatVersion(CLIENT_VERSION);
 }
 
 std::string FormatFullVersion()

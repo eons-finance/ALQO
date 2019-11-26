@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_ADDRESSTABLEMODEL_H
-#define BITCOIN_QT_ADDRESSTABLEMODEL_H
+#ifndef ALQO_QT_ADDRESSTABLEMODEL_H
+#define ALQO_QT_ADDRESSTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -27,7 +27,8 @@ public:
 
     enum ColumnIndex {
         Label = 0,  /**< User specified label */
-        Address = 1 /**< Bitcoin address */
+        Address = 1, /**< Bitcoin address */
+        Date = 2 /**< Address creation date */
     };
 
     enum RoleIndex {
@@ -52,6 +53,8 @@ public:
         @{*/
     int rowCount(const QModelIndex& parent) const;
     int columnCount(const QModelIndex& parent) const;
+    int sizeSend() const;
+    int sizeRecv() const;
     QVariant data(const QModelIndex& index, int role) const;
     bool setData(const QModelIndex& index, const QVariant& value, int role);
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
@@ -74,6 +77,11 @@ public:
      */
     int lookupAddress(const QString& address) const;
 
+    /**
+     * Return last unused address
+     */
+    QString getLastUnusedAddress() const;
+
     EditStatus getEditStatus() const { return editStatus; }
 
 private:
@@ -94,4 +102,4 @@ public slots:
     friend class AddressTablePriv;
 };
 
-#endif // BITCOIN_QT_ADDRESSTABLEMODEL_H
+#endif // ALQO_QT_ADDRESSTABLEMODEL_H

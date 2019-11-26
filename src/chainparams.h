@@ -102,6 +102,7 @@ public:
     /** Return the number of blocks in a budget cycle */
     int GetBudgetCycleBlocks() const { return nBudgetCycleBlocks; }
     int64_t GetProposalEstablishmentTime() const { return nProposalEstablishmentTime; }
+    CAmount MasternodeCollateral() const { return nMasternodeCollateral; }
 
     /** Spork key and Masternode Handling **/
     std::string SporkKey() const { return strSporkKey; }
@@ -176,6 +177,7 @@ protected:
 
     int nModifierUpdateBlock;
     CAmount nMaxMoneyOut;
+    CAmount nMasternodeCollateral;
     int nMinerThreads;
     std::vector<CDNSSeedData> vSeeds;
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
