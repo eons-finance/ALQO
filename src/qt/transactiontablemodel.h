@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_TRANSACTIONTABLEMODEL_H
-#define BITCOIN_QT_TRANSACTIONTABLEMODEL_H
+#ifndef ALQO_QT_TRANSACTIONTABLEMODEL_H
+#define ALQO_QT_TRANSACTIONTABLEMODEL_H
 
 #include "bitcoinunits.h"
 
@@ -64,15 +64,22 @@ public:
         /** Formatted amount, without brackets when unconfirmed */
         FormattedAmountRole,
         /** Transaction status (TransactionRecord::Status) */
-        StatusRole
+        StatusRole,
+        /** Transaction size in bytes */
+        SizeRole
     };
 
     int rowCount(const QModelIndex& parent) const;
     int columnCount(const QModelIndex& parent) const;
+    int size() const;
+    bool hasZcTxes();
     QVariant data(const QModelIndex& index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
     bool processingQueuedTransactions() { return fProcessingQueuedTransactions; }
+
+signals:
+    void txArrived(const QString& hash);
 
 private:
     CWallet* wallet;
@@ -109,4 +116,4 @@ public slots:
     friend class TransactionTablePriv;
 };
 
-#endif // BITCOIN_QT_TRANSACTIONTABLEMODEL_H
+#endif // ALQO_QT_TRANSACTIONTABLEMODEL_H

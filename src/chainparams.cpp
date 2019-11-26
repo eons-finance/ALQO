@@ -160,6 +160,7 @@ public:
         nFutureTimeDriftPoS = 180;
         nMasternodeCountDrift = 20;
         nMaxMoneyOut = 21000000 * COIN;
+        nMasternodeCollateral = 10000 * COIN;
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 259200;
@@ -302,6 +303,8 @@ public:
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 43199500 * COIN;
+        nMasternodeCollateral = 10000 * COIN;
+
         nZerocoinStartHeight = 201576;
         nZerocoinStartTime = 1501776000;
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
@@ -399,6 +402,8 @@ public:
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 0; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 43199500 * COIN;
+        nMasternodeCollateral = 10000 * COIN;
+
         nZerocoinStartHeight = 300;
         nBlockZerocoinV2 = 300;
         nZerocoinStartTime = 1501776000;

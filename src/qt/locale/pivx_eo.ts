@@ -62,11 +62,11 @@
         <translation>Ricevanta adresojn</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ĉi tiuj estas viaj PIVX adreso por sendi pagojn. Ĉiam kontroku la kvanto kaj la ricevanta antaŭ ol sendi monerojn.</translation>
+        <source>These are your ALQO addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ĉi tiuj estas viaj ALQO adreso por sendi pagojn. Ĉiam kontroku la kvanto kaj la ricevanta antaŭ ol sendi monerojn.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your ALQO addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Ĉi tiuj estas vian adreson por ricevi pagojn. Ĝi rekomendas uzi novajn ricenvantan adreson por ĉiu nova transakcio.</translation>
     </message>
     <message>
@@ -176,15 +176,15 @@
         <translation>Konfirmi monerĉifrado</translation>
     </message>
     <message>
-        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>PIVX fermos nun por fini ĉifran procezon. Memoru ke ĉifri vian monujon ne povas plene protekti viajn PIVs de esti ŝtelita per malware infektanta vian komputilon.</translation>
+        <source>ALQO will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ALQOs from being stolen by malware infecting your computer.</source>
+        <translation>ALQO fermos nun por fini ĉifran procezon. Memoru ke ĉifri vian monujon ne povas plene protekti viajn ALQOs de esti ŝtelita per malware infektanta vian komputilon.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Ĉu vi certas ke vi volas ĉifri vian monujon?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ALQO&lt;/b&gt;!</source>
         <translation>Averto: se vi ĉifras vian monujo kaj perdi vian pasfrazon, vi &lt;b&gt;PERDOS VIAN TUTAN MONON&lt;/b&gt;!</translation>
     </message>
     <message>
@@ -254,11 +254,11 @@
         <translation>Adreso:</translation>
     </message>
     <message>
-        <source>Enter a PIVX Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Eniri unu PIVX adreso ke vi volus ĉifri per BIP 38. Eniri unu pasfrazon meze skatolo. Klaku ĉifri por komputi la ĉifrita privata ŝlosilo.</translation>
+        <source>Enter a ALQO Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Eniri unu ALQO adreso ke vi volus ĉifri per BIP 38. Eniri unu pasfrazon meze skatolo. Klaku ĉifri por komputi la ĉifrita privata ŝlosilo.</translation>
     </message>
     <message>
-        <source>The PIVX address to encrypt</source>
+        <source>The ALQO address to encrypt</source>
         <translation>Adreson por ĉifri</translation>
     </message>
     <message>
@@ -290,8 +290,8 @@
         <translation>Kopiu la aktualan subskribo al la sistemo-poŝo</translation>
     </message>
     <message>
-        <source>Encrypt the private key for this PIVX address</source>
-        <translation>Ĉifri la privata ŝlosilo por ĉi tiu PIVX adreso</translation>
+        <source>Encrypt the private key for this ALQO address</source>
+        <translation>Ĉifri la privata ŝlosilo por ĉi tiu ALQO adreso</translation>
     </message>
     <message>
         <source>Reset all fields</source>
@@ -433,8 +433,8 @@
         <translation>&amp;Foliumi transakcio historio</translation>
     </message>
     <message>
-        <source>Privacy Actions for zPIV</source>
-        <translation>Privataj agoj por zPIV</translation>
+        <source>Privacy Actions for zALQO</source>
+        <translation>Privataj agoj por zALQO</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -641,16 +641,16 @@
         <translation>Iloj langeto</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX kerno</translation>
+        <source>ALQO</source>
+        <translation>ALQO kerno</translation>
     </message>
     <message>
-        <source>Send coins to a PIVX address</source>
-        <translation>Sendu mono al PIVX addreso</translation>
+        <source>Send coins to a ALQO address</source>
+        <translation>Sendu mono al ALQO addreso</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Peto pagojn (generas QR kodojn kaj pivx: URIs)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Peto pagojn (generas QR kodojn kaj alqo: URIs)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -665,24 +665,24 @@
         <translation>Foliumi mastro-nodo</translation>
     </message>
     <message>
-        <source>&amp;About PIVX Core</source>
-        <translation>&amp;Pri PIVX Kerno</translation>
+        <source>&amp;About ALQO</source>
+        <translation>&amp;Pri ALQO Kerno</translation>
     </message>
     <message>
-        <source>Show information about PIVX Core</source>
-        <translation>Montri informon pri PIVX Kerno</translation>
+        <source>Show information about ALQO</source>
+        <translation>Montri informon pri ALQO Kerno</translation>
     </message>
     <message>
-        <source>Modify configuration options for PIVX</source>
-        <translation>Modifi agordajn opciojn por PIVX</translation>
+        <source>Modify configuration options for ALQO</source>
+        <translation>Modifi agordajn opciojn por ALQO</translation>
     </message>
     <message>
-        <source>Sign messages with your PIVX addresses to prove you own them</source>
-        <translation>Subskribu mesaĝo per via PIVX adreso por pruvi vi posedas ĝin</translation>
+        <source>Sign messages with your ALQO addresses to prove you own them</source>
+        <translation>Subskribu mesaĝo per via ALQO adreso por pruvi vi posedas ĝin</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified PIVX addresses</source>
-        <translation>Kontrolu mesaĝojn por certigi ke ili estas subskribita kun specifita PIVX adreso</translation>
+        <source>Verify messages to ensure they were signed with specified ALQO addresses</source>
+        <translation>Kontrolu mesaĝojn por certigi ke ili estas subskribita kun specifita ALQO adreso</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -713,8 +713,8 @@
         <translation>Malfermi mastro-nodo agord-dosieron</translation>
     </message>
     <message>
-        <source>Open a PIVX: URI or payment request</source>
-        <translation>Malfermi unu PIVX: URI aŭ pago peto</translation>
+        <source>Open a ALQO: URI or payment request</source>
+        <translation>Malfermi unu ALQO: URI aŭ pago peto</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -725,12 +725,12 @@
         <translation>Bloko esplorilo fenestro</translation>
     </message>
     <message>
-        <source>Show the PIVX Core help message to get a list with possible PIVX command-line options</source>
-        <translation>Montri la PIVX Kore help-mesaĝo por havi liston de havebla PIVX komandlinion opciojn</translation>
+        <source>Show the ALQO help message to get a list with possible ALQO command-line options</source>
+        <translation>Montri la ALQO Kore help-mesaĝo por havi liston de havebla ALQO komandlinion opciojn</translation>
     </message>
     <message>
-        <source>PIVX Core client</source>
-        <translation>PIVX Kerno kliento</translation>
+        <source>ALQO client</source>
+        <translation>ALQO Kerno kliento</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -868,8 +868,8 @@ Muktisendi: %1</translation>
         <translation>Tekstetikedo</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Ĉiuj transakcio ne estos montri. Peor vidi ĉiuj transakcio bezonas agordi txindekso=1 en la agordo dosiero (pivx.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Ĉiuj transakcio ne estos montri. Peor vidi ĉiuj transakcio bezonas agordi txindekso=1 en la agordo dosiero (alqo.conf).</translation>
     </message>
 </context>
 <context>
@@ -1098,8 +1098,8 @@ Muktisendi: %1</translation>
         <translation>Ĉi tiun etikedo ruĝiĝas se iu ajna ricevanto ricevas totalo pli malgranda ol %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Povas varii +/- %1 upiv per enigo.</translation>
+        <source>Can vary +/- %1 ualqo per input.</source>
+        <translation>Povas varii +/- %1 ualqo per enigo.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1153,8 +1153,8 @@ Muktisendi: %1</translation>
         <translation>Redaktu sendantan adreson</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>La enirita "%1" adreso ne estas validan PIVX adreson.</translation>
+        <source>The entered address "%1" is not a valid ALQO address.</source>
+        <translation>La enirita "%1" adreso ne estas validan ALQO adreson.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1210,16 +1210,16 @@ Muktisendi: %1</translation>
         <translation>versio</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX kerno</translation>
+        <source>ALQO</source>
+        <translation>ALQO kerno</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bajto)</translation>
     </message>
     <message>
-        <source>About PIVX Core</source>
-        <translation>Pri PIVX Kerno</translation>
+        <source>About ALQO</source>
+        <translation>Pri ALQO Kerno</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1261,16 +1261,16 @@ Muktisendi: %1</translation>
         <translation>Bonvenon</translation>
     </message>
     <message>
-        <source>Welcome to PIVX Core.</source>
-        <translation>Bonvenon al la PIVX Kerno.</translation>
+        <source>Welcome to ALQO.</source>
+        <translation>Bonvenon al la ALQO Kerno.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where PIVX Core will store its data.</source>
-        <translation>Ĉar estas la unuan fojon ke la programo estas lanĉita, vi povas elekti kie PIVX kernk storigis sian datumojn. </translation>
+        <source>As this is the first time the program is launched, you can choose where ALQO will store its data.</source>
+        <translation>Ĉar estas la unuan fojon ke la programo estas lanĉita, vi povas elekti kie ALQO kernk storigis sian datumojn. </translation>
     </message>
     <message>
-        <source>PIVX Core will download and store a copy of the PIVX block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>PIVX kerno elŝutos kaj konservi kopion de la PIVX blokĉeno. Almenaŭ %1GB datumoj stokitos en ĉi tiun dosierujo, kaj ĝi kresko kun la tempo. Monujo stokitos en ĉi tiun dosierujo.</translation>
+        <source>ALQO will download and store a copy of the ALQO block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>ALQO kerno elŝutos kaj konservi kopion de la ALQO blokĉeno. Almenaŭ %1GB datumoj stokitos en ĉi tiun dosierujo, kaj ĝi kresko kun la tempo. Monujo stokitos en ĉi tiun dosierujo.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1281,8 +1281,8 @@ Muktisendi: %1</translation>
         <translation>Uzi kutimon datumojn dosierujo:</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX kerno</translation>
+        <source>ALQO</source>
+        <translation>ALQO kerno</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1514,8 +1514,8 @@ Muktisendi: %1</translation>
         <translation>Adreso / Kvanto:</translation>
     </message>
     <message>
-        <source>Add destinations to send PIV to</source>
-        <translation>Aldonu destinoj por sendi PIV al</translation>
+        <source>Add destinations to send ALQO to</source>
+        <translation>Aldonu destinoj por sendi ALQO al</translation>
     </message>
     <message>
         <source>Add &amp;Destination</source>
@@ -1604,8 +1604,8 @@ Muktisendi: %1</translation>
         <translation>&amp;Monujo</translation>
     </message>
     <message>
-        <source>Automatically open the PIVX client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Aŭtomate malfermi PIVX klienton havenon en la enkursigilo. Tio nur laboras kiam via enkursigilo subtenas UPnP kaj estas ebligita.</translation>
+        <source>Automatically open the ALQO client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Aŭtomate malfermi ALQO klienton havenon en la enkursigilo. Tio nur laboras kiam via enkursigilo subtenas UPnP kaj estas ebligita.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1616,8 +1616,8 @@ Muktisendi: %1</translation>
         <translation>Sperta</translation>
     </message>
     <message>
-        <source>&amp;Start PIVX on system login</source>
-        <translation>&amp;Komencu PIVX en sistem-ensaluto</translation>
+        <source>&amp;Start ALQO on system login</source>
+        <translation>&amp;Komencu ALQO en sistem-ensaluto</translation>
     </message>
     <message>
         <source>&amp;Spend unconfirmed change</source>
@@ -1628,18 +1628,18 @@ Muktisendi: %1</translation>
         <translation>&amp;Reto</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting PIVX.</source>
-        <translation>La uzanta interfaco lingvo povas esti agordi ĉi tie. Tio agordo efektivigos post rekomenci PIVX.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting ALQO.</source>
+        <translation>La uzanta interfaco lingvo povas esti agordi ĉi tie. Tio agordo efektivigos post rekomenci ALQO.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>Ĉu mankas lingvon aŭ nekompleta tradukado? Helpu la  tradukcio ĉi tie:
-https://www.transifex.com/pivx-project/pivx-project-translations</translation>
+https://www.transifex.com/alqo-project/alqo-project-translations</translation>
     </message>
     <message>
-        <source>Connect to the PIVX network through a SOCKS5 proxy.</source>
-        <translation>Konekti al la PIVX reto per SOCKS5 prokurilo.</translation>
+        <source>Connect to the ALQO network through a SOCKS5 proxy.</source>
+        <translation>Konekti al la ALQO reto per SOCKS5 prokurilo.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1705,20 +1705,20 @@ https://www.transifex.com/pivx-project/pivx-project-translations</translation>
         <translation>Via aktuala elspezebla saldo</translation>
     </message>
     <message>
-        <source>PIV Balance</source>
-        <translation>PIV kvanto</translation>
+        <source>ALQO Balance</source>
+        <translation>ALQO kvanto</translation>
     </message>
     <message>
         <source>Immature:</source>
         <translation>Nematura:</translation>
     </message>
     <message>
-        <source>Your current PIVX balance, unconfirmed and immature transactions included</source>
-        <translation>Via aktuala PIVX totalo, nekonformita kaj nematurita transakcioj inkluzivita</translation>
+        <source>Your current ALQO balance, unconfirmed and immature transactions included</source>
+        <translation>Via aktuala ALQO totalo, nekonformita kaj nematurita transakcioj inkluzivita</translation>
     </message>
     <message>
-        <source>zPIV Balance</source>
-        <translation>zPIV kvanto</translation>
+        <source>zALQO Balance</source>
+        <translation>zALQO kvanto</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -1727,8 +1727,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mintita</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the PIVX network after a connection is established, but this process has not completed yet.</source>
-        <translation>Montrata informon povas esti malmoderna. Via monujo automate sinkronigis kun la PIVX reto post konekcio establas, sed ĉi tio procezo ankoraŭ ne kompletigis.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ALQO network after a connection is established, but this process has not completed yet.</source>
+        <translation>Montrata informon povas esti malmoderna. Via monujo automate sinkronigis kun la ALQO reto post konekcio establas, sed ĉi tio procezo ankoraŭ ne kompletigis.</translation>
     </message>
     <message>
         <source>OVERVIEW</source>
@@ -1780,28 +1780,28 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the PIVX network after a connection is established, but this process has not completed yet.</source>
-        <translation>Montrata informon povas esti malmoderna. Via monujo automate sinkronigis kun la PIVX reto post konekcio establas, sed ĉi tio procezo ankoraŭ ne kompletigis.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ALQO network after a connection is established, but this process has not completed yet.</source>
+        <translation>Montrata informon povas esti malmoderna. Via monujo automate sinkronigis kun la ALQO reto post konekcio establas, sed ĉi tio procezo ankoraŭ ne kompletigis.</translation>
     </message>
     <message>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     <message>
         <source>Reset</source>
         <translation>Restarigi</translation>
     </message>
     <message>
-        <source>zPIV Control</source>
-        <translation>zPIV kontrolu</translation>
+        <source>zALQO Control</source>
+        <translation>zALQO kontrolu</translation>
     </message>
     <message>
-        <source>zPIV Selected:</source>
-        <translation>Elektita zPIV</translation>
+        <source>zALQO Selected:</source>
+        <translation>Elektita zALQO</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -1812,20 +1812,20 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>Elspezi zerocoin</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zPIV for spending</source>
-        <translation>Havebla (matura kaj elspezebla) zPIV por elspezi</translation>
+        <source>Available (mature and spendable) zALQO for spending</source>
+        <translation>Havebla (matura kaj elspezebla) zALQO por elspezi</translation>
     </message>
     <message>
-        <source>0 zPIV</source>
-        <translation>0 zPIV</translation>
+        <source>0 zALQO</source>
+        <translation>0 zALQO</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
         <translation>Pagu &amp;Al:</translation>
     </message>
     <message>
-        <source>The PIVX address to send the payment to. Creates local payment to yourself when empty.</source>
-        <translation>PIVX adreso por alsendi la pago. Kreas lokala pago al vi mem kiam malplenija.</translation>
+        <source>The ALQO address to send the payment to. Creates local payment to yourself when empty.</source>
+        <translation>ALQO adreso por alsendi la pago. Kreas lokala pago al vi mem kiam malplenija.</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1928,8 +1928,8 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>NEKONATA</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX kerno</translation>
+        <source>ALQO</source>
+        <translation>ALQO kerno</translation>
     </message>
     </context>
 <context>
@@ -1994,8 +1994,8 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>Rekonstrui indekson</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Bonvenon al la PIVX RPC konzolo.</translation>
+        <source>Welcome to the ALQO RPC console.</source>
+        <translation>Bonvenon al la ALQO RPC konzolo.</translation>
     </message>
     <message>
         <source>1 &amp;hour</source>
@@ -2194,8 +2194,8 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>Se estas aktiva sed ŝanĝo-adreso estas malpleniĝa au nevalida, ŝanĝo sendos al nova generita adreson.</translation>
     </message>
     <message>
-        <source>0 PIV</source>
-        <translation>0 PIV</translation>
+        <source>0 ALQO</source>
+        <translation>0 ALQO</translation>
     </message>
     <message>
         <source>Open Coin Control...</source>
@@ -2242,8 +2242,8 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>Kopi ŝanĝo</translation>
     </message>
     <message>
-        <source>Warning: Invalid PIVX address</source>
-        <translation>Averto: nevalida PIVX adreson</translation>
+        <source>Warning: Invalid ALQO address</source>
+        <translation>Averto: nevalida ALQO adreson</translation>
     </message>
     <message>
         <source>Are you sure you want to send?</source>
@@ -2269,7 +2269,7 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>Pagu &amp;Al:</translation>
     </message>
     <message>
-        <source>The PIVX address to send the payment to</source>
+        <source>The ALQO address to send the payment to</source>
         <translation>PIVC adreso por sendi la pago al</translation>
     </message>
     <message>
@@ -2304,8 +2304,8 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>PIVX Core is shutting down...</source>
-        <translation>PIVX kerno fermanta...</translation>
+        <source>ALQO is shutting down...</source>
+        <translation>ALQO kerno fermanta...</translation>
     </message>
     </context>
 <context>
@@ -2358,8 +2358,8 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX kerno</translation>
+        <source>ALQO</source>
+        <translation>ALQO kerno</translation>
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
@@ -2370,8 +2370,8 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>La Dash kerno programistoj</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>La PIVX kerno programistoj</translation>
+        <source>The PIVX developers</source>
+        <translation>La ALQO kerno programistoj</translation>
     </message>
     </context>
 <context>
@@ -2552,12 +2552,12 @@ Nematura: konfirmita, sed malpli ol 1 minto el la samo nomado post ĝin estis mi
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>Connect through SOCKS5 proxy</source>
         <translation>Konekti per SOCKS5 prokurilo</translation>

@@ -8,7 +8,7 @@
 #include <QDialog>
 #include <QTreeWidgetItem>
 #include "zpiv/zerocoin.h"
-#include "privacydialog.h"
+//#include "privacydialog.h"
 
 class CZerocoinMint;
 class WalletModel;
@@ -44,7 +44,6 @@ public:
 private:
     Ui::ZPivControlDialog *ui;
     WalletModel* model;
-    PrivacyDialog* privacyDialog;
 
     void updateList();
     void updateLabels();

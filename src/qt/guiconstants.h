@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_GUICONSTANTS_H
-#define BITCOIN_QT_GUICONSTANTS_H
+#ifndef ALQO_QT_GUICONSTANTS_H
+#define ALQO_QT_GUICONSTANTS_H
 
 /* Milliseconds between model updates */
 static const int MODEL_UPDATE_DELAY = 1000;
@@ -13,7 +13,7 @@ static const int MODEL_UPDATE_DELAY = 1000;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* Pivx GUI -- Size of icons in status bar */
+/* Scc GUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -53,9 +53,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "PIVX"
-#define QAPP_ORG_DOMAIN "pivx.org"
-#define QAPP_APP_NAME_DEFAULT "PIVX-Qt"
-#define QAPP_APP_NAME_TESTNET "PIVX-Qt-testnet"
+#define QAPP_ORG_NAME "ALQO"
+#define QAPP_ORG_DOMAIN "alqo.org"
+#define QAPP_APP_NAME_DEFAULT "ALQO-Qt"
+#define QAPP_APP_NAME_TESTNET "ALQO-Qt-testnet"
 
-#endif // BITCOIN_QT_GUICONSTANTS_H
+#endif // ALQO_QT_GUICONSTANTS_H
