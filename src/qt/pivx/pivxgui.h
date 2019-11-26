@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_CORE_NEW_GUI_PIVXGUI_H
-#define PIVX_CORE_NEW_GUI_PIVXGUI_H
+#ifndef ALQO_CORE_NEW_GUI_ALQOGUI_H
+#define ALQO_CORE_NEW_GUI_ALQOGUI_H
 
 #if defined(HAVE_CONFIG_H)
 #include <config/alqo-config.h>
@@ -181,4 +181,4 @@ signals:
 };
 
 
-#endif //PIVX_CORE_NEW_GUI_PIVXGUI_H
+#endif //ALQO_CORE_NEW_GUI_ALQOGUI_H

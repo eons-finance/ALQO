@@ -3,8 +3,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
 
-#ifndef PIVX_LIGHTZPIVTHREAD_H
-#define PIVX_LIGHTZPIVTHREAD_H
+#ifndef ALQO_LIGHTZPIVTHREAD_H
+#define ALQO_LIGHTZPIVTHREAD_H
 
 #include <atomic>
 #include "genwit.h"
@@ -67,4 +67,4 @@ private:
 
 };
 
-#endif //PIVX_LIGHTZPIVTHREAD_H
+#endif //ALQO_LIGHTZPIVTHREAD_H

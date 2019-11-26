@@ -85,7 +85,7 @@
 #include <openssl/rand.h>
 
 
-// PIVX only features
+// ALQO only features
 // Masternode
 bool fMasterNode = false;
 std::string strMasterNodePrivKey = "";
@@ -216,7 +216,7 @@ bool LogAcceptCategory(const char* category)
             const std::vector<std::string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new std::set<std::string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "pivx" is a composite category enabling all PIVX-related debug output
+            // "pivx" is a composite category enabling all ALQO-related debug output
             if (ptrCategory->count(std::string("alqo"))) {
                 ptrCategory->insert(std::string("obfuscation"));
                 ptrCategory->insert(std::string("swiftx"));
@@ -405,9 +405,9 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\PIVX
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\PIVX
-// Mac: ~/Library/Application Support/PIVX
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\ALQO
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\ALQO
+// Mac: ~/Library/Application Support/ALQO
 // Unix: ~/.pivx
 #ifdef WIN32
     // Windows

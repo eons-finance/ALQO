@@ -23,7 +23,7 @@
 #define DO_STRINGIZE(X) #X
 
 //! Copyright string used in Windows .rc files
-#define COPYRIGHT_STR " " STRINGIZE(COPYRIGHT_YEAR) " The ALQO Core Developers"
+#define COPYRIGHT_STR " " STRINGIZE(COPYRIGHT_YEAR) " The PIVX Core Developers"
 
 /**
  * alqod-res.rc includes this file, but it cannot cope with real c++ code.
