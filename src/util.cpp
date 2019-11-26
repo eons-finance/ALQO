@@ -21,9 +21,6 @@
 #include <stdarg.h>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <openssl/bio.h>
-#include <openssl/buffer.h>
-#include <openssl/evp.h>
 
 
 #ifndef WIN32
@@ -220,7 +217,7 @@ bool LogAcceptCategory(const char* category)
             ptrCategory.reset(new std::set<std::string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
             // "pivx" is a composite category enabling all PIVX-related debug output
-            if (ptrCategory->count(std::string("pivx"))) {
+            if (ptrCategory->count(std::string("alqo"))) {
                 ptrCategory->insert(std::string("obfuscation"));
                 ptrCategory->insert(std::string("swiftx"));
                 ptrCategory->insert(std::string("masternode"));
@@ -387,7 +384,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "pivx";
+    const char* pszModule = "alqo";
 #endif
     if (pex)
         return strprintf(
@@ -414,7 +411,7 @@ boost::filesystem::path GetDefaultDataDir()
 // Unix: ~/.pivx
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "PIVX";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "alqocrypto";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -426,10 +423,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "PIVX";
+    return pathRet / "alqocrypto";
 #else
     // Unix
-    return pathRet / ".pivx";
+    return pathRet / ".alqocrypto";
 #endif
 #endif
 }
@@ -476,7 +473,7 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "pivx.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "alqo.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -521,7 +518,7 @@ void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet,
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "pivxd.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "alqod.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
