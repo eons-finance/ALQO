@@ -32,7 +32,7 @@ std::string HelpMessageCli()
     std::string strUsage;
     strUsage += HelpMessageGroup(_("Options:"));
     strUsage += HelpMessageOpt("-?", _("This help message"));
-    strUsage += HelpMessageOpt("-conf=<file>", strprintf(_("Specify configuration file (default: %s)"), "pivx.conf"));
+    strUsage += HelpMessageOpt("-conf=<file>", strprintf(_("Specify configuration file (default: %s)"), "alqo.conf"));
     strUsage += HelpMessageOpt("-datadir=<dir>", _("Specify data directory"));
     strUsage += HelpMessageOpt("-testnet", _("Use the test network"));
     strUsage += HelpMessageOpt("-regtest", _("Enter regression test mode, which uses a special chain in which blocks can be "
@@ -71,12 +71,12 @@ static bool AppInitRPC(int argc, char* argv[])
     //
     ParseParameters(argc, argv);
     if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
-        std::string strUsage = _("PIVX Core RPC client version") + " " + FormatFullVersion() + "\n";
+        std::string strUsage = _("ALQO Core RPC client version") + " " + FormatFullVersion() + "\n";
         if (!mapArgs.count("-version")) {
             strUsage += "\n" + _("Usage:") + "\n" +
-                        "  pivx-cli [options] <command> [params]  " + _("Send command to PIVX Core") + "\n" +
-                        "  pivx-cli [options] help                " + _("List commands") + "\n" +
-                        "  pivx-cli [options] help <command>      " + _("Get help for a command") + "\n";
+                        "  alqo-cli [options] <command> [params]  " + _("Send command to ALQO Core") + "\n" +
+                        "  alqo-cli [options] help                " + _("List commands") + "\n" +
+                        "  alqo-cli [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessageCli();
         }

@@ -416,10 +416,6 @@ bool CMasternodeBroadcast::Create(std::string strService, std::string strKeyMast
         return false;
     }
 
-    // The service needs the correct default port to work properly
-    if(!CheckDefaultPort(strService, strErrorRet, "CMasternodeBroadcast::Create"))
-        return false;
-
     return Create(txin, CService(strService), keyCollateralAddressNew, pubKeyCollateralAddressNew, keyMasternodeNew, pubKeyMasternodeNew, strErrorRet, mnbRet);
 }
 
@@ -524,11 +520,6 @@ bool CMasternodeBroadcast::CheckAndUpdate(int& nDos)
         nDos = protocolVersion < MIN_PEER_MNANNOUNCE ? 0 : 100;
         return error("CMasternodeBroadcast::CheckAndUpdate - Got bad Masternode address signature : %s", errorMessage);
     }
-
-    if (Params().NetworkID() == CBaseChainParams::MAIN) {
-        if (addr.GetPort() != 51472) return false;
-    } else if (addr.GetPort() == 51472)
-        return false;
 
     //search existing Masternode list, this is where we update existing Masternodes with new mnb broadcasts
     CMasternode* pmn = mnodeman.Find(vin);
@@ -658,12 +649,7 @@ bool CMasternodeBroadcast::Sign(CKey& keyCollateralAddress)
 {
     std::string errorMessage;
     sigTime = GetAdjustedTime();
-
-    std::string strMessage;
-    if(chainActive.Height() < Params().Zerocoin_Block_V2_Start())
-    	strMessage = GetOldStrMessage();
-    else
-    	strMessage = GetNewStrMessage();
+    std::string strMessage = GetOldStrMessage();
 
     if (!obfuScationSigner.SignMessage(strMessage, errorMessage, sig, keyCollateralAddress))
     	return error("CMasternodeBroadcast::Sign() - Error: %s", errorMessage);

@@ -148,11 +148,8 @@ void CMasternodeSync::GetNextAsset()
         RequestedMasternodeAssets = MASTERNODE_SYNC_MNW;
         break;
     case (MASTERNODE_SYNC_MNW):
-        RequestedMasternodeAssets = MASTERNODE_SYNC_BUDGET;
-        break;
-    case (MASTERNODE_SYNC_BUDGET):
-        LogPrintf("CMasternodeSync::GetNextAsset - Sync has finished\n");
         RequestedMasternodeAssets = MASTERNODE_SYNC_FINISHED;
+        LogPrintf("CMasternodeSync::GetNextAsset - Sync has finished\n");
         break;
     }
     RequestedMasternodeAttempt = 0;
@@ -202,12 +199,10 @@ void CMasternodeSync::ProcessMessage(CNode* pfrom, std::string& strCommand, CDat
             countMasternodeWinner++;
             break;
         case (MASTERNODE_SYNC_BUDGET_PROP):
-            if (RequestedMasternodeAssets != MASTERNODE_SYNC_BUDGET) return;
             sumBudgetItemProp += nCount;
             countBudgetItemProp++;
             break;
         case (MASTERNODE_SYNC_BUDGET_FIN):
-            if (RequestedMasternodeAssets != MASTERNODE_SYNC_BUDGET) return;
             sumBudgetItemFin += nCount;
             countBudgetItemFin++;
             break;

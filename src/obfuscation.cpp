@@ -110,6 +110,8 @@ void CObfuscationPool::UnlockCoins()
 //
 void CObfuscationPool::Check()
 {
+    return;
+
     if (fMasterNode) LogPrint("obfuscation", "CObfuscationPool::Check() - entries count %lu\n", entries.size());
     //printf("CObfuscationPool::Check() %d - %d - %d\n", state, anonTx.CountEntries(), GetTimeMillis()-lastTimeChanged);
 
@@ -257,7 +259,7 @@ void CObfuscationPool::CheckFinalTransaction()
 //
 void CObfuscationPool::ChargeFees()
 {
-    if (!fMasterNode) return;
+    return;
 
     //we don't need to charge collateral for every offence.
     int offences = 0;
@@ -396,7 +398,7 @@ void CObfuscationPool::ChargeRandomFees()
 //
 void CObfuscationPool::CheckTimeout()
 {
-    if (!fEnableZeromint && !fMasterNode) return;
+    return;
 
     // catching hanging sessions
     if (!fMasterNode) {

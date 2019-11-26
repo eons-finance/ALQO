@@ -707,9 +707,6 @@ CMasternode* CMasternodeMan::GetMasternodeByRank(int nRank, int64_t nBlockHeight
 
 void CMasternodeMan::ProcessMasternodeConnections()
 {
-    //we don't care about this for regtest
-    if (Params().NetworkID() == CBaseChainParams::REGTEST) return;
-
     LOCK(cs_vNodes);
     for (CNode* pnode : vNodes) {
         if (pnode->fObfuScationMaster) {
@@ -723,10 +720,7 @@ void CMasternodeMan::ProcessMasternodeConnections()
 
 void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
-    if (fLiteMode) return; //disable all Obfuscation/Masternode related functionality
-    if (!masternodeSync.IsBlockchainSynced()) return;
-
-    LOCK(cs_process_message);
+     LOCK(cs_process_message);
 
     if (strCommand == "mnb") { //Masternode Broadcast
         CMasternodeBroadcast mnb;
@@ -922,11 +916,6 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             Misbehaving(pfrom->GetId(), 100);
             return;
         }
-
-        if (Params().NetworkID() == CBaseChainParams::MAIN) {
-            if (addr.GetPort() != 51472) return;
-        } else if (addr.GetPort() == 51472)
-            return;
 
         //search existing Masternode list, this is where we update existing Masternodes with new dsee broadcasts
         CMasternode* pmn = this->Find(vin);
