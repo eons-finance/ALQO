@@ -48,6 +48,7 @@ extern bool fSendFreeTransactions;
 extern bool fPayAtLeastCustomFee;
 extern bool fGlobalUnlockSpendCache; // Bool used for letting the precomputing thread know that zpivspends need to use the cs_spendcache
 
+static const int STAKE_SPLIT_THRESHOLD = 2000;
 //! -paytxfee default
 static const CAmount DEFAULT_TRANSACTION_FEE = 0;
 //! -paytxfee will warn if called with a higher fee than this amount (in satoshis) per KB
@@ -385,6 +386,8 @@ public:
 
     const CWalletTx* GetWalletTx(const uint256& hash) const;
 
+    std::vector<CWalletTx> getWalletTxs();
+
     void PrecomputeSpends();
 
     //! check whether we are allowed to upgrade (or already support) to the named feature
@@ -415,6 +418,9 @@ public:
     // Generate a new key
     CPubKey GenerateNewKey();
     CBitcoinAddress GenerateNewAutoMintKey();
+
+    int64_t GetKeyCreationTime(CPubKey pubkey);
+    int64_t GetKeyCreationTime(const CBitcoinAddress& address);
 
     //! Adds a key to the store, and saves it to disk.
     bool AddKeyPubKey(const CKey& key, const CPubKey& pubkey);

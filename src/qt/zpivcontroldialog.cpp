@@ -8,6 +8,7 @@
 #include "zpiv/accumulators.h"
 #include "main.h"
 #include "walletmodel.h"
+#include "guiutil.h"
 
 
 std::set<std::string> ZPivControlDialog::setSelectedMints;
@@ -28,11 +29,34 @@ ZPivControlDialog::ZPivControlDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     setMints.clear();
-    privacyDialog = (PrivacyDialog*)parent;
+
+    /* Open CSS when configured */
+    this->setStyleSheet(GUIUtil::loadStyleSheet());
+
+    ui->frame->setProperty("cssClass", "container-dialog");
+
+    // Title
+    ui->labelTitle->setText(tr("Select zALQO Denominations to Spend"));
+    ui->labelTitle->setProperty("cssClass", "text-title-dialog");
+
+
+    // Label Style
+    ui->labelZPiv->setProperty("cssClass", "text-main-purple");
+    ui->labelZPiv_int->setProperty("cssClass", "text-main-purple");
+    ui->labelQuantity->setProperty("cssClass", "text-main-purple");
+    ui->labelQuantity_int->setProperty("cssClass", "text-main-purple");
+
+    ui->layoutAmount->setProperty("cssClass", "container-border-purple");
+    ui->layoutQuantity->setProperty("cssClass", "container-border-purple");
+
+    // Buttons
+
+    ui->btnEsc->setText("");
+    ui->btnEsc->setProperty("cssClass", "ic-close");
+    ui->pushButtonAll->setProperty("cssClass", "btn-check");
 
     // click on checkbox
     connect(ui->treeWidget, SIGNAL(itemChanged(QTreeWidgetItem*, int)), this, SLOT(updateSelection(QTreeWidgetItem*, int)));
-
     // push select/deselect all button
     connect(ui->pushButtonAll, SIGNAL(clicked()), this, SLOT(ButtonAllClicked()));
 }
@@ -140,9 +164,9 @@ void ZPivControlDialog::updateList()
             if(nConfirmations < Params().Zerocoin_MintRequiredConfirmations())
                 strReason = strprintf("Needs %d more confirmations", Params().Zerocoin_MintRequiredConfirmations() - nConfirmations);
             else if (model->getEncryptionStatus() == WalletModel::EncryptionStatus::Locked)
-                strReason = "Your wallet is locked. Impossible to precompute or spend zPIV.";
+                strReason = "Your wallet is locked. Impossible to precompute or spend zALQO.";
             else if (!mint.isSeedCorrect)
-                strReason = "The zPIV seed used to mint this zPIV is not the same as currently hold in the wallet";
+                strReason = "The zALQO seed used to mint this zALQO is not the same as currently hold in the wallet";
             else
                 strReason = strprintf("Needs %d more mints added to network", Params().Zerocoin_RequiredAccumulation());
 
@@ -192,7 +216,7 @@ void ZPivControlDialog::updateLabels()
     ui->labelQuantity_int->setText(QString::number(setSelectedMints.size()));
 
     //update PrivacyDialog labels
-    privacyDialog->setZPivControlLabels(nAmount, setSelectedMints.size());
+    //privacyDialog->setZPivControlLabels(nAmount, setSelectedMints.size());
 }
 
 std::vector<CMintMeta> ZPivControlDialog::GetSelectedMints()

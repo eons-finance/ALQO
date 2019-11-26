@@ -1,21 +1,21 @@
 dnl require autoconf 2.60 (AS_ECHO/AS_ECHO_N)
 AC_PREREQ([2.60])
-define(_CLIENT_VERSION_MAJOR, 3)
-define(_CLIENT_VERSION_MINOR, 4)
+define(_CLIENT_VERSION_MAJOR, 6)
+define(_CLIENT_VERSION_MINOR, 0)
 define(_CLIENT_VERSION_REVISION, 0)
 define(_CLIENT_VERSION_BUILD, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2019)
-AC_INIT([Pivx Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[www.pivx.org],[pivx])
+AC_INIT([ALQO],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[alqo.org],[alqo])
 AC_CONFIG_SRCDIR([src/main.cpp])
-AC_CONFIG_HEADERS([src/config/pivx-config.h])
+AC_CONFIG_HEADERS([src/config/alqo-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-BITCOIN_DAEMON_NAME=pivxd
-BITCOIN_GUI_NAME=pivx-qt
-BITCOIN_CLI_NAME=pivx-cli
-BITCOIN_TX_NAME=pivx-tx
+BITCOIN_DAEMON_NAME=alqod
+BITCOIN_GUI_NAME=alqo-qt
+BITCOIN_CLI_NAME=alqo-cli
+BITCOIN_TX_NAME=alqo-tx
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR(ARFLAGS, [Flags for the archiver, defaults to <cr> if not set])
@@ -143,6 +143,12 @@ AC_ARG_WITH([qrencode],
   [enable QR code support (default is yes if qt is enabled and libqrencode is found)])],
   [use_qr=$withval],
   [use_qr=auto])
+
+AC_ARG_WITH([qtcharts],
+  [AS_HELP_STRING([--with-qtcharts],
+  [enable QTCHARTS code support (default is yes if qt is enabled and qtchartview is found)])],
+  [use_qtcharts=$withval],
+  [use_qtcharts=auto])
 
 AC_ARG_ENABLE([hardening],
   [AS_HELP_STRING([--disable-hardening],
@@ -400,7 +406,7 @@ CPPFLAGS="$CPPFLAGS -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS"
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build pivx-cli pivx-tx (default=yes)])],
+  [build alqo-cli alqo-tx (default=yes)])],
   [build_bitcoin_utils=$withval],
   [build_bitcoin_utils=yes])
 
@@ -412,7 +418,7 @@ AC_ARG_WITH([libs],
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
-  [build pivxd daemon (default=yes)])],
+  [build alqod daemon (default=yes)])],
   [build_bitcoind=$withval],
   [build_bitcoind=yes])
 
@@ -626,7 +632,7 @@ AC_C_BIGENDIAN
 dnl Check for pthread compile/link requirements
 AX_PTHREAD
 
-# The following macro will add the necessary defines to pivx-config.h, but
+# The following macro will add the necessary defines to alqo-config.h, but
 # they also need to be passed down to any subprojects. Pull the results out of
 # the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -1024,9 +1030,11 @@ if test x$use_pkgconfig = xyes; then
       PKG_CHECK_MODULES([SSL], [libssl],, [AC_MSG_ERROR(openssl  not found.)])
       PKG_CHECK_MODULES([CRYPTO], [libcrypto],,[AC_MSG_ERROR(libcrypto  not found.)])
       BITCOIN_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [BITCOIN_QT_FAIL(libprotobuf not found)])])
-      if test x$use_qr != xno; then
         BITCOIN_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
+      if test x$use_qtcharts != xno; then
+        BITCOIN_QT_CHECK([PKG_CHECK_MODULES([CHARTS], [Qt5Charts],[have_qtcharts=yes], [have_qtcharts=no])])
       fi
+      BITCOIN_QT_CHECK([PKG_CHECK_MODULES([SVG], [Qt5Svg],,[BITCOIN_QT_FAIL(qtsvg not found)])])
       if test x$build_bitcoin_utils$build_bitcoind$bitcoin_enable_qt$use_tests != xnononono; then
         PKG_CHECK_MODULES([EVENT], [libevent],, [AC_MSG_ERROR(libevent not found.)])
         if test x$TARGET_OS != xwindows; then
@@ -1084,26 +1092,15 @@ else
   fi
 
   BITCOIN_QT_CHECK(AC_CHECK_LIB([protobuf] ,[main],[PROTOBUF_LIBS=-lprotobuf], BITCOIN_QT_FAIL(libprotobuf not found)))
-  if test x$use_qr != xno; then
+  BITCOIN_QT_CHECK([AC_CHECK_LIB([Qt5Svg], [main],[SVG_LIBS=-lQt5Svg], BITCOIN_QT_FAIL(svg not found))])
+  BITCOIN_QT_CHECK([AC_CHECK_LIB([Qt5Charts], [main],[CHARTS_LIBS=-lQt5Charts], BITCOIN_QT_FAIL(charts not found))])
     BITCOIN_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
     BITCOIN_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
+  if test x$use_qtcharts != xno; then
+    BITCOIN_QT_CHECK([AC_CHECK_LIB([Qt5Charts], [main],[CHARTS_LIBS=-lQt5Charts], [have_qtcharts=no])])
+    BITCOIN_QT_CHECK([AC_CHECK_HEADER([qchartview.h],, have_qtcharts=no)])
   fi
 fi
-
-save_CXXFLAGS="${CXXFLAGS}"
-CXXFLAGS="${CXXFLAGS} ${CRYPTO_CFLAGS} ${SSL_CFLAGS}"
-AC_CHECK_DECLS([EVP_MD_CTX_new],,,[AC_INCLUDES_DEFAULT
-#include <openssl/x509_vfy.h>
-])
-CXXFLAGS="${save_CXXFLAGS}"
-
-AC_CHECK_LIB([crypto],[RAND_egd],[],[
-  AC_ARG_WITH([unsupported-ssl],
-    [AS_HELP_STRING([--with-unsupported-ssl],[Build with system SSL (default is no; DANGEROUS; NOT SUPPORTED; You should use OpenSSL 1.0)])],
-    [AC_MSG_WARN([Detected unsupported SSL version: This is NOT supported, and may break consensus compatibility! Use '--with-unsupported-ssl' if you don't care])],
-    [AC_MSG_ERROR([Detected unsupported SSL version: This is NOT supported, and may break consensus compatibility! Use '--with-unsupported-ssl' if you don't care])]
-  )
-])
 
 dnl univalue check
 
@@ -1155,11 +1152,11 @@ AC_SUBST(UNIVALUE_LIBS)
 
 BITCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
-AC_MSG_CHECKING([whether to build pivxd])
+AC_MSG_CHECKING([whether to build alqod])
 AM_CONDITIONAL([BUILD_BITCOIND], [test x$build_bitcoind = xyes])
 AC_MSG_RESULT($build_bitcoind)
 
-AC_MSG_CHECKING([whether to build utils (pivx-cli pivx-tx)])
+AC_MSG_CHECKING([whether to build utils (alqo-cli alqo-tx)])
 AM_CONDITIONAL([BUILD_BITCOIN_UTILS], [test x$build_bitcoin_utils = xyes])
 AC_MSG_RESULT($build_bitcoin_utils)
 
@@ -1265,18 +1262,18 @@ if test x$bitcoin_enable_qt != xno; then
   fi
   AC_MSG_RESULT($bitcoin_enable_qt_dbus)
 
-  dnl enable qr support
-  AC_MSG_CHECKING([whether to build GUI with support for QR codes])
-  if test x$have_qrencode = xno; then
-    if test x$use_qr = xyes; then
-     AC_MSG_ERROR("QR support requested but cannot be built. use --without-qrencode")
+  dnl enable qtcharts support
+  AC_MSG_CHECKING([whether to build GUI with support for qtcharts codes])
+  if test x$have_qtcharts = xno; then
+    if test x$use_qtcharts = xyes; then
+     AC_MSG_ERROR("QTCharts support requested but cannot be built. use --without-qtcharts")
     fi
     AC_MSG_RESULT(no)
   else
-    if test x$use_qr != xno; then
+    if test x$use_qtcharts != xno; then
       AC_MSG_RESULT(yes)
-      AC_DEFINE([USE_QRCODE],[1],[Define if QR support should be compiled in])
-      use_qr=yes
+      AC_DEFINE([USE_QTCHARTS],[1],[Define if QTCHARTS support should be compiled in])
+      use_qtcharts=yes
     else
       AC_MSG_RESULT(no)
     fi
@@ -1286,7 +1283,7 @@ if test x$bitcoin_enable_qt != xno; then
     AC_MSG_WARN("xgettext is required to update qt translations")
   fi
 
-  AC_MSG_CHECKING([whether to build test_pivx-qt])
+  AC_MSG_CHECKING([whether to build test_alqo-qt])
   if test x$use_gui_tests$bitcoin_enable_qt_test = xyesyes; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="yes"
@@ -1313,7 +1310,7 @@ esac
 AM_CONDITIONAL([USE_NUM_GMP], [test "x$set_bignum" = "xgmp"])
 AM_CONDITIONAL([USE_NUM_OPENSSL], [test "x$set_bignum" = "xopenssl"])
 
-AC_MSG_CHECKING([whether to build test_pivx])
+AC_MSG_CHECKING([whether to build test_alqo])
 if test x$use_tests = xyes; then
   AC_MSG_RESULT([yes])
   BUILD_TEST="yes"
@@ -1342,6 +1339,7 @@ AM_CONDITIONAL([ENABLE_QT],[test x$bitcoin_enable_qt = xyes])
 AM_CONDITIONAL([ENABLE_QT_TESTS],[test x$BUILD_TEST_QT = xyes])
 AM_CONDITIONAL([ENABLE_BENCH],[test x$use_bench = xyes])
 AM_CONDITIONAL([USE_QRCODE], [test x$use_qr = xyes])
+AM_CONDITIONAL([USE_QTCHARTS], [test x$use_qtcharts = xyes])
 AM_CONDITIONAL([USE_LCOV],[test x$use_lcov = xyes])
 AM_CONDITIONAL([GLIBC_BACK_COMPAT],[test x$use_glibc_compat = xyes])
 AM_CONDITIONAL([HARDEN],[test x$use_hardening = xyes])
@@ -1391,6 +1389,7 @@ AC_SUBST(SHANI_CXXFLAGS)
 AC_SUBST(LIBTOOL_APP_LDFLAGS)
 AC_SUBST(USE_UPNP)
 AC_SUBST(USE_QRCODE)
+AC_SUBST(USE_QTCHARTS)
 AC_SUBST(BOOST_LIBS)
 AC_SUBST(TESTDEFS)
 AC_SUBST(LEVELDB_TARGET_FLAGS)
@@ -1470,6 +1469,7 @@ echo "  with wallet   = $enable_wallet"
 echo "  with gui / qt = $bitcoin_enable_qt"
 if test x$bitcoin_enable_qt != xno; then
     echo "    with qr     = $use_qr"
+    echo "    with QTCHARTS     = $use_qtcharts"
 fi
 echo "  with zmq      = $use_zmq"
 echo "  with bignum   = $set_bignum"
@@ -1494,4 +1494,8 @@ echo "  LDFLAGS       = $PTHREAD_CFLAGS $HARDENED_LDFLAGS $GPROF_LDFLAGS $LDFLAG
 echo "  ARFLAGS       = $ARFLAGS"
 echo "  PIC_FLAGS     = $PIC_FLAGS"
 echo "  QT_PIE_FLAGS  = $QT_PIE_FLAGS"
+echo "  SVG_LIBS      = $QT_SVG_LIBS "
+echo "  SVG_CFLAGS    = $QT_SVG_INCLUDES "
+echo "  CHARTS_LIBS   = $CHARTS_LIBS "
+echo "  CHARTS_CFLAGS = $CHARTS_CFLAGS "
 echo
