@@ -62,12 +62,12 @@
         <translation>Adres odbiorczy</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>To są twoje adresy PIVX do wysyłania płatności. Zawsze sprawdzaj kwotę i adres odbiorcy przed wysłaniem monet.</translation>
+        <source>These are your ALQO addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>To są twoje adresy ALQO do wysyłania płatności. Zawsze sprawdzaj kwotę i adres odbiorcy przed wysłaniem monet.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>To są twoje adresy PIVX do otrzymywania płatności. Zaleca się użycie nowego adresu odbiorczego dla każdej transakcji.</translation>
+        <source>These are your ALQO addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>To są twoje adresy ALQO do otrzymywania płatności. Zaleca się użycie nowego adresu odbiorczego dla każdej transakcji.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -177,16 +177,16 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Potwierdź szyfrowanie portfela</translation>
     </message>
     <message>
-        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>PIVX zamknie się teraz, aby zakończyć proces szyfrowania. Pamiętaj, że zaszyfrowanie portfela nie chroni w pełni Twoich PIV przed kradzieżą przez złośliwe oprogramowanie infekujące Twój komputer.</translation>
+        <source>ALQO will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ALQOs from being stolen by malware infecting your computer.</source>
+        <translation>ALQO zamknie się teraz, aby zakończyć proces szyfrowania. Pamiętaj, że zaszyfrowanie portfela nie chroni w pełni Twoich ALQO przed kradzieżą przez złośliwe oprogramowanie infekujące Twój komputer.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Czy na pewno chcesz zaszyfrować swój portfel?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
-        <translation>Ostrzeżenie: Jeżeli zaszyfrujesz portfel i stracisz do niego hasło , &lt;b&gt;UTRACISZ WSZYSTKIE PIV&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ALQO&lt;/b&gt;!</source>
+        <translation>Ostrzeżenie: Jeżeli zaszyfrujesz portfel i stracisz do niego hasło , &lt;b&gt;UTRACISZ WSZYSTKIE ALQO&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -255,12 +255,12 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Adres:</translation>
     </message>
     <message>
-        <source>Enter a PIVX Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Wprowadź adres PIVX, który chcesz zaszyfrować za pomocą BIP 38. Wprowadź hasło w środkowym polu. Naciśnij przycisk szyfrowania, aby obliczyć zaszyfrowany klucz prywatny.</translation>
+        <source>Enter a ALQO Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Wprowadź adres ALQO, który chcesz zaszyfrować za pomocą BIP 38. Wprowadź hasło w środkowym polu. Naciśnij przycisk szyfrowania, aby obliczyć zaszyfrowany klucz prywatny.</translation>
     </message>
     <message>
-        <source>The PIVX address to encrypt</source>
-        <translation>Adres PIVX do zaszyfrowania</translation>
+        <source>The ALQO address to encrypt</source>
+        <translation>Adres ALQO do zaszyfrowania</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -291,8 +291,8 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Skopiuj bieżący podpis do schowka systemowego</translation>
     </message>
     <message>
-        <source>Encrypt the private key for this PIVX address</source>
-        <translation>Zaszyfruj klucz prywatny dla tego adresu PIVX</translation>
+        <source>Encrypt the private key for this ALQO address</source>
+        <translation>Zaszyfruj klucz prywatny dla tego adresu ALQO</translation>
     </message>
     <message>
         <source>Reset all fields</source>
@@ -434,8 +434,8 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Przeglądaj historię transakcji</translation>
     </message>
     <message>
-        <source>Privacy Actions for zPIV</source>
-        <translation>Prywatne Akcje zPIV</translation>
+        <source>Privacy Actions for zALQO</source>
+        <translation>Prywatne Akcje zALQO</translation>
     </message>
     <message>
         <source>&amp;Governance</source>
@@ -654,16 +654,16 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Pasek narzędzi</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
-        <source>Send coins to a PIVX address</source>
-        <translation>Wyślij monety do adresu PIVX</translation>
+        <source>Send coins to a ALQO address</source>
+        <translation>Wyślij monety do adresu ALQO</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Zarządaj płatności (generuje kod QR i pivx:URI)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Zarządaj płatności (generuje kod QR i alqo:URI)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -678,24 +678,24 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Przeglądaj masternodes</translation>
     </message>
     <message>
-        <source>&amp;About PIVX Core</source>
-        <translation>&amp;O PIVX Core</translation>
+        <source>&amp;About ALQO</source>
+        <translation>&amp;O ALQO</translation>
     </message>
     <message>
-        <source>Show information about PIVX Core</source>
-        <translation>Pokaż informacje o PIVX Core</translation>
+        <source>Show information about ALQO</source>
+        <translation>Pokaż informacje o ALQO</translation>
     </message>
     <message>
-        <source>Modify configuration options for PIVX</source>
-        <translation>Modyfikuj opcje konfiguracji PIVX</translation>
+        <source>Modify configuration options for ALQO</source>
+        <translation>Modyfikuj opcje konfiguracji ALQO</translation>
     </message>
     <message>
-        <source>Sign messages with your PIVX addresses to prove you own them</source>
-        <translation>Zatwierdź wiadomość z twoimi adresami PIVX, by udowodnić, że jesteś w ich posiadaniu</translation>
+        <source>Sign messages with your ALQO addresses to prove you own them</source>
+        <translation>Zatwierdź wiadomość z twoimi adresami ALQO, by udowodnić, że jesteś w ich posiadaniu</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified PIVX addresses</source>
-        <translation>Zweryfikuj wiadomości by upewnić się, że zostały zatwierdzone z podanego adresu PIVX</translation>
+        <source>Verify messages to ensure they were signed with specified ALQO addresses</source>
+        <translation>Zweryfikuj wiadomości by upewnić się, że zostały zatwierdzone z podanego adresu ALQO</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -726,8 +726,8 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Otwórz plik konfiguracyjny Masternode</translation>
     </message>
     <message>
-        <source>Open a PIVX: URI or payment request</source>
-        <translation>Otwórz PIVX: URI i żądanie zapłaty</translation>
+        <source>Open a ALQO: URI or payment request</source>
+        <translation>Otwórz ALQO: URI i żądanie zapłaty</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -738,12 +738,12 @@ Użyj hasła składającego się z dziesięciu lub więcej losowych znaków lub 
         <translation>Okno eksplorera bloków</translation>
     </message>
     <message>
-        <source>Show the PIVX Core help message to get a list with possible PIVX command-line options</source>
-        <translation>Pokaż wiadomość pomocy rdzenia PIVX, aby dostać listę możliwych opcji PIVX command-line</translation>
+        <source>Show the ALQO help message to get a list with possible ALQO command-line options</source>
+        <translation>Pokaż wiadomość pomocy rdzenia ALQO, aby dostać listę możliwych opcji ALQO command-line</translation>
     </message>
     <message>
-        <source>PIVX Core client</source>
-        <translation>PIVX Core klient</translation>
+        <source>ALQO client</source>
+        <translation>ALQO klient</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -854,8 +854,8 @@ MultiWysyłlka: %1</translation>
         <translation>Portfel jest &lt;b&gt;zaszyfrowany&lt;/b&gt; i obecnie &lt;b&gt;zablokowany&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. PIVX can no longer continue safely and will quit.</source>
-        <translation>Wystąpił błąd krytyczny. PIVX nie może już działać bezpiecznie i zakończy działanie.</translation>
+        <source>A fatal error occurred. ALQO can no longer continue safely and will quit.</source>
+        <translation>Wystąpił błąd krytyczny. ALQO nie może już działać bezpiecznie i zakończy działanie.</translation>
     </message>
 </context>
 <context>
@@ -885,8 +885,8 @@ MultiWysyłlka: %1</translation>
         <translation>TekstZakładka</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Nie wszystkie transakcje zostaną pokazane. Aby wyświetlić wszystkie transakcje, musisz ustawić txindex=1 w pliku konfiguracyjnym (pivx.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Nie wszystkie transakcje zostaną pokazane. Aby wyświetlić wszystkie transakcje, musisz ustawić txindex=1 w pliku konfiguracyjnym (alqo.conf).</translation>
     </message>
 </context>
 <context>
@@ -1123,8 +1123,8 @@ MultiWysyłlka: %1</translation>
         <translation>Ta etykieta zmienia kolor na czerwony, jeśli odbiorca otrzymuje mniej niż %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 upiv per input.</source>
-        <translation>Zmienia się +/- %1 upiv</translation>
+        <source>Can vary +/- %1 ualqo per input.</source>
+        <translation>Zmienia się +/- %1 ualqo</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1178,8 +1178,8 @@ MultiWysyłlka: %1</translation>
         <translation>Edytuj adres wysyłania</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>Wprowadzony adres "%1" nie jest prawidłowym adresem PIVX.</translation>
+        <source>The entered address "%1" is not a valid ALQO address.</source>
+        <translation>Wprowadzony adres "%1" nie jest prawidłowym adresem ALQO.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1267,16 +1267,16 @@ MultiWysyłlka: %1</translation>
         <translation>Wersja</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About PIVX Core</source>
-        <translation>O PIVX Core</translation>
+        <source>About ALQO</source>
+        <translation>O ALQO</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1322,16 +1322,16 @@ MultiWysyłlka: %1</translation>
         <translation>Zapraszamy</translation>
     </message>
     <message>
-        <source>Welcome to PIVX Core.</source>
-        <translation>Zapraszamy do PIVX Core</translation>
+        <source>Welcome to ALQO.</source>
+        <translation>Zapraszamy do ALQO</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where PIVX Core will store its data.</source>
-        <translation>Ponieważ program jest uruchamiany po raz pierwszy, możesz wybrać miejsce, w którym PIVX Core będzie przechowywać swoje dane.</translation>
+        <source>As this is the first time the program is launched, you can choose where ALQO will store its data.</source>
+        <translation>Ponieważ program jest uruchamiany po raz pierwszy, możesz wybrać miejsce, w którym ALQO będzie przechowywać swoje dane.</translation>
     </message>
     <message>
-        <source>PIVX Core will download and store a copy of the PIVX block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>PIVX Core pobierze i zapisze kopię łańcucha bloków PIVX. Przynajmniej %1 GB danych zostanie zapisanych w tym katalogu, a jego liczba będzie rosnąć z czasem. Portfel zostanie również zapisany w tym katalogu.</translation>
+        <source>ALQO will download and store a copy of the ALQO block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>ALQO pobierze i zapisze kopię łańcucha bloków ALQO. Przynajmniej %1 GB danych zostanie zapisanych w tym katalogu, a jego liczba będzie rosnąć z czasem. Portfel zostanie również zapisany w tym katalogu.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1342,8 +1342,8 @@ MultiWysyłlka: %1</translation>
         <translation>Użyj niestandardowej ścieżki danych</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1484,11 +1484,11 @@ MultiWysyłlka: %1</translation>
         <translation>Wprowadź adres do wysłania</translation>
     </message>
     <message>
-        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other PIVX addresses after it matures.
-To Add: enter percentage to give and PIVX address to add to the MultiSend vector.
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other ALQO addresses after it matures.
+To Add: enter percentage to give and ALQO address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</source>
-        <translation>MultiSend pozwala na automatyczne przesłanie do 100% swojej nagrody za staking lub masternoda na listę innych adresów PIVX po osiągnięciu dojrzałości. Aby dodać: wpisz procent  i adres PIVX, żeby dodać do wektora MultiSend. Aby usunąć: Enter adres do usunięcia i naciśnij Usuń. MultiSend nie zostanie aktywowany, dopóki nie klikniesz Aktywuj</translation>
+        <translation>MultiSend pozwala na automatyczne przesłanie do 100% swojej nagrody za staking lub masternoda na listę innych adresów ALQO po osiągnięciu dojrzałości. Aby dodać: wpisz procent  i adres ALQO, żeby dodać do wektora MultiSend. Aby usunąć: Enter adres do usunięcia i naciśnij Usuń. MultiSend nie zostanie aktywowany, dopóki nie klikniesz Aktywuj</translation>
     </message>
     <message>
         <source>Add to MultiSend Vector</source>
@@ -1742,8 +1742,8 @@ Please be patient after clicking import.</source>
         <translation>Adres / kwota:</translation>
     </message>
     <message>
-        <source>Add destinations to send PIV to</source>
-        <translation>Dodaj miejsca docelowe, żeby wysłać PIV do</translation>
+        <source>Add destinations to send ALQO to</source>
+        <translation>Dodaj miejsca docelowe, żeby wysłać ALQO do</translation>
     </message>
     <message>
         <source>Add &amp;Destination</source>
@@ -1876,8 +1876,8 @@ Please be patient after clicking import.</source>
         <translation>Jeśli wyłączysz wydawanie niepotwierdzonych reszt, reszta z transakcji nie może być użyta, dopóki transakcja nie uzyska co najmniej jednego potwierdzenia. Ma to również wpływ na sposób obliczania salda.</translation>
     </message>
     <message>
-        <source>Automatically open the PIVX client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatycznie otwórz port klienta PIVX na routerze. Działa to tylko wtedy, gdy twój router obsługuje UPnP i jest włączony.</translation>
+        <source>Automatically open the ALQO client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatycznie otwórz port klienta ALQO na routerze. Działa to tylko wtedy, gdy twój router obsługuje UPnP i jest włączony.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1896,12 +1896,12 @@ Please be patient after clicking import.</source>
         <translation>Ekspert</translation>
     </message>
     <message>
-        <source>Automatically start PIVX after logging in to the system.</source>
-        <translation>Automatycznie uruchom PIVX po zalogowaniu do systemu</translation>
+        <source>Automatically start ALQO after logging in to the system.</source>
+        <translation>Automatycznie uruchom ALQO po zalogowaniu do systemu</translation>
     </message>
     <message>
-        <source>&amp;Start PIVX on system login</source>
-        <translation>&amp;Uruchom PIVX podczas logowania do systemu</translation>
+        <source>&amp;Start ALQO on system login</source>
+        <translation>&amp;Uruchom ALQO podczas logowania do systemu</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1928,58 +1928,58 @@ Please be patient after clicking import.</source>
         <translation>&amp;Sieć</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting PIVX.</source>
-        <translation>Język interfejsu użytkownika może być wybrany tutaj. Ustawienia ulegną zmianie po restarcie PIVX</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting ALQO.</source>
+        <translation>Język interfejsu użytkownika może być wybrany tutaj. Ustawienia ulegną zmianie po restarcie ALQO</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/pivx-project/pivx-project-translations</source>
+https://www.transifex.com/alqo-project/alqo-project-translations</source>
         <translation>Brakuje języka bądź nieukończona pełnego tłumaczenia? Pomóż w tłumaczeniu tutaj:
-https://www.transifex.com/pivx-project/pivx-project-translations </translation>
+https://www.transifex.com/alqo-project/alqo-project-translations </translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mapuj port za pomocą &amp;UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of PIV units to zPIV</source>
-        <translation>Włącz automatyczny minting PIV do zPIV</translation>
+        <source>Enable automatic minting of ALQO units to zALQO</source>
+        <translation>Włącz automatyczny minting ALQO do zALQO</translation>
     </message>
     <message>
-        <source>Enable zPIV Automint</source>
-        <translation>Włącz zPIV Automint</translation>
+        <source>Enable zALQO Automint</source>
+        <translation>Włącz zALQO Automint</translation>
     </message>
     <message>
-        <source>Enable automatic zPIV minting from specific addresses</source>
-        <translation>Włącz automatyczne wybijanie zPIV-ów z określonych adresów</translation>
+        <source>Enable automatic zALQO minting from specific addresses</source>
+        <translation>Włącz automatyczne wybijanie zALQO-ów z określonych adresów</translation>
     </message>
     <message>
         <source>Enable Automint Addresses</source>
         <translation>Włącz adresy Automint</translation>
     </message>
     <message>
-        <source>Percentage of incoming PIV which get automatically converted to zPIV via Zerocoin Protocol (min: 10%)</source>
-        <translation>Procent PIV, które są automatycznie konwertowane na zPIV za pomocą protokołu Zerocoin (min: 10%)</translation>
+        <source>Percentage of incoming ALQO which get automatically converted to zALQO via Zerocoin Protocol (min: 10%)</source>
+        <translation>Procent ALQO, które są automatycznie konwertowane na zALQO za pomocą protokołu Zerocoin (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zPIV</source>
-        <translation>Procent automint zPIV</translation>
+        <source>Percentage of autominted zALQO</source>
+        <translation>Procent automint zALQO</translation>
     </message>
     <message>
-        <source>Wait with automatic conversion to Zerocoin until enough PIV for this denomination is available</source>
-        <translation>Zaczekaj z automatyczną konwersją na Zerocoin, aż będzie dostępna wystarczająca wartość PIV dla tego nominału</translation>
+        <source>Wait with automatic conversion to Zerocoin until enough ALQO for this denomination is available</source>
+        <translation>Zaczekaj z automatyczną konwersją na aż będzie dostępna wystarczająca wartość ALQO dla tego nominału</translation>
     </message>
     <message>
-        <source>Preferred Automint zPIV Denomination</source>
-        <translation>Preferowane nominały Automint zPIV</translation>
+        <source>Preferred Automint zALQO Denomination</source>
+        <translation>Preferowane nominały Automint zALQO</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
         <translation>Próg podziału stawki 'stake' :</translation>
     </message>
     <message>
-        <source>Connect to the PIVX network through a SOCKS5 proxy.</source>
-        <translation>Połącz z siecią PIVX poprzez SOCKS5 proxy.</translation>
+        <source>Connect to the ALQO network through a SOCKS5 proxy.</source>
+        <translation>Połącz z siecią ALQO poprzez SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -2137,8 +2137,8 @@ https://www.transifex.com/pivx-project/pivx-project-translations </translation>
         <translation>Saldo całkowite, w tym wszystkie niedostępne monety.</translation>
     </message>
     <message>
-        <source>PIV Balance</source>
-        <translation>PIV Saldo</translation>
+        <source>ALQO Balance</source>
+        <translation>ALQO Saldo</translation>
     </message>
     <message>
         <source>Pending:</source>
@@ -2161,18 +2161,18 @@ https://www.transifex.com/pivx-project/pivx-project-translations </translation>
         <translation>Aktualne zablokowane saldo na testowych adresach</translation>
     </message>
     <message>
-        <source>Your current PIVX balance, unconfirmed and immature transactions included</source>
-        <translation>Twoje bieżące saldo PIVX, niepotwierdzone transakcje zostały uwzględnione</translation>
+        <source>Your current ALQO balance, unconfirmed and immature transactions included</source>
+        <translation>Twoje bieżące saldo ALQO, niepotwierdzone transakcje zostały uwzględnione</translation>
     </message>
     <message>
-        <source>zPIV Balance</source>
-        <translation>zPIV Saldo</translation>
+        <source>zALQO Balance</source>
+        <translation>zALQO Saldo</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zPIV are spendable.</source>
+These zALQO are spendable.</source>
         <translation>Dojrzałe: ponad 20 potwierdzeń i więcej niż 1 mint o tym samym nominale po jej wybiciu.
-Te zPIV można wydać</translation>
+Te zALQO można wydać</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -2181,8 +2181,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Niedojrzały: potwierdzony, ale mniej niż 1 mint o tym samym nominale po wybiciu</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the PIVX network after a connection is established, but this process has not completed yet.</source>
-        <translation>Wyświetlane informacje mogą być nieaktualne. Twój portfel automatycznie synchronizuje się z siecią PIVX po nawiązaniu połączenia, ale ten proces jeszcze się nie zakończył.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ALQO network after a connection is established, but this process has not completed yet.</source>
+        <translation>Wyświetlane informacje mogą być nieaktualne. Twój portfel automatycznie synchronizuje się z siecią ALQO po nawiązaniu połączenia, ale ten proces jeszcze się nie zakończył.</translation>
     </message>
     <message>
         <source>OVERVIEW</source>
@@ -2225,8 +2225,8 @@ Niedojrzały: potwierdzony, ale mniej niż 1 mint o tym samym nominale po wybici
         <translation>Możliwy do wysłania:</translation>
     </message>
     <message>
-        <source>Locked PIV or Masternode collaterals. These are excluded from zPIV minting.</source>
-        <translation>Zablokowane PIV lub Masternode. Są one wyłączone zPIV minting</translation>
+        <source>Locked ALQO or Masternode collaterals. These are excluded from zALQO minting.</source>
+        <translation>Zablokowane ALQO lub Masternode. Są one wyłączone zALQO minting</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2237,8 +2237,8 @@ Niedojrzały: potwierdzony, ale mniej niż 1 mint o tym samym nominale po wybici
         <translation>Niepotwierdzone:</translation>
     </message>
     <message>
-        <source>Your current zPIV balance, unconfirmed and immature zPIV included.</source>
-        <translation>Twoje obecne saldo zPIV, niepotwierdzone i niedojrzałe zPIV włącznie.</translation>
+        <source>Your current zALQO balance, unconfirmed and immature zALQO included.</source>
+        <translation>Twoje obecne saldo zALQO, niepotwierdzone i niedojrzałe zALQO włącznie.</translation>
     </message>
     <message>
         <source>Recent transactions</source>
@@ -2249,10 +2249,10 @@ Niedojrzały: potwierdzony, ale mniej niż 1 mint o tym samym nominale po wybici
         <translation>Brak synchronizacji</translation>
     </message>
     <message>
-        <source>Current percentage of zPIV.
+        <source>Current percentage of zALQO.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
-        <translation>Aktualny procent zPIV.
+        <translation>Aktualny procent zALQO.
 Jeśli włączona jest funkcja AutoMint, procent ten ustabilizuje się wokół skonfigurowanej wartości AutoMint (domyślnie = 10%).
 </translation>
     </message>
@@ -2261,14 +2261,14 @@ Jeśli włączona jest funkcja AutoMint, procent ten ustabilizuje się wokół s
         <translation>AutoMint jest obecnie włączony i ustawiony na</translation>
     </message>
     <message>
-        <source>To disable AutoMint add 'enablezeromint=0' in pivx.conf.</source>
-        <translation>Aby wyłączyć AutoMint, dodaj "enablezeromint = 0" w pliku pivx.conf.</translation>
+        <source>To disable AutoMint add 'enablezeromint=0' in alqo.conf.</source>
+        <translation>Aby wyłączyć AutoMint, dodaj "enablezeromint = 0" w pliku alqo.conf.</translation>
     </message>
     <message>
         <source>AutoMint is currently disabled.
-To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in pivx.conf</source>
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in alqo.conf</source>
         <translation>Funkcja AutoMint jest obecnie wyłączona.
-Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pliku pivx.conf</translation>
+Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pliku alqo.conf</translation>
     </message>
 </context>
 <context>
@@ -2294,12 +2294,12 @@ Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pl
         <translation>Nieprawidłowy adres płatności %1</translation>
     </message>
     <message>
-        <source>Cannot start pivx: click-to-pay handler</source>
-        <translation>Nie można uruchomić pivx: click-to-pay handler</translation>
+        <source>Cannot start alqo: click-to-pay handler</source>
+        <translation>Nie można uruchomić alqo: click-to-pay handler</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid PIVX address or malformed URI parameters.</source>
-        <translation>Nie można przeanalizować identyfikatora URI! Może to być spowodowane nieprawidłowym adresem PIVX lub nieprawidłowymi parametrami URI.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid ALQO address or malformed URI parameters.</source>
+        <translation>Nie można przeanalizować identyfikatora URI! Może to być spowodowane nieprawidłowym adresem ALQO lub nieprawidłowymi parametrami URI.</translation>
     </message>
     <message>
         <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
@@ -2384,8 +2384,8 @@ Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pl
         <translation>Działania Zerocoin:</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the PIVX network after a connection is established, but this process has not completed yet.</source>
-        <translation>Wyświetlane informacje mogą być nieaktualne. Twój portfel automatycznie synchronizuje się z siecią PIVX po nawiązaniu połączenia, ale ten proces jeszcze się nie zakończył.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ALQO network after a connection is established, but this process has not completed yet.</source>
+        <translation>Wyświetlane informacje mogą być nieaktualne. Twój portfel automatycznie synchronizuje się z siecią ALQO po nawiązaniu połączenia, ale ten proces jeszcze się nie zakończył.</translation>
     </message>
     <message>
         <source>Mint Zerocoin</source>
@@ -2396,8 +2396,8 @@ Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pl
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2409,7 +2409,7 @@ Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pl
     </message>
     <message>
         <source>Rescan the complete blockchain for  Zerocoin mints and their meta-data.</source>
-        <translation>Ponownie przeszukaj cały blockchain dla Zerocoin, mint i ich meta-danych.</translation>
+        <translation>Ponownie przeszukaj cały blockchain dla mint i ich meta-danych.</translation>
     </message>
     <message>
         <source>ReScan</source>
@@ -2424,12 +2424,12 @@ Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pl
         <translation>PRYWATNOŚĆ</translation>
     </message>
     <message>
-        <source>zPIV Control</source>
-        <translation>Kontrola zPIV</translation>
+        <source>zALQO Control</source>
+        <translation>Kontrola zALQO</translation>
     </message>
     <message>
-        <source>zPIV Selected:</source>
-        <translation>Wybrano zPIV:</translation>
+        <source>zALQO Selected:</source>
+        <translation>Wybrano zALQO:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2444,32 +2444,32 @@ Aby włączyć AutoMint zmień "enablezeromint = 0" na "enablezeromint = 1" w pl
         <translation>Wydaj Zerocoin</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zPIV for spending</source>
-        <translation>Dostępne (starsze i dostępne) zPIV do wydania</translation>
+        <source>Available (mature and spendable) zALQO for spending</source>
+        <translation>Dostępne (starsze i dostępne) zALQO do wydania</translation>
     </message>
     <message>
         <source>Available Balance:</source>
         <translation>Dostępne saldo:</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zPIV for spending
+        <source>Available (mature and spendable) zALQO for spending
 
-zPIV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation>Dostępne (starsze i dostępne) zPIV do wydania
+zALQO are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>Dostępne (starsze i dostępne) zALQO do wydania
 
-zPIV są dojrzałe, gdy mają więcej niż 20 potwierdzeń I więcej niż 2 mints tego samego nominału które po nich zostały wybite</translation>
+zALQO są dojrzałe, gdy mają więcej niż 20 potwierdzeń I więcej niż 2 mints tego samego nominału które po nich zostały wybite</translation>
     </message>
     <message>
-        <source>0 zPIV</source>
-        <translation>0 zPIV</translation>
+        <source>0 zALQO</source>
+        <translation>0 zALQO</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
         <translation>&amp;Zapłać</translation>
     </message>
     <message>
-        <source>The PIVX address to send the payment to. Creates local payment to yourself when empty.</source>
-        <translation>Adres PIVX do wysłania płatności do. Tworzy lokalną płatność dla siebie, gdy jest pusta.</translation>
+        <source>The ALQO address to send the payment to. Creates local payment to yourself when empty.</source>
+        <translation>Adres ALQO do wysłania płatności do. Tworzy lokalną płatność dla siebie, gdy jest pusta.</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2520,8 +2520,8 @@ zPIV są dojrzałe, gdy mają więcej niż 20 potwierdzeń I więcej niż 2 mint
         <translation>Zerocoin Stats:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zPIV</source>
-        <translation>Łączne saldo razem z niepotwierdzonym i niedojrzałym zPIV</translation>
+        <source>Total Balance including unconfirmed and immature zALQO</source>
+        <translation>Łączne saldo razem z niepotwierdzonym i niedojrzałym zALQO</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2542,24 +2542,24 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Niedojrzały: potwierdzony, ale mniej niż 1 mint o tym samym nominale po wybiciu</translation>
     </message>
     <message>
-        <source>Show the current status of automatic zPIV minting.
+        <source>Show the current status of automatic zALQO minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to pivx.conf
-- disable: add 'enablezeromint=0' to pivx.conf
+- enable: add 'enablezeromint=1' to alqo.conf
+- disable: add 'enablezeromint=0' to alqo.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zPIV
+- menu Settings-&gt;Options-&gt;Percentage of autominted zALQO
 
 </source>
-        <translation>Pokaż aktualny status automatycznego mint zPIV.
+        <translation>Pokaż aktualny status automatycznego mint zALQO.
 
 Aby zmienić status (wymagany restart):
-- włącz: dodaj "enablezeromint = 1" do pliku pivx.conf
-- wyłącz: dodaj "enablezeromint = 0" do pliku pivx.conf
+- włącz: dodaj "enablezeromint = 1" do pliku alqo.conf
+- wyłącz: dodaj "enablezeromint = 0" do pliku alqo.conf
 
 Aby zmienić procent (bez ponownego uruchamiania):
-- menu Ustawienia-&gt; Opcje-&gt; Procent autominted zPIV
+- menu Ustawienia-&gt; Opcje-&gt; Procent autominted zALQO
 
 </translation>
     </message>
@@ -2608,8 +2608,8 @@ Aby zmienić procent (bez ponownego uruchamiania):
         <translation>0 x</translation>
     </message>
     <message>
-        <source>Show zPIV denominations list</source>
-        <translation> Pokaż listę jednostek zPIV</translation>
+        <source>Show zALQO denominations list</source>
+        <translation> Pokaż listę jednostek zALQO</translation>
     </message>
     <message>
         <source>Show Denominations</source>
@@ -2746,12 +2746,12 @@ Please be patient...</source>
 Proszę być cierpliwym...</translation>
     </message>
     <message>
-        <source>zPIV Spend #: </source>
-        <translation>Wydaj zPIV #:</translation>
+        <source>zALQO Spend #: </source>
+        <translation>Wydaj zALQO #:</translation>
     </message>
     <message>
-        <source>zPIV Mint</source>
-        <translation>zPIV Mint</translation>
+        <source>zALQO Mint</source>
+        <translation>zALQO Mint</translation>
     </message>
     <message>
         <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
@@ -2766,12 +2766,12 @@ Proszę być cierpliwym...</translation>
         <translation>Skonfigurowana wartość procentowa:&lt;b&gt;</translation>
     </message>
     <message>
-        <source>zPIV is currently disabled due to maintenance.</source>
-        <translation>zPIV jest obecnie wyłączony z powodu konserwacji.</translation>
+        <source>zALQO is currently disabled due to maintenance.</source>
+        <translation>zALQO jest obecnie wyłączony z powodu konserwacji.</translation>
     </message>
     <message>
-        <source>zPIV is currently undergoing maintenance.</source>
-        <translation>zPIV jest obecnie w trakcie konserwacji.</translation>
+        <source>zALQO is currently undergoing maintenance.</source>
+        <translation>zALQO jest obecnie w trakcie konserwacji.</translation>
     </message>
     <message>
         <source>Denom. with value &lt;b&gt;1&lt;/b&gt;:</source>
@@ -3012,8 +3012,8 @@ Proszę być cierpliwym...</translation>
         <translation>Ilość</translation>
     </message>
     <message>
-        <source>Enter a PIVX address (e.g. %1)</source>
-        <translation>Wprowadź adres PIVX (np. %1)</translation>
+        <source>Enter a ALQO address (e.g. %1)</source>
+        <translation>Wprowadź adres ALQO (np. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -3060,8 +3060,8 @@ Proszę być cierpliwym...</translation>
         <translation>%1 ms</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -3080,8 +3080,8 @@ Proszę być cierpliwym...</translation>
         <translation>Błąd odczytu pliku konfiguracyjnego masternode: %1</translation>
     </message>
     <message>
-        <source>PIVX Core didn't yet exit safely...</source>
-        <translation>PIVX Core nie zamkną się jeszcze bezpiecznie ...</translation>
+        <source>ALQO didn't yet exit safely...</source>
+        <translation>ALQO nie zamkną się jeszcze bezpiecznie ...</translation>
     </message>
 </context>
 <context>
@@ -3178,8 +3178,8 @@ Proszę być cierpliwym...</translation>
         <translation>Łańcuch bloków</translation>
     </message>
     <message>
-        <source>Open the PIVX debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Otwórz plik dziennika debugowania PIVX z bieżącego katalogu danych. Może to potrwać kilka sekund w przypadku dużych plików dziennika.</translation>
+        <source>Open the ALQO debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Otwórz plik dziennika debugowania ALQO z bieżącego katalogu danych. Może to potrwać kilka sekund w przypadku dużych plików dziennika.</translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
@@ -3314,8 +3314,8 @@ Proszę być cierpliwym...</translation>
         <translation>Standardowa ścieżka kopii zapasowej:</translation>
     </message>
     <message>
-        <source>Custom zPIV Backup Path:</source>
-        <translation>standardowa ścieżka kopii zapasowej zPIV:</translation>
+        <source>Custom zALQO Backup Path:</source>
+        <translation>standardowa ścieżka kopii zapasowej zALQO:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3394,8 +3394,8 @@ Proszę być cierpliwym...</translation>
         <translation>Z</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Witamy w konsoli PIVX RPC.</translation>
+        <source>Welcome to the ALQO RPC console.</source>
+        <translation>Witamy w konsoli ALQO RPC.</translation>
     </message>
     <message>
         <source>&amp;Disconnect Node</source>
@@ -3537,16 +3537,16 @@ Proszę być cierpliwym...</translation>
         <translation>&amp;Ilość:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the PIVX network.</source>
-        <translation>Opcjonalna wiadomość dołączana do żądania zapłaty, która zostanie wyświetlona przy otwarciu żądania. Uwaga: Wiadomość nie będzie wysłana przez sieć PIVX.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the ALQO network.</source>
+        <translation>Opcjonalna wiadomość dołączana do żądania zapłaty, która zostanie wyświetlona przy otwarciu żądania. Uwaga: Wiadomość nie będzie wysłana przez sieć ALQO.</translation>
     </message>
     <message>
         <source>RECEIVE</source>
         <translation>OTRZYMAJ</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the PIVX network.</source>
-        <translation>Opcjonalna wiadomość dołączana do żądania zapłaty, która zostanie wyświetlona po otwarciu żądania.&lt;br&gt;Uwaga: Wiadomość nie będzie wysłana przez sieć PIVX.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the ALQO network.</source>
+        <translation>Opcjonalna wiadomość dołączana do żądania zapłaty, która zostanie wyświetlona po otwarciu żądania.&lt;br&gt;Uwaga: Wiadomość nie będzie wysłana przez sieć ALQO.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -3782,12 +3782,12 @@ Proszę być cierpliwym...</translation>
         <translation>Rozmiar UTXO:</translation>
     </message>
     <message>
-        <source>0 PIV</source>
-        <translation>0 PIV</translation>
+        <source>0 ALQO</source>
+        <translation>0 ALQO</translation>
     </message>
     <message>
-        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 PIV applies</source>
-        <translation>Technologia SwiftX umożliwia dokonywanie transakcji zbliżonych do błyskawicznych - obowiązuje opłata ryczałtowa w wysokości 0,01 PIV</translation>
+        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 ALQO applies</source>
+        <translation>Technologia SwiftX umożliwia dokonywanie transakcji zbliżonych do błyskawicznych - obowiązuje opłata ryczałtowa w wysokości 0,01 ALQO</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -3842,15 +3842,15 @@ Proszę być cierpliwym...</translation>
         <translation>Monety automatycznie wybrane</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uPIVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uPIVs in fee,&lt;br /&gt;while "at least" pays 1000 uPIVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uALQOs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uALQOs in fee,&lt;br /&gt;while "at least" pays 1000 uALQOs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>Jeśli opłata trasakcyjna jest ustawiona na 1000 uPIV i transakcja ma tylko 250 bajtów, to płaci się tylko 250 uPIV,&lt;br /&gt; W przypadku transakcji większych niż kilobajt płacisz za kilobajta.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uPIVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uPIVs in fee,&lt;br /&gt;while "total at least" pays 1000 uPIVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uALQOs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uALQOs in fee,&lt;br /&gt;while "total at least" pays 1000 uALQOs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>Jeśli opłata trasakcyjna jest ustawiona na 1000 uPIV i transakcja ma tylko 250 bajtów, to płaci się tylko 250 uPIV, &lt;br /&gt; W przypadku transakcji większych niż kilobajt płacisz za kilobajta.</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for PIVX transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ALQO transactions than the network can process.</source>
         <translation>Płacenie tylko minimalnej opłaty jest w porządku, o ile w blokach jest mniejsza ilość transakcji niż miejsca&lt;br /&gt;Ale pamiętaj, że może to skończyć się niepotwierdzoną transakcją, gdy pojawi się większe ruch niż sieć może przetworzyć.</translation>
     </message>
     <message>
@@ -3898,8 +3898,8 @@ Proszę być cierpliwym...</translation>
         <translation>Dodaj odbiorcę</translation>
     </message>
     <message>
-        <source>Anonymized PIV</source>
-        <translation>Anonimowy PIV</translation>
+        <source>Anonymized ALQO</source>
+        <translation>Anonimowy ALQO</translation>
     </message>
     <message>
         <source>Balance:</source>
@@ -3946,8 +3946,8 @@ Proszę być cierpliwym...</translation>
         <translation>Narzędzie podzielonego bloku nie działa z wieloma adresami. Spróbuj ponownie.</translation>
     </message>
     <message>
-        <source>Warning: Invalid PIVX address</source>
-        <translation>Ostrzeżenie: Nieprawidłowy adres PIVX</translation>
+        <source>Warning: Invalid ALQO address</source>
+        <translation>Ostrzeżenie: Nieprawidłowy adres ALQO</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -4049,8 +4049,8 @@ Proszę być cierpliwym...</translation>
         <translation>&amp;Zapłać</translation>
     </message>
     <message>
-        <source>The PIVX address to send the payment to</source>
-        <translation>Adres PIVX do wysłania płatności do</translation>
+        <source>The ALQO address to send the payment to</source>
+        <translation>Adres ALQO do wysłania płatności do</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -4089,8 +4089,8 @@ Proszę być cierpliwym...</translation>
         <translation>Wiadomość:</translation>
     </message>
     <message>
-        <source>A message that was attached to the PIVX: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the PIVX network.</source>
-        <translation>Komunikat dołączony do identyfikatora PIVX: URI, który będzie przechowywany wraz z transakcją w celach informacyjnych. Uwaga: ten komunikat nie zostanie wysłany przez sieć PIVX.</translation>
+        <source>A message that was attached to the ALQO: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the ALQO network.</source>
+        <translation>Komunikat dołączony do identyfikatora ALQO: URI, który będzie przechowywany wraz z transakcją w celach informacyjnych. Uwaga: ten komunikat nie zostanie wysłany przez sieć ALQO.</translation>
     </message>
     <message>
         <source>This is an unverified payment request.</source>
@@ -4116,8 +4116,8 @@ Proszę być cierpliwym...</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>PIVX Core is shutting down...</source>
-        <translation>PIVX Core się wyłącza ...</translation>
+        <source>ALQO is shutting down...</source>
+        <translation>ALQO się wyłącza ...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -4139,8 +4139,8 @@ Proszę być cierpliwym...</translation>
         <translation>Możesz podpisywać wiadomości ze swoimi adresami, aby udowodnić, że je posiadasz. Uważaj, aby nie podpisać niczego niejasnego, ponieważ ataki phishingowe mogą skłonić Cię do podpisania Twojej tożsamości. Podawaj tylko w pełni szczegółowe oświadczenia, na które wyrażasz zgodę.</translation>
     </message>
     <message>
-        <source>The PIVX address to sign the message with</source>
-        <translation>Adres PIVX do podpisania wiadomości za pomocą</translation>
+        <source>The ALQO address to sign the message with</source>
+        <translation>Adres ALQO do podpisania wiadomości za pomocą</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -4171,16 +4171,16 @@ Proszę być cierpliwym...</translation>
         <translation>Skopiuj bieżący podpis do schowka systemowego</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this PIVX address</source>
-        <translation>Zatwierdź wiadomość, aby udowodnić, że podany adres PIVX jest w twoim posiadaniu</translation>
+        <source>Sign the message to prove you own this ALQO address</source>
+        <translation>Zatwierdź wiadomość, aby udowodnić, że podany adres ALQO jest w twoim posiadaniu</translation>
     </message>
     <message>
-        <source>The PIVX address the message was signed with</source>
-        <translation>Adres PIVX, z którym została podpisana wiadomość</translation>
+        <source>The ALQO address the message was signed with</source>
+        <translation>Adres ALQO, z którym została podpisana wiadomość</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
-        <translation>Sprawdź komunikat, aby upewnić się, że został podpisany podanym adresem PIVX</translation>
+        <source>Verify the message to ensure it was signed with the specified ALQO address</source>
+        <translation>Sprawdź komunikat, aby upewnić się, że został podpisany podanym adresem ALQO</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -4266,8 +4266,8 @@ Proszę być cierpliwym...</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -4282,8 +4282,8 @@ Proszę być cierpliwym...</translation>
         <translation>Twórcy Dash Core</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>Twórcy PIVX Core</translation>
+        <source>The PIVX developers</source>
+        <translation>Twórcy ALQO</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -4546,12 +4546,12 @@ Proszę być cierpliwym...</translation>
         <translation>Otrzymane przez Zamaskowanie</translation>
     </message>
     <message>
-        <source>PIV Stake</source>
-        <translation>PIV Stake</translation>
+        <source>ALQO Stake</source>
+        <translation>ALQO Stake</translation>
     </message>
     <message>
-        <source>zPIV Stake</source>
-        <translation>zPIV Stake</translation>
+        <source>zALQO Stake</source>
+        <translation>zALQO Stake</translation>
     </message>
     <message>
         <source>Obfuscation Denominate</source>
@@ -4570,32 +4570,32 @@ Proszę być cierpliwym...</translation>
         <translation>Zamaskowanie Utwórz denominacje</translation>
     </message>
     <message>
-        <source>Converted PIV to zPIV</source>
-        <translation>przekonwertowany PIV to zPIV</translation>
+        <source>Converted ALQO to zALQO</source>
+        <translation>przekonwertowany ALQO to zALQO</translation>
     </message>
     <message>
-        <source>Spent zPIV</source>
-        <translation>Wydaj zPIV</translation>
+        <source>Spent zALQO</source>
+        <translation>Wydaj zALQO</translation>
     </message>
     <message>
-        <source>Received PIV from zPIV</source>
-        <translation>Otrzymano PIV z zPIV</translation>
+        <source>Received ALQO from zALQO</source>
+        <translation>Otrzymano ALQO z zALQO</translation>
     </message>
     <message>
-        <source>Minted Change as zPIV from zPIV Spend</source>
-        <translation>Reszta Minted jako zPIV z Wysyłki zPIV</translation>
+        <source>Minted Change as zALQO from zALQO Spend</source>
+        <translation>Reszta Minted jako zALQO z Wysyłki zALQO</translation>
     </message>
     <message>
-        <source>Converted zPIV to PIV</source>
-        <translation>przekonwertowany zPIV to PIV</translation>
+        <source>Converted zALQO to ALQO</source>
+        <translation>przekonwertowany zALQO to ALQO</translation>
     </message>
     <message>
-        <source>Anonymous (zPIV Transaction)</source>
-        <translation>Anonimowa (transakcja zPIV)</translation>
+        <source>Anonymous (zALQO Transaction)</source>
+        <translation>Anonimowa (transakcja zALQO)</translation>
     </message>
     <message>
-        <source>Anonymous (zPIV Stake)</source>
-        <translation>Anonimowy (zPIV Stake)</translation>
+        <source>Anonymous (zALQO Stake)</source>
+        <translation>Anonimowy (zALQO Stake)</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -4809,12 +4809,12 @@ Proszę być cierpliwym...</translation>
         <translation>Eksportowanie zakończyło się pomyślnie</translation>
     </message>
     <message>
-        <source>Received PIV from zPIV</source>
-        <translation>Otrzymano PIV z zPIV</translation>
+        <source>Received ALQO from zALQO</source>
+        <translation>Otrzymano ALQO z zALQO</translation>
     </message>
     <message>
-        <source>Zerocoin Spend, Change in zPIV</source>
-        <translation>Wydawanie Zerocoin, Zmień z zPIV</translation>
+        <source>Zerocoin Spend, Change in zALQO</source>
+        <translation>Wydawanie Zmień z zALQO</translation>
     </message>
     <message>
         <source>The transaction history was successfully saved to %1.</source>
@@ -4850,8 +4850,8 @@ Proszę być cierpliwym...</translation>
         <translation>Wyślij monety</translation>
     </message>
     <message>
-        <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 PIV.</source>
-        <translation>SwiftX nie obsługuje wysyłania wysokich wartości. Transakcje są obecnie ograniczone do %1 PIV.</translation>
+        <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 ALQO.</source>
+        <translation>SwiftX nie obsługuje wysyłania wysokich wartości. Transakcje są obecnie ograniczone do %1 ALQO.</translation>
     </message>
 </context>
 <context>
@@ -4884,8 +4884,8 @@ Proszę być cierpliwym...</translation>
 <context>
     <name>ZPivControlDialog</name>
     <message>
-        <source>Select zPIV to Spend</source>
-        <translation>Wybierz zPIV do wydania</translation>
+        <source>Select zALQO to Spend</source>
+        <translation>Wybierz zALQO do wydania</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4896,8 +4896,8 @@ Proszę być cierpliwym...</translation>
         <translation>0</translation>
     </message>
     <message>
-        <source>zPIV</source>
-        <translation>zPIV</translation>
+        <source>zALQO</source>
+        <translation>zALQO</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4909,7 +4909,7 @@ Proszę być cierpliwym...</translation>
     </message>
 </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = zachowaj tx meta dane np. Właściciel konta i informacje o żądaniu płatności, 2 = porzuć tx meta dane)</translation>
@@ -4935,8 +4935,8 @@ Proszę być cierpliwym...</translation>
         <translation>Obliczony punkt kontrolny akumulatora nie jest tym, co jest rejestrowane przez indeks bloku</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. PIVX Core is probably already running.</source>
-        <translation>Nie można uzyskać dostępu do katalogu danych %s. PIVX Core prawdopodobnie już działa.</translation>
+        <source>Cannot obtain a lock on data directory %s. ALQO is probably already running.</source>
+        <translation>Nie można uzyskać dostępu do katalogu danych %s. ALQO prawdopodobnie już działa.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
@@ -4967,16 +4967,16 @@ Proszę być cierpliwym...</translation>
         <translation>Włącz automatyczne wybijanie Zerocoin z określonych adresów (0-1, domyślnie:%u)</translation>
     </message>
     <message>
-        <source>Enable automatic wallet backups triggered after each zPIV minting (0-1, default: %u)</source>
-        <translation>Włącz automatyczne kopie zapasowe portfela uruchamiane po każdym mintingu zPIV (0-1, domyślnie: %u)</translation>
+        <source>Enable automatic wallet backups triggered after each zALQO minting (0-1, default: %u)</source>
+        <translation>Włącz automatyczne kopie zapasowe portfela uruchamiane po każdym mintingu zALQO (0-1, domyślnie: %u)</translation>
     </message>
     <message>
-        <source>Enable or disable staking functionality for PIV inputs (0-1, default: %u)</source>
-        <translation>Włączanie lub wyłączanie funkcji stake dla przychodzących PIV (0-1, domyślnie:%u)</translation>
+        <source>Enable or disable staking functionality for ALQO inputs (0-1, default: %u)</source>
+        <translation>Włączanie lub wyłączanie funkcji stake dla przychodzących ALQO (0-1, domyślnie:%u)</translation>
     </message>
     <message>
-        <source>Enable or disable staking functionality for zPIV inputs (0-1, default: %u)</source>
-        <translation>Włączanie lub wyłączanie funkcji staking dla nowych zPIV (0-1, domyślnie: %u)</translation>
+        <source>Enable or disable staking functionality for zALQO inputs (0-1, default: %u)</source>
+        <translation>Włączanie lub wyłączanie funkcji staking dla nowych zALQO (0-1, domyślnie: %u)</translation>
     </message>
     <message>
         <source>Enable spork administration functionality with the appropriate private key.</source>
@@ -5011,12 +5011,12 @@ Proszę być cierpliwym...</translation>
         <translation>Wykonaj polecenie, gdy najlepszy blok zostanie zmieniony ( %s w cmd zostanie zastąpione hash blokiem)</translation>
     </message>
     <message>
-        <source>Fees (in PIV/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Opłaty za przekazywanie (w PIV/Kb) mniejsze od tej są uznawane za opłaty zerowe (domyślnie: %s)</translation>
+        <source>Fees (in ALQO/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Opłaty za przekazywanie (w ALQO/Kb) mniejsze od tej są uznawane za opłaty zerowe (domyślnie: %s)</translation>
     </message>
     <message>
-        <source>Fees (in PIV/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Opłaty za tworzenie transakcji (w PIV/Kb) mniejsze od tej są uznawane za opłaty zerowe (domyślnie: %s)</translation>
+        <source>Fees (in ALQO/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Opłaty za tworzenie transakcji (w ALQO/Kb) mniejsze od tej są uznawane za opłaty zerowe (domyślnie: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -5123,20 +5123,20 @@ Proszę być cierpliwym...</translation>
         <translation>Całkowita długość string wersji sieciowej (%i) przekracza maksymalną długość (%i). Zmniejsz liczbę lub rozmiar uacomments.</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. PIVX Core is probably already running.</source>
-        <translation>Nie można podłączyć %s na tym komputerze. PIVX Core prawdopodobnie już działa.</translation>
+        <source>Unable to bind to %s on this computer. ALQO is probably already running.</source>
+        <translation>Nie można podłączyć %s na tym komputerze. ALQO prawdopodobnie już działa.</translation>
     </message>
     <message>
         <source>Unable to locate enough Obfuscation denominated funds for this transaction.</source>
         <translation>Nie można znaleźć wystarczającej liczby funduszy ukrytych dla tej transakcji.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 PIV.</source>
-        <translation>Nie można zlokalizować wystarczająco dużo zaciemnionych Środków. Ta transakcja nie jest równa 10000 PIV.</translation>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 ALQO.</source>
+        <translation>Nie można zlokalizować wystarczająco dużo zaciemnionych Środków. Ta transakcja nie jest równa 10000 ALQO.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 PIV.</source>
-        <translation>Nie można zlokalizować wystarczająco dużo Środków. Ta transakcja nie jest równa 10000 PIV.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 ALQO.</source>
+        <translation>Nie można zlokalizować wystarczająco dużo Środków. Ta transakcja nie jest równa 10000 ALQO.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -5151,8 +5151,8 @@ Proszę być cierpliwym...</translation>
         <translation>Ostrzeżenie: -paytxfee jest ustawione bardzo wysoko! Jest to opłata transakcyjna, którą zapłacisz, jeśli wyślesz transakcję.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong PIVX Core will not work properly.</source>
-        <translation>Ostrzeżenie: sprawdź, czy data i godzina komputera są poprawne! Jeśli zegar jest nieprawidłowy, PIVX Core nie będzie działać poprawnie.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong ALQO will not work properly.</source>
+        <translation>Ostrzeżenie: sprawdź, czy data i godzina komputera są poprawne! Jeśli zegar jest nieprawidłowy, ALQO nie będzie działać poprawnie.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -5295,8 +5295,8 @@ Proszę być cierpliwym...</translation>
         <translation>Copyright (C) 2014-%i The Dash Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
-        <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
+        <source>Copyright (C) 2015-%i The ALQO Developers</source>
+        <translation>Copyright (C) 2015-%i The ALQO Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -5343,8 +5343,8 @@ Proszę być cierpliwym...</translation>
         <translation>Włącz automatyczne Zerocoin minting (0-100, domyślnie: %u)</translation>
     </message>
     <message>
-        <source>Enable precomputation of zPIV spends and stakes (0-1, default %u)</source>
-        <translation>Włącz wstępne obliczanie wydatków i stawek zPIV (0-1, domyślnie %u)</translation>
+        <source>Enable precomputation of zALQO spends and stakes (0-1, default %u)</source>
+        <translation>Włącz wstępne obliczanie wydatków i stawek zALQO (0-1, domyślnie %u)</translation>
     </message>
     <message>
         <source>Enable publish hash transaction (locked via SwiftX) in &lt;address&gt;</source>
@@ -5379,8 +5379,8 @@ Proszę być cierpliwym...</translation>
         <translation>Wystąpił błąd podczas ładowania pliku wallet.dat: Portfel uszkodzony</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of PIVX Core</source>
-        <translation>Błąd ładowania pliku wallet.dat: Portfel wymaga nowszej wersji PIVX Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of ALQO</source>
+        <translation>Błąd ładowania pliku wallet.dat: Portfel wymaga nowszej wersji ALQO</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -5435,8 +5435,8 @@ Proszę być cierpliwym...</translation>
         <translation>Nie można odczytać bloku</translation>
     </message>
     <message>
-        <source>Fee (in PIV/kB) to add to transactions you send (default: %s)</source>
-        <translation>Opłata (w PIV/kB) dodawana do wysyłanych transakcji (domyślnie: %s)</translation>
+        <source>Fee (in ALQO/kB) to add to transactions you send (default: %s)</source>
+        <translation>Opłata (w ALQO/kB) dodawana do wysyłanych transakcji (domyślnie: %s)</translation>
     </message>
     <message>
         <source>Force safe mode (default: %u)</source>
@@ -5475,8 +5475,8 @@ Proszę być cierpliwym...</translation>
         <translation>Informacje</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. PIVX Core is shutting down.</source>
-        <translation>Sprawdzenie poprawności inicjalizacji nie powiodło się. PIVX Core zamyka się.</translation>
+        <source>Initialization sanity check failed. ALQO is shutting down.</source>
+        <translation>Sprawdzenie poprawności inicjalizacji nie powiodło się. ALQO zamyka się.</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -5539,8 +5539,8 @@ Proszę być cierpliwym...</translation>
         <translation>Odsetek automatycznych minted Zerocoin (1-100, domyślnie: %u)</translation>
     </message>
     <message>
-        <source>Recalculating PIV supply...</source>
-        <translation>Przeliczanie podaży PIV ...</translation>
+        <source>Recalculating ALQO supply...</source>
+        <translation>Przeliczanie podaży ALQO ...</translation>
     </message>
     <message>
         <source>Recalculating minted ZPIV...</source>
@@ -5551,8 +5551,8 @@ Proszę być cierpliwym...</translation>
         <translation>Przeliczanie wydanego ZPIV ...</translation>
     </message>
     <message>
-        <source>Reindex the PIV and zPIV money supply statistics</source>
-        <translation>Ponownie oblicz statystyki podaży pieniądza PIV i zPIV</translation>
+        <source>Reindex the ALQO and zALQO money supply statistics</source>
+        <translation>Ponownie oblicz statystyki podaży pieniądza ALQO i zALQO</translation>
     </message>
     <message>
         <source>Reindexing zerocoin database...</source>
@@ -5595,8 +5595,8 @@ Proszę być cierpliwym...</translation>
 </translation>
     </message>
     <message>
-        <source>Disable all PIVX specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
-        <translation>Wyłącz wszystkie funkcje specyficzne dla PIVX (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, domyślnie: %u)</translation>
+        <source>Disable all ALQO specific functionality (Masternodes, SwiftX, Budgeting) (0-1, default: %u)</source>
+        <translation>Wyłącz wszystkie funkcje specyficzne dla ALQO (Masternodes, SwiftX, Budgeting) (0-1, domyślnie: %u)</translation>
     </message>
     <message>
         <source>Enable SwiftX, show confirmations for locked transactions (bool, default: %s)</source>
@@ -5627,8 +5627,8 @@ Proszę być cierpliwym...</translation>
         <translation>Preferowana jednostka dla automatycznych minted Zerocoin (1/5/10/50/100/500/1000/5000), 0 bez żadnych preferencji. domyślnie: %u)</translation>
     </message>
     <message>
-        <source>Specify custom backup path to add a copy of any automatic zPIV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Określ standardową ścieżkę kopii zapasowej, aby dodać kopię automatycznej kopii zapasowej zPIV. Jeśli ustawione jako katalog, każda kopia zapasowa generuje plik z sygnaturą czasową. Jeśli ustawione jako plik, będzie przepisywać do tego pliku każdą kopię zapasową. Jeśli ustawiona jest również ścieżka tworzenia kopii zapasowych, zostaną utworzone 4 kopie zapasowe</translation>
+        <source>Specify custom backup path to add a copy of any automatic zALQO backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <translation>Określ standardową ścieżkę kopii zapasowej, aby dodać kopię automatycznej kopii zapasowej zALQO. Jeśli ustawione jako katalog, każda kopia zapasowa generuje plik z sygnaturą czasową. Jeśli ustawione jako plik, będzie przepisywać do tego pliku każdą kopię zapasową. Jeśli ustawiona jest również ścieżka tworzenia kopii zapasowych, zostaną utworzone 4 kopie zapasowe</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -5959,8 +5959,8 @@ Proszę być cierpliwym...</translation>
         <translation>Synchronizowanie sporks...</translation>
     </message>
     <message>
-        <source>Syncing zPIV wallet...</source>
-        <translation>Synchronizuję portfel zPIV ...</translation>
+        <source>Syncing zALQO wallet...</source>
+        <translation>Synchronizuję portfel zALQO ...</translation>
     </message>
     <message>
         <source>The coin spend has been used</source>
@@ -6023,8 +6023,8 @@ Proszę być cierpliwym...</translation>
         <translation>Nazwa użytkownika dla połączeń JSON-RPC</translation>
     </message>
     <message>
-        <source>Value is below the smallest available denomination (= 1) of zPIV</source>
-        <translation>Wartość jest mniejsza od najmniejszej dostępnej (= 1) zPIV</translation>
+        <source>Value is below the smallest available denomination (= 1) of zALQO</source>
+        <translation>Wartość jest mniejsza od najmniejszej dostępnej (= 1) zALQO</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
@@ -6035,8 +6035,8 @@ Proszę być cierpliwym...</translation>
         <translation>Weryfikuję portfel ...</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart PIVX Core to complete</source>
-        <translation>Portfel musiał zostać przepisany: zrestartuj PIVX Core, aby zakończyć</translation>
+        <source>Wallet needed to be rewritten: restart ALQO to complete</source>
+        <translation>Portfel musiał zostać przepisany: zrestartuj ALQO, aby zakończyć</translation>
     </message>
     <message>
         <source>Wallet options:</source>

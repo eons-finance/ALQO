@@ -3,13 +3,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_UTILITYDIALOG_H
-#define BITCOIN_QT_UTILITYDIALOG_H
+#ifndef ALQO_QT_UTILITYDIALOG_H
+#define ALQO_QT_UTILITYDIALOG_H
 
 #include <QDialog>
 #include <QObject>
+#include <QMainWindow>
 
-class BitcoinGUI;
 class ClientModel;
 
 namespace Ui
@@ -32,9 +32,6 @@ public:
 private:
     Ui::HelpMessageDialog* ui;
     QString text;
-
-private slots:
-    void on_okButton_accepted();
 };
 
 
@@ -45,10 +42,10 @@ class ShutdownWindow : public QWidget
 
 public:
     ShutdownWindow(QWidget* parent = 0, Qt::WindowFlags f = 0);
-    static void showShutdownWindow(BitcoinGUI* window);
+    static void showShutdownWindow(QMainWindow* window);
 
 protected:
     void closeEvent(QCloseEvent* event);
 };
 
-#endif // BITCOIN_QT_UTILITYDIALOG_H
+#endif // ALQO_QT_UTILITYDIALOG_H

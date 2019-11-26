@@ -62,12 +62,12 @@
         <translation>Prijímacia adresa</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Toto sú vaše PIVX adresy na odosielanie platieb. Pred odoslaním vždy skontrolujte výšku a adresu prijemcu.</translation>
+        <source>These are your ALQO addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Toto sú vaše ALQO adresy na odosielanie platieb. Pred odoslaním vždy skontrolujte výšku a adresu prijemcu.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Toto sú vaše PIVX adresy na prijímanie platieb. Pre každú transakciu sa odporúča použiť novú prijímaciu adresu.</translation>
+        <source>These are your ALQO addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Toto sú vaše ALQO adresy na prijímanie platieb. Pre každú transakciu sa odporúča použiť novú prijímaciu adresu.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -172,16 +172,16 @@
         <translation>Potvrďte šifrovanie peňaženky</translation>
     </message>
     <message>
-        <source>PIVX will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>PIVX sa teraz ukončí, aby dokončil proces šifrovania. Nezabudnite, že šifrovanie peňaženky nemôže úplne ochrániť vaše PIV pred odcudzením škodlivým softvérom, ktorý infikuje váš počítač.</translation>
+        <source>ALQO will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ALQOs from being stolen by malware infecting your computer.</source>
+        <translation>ALQO sa teraz ukončí, aby dokončil proces šifrovania. Nezabudnite, že šifrovanie peňaženky nemôže úplne ochrániť vaše ALQO pred odcudzením škodlivým softvérom, ktorý infikuje váš počítač.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Naozaj chcete zašifrovať svoju peňaženku?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
-        <translation>Upozornenie: Ak zašifrujete svoju peňaženku a stratíte svoju prístupovú frázu, &lt;b&gt; PRÍDETE O VŠETKY PIV &lt;/ b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ALQO&lt;/b&gt;!</source>
+        <translation>Upozornenie: Ak zašifrujete svoju peňaženku a stratíte svoju prístupovú frázu, &lt;b&gt; PRÍDETE O VŠETKY ALQO &lt;/ b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -569,16 +569,16 @@
         <translation>Panel nástrojov Záložky</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
-        <source>Send coins to a PIVX address</source>
-        <translation>Odoslať mince na adresu PIVX</translation>
+        <source>Send coins to a ALQO address</source>
+        <translation>Odoslať mince na adresu ALQO</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pivx: URIs)</source>
-        <translation>Vyžiadať platby (generuje QR kódy a pivx: identifikátory URI)</translation>
+        <source>Request payments (generates QR codes and alqo: URIs)</source>
+        <translation>Vyžiadať platby (generuje QR kódy a alqo: identifikátory URI)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -589,24 +589,24 @@
         <translation>Prezrieť masternody</translation>
     </message>
     <message>
-        <source>&amp;About PIVX Core</source>
-        <translation>O PIVX Core</translation>
+        <source>&amp;About ALQO</source>
+        <translation>O ALQO</translation>
     </message>
     <message>
-        <source>Show information about PIVX Core</source>
-        <translation>Zobraziť informácie o PIVX Core</translation>
+        <source>Show information about ALQO</source>
+        <translation>Zobraziť informácie o ALQO</translation>
     </message>
     <message>
-        <source>Modify configuration options for PIVX</source>
-        <translation>Zmeňte možnosti konfigurácie pre PIVX</translation>
+        <source>Modify configuration options for ALQO</source>
+        <translation>Zmeňte možnosti konfigurácie pre ALQO</translation>
     </message>
     <message>
-        <source>Sign messages with your PIVX addresses to prove you own them</source>
-        <translation>Podpíšte správy pomocou adresy PIVX, aby ste preukázali, že ich vlastníte</translation>
+        <source>Sign messages with your ALQO addresses to prove you own them</source>
+        <translation>Podpíšte správy pomocou adresy ALQO, aby ste preukázali, že ich vlastníte</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified PIVX addresses</source>
-        <translation>Overte správy, aby sa zabezpečilo, že boli podpísané zadanými PIVX adresami</translation>
+        <source>Verify messages to ensure they were signed with specified ALQO addresses</source>
+        <translation>Overte správy, aby sa zabezpečilo, že boli podpísané zadanými ALQO adresami</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -637,8 +637,8 @@
         <translation>Otvoriť konfiguračný súbor masternodu</translation>
     </message>
     <message>
-        <source>Open a PIVX: URI or payment request</source>
-        <translation>Otvorte PIVX: URI alebo žiadosť o platbu</translation>
+        <source>Open a ALQO: URI or payment request</source>
+        <translation>Otvorte ALQO: URI alebo žiadosť o platbu</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -649,12 +649,12 @@
         <translation>Okno blockchain prehliadača</translation>
     </message>
     <message>
-        <source>Show the PIVX Core help message to get a list with possible PIVX command-line options</source>
-        <translation>Zobraziť pomocnú správu programu PIVX Core a získajte zoznam možností príkazového riadka PIVX</translation>
+        <source>Show the ALQO help message to get a list with possible ALQO command-line options</source>
+        <translation>Zobraziť pomocnú správu programu ALQO a získajte zoznam možností príkazového riadka ALQO</translation>
     </message>
     <message>
-        <source>PIVX Core client</source>
-        <translation>PIVX Core klient</translation>
+        <source>ALQO client</source>
+        <translation>ALQO klient</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -776,8 +776,8 @@ MultiSend: %1</translation>
         <translation>TextLabel</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (pivx.conf).</source>
-        <translation>Nie všetky transakcie sa zobrazia. Ak chcete zobraziť všetky transakcie, musíte v konfiguračnom súbore (pivx.conf) nastaviť txindex = 1.</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (alqo.conf).</source>
+        <translation>Nie všetky transakcie sa zobrazia. Ak chcete zobraziť všetky transakcie, musíte v konfiguračnom súbore (alqo.conf) nastaviť txindex = 1.</translation>
     </message>
 </context>
 <context>
@@ -870,15 +870,15 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     <message>
         <source>Error</source>
@@ -982,8 +982,8 @@ MultiSend: %1</translation>
         <translation>Suma</translation>
     </message>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     </context>
 <context>
@@ -1117,8 +1117,8 @@ MultiSend: %1</translation>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The PIVX address to sign the message with</source>
-        <translation>Adresa PIVX, ktorou chcete správu podpísať</translation>
+        <source>The ALQO address to sign the message with</source>
+        <translation>Adresa ALQO, ktorou chcete správu podpísať</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1141,16 +1141,16 @@ MultiSend: %1</translation>
         <translation>Skopírujte aktuálny podpis do schránky</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this PIVX address</source>
-        <translation>Podpíšte správu, aby ste preukázali, že ste vlastníkom tejto PIVX adresy</translation>
+        <source>Sign the message to prove you own this ALQO address</source>
+        <translation>Podpíšte správu, aby ste preukázali, že ste vlastníkom tejto ALQO adresy</translation>
     </message>
     <message>
-        <source>The PIVX address the message was signed with</source>
-        <translation>PIVX adresa, ktorou bola správa podpísaná</translation>
+        <source>The ALQO address the message was signed with</source>
+        <translation>ALQO adresa, ktorou bola správa podpísaná</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified PIVX address</source>
-        <translation>Skontrolujte správu, aby ste sa uistili, že bola podpísaná zadanou PIVX adresou</translation>
+        <source>Verify the message to ensure it was signed with the specified ALQO address</source>
+        <translation>Skontrolujte správu, aby ste sa uistili, že bola podpísaná zadanou ALQO adresou</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -1188,8 +1188,8 @@ MultiSend: %1</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>PIVX Core</source>
-        <translation>PIVX Core</translation>
+        <source>ALQO</source>
+        <translation>ALQO</translation>
     </message>
     </context>
 <context>
@@ -1287,7 +1287,7 @@ MultiSend: %1</translation>
     <name>ZPivControlDialog</name>
     </context>
 <context>
-    <name>pivx-core</name>
+    <name>alqo-core</name>
     <message>
         <source>Error</source>
         <translation>Chyba</translation>

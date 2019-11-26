@@ -11,10 +11,23 @@
 
 CMasternodeConfig masternodeConfig;
 
-void CMasternodeConfig::add(std::string alias, std::string ip, std::string privKey, std::string txHash, std::string outputIndex)
+CMasternodeConfig::CMasternodeEntry* CMasternodeConfig::add(std::string alias, std::string ip, std::string privKey, std::string txHash, std::string outputIndex)
 {
     CMasternodeEntry cme(alias, ip, privKey, txHash, outputIndex);
     entries.push_back(cme);
+    return &(entries[entries.size()-1]);
+}
+
+void CMasternodeConfig::remove(std::string alias) {
+    int pos = -1;
+    for (int i = 0; i < ((int) entries.size()); ++i) {
+        CMasternodeEntry e = entries[i];
+        if (e.getAlias() == alias) {
+            pos = i;
+            break;
+        }
+    }
+    entries.erase(entries.begin() + pos);
 }
 
 bool CMasternodeConfig::read(std::string& strErr)
@@ -28,7 +41,8 @@ bool CMasternodeConfig::read(std::string& strErr)
         if (configFile != NULL) {
             std::string strHeader = "# Masternode config file\n"
                                     "# Format: alias IP:port masternodeprivkey collateral_output_txid collateral_output_index\n"
-                                    "# Example: mn1 127.0.0.2:51472 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0\n";
+                                    "# Example: mn1 127.0.0.2:51472 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0"
+                                    "#\n";
             fwrite(strHeader.c_str(), std::strlen(strHeader.c_str()), 1, configFile);
             fclose(configFile);
         }
@@ -68,22 +82,14 @@ bool CMasternodeConfig::read(std::string& strErr)
             return false;
         }
 
-        if (Params().NetworkID() == CBaseChainParams::MAIN) {
-            if (port != 51472) {
-                strErr = _("Invalid port detected in masternode.conf") + "\n" +
-                         strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
-                         _("(must be 51472 for mainnet)");
-                streamConfig.close();
-                return false;
-            }
-        } else if (port == 51472) {
+        // this code can work fine for both scenarios
+        if (port != Params().GetDefaultPort()) {
             strErr = _("Invalid port detected in masternode.conf") + "\n" +
                      strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
-                     _("(51472 could be used only on mainnet)");
+                     strprintf(_("(must be %d for this network)"), Params().GetDefaultPort());
             streamConfig.close();
             return false;
         }
-
 
         add(alias, ip, privKey, txHash, outputIndex);
     }
@@ -92,11 +98,11 @@ bool CMasternodeConfig::read(std::string& strErr)
     return true;
 }
 
-bool CMasternodeConfig::CMasternodeEntry::castOutputIndex(int &n)
+bool CMasternodeConfig::CMasternodeEntry::castOutputIndex(int &n) const
 {
     try {
         n = std::stoi(outputIndex);
-    } catch (const std::exception e) {
+    } catch (const std::exception& e) {
         LogPrintf("%s: %s on getOutputIndex\n", __func__, e.what());
         return false;
     }
