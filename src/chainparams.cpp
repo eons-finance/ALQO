@@ -52,14 +52,18 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (   0, uint256("000007b9f4e7c9def175a5b5c11949786bce458fd952d5e7da19567321b06916"));
+    (   0, uint256S("000029299875d53f33fc23a629fa4480a7a60f0c75f3a2d995a0b2039e347fbe"))
+    (  40, uint256S("0000165f46e824929f7539125a47273e433c3ad5ca6c915ce2fafdf5a7e09faf"))
+    (  80, uint256S("000000d47a27e5468cf1471d9020ffd97dbaf58b9d9f8c50b1c0788c223ad1cb"))
+    ( 120, uint256S("00000020f69838147c57e434d58b0bfa028ff135f76bdcec3f914d39148e4f1d"))
+    ( 160, uint256S("00000000bddbef0a824f77c0677fab35ae00754f9f789338f2f8978c9ad1d7a5"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1556924938, // * UNIX timestamp of last checkpoint block
-    4271692,    // * total number of transactions between genesis and last checkpoint
+    1574900000, // * UNIX timestamp of last checkpoint block
+    1,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    2000        // * estimated number of transactions per day after checkpoint
+    576         // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -122,7 +126,7 @@ public:
         pchMessageStart[3] = 0x90;
         vAlertPubKey = ParseHex("034696359afb387e2aa97bd344546a10a7a2f8982f8e00658a17240152f8bf6fea");
         nDefaultPort = 20480;
-        bnProofOfWorkLimit = ~uint256(0) >> 20;
+        bnProofOfWorkLimit = uint256S("0000fffff0000000000000000000000000000000000000000000000000000000");
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
@@ -151,9 +155,7 @@ public:
         nInvalidAmountFiltered = 0;
         nBlockZerocoinV2 = nZerocoinStartHeight;
         nBlockDoubleAccumulated = nZerocoinStartHeight;
-        nEnforceNewSporkKey = 1566860400;
-        nRejectOldSporkKey = 1569538800;
-        nBlockStakeModifierlV2 = 1967000;
+        nBlockStakeModifierlV2 = nZerocoinStartHeight;
         nPublicZCSpends = nZerocoinStartHeight;
         nFakeSerialBlockheightEnd = nZerocoinStartHeight;
         nSupplyBeforeFakeSerial = 0;
@@ -168,27 +170,23 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "U.S. News & World Report Jan 28 2016 With His Absence, Trump Dominates Another Debate";
+        const char* pszTimestamp = "ALQO launch 27112019";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 250 * COIN;
+        txNew.vout[0].nValue = 0 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("04c10e83b2703ccf322f7dbd62dd5855ac7c10bd055814ce121ba32607d573b8810c02c0582aed05b4deb9c4b77b26d92428c61256cd42774babea0a073b2ed0c9") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1574779000;
-        genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 0;
+        genesis.nTime = 1574900000;
+        genesis.nBits = 0x1f00ffff;
+        genesis.nNonce = 2200556;
 
-        while (genesis.GetHash() > uint256S("00000ffff0000000000000000000000000000000000000000000000000000000")) {
-           genesis.nNonce++;
-           printf("\r%08x", genesis.nNonce);
-        }
-        printf("\n\ngenesis %s\n", genesis.ToString().c_str());
         hashGenesisBlock = genesis.GetHash();
+        assert(hashGenesisBlock == uint256S("000029299875d53f33fc23a629fa4480a7a60f0c75f3a2d995a0b2039e347fbe"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 83);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 90);
@@ -212,7 +210,7 @@ public:
         nBudgetCycleBlocks = 43200; //!< Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30)
         strSporkKey = "038c7d772ea3ff04122dd249284ebcdbfcb773e140ab914a39932143a41f55e872";
         strObfuscationPoolDummyAddress = "aixE2v6zn2e2pznDKoAPvii17MmbkdLjHS";
-        nStartMasternodePayments = genesis.nTime + 5400;
+        nStartMasternodePayments = genesis.nTime;
 
         /** Zerocoin */
         zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
@@ -287,8 +285,6 @@ public:
         nInvalidAmountFiltered = 0;
         nBlockZerocoinV2 = nZerocoinStartHeight;
         nBlockDoubleAccumulated = nZerocoinStartHeight;
-        nEnforceNewSporkKey = 1566860400;
-        nRejectOldSporkKey = 1569538800;
         nBlockStakeModifierlV2 = 1967000;
         nPublicZCSpends = nZerocoinStartHeight;
         nFakeSerialBlockheightEnd = nZerocoinStartHeight;

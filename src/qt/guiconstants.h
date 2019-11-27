@@ -53,7 +53,7 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "ALQO"
+#define QAPP_ORG_NAME "ALQOCRYPTO"
 #define QAPP_ORG_DOMAIN "alqo.org"
 #define QAPP_APP_NAME_DEFAULT "ALQO-Qt"
 #define QAPP_APP_NAME_TESTNET "ALQO-Qt-testnet"
