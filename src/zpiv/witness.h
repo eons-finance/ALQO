@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_WITNESS_H
-#define PIVX_WITNESS_H
+#ifndef ALQO_WITNESS_H
+#define ALQO_WITNESS_H
 
 
 #include <libzerocoin/Accumulator.h>
