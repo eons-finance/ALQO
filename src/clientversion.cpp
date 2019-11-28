@@ -13,7 +13,7 @@
  * for both alqod and alqo-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("ALQO Core");
+const std::string CLIENT_NAME("ALQO");
 
 /**
  * Client version number

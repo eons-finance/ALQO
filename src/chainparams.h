@@ -78,7 +78,7 @@ public:
     int COINBASE_MATURITY() const { return nMaturity; }
 
     /** returns the coinstake maturity (min depth required) **/
-    int COINSTAKE_MIN_DEPTH() const { return nStakeMinDepth; }
+    int COINSTAKE_MIN_AGE() const { return nStakeMinAge; }
     bool HasStakeMinAgeOrDepth(const int contextHeight, const uint32_t contextTime, const int utxoFromBlockHeight, const uint32_t utxoFromBlockTime) const;
 
     /** returns the max future time (and drift in seconds) allowed for a block in the future **/
@@ -103,12 +103,10 @@ public:
     int GetBudgetCycleBlocks() const { return nBudgetCycleBlocks; }
     int64_t GetProposalEstablishmentTime() const { return nProposalEstablishmentTime; }
     CAmount MasternodeCollateral() const { return nMasternodeCollateral; }
+    bool NewSigsActive() const { return true; }
 
     /** Spork key and Masternode Handling **/
-    std::string SporkKey() const { return strSporkKey; }
-    std::string SporkKeyOld() const { return strSporkKeyOld; }
-    int64_t NewSporkStart() const { return nEnforceNewSporkKey; }
-    int64_t RejectOldSporkKey() const { return nRejectOldSporkKey; }
+    std::string SporkPubKey() const { return strSporkPubKey; }
     std::string ObfuscationPoolDummyAddress() const { return strObfuscationPoolDummyAddress; }
     int64_t StartMasternodePayments() const { return nStartMasternodePayments; }
     int64_t Budget_Fee_Confirmations() const { return nBudget_Fee_Confirmations; }
@@ -138,6 +136,7 @@ public:
     int Block_Enforce_Invalid() const { return nBlockEnforceInvalidUTXO; }
     int Zerocoin_Block_V2_Start() const { return nBlockZerocoinV2; }
     bool IsStakeModifierV2(const int nHeight) const { return nHeight >= nBlockStakeModifierlV2; }
+    bool NewSigsActive(const int nHeight) const { return true; }
 
     // fake serial attack
     int Zerocoin_Block_EndFakeSerial() const { return nFakeSerialBlockheightEnd; }
@@ -168,7 +167,7 @@ protected:
     unsigned int nPivxBadBlocknBits;
     int nMasternodeCountDrift;
     int nMaturity;
-    int nStakeMinDepth;
+    int nStakeMinAge;
     int nFutureTimeDriftPoW;
     int nFutureTimeDriftPoS;
 
@@ -192,10 +191,7 @@ protected:
     bool fHeadersFirstSyncingActive;
     int nPoolMaxTransactions;
     int nBudgetCycleBlocks;
-    std::string strSporkKey;
-    std::string strSporkKeyOld;
-    int64_t nEnforceNewSporkKey;
-    int64_t nRejectOldSporkKey;
+    std::string strSporkPubKey;
     std::string strObfuscationPoolDummyAddress;
     int64_t nStartMasternodePayments;
     std::string zerocoinModulus;
@@ -222,6 +218,7 @@ protected:
     int nBlockDoubleAccumulated;
     int nPublicZCSpends;
     int nBlockStakeModifierlV2;
+    bool nBlockEnforceNewMessageSignatures;
 
     // fake serial attack
     int nFakeSerialBlockheightEnd = 0;
