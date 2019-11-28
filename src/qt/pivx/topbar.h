@@ -60,6 +60,8 @@ private slots:
     void lockDropdownClicked(const StateClicked&);
     void refreshStatus();
     void openLockUnlock();
+    void refreshProgressBarSize();
+    void expandSync();
 private:
     Ui::TopBar *ui;
     LockUnlock *lockUnlockWidget = nullptr;

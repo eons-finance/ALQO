@@ -48,4 +48,4 @@ public:
     }
 };
 
-#endif //ALQO_CONCURRENTQUEUE_H
+#endif //PIVX_CONCURRENTQUEUE_H
