@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_ACCUMULATORCHECKPOINTS_JSON_H
-#define PIVX_ACCUMULATORCHECKPOINTS_JSON_H
+#ifndef ALQO_ACCUMULATORCHECKPOINTS_JSON_H
+#define ALQO_ACCUMULATORCHECKPOINTS_JSON_H
 
 #include <string>
 std::string GetMainCheckpoints() {

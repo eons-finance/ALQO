@@ -52,15 +52,12 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (   0, uint256S("000029299875d53f33fc23a629fa4480a7a60f0c75f3a2d995a0b2039e347fbe"))
-    (  40, uint256S("0000165f46e824929f7539125a47273e433c3ad5ca6c915ce2fafdf5a7e09faf"))
-    (  80, uint256S("000000d47a27e5468cf1471d9020ffd97dbaf58b9d9f8c50b1c0788c223ad1cb"))
-    ( 120, uint256S("00000020f69838147c57e434d58b0bfa028ff135f76bdcec3f914d39148e4f1d"))
-    ( 160, uint256S("00000000bddbef0a824f77c0677fab35ae00754f9f789338f2f8978c9ad1d7a5"));
+    (   0, uint256S("000006bed878ada3a921e617c2fd81c45f83d1e4bdd45349f10c59a0939ce745"))
+    ( 140, uint256S("0000000791dcf455eafa2571bb97f8bfd0f135420205f5bc9f575aa55ec24d6e"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1574900000, // * UNIX timestamp of last checkpoint block
+    1574954800, // * UNIX timestamp of last checkpoint block
     1,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     576         // * estimated number of transactions per day after checkpoint
@@ -120,10 +117,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x47;
-        pchMessageStart[1] = 0x90;
-        pchMessageStart[2] = 0x47;
-        pchMessageStart[3] = 0x90;
+        pchMessageStart[0] = 0x44;
+        pchMessageStart[1] = 0x77;
+        pchMessageStart[2] = 0x99;
+        pchMessageStart[3] = 0x00;
         vAlertPubKey = ParseHex("034696359afb387e2aa97bd344546a10a7a2f8982f8e00658a17240152f8bf6fea");
         nDefaultPort = 20480;
         bnProofOfWorkLimit = uint256S("0000fffff0000000000000000000000000000000000000000000000000000000");
@@ -136,7 +133,7 @@ public:
         nMinerThreads = 0;
         nTargetSpacing = 60;
         nMaturity = 30;
-        nStakeMinDepth = 90;
+        nStakeMinDepth = 50;
         nFutureTimeDriftPoW = 7200;
         nFutureTimeDriftPoS = 180;
         nMasternodeCountDrift = 20;
@@ -150,7 +147,7 @@ public:
         nZerocoinStartTime = 2147483647;
         nBlockEnforceSerialRange = 0;
         nBlockRecalculateAccumulators = 0;
-        nBlockLastGoodCheckpoint = 0;
+        nBlockLastGoodCheckpoint = nZerocoinStartHeight;
         nBlockEnforceInvalidUTXO = 0;
         nInvalidAmountFiltered = 0;
         nBlockZerocoinV2 = nZerocoinStartHeight;
@@ -181,12 +178,11 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1574900000;
+        genesis.nTime = 1574954800;
         genesis.nBits = 0x1f00ffff;
-        genesis.nNonce = 2200556;
+        genesis.nNonce = 1861767;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256S("000029299875d53f33fc23a629fa4480a7a60f0c75f3a2d995a0b2039e347fbe"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 83);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 90);
@@ -202,7 +198,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = false;
+        fSkipProofOfWorkCheck = true;
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 
@@ -289,6 +285,9 @@ public:
         nPublicZCSpends = nZerocoinStartHeight;
         nFakeSerialBlockheightEnd = nZerocoinStartHeight;
         nSupplyBeforeFakeSerial = 0;
+
+        // New P2P messages signatures
+        nBlockEnforceNewMessageSignatures = true;
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -415,8 +414,6 @@ public:
         nInvalidAmountFiltered = 0;
         nBlockZerocoinV2 = nZerocoinStartHeight;
         nBlockDoubleAccumulated = nZerocoinStartHeight;
-        nEnforceNewSporkKey = 1566860400;
-        nRejectOldSporkKey = 1569538800;
         nBlockStakeModifierlV2 = 1967000;
         nPublicZCSpends = nZerocoinStartHeight;
         nFakeSerialBlockheightEnd = nZerocoinStartHeight;
