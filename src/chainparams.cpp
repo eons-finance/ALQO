@@ -52,11 +52,11 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (   0, uint256S("0000000000000000000000000000000000000000000000000000000000000000"));
+    (   0, uint256S("0000ecb6cb889f2c427cde803e3e89cf27b0ec36c7342a385207265b5005f253"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1574954800, // * UNIX timestamp of last checkpoint block
+    1575110000, // * UNIX timestamp of last checkpoint block
     1,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     576         // * estimated number of transactions per day after checkpoint
@@ -116,10 +116,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x44;
-        pchMessageStart[1] = 0x77;
-        pchMessageStart[2] = 0x99;
-        pchMessageStart[3] = 0x00;
+        pchMessageStart[0] = 0x4a;
+        pchMessageStart[1] = 0xef;
+        pchMessageStart[2] = 0x41;
+        pchMessageStart[3] = 0x0b;
         vAlertPubKey = ParseHex("034696359afb387e2aa97bd344546a10a7a2f8982f8e00658a17240152f8bf6fea");
         nDefaultPort = 20480;
         bnProofOfWorkLimit = uint256S("0000fffff0000000000000000000000000000000000000000000000000000000");
@@ -166,7 +166,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "ALQO launch 27112019";
+        const char* pszTimestamp = "ALQO launch 30112019";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -177,9 +177,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1574954800;
+        genesis.nTime = 1575110000;
         genesis.nBits = 0x1f00ffff;
-        genesis.nNonce = 1861767;
+        genesis.nNonce = 23554;
 
         hashGenesisBlock = genesis.GetHash();
 
@@ -197,7 +197,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = true;
+        fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 

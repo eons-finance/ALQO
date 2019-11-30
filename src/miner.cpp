@@ -347,21 +347,20 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             //Make payee
             if (txNew.vout.size() > 1) {
                 pblock->payee = txNew.vout[1].scriptPubKey;
-            } else {
-                CAmount blockValue = nFees + GetBlockValue(pindexPrev->nHeight);
-                txNew.vout[0].nValue = blockValue;
-                txNew.vin[0].scriptSig = CScript() << nHeight << OP_0;
             }
         }
 
         nLastBlockTx = nBlockTx;
         nLastBlockSize = nBlockSize;
-        LogPrintf("CreateNewBlock(): total size %u\n", nBlockSize);
+        // LogPrintf("CreateNewBlock(): total size %u\n", nBlockSize);
 
         // Compute final coinbase transaction.
-        pblock->vtx[0].vin[0].scriptSig = CScript() << nHeight << OP_0;
-        if (!fProofOfStake) {
+        if (fProofOfStake) {
+            pblock->vtx[0].vin[0].scriptSig = CScript() << nHeight << OP_0;
+        } else if (!fProofOfStake) {
+            txNew.vin[0].scriptSig = CScript() << nHeight << OP_0;
             pblock->vtx[0] = txNew;
+	    pblock->vtx[0].vout[0].nValue = GetBlockValue(pindexPrev->nHeight);
             pblocktemplate->vTxFees[0] = -nFees;
         }
 
@@ -371,23 +370,11 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             UpdateTime(pblock, pindexPrev);
         pblock->nBits = GetNextWorkRequired(pindexPrev, pblock);
         pblock->nNonce = 0;
-
         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);
-
-        if (fProofOfStake) {
-            unsigned int nExtraNonce = 0;
-            IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
-            LogPrintf("CPUMiner : proof-of-stake block found %s \n", pblock->GetHash().ToString().c_str());
-            if (!SignBlock(*pblock, *pwallet)) {
-                LogPrintf("%s: Signing new block with UTXO key failed \n", __func__);
-                return NULL;
-            }
-        }
 
         CValidationState state;
         if (!TestBlockValidity(state, *pblock, pindexPrev, false, false)) {
             LogPrintf("CreateNewBlock() : TestBlockValidity failed\n");
-            mempool.clear();
             return NULL;
         }
     }
@@ -563,7 +550,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                 continue;
             } else {
                 // Rest for a minute after successful block to preserve close quick
-                MilliSleep(60 * 1000 + GetRand(1 * 60 * 1000));
+//              MilliSleep(60 * 1000 + GetRand(1 * 60 * 1000));
             }
             SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
@@ -593,8 +580,8 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                     bool fSuccess = ProcessBlockFound(pblock, *pwallet, reservekey);
                     if (!fSuccess)
                         continue;
-                    else
-                        MilliSleep(60 * 1000 + GetRand(1 * 60 * 1000));
+                    //else
+                        //MilliSleep(60 * 1000 + GetRand(1 * 60 * 1000));
                     SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
                     // In regression test mode, stop mining after a block is found. This

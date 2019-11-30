@@ -52,10 +52,6 @@ public:
         READWRITE(nTime);
         READWRITE(nBits);
         READWRITE(nNonce);
-
-        //zerocoin active, header changes to include accumulator checksum
-        if(nVersion > 3)
-            READWRITE(nAccumulatorCheckpoint);
     }
 
     void SetNull()
