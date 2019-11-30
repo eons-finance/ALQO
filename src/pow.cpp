@@ -16,66 +16,89 @@
 
 #include <math.h>
 
-unsigned int GetNextWorkRequired(const CBlockIndex *pindexLast, const CBlockHeader *pblock)
+unsigned int PoSWorkRequired(const CBlockIndex* pindexLast)
 {
-  const CBlockIndex *BlockLastSolved = pindexLast;
-  const CBlockIndex *BlockReading = pindexLast;
-  int64_t nActualTimespan = 0;
-  int64_t LastBlockTime = 0;
-  int64_t PastBlocksMin = 24;
-  int64_t PastBlocksMax = 24;
-  int64_t CountBlocks = 0;
-  uint256 PastDifficultyAverage;
-  uint256 PastDifficultyAveragePrev;
+    uint256 bnTargetLimit = (~uint256(0) >> 24);
+    int64_t nTargetTimespan = Params().TargetSpacing();
+    int64_t nTargetSpacing = nTargetTimespan;
 
-  if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 ||
-      BlockLastSolved->nHeight < PastBlocksMin ||
-      pindexLast->nHeight < Params().LAST_POW_BLOCK() - 20)
-    return Params().ProofOfWorkLimit().GetCompact();
+    int64_t nActualSpacing = 0;
+    if (pindexLast->nHeight != 0)
+        nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
 
-  for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
-    if (PastBlocksMax > 0 && i > PastBlocksMax)
-      break;
-    CountBlocks++;
-    if (CountBlocks <= PastBlocksMin) {
-      if (CountBlocks == 1)
-        PastDifficultyAverage.SetCompact(BlockReading->nBits);
-      else
-        PastDifficultyAverage = ((PastDifficultyAveragePrev * CountBlocks) +
-                                 (uint256().SetCompact(BlockReading->nBits))) /
-                                (CountBlocks + 1);
-      PastDifficultyAveragePrev = PastDifficultyAverage;
+    if (nActualSpacing < 0)
+        nActualSpacing = 1;
+
+    uint256 bnNew;
+    bnNew.SetCompact(pindexLast->nBits);
+    int64_t nInterval = nTargetTimespan / nTargetSpacing;
+    bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
+    bnNew /= ((nInterval + 1) * nTargetSpacing);
+
+    if (bnNew <= 0 || bnNew > bnTargetLimit)
+        bnNew = bnTargetLimit;
+
+    return bnNew.GetCompact();
+}
+
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
+{
+    const CBlockIndex* BlockLastSolved = pindexLast;
+    const CBlockIndex* BlockReading = pindexLast;
+    int64_t nActualTimespan = 0;
+    int CountBlocks = 0;
+    int64_t LastBlockTime = 0;
+    int64_t PastBlocksMin = 24;
+    int64_t PastBlocksMax = 24;
+    uint256 PastDifficultyAverage;
+    uint256 PastDifficultyAveragePrev;
+    int64_t nTargetTimespan = Params().TargetSpacing();
+
+    if (pindexLast->nHeight > Params().LAST_POW_BLOCK())
+        return PoSWorkRequired(pindexLast);
+
+    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < PastBlocksMin)
+        return Params().ProofOfWorkLimit().GetCompact();
+
+    for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
+        if (PastBlocksMax > 0 && i > PastBlocksMax) break;
+        CountBlocks++;
+        if (CountBlocks <= PastBlocksMin) {
+            if (CountBlocks == 1)
+                PastDifficultyAverage.SetCompact(BlockReading->nBits);
+            else
+                PastDifficultyAverage = ((PastDifficultyAveragePrev * CountBlocks) +
+                                        (uint256().SetCompact(BlockReading->nBits))) / (CountBlocks + 1);
+            PastDifficultyAveragePrev = PastDifficultyAverage;
+        }
+        if (LastBlockTime > 0) {
+            int64_t Diff = (LastBlockTime - BlockReading->GetBlockTime());
+            nActualTimespan += Diff;
+        }
+        LastBlockTime = BlockReading->GetBlockTime();
+        if (BlockReading->pprev == NULL) {
+            assert(BlockReading);
+            break;
+        }
+        BlockReading = BlockReading->pprev;
     }
-    if (LastBlockTime > 0) {
-      int64_t Diff = (LastBlockTime - BlockReading->GetBlockTime());
-      nActualTimespan += Diff;
+
+    uint256 bnNew(PastDifficultyAverage);
+
+    if (nActualTimespan < nTargetTimespan / 3)
+        nActualTimespan = nTargetTimespan / 3;
+    if (nActualTimespan > nTargetTimespan * 3)
+        nActualTimespan = nTargetTimespan * 3;
+
+    // Retarget
+    bnNew *= nActualTimespan;
+    bnNew /= nTargetTimespan;
+
+    if (bnNew > Params().ProofOfWorkLimit()) {
+        bnNew = Params().ProofOfWorkLimit();
     }
-    LastBlockTime = BlockReading->GetBlockTime();
-    if (BlockReading->pprev == NULL) {
-      assert(BlockReading);
-      break;
-    }
-    BlockReading = BlockReading->pprev;
-  }
 
-  uint256 bnNew(PastDifficultyAverage);
-
-  int64_t _nTargetTimespan = CountBlocks * Params().TargetSpacing();
-
-  if (nActualTimespan < _nTargetTimespan / 3)
-    nActualTimespan = _nTargetTimespan / 3;
-  if (nActualTimespan > _nTargetTimespan * 3)
-    nActualTimespan = _nTargetTimespan * 3;
-
-  // Retarget
-  bnNew *= nActualTimespan;
-  bnNew /= _nTargetTimespan;
-
-  if (bnNew > Params().ProofOfWorkLimit()) {
-    bnNew = Params().ProofOfWorkLimit();
-  }
-
-  return bnNew.GetCompact();
+    return bnNew.GetCompact();
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
@@ -83,9 +106,6 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
     bool fNegative;
     bool fOverflow;
     uint256 bnTarget;
-
-    if (Params().SkipProofOfWorkCheck())
-        return true;
 
     bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
 
@@ -95,10 +115,8 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 
     // Check proof of work matches claimed amount
     if (hash > bnTarget) {
-        if (Params().MineBlocksOnDemand())
-            return false;
-        else
-            return error("CheckProofOfWork() : hash doesn't match nBits");
+        LogPrintf("%s doesnt match %s\n", hash.ToString().c_str(), bnTarget.ToString().c_str());
+        return error("CheckProofOfWork() : hash doesn't match nBits");
     }
 
     return true;
