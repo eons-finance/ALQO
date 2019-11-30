@@ -545,7 +545,7 @@ QPushButton[cssClass="btn-check-theme"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:black;
+    color:white;
     border-radius:2px;
 }
 
@@ -556,7 +556,7 @@ QPushButton[cssClass="btn-check-theme-dark"] {
     qproperty-icon: url("://ic-check-theme-dark") off,
     url("://ic-check-theme-dark") on ;
     qproperty-iconSize: 24px 24px;
-    color:black;
+    color:white;
     border-radius:2px;
 }
 
@@ -566,7 +566,7 @@ QPushButton[cssClass="btn-check-theme-light"] {
     qproperty-icon: url("://ic-check-theme-light") off,
     url("://ic-check-theme-light") on ;
     qproperty-iconSize: 24px 24px;
-    color:black;
+    color:white;
     border-radius:2px;
 }
 
@@ -2716,7 +2716,7 @@ HH        Tooltip
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
-QToolTip { color: black; background-color: #000000; border: none;padding:10px; border-radius:2px;}
+QToolTip { color: white; background-color: #000000; border: none;padding:10px; border-radius:2px;}
 
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
