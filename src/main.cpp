@@ -3485,6 +3485,10 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         if (!stake)
             return error("%s: null stake ptr", __func__);
 
+        const CAmount& nValueIn = stake->GetValue();
+        if (nValueIn < 1 * COIN)
+            return error("%s() : min amount violation", __func__);
+
         uint256 hash = block.GetHash();
         if(!mapProofOfStake.count(hash)) // add to mapProofOfStake
             mapProofOfStake.insert(std::make_pair(hash, hashProofOfStake));

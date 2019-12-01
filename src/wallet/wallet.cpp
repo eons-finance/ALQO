@@ -1829,6 +1829,10 @@ bool CWallet::SelectStakeCoins(std::list<std::unique_ptr<CStakeInput> >& listInp
             if (out.tx->vin[0].IsZerocoinSpend() && !out.tx->IsInMainChain())
                 continue;
 
+            //only select inputs with minimum size of 1 ALQO
+            if (out.tx->vout[out.i].nValue < 1 * COIN)
+                continue;
+
             //never select a collateral
             if (out.tx->vout[out.i].nValue == Params().MasternodeCollateral())
                 continue;
