@@ -122,7 +122,9 @@ void CSporkManager::ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStr
 
         LogPrintf("%s : new %s ID %d Time %d bestHeight %d\n", __func__, hash.ToString(), spork.nSporkID, spork.nValue, nChainHeight);
 
-        bool fValidSig = spork.CheckSignature();
+        std::string strErrorRet;
+        CPubKey pubkey = spork.GetPublicKey(strErrorRet);
+        bool fValidSig = spork.CheckSignature(pubkey);
 
         if (!fValidSig) {
             LOCK(cs_main);
@@ -260,6 +262,11 @@ std::string CSporkMessage::GetStrMessage() const
     return std::to_string(nSporkID) +
             std::to_string(nValue) +
             std::to_string(nTimeSigned);
+}
+
+const CPubKey CSporkMessage::GetPublicKey(std::string& strErrorRet) const
+{
+    return CPubKey(ParseHex(Params().SporkPubKey()));
 }
 
 void CSporkMessage::Relay()

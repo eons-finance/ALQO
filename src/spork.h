@@ -57,6 +57,7 @@ public:
     // override CSignedMessage functions
     uint256 GetSignatureHash() const override;
     std::string GetStrMessage() const override;
+    const CPubKey GetPublicKey(std::string& strErrorRet) const;
     const CTxIn GetVin() const override { return CTxIn(); };
 
     void Relay();
