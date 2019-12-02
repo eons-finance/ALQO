@@ -71,9 +71,6 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
     /* remove Wallet tab and zPiv options in case of -disablewallet */
     if (!enableWallet) {
         ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabWallet));
-
-        ui->verticalZpivOptionsWidget->hide();
-        ui->verticalZpivDisplayWidget->hide();
     }
 
     /* Display elements init */
@@ -87,17 +84,6 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
 
     /* Theme selector static themes */
     ui->theme->addItem(QString("Default"), QVariant("default"));
-
-    /* Preferred Zerocoin Denominations */
-    ui->preferredDenom->addItem(QString(tr("Any")), QVariant("0"));
-    ui->preferredDenom->addItem(QString("1"), QVariant("1"));
-    ui->preferredDenom->addItem(QString("5"), QVariant("5"));
-    ui->preferredDenom->addItem(QString("10"), QVariant("10"));
-    ui->preferredDenom->addItem(QString("50"), QVariant("50"));
-    ui->preferredDenom->addItem(QString("100"), QVariant("100"));
-    ui->preferredDenom->addItem(QString("500"), QVariant("500"));
-    ui->preferredDenom->addItem(QString("1000"), QVariant("1000"));
-    ui->preferredDenom->addItem(QString("5000"), QVariant("5000"));
 
     /* Theme selector external themes */
     boost::filesystem::path pathAddr = GetDataDir() / "themes";
@@ -193,14 +179,6 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->bitcoinAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
-    // Zeromint Enabled
-    mapper->addMapping(ui->checkBoxZeromintEnable, OptionsModel::ZeromintEnable);
-    // Zeromint Addresses
-    mapper->addMapping(ui->checkBoxZeromintAddresses, OptionsModel::ZeromintAddresses);
-    // Zerocoin mint percentage
-    mapper->addMapping(ui->zeromintPercentage, OptionsModel::ZeromintPercentage);
-    // Zerocoin preferred denomination
-    mapper->addMapping(ui->preferredDenom, OptionsModel::ZeromintPrefDenom);
 
     /* Wallet */
     mapper->addMapping(ui->spendZeroConfChange, OptionsModel::SpendZeroConfChange);
