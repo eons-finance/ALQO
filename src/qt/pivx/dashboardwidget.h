@@ -129,7 +129,7 @@ private slots:
     void changeChartColors();
     void onChartYearChanged(const QString&);
     void onChartMonthChanged(const QString&);
-    void onChartArrowClicked();
+    void onChartArrowClicked(bool goLeft);
 #endif
 
 private:
@@ -166,18 +166,18 @@ private:
     bool hasZpivStakes = false;
 
     ChartData* chartData = nullptr;
+    bool hasStakes = false;
 
     void initChart();
     void showHideEmptyChart(bool show, bool loading, bool forceView = false);
     bool refreshChart();
     void tryChartRefresh();
     void updateStakeFilter();
-    QMap<int, std::pair<qint64, qint64>> getAmountBy();
-    void loadChartData(bool withMonthNames);
+    const QMap<int, std::pair<qint64, qint64>> getAmountBy();
+    bool loadChartData(bool withMonthNames);
     void updateAxisX(const QStringList *arg = nullptr);
     void setChartShow(ChartShowType type);
     std::pair<int, int> getChartRange(QMap<int, std::pair<qint64, qint64>> amountsBy);
-    bool hasStakes();
 
 private slots:
     void onChartRefreshed();
