@@ -2,17 +2,17 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/settings/settingssignmessagewidgets.h>
-#include <qt/pivx/settings/forms/ui_settingssignmessagewidgets.h>
-#include <qt/pivx/qtutils.h>
-#include <addressbookpage.h>
-#include <guiutil.h>
-#include <walletmodel.h>
+#include "qt/pivx/settings/settingssignmessagewidgets.h"
+#include "qt/pivx/settings/forms/ui_settingssignmessagewidgets.h"
+#include "qt/pivx/qtutils.h"
+#include "guiutil.h"
+#include "walletmodel.h"
 
-#include <base58.h>
-#include <init.h>
-#include <wallet/wallet.h>
-#include <askpassphrasedialog.h>
+#include "base58.h"
+#include "init.h"
+#include "wallet/wallet.h"
+#include "askpassphrasedialog.h"
+#include "addressbookpage.h"
 
 #include <string>
 #include <vector>
@@ -39,7 +39,7 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(ALQOGUI* _window, QWidget
     ui->labelSubtitle1->setProperty("cssClass", "text-subtitle");
 
     // Address
-    ui->labelSubtitleAddress->setText(tr("Enter a ALQO address or contact label"));
+    ui->labelSubtitleAddress->setText(tr("Enter a ALQO addres or contact label"));
     ui->labelSubtitleAddress->setProperty("cssClass", "text-title");
 
     ui->addressIn_SM->setPlaceholderText(tr("Add address"));

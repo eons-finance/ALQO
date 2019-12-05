@@ -2,14 +2,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/settings/settingsbackupwallet.h>
-#include <qt/pivx/settings/forms/ui_settingsbackupwallet.h>
+#include "qt/pivx/settings/settingsbackupwallet.h"
+#include "qt/pivx/settings/forms/ui_settingsbackupwallet.h"
 #include <QFile>
 #include <QGraphicsDropShadowEffect>
-#include <guiutil.h>
-#include <qt/pivx/qtutils.h>
-#include <guiinterface.h>
-#include <qt/pivx/qtutils.h>
+#include "guiutil.h"
+#include "qt/pivx/qtutils.h"
+#include "guiinterface.h"
+#include "qt/pivx/qtutils.h"
 SettingsBackupWallet::SettingsBackupWallet(ALQOGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsBackupWallet)
@@ -34,7 +34,7 @@ SettingsBackupWallet::SettingsBackupWallet(ALQOGUI* _window, QWidget *parent) :
     ui->labelSubtitle1->setText(tr("Keep your wallet safe doing regular backups, store your backup file externally.\nThis option creates a wallet.dat file that can be used to recover your whole balance (transactions and addresses) from another device."));
     ui->labelSubtitle1->setProperty("cssClass", "text-subtitle");
 
-    ui->labelSubtitle_2->setText(tr("Change your wallet encryption passphrase for another one that you like. This will decrypt and encrypt your whole data under the new passphrase.\nRemember to write it down to not lose access to your funds."));
+    ui->labelSubtitle_2->setText(tr("This will decrypt the whole wallet data and encrypt it back with the new passphrase.\nRemember to write it down and store it safely, otherwise you might lose access to your funds."));
     ui->labelSubtitle_2->setProperty("cssClass", "text-subtitle");
 
     // Location
@@ -57,7 +57,8 @@ SettingsBackupWallet::SettingsBackupWallet(ALQOGUI* _window, QWidget *parent) :
     connect(ui->pushButtonSave_2, SIGNAL(clicked()), this, SLOT(changePassphrase()));
 }
 
-void SettingsBackupWallet::selectFileOutput(){
+void SettingsBackupWallet::selectFileOutput()
+{
     QString filenameRet = GUIUtil::getSaveFileName(this,
                                         tr("Backup Wallet"), QString(),
                                         tr("Wallet Data (*.dat)"), NULL);
@@ -68,7 +69,8 @@ void SettingsBackupWallet::selectFileOutput(){
     }
 }
 
-void SettingsBackupWallet::backupWallet(){
+void SettingsBackupWallet::backupWallet()
+{
     if(walletModel && !filename.isEmpty()) {
         inform(walletModel->backupWallet(filename) ? tr("Backup created") : tr("Backup creation failed"));
         filename = QString();
@@ -78,21 +80,23 @@ void SettingsBackupWallet::backupWallet(){
     }
 }
 
-void SettingsBackupWallet::changePassphrase(){
+void SettingsBackupWallet::changePassphrase()
+{
     showHideOp(true);
     AskPassphraseDialog *dlg = nullptr;
     if (walletModel->getEncryptionStatus() == WalletModel::Unencrypted) {
-        dlg = new AskPassphraseDialog(AskPassphraseDialog::Mode::ChangePass, window,
-                                  walletModel, AskPassphraseDialog::Context::ChangePass);
-    } else {
         dlg = new AskPassphraseDialog(AskPassphraseDialog::Mode::Encrypt, window,
-                                      walletModel, AskPassphraseDialog::Context::Encrypt);
+                walletModel, AskPassphraseDialog::Context::Encrypt);
+    } else {
+        dlg = new AskPassphraseDialog(AskPassphraseDialog::Mode::ChangePass, window,
+                walletModel, AskPassphraseDialog::Context::ChangePass);
     }
     dlg->adjustSize();
     emit execDialog(dlg);
     dlg->deleteLater();
 }
 
-SettingsBackupWallet::~SettingsBackupWallet(){
+SettingsBackupWallet::~SettingsBackupWallet()
+{
     delete ui;
 }

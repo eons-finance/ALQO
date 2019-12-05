@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -86,7 +83,7 @@
              </size>
             </property>
             <property name="text">
-             <string>PushButton</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -105,7 +102,7 @@
              </size>
             </property>
             <property name="text">
-             <string>PushButton</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -211,9 +208,6 @@
               <width>16777215</width>
               <height>45</height>
              </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>

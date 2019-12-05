@@ -2,8 +2,8 @@
 // Created by furszy on 2019-10-04.
 //
 
-#ifndef FURSZY_PIVX_GUITRANSACTIONSUTILS_H
-#define FURSZY_PIVX_GUITRANSACTIONSUTILS_H
+#ifndef FURSZY_ALQO_GUITRANSACTIONSUTILS_H
+#define FURSZY_ALQO_GUITRANSACTIONSUTILS_H
 
 #include "walletmodel.h"
 #include "qt/pivx/pwidget.h"
@@ -19,4 +19,4 @@ namespace GuiTransactionsUtils {
 }
 
 
-#endif //FURSZY_PIVX_GUITRANSACTIONSUTILS_H
+#endif //FURSZY_ALQO_GUITRANSACTIONSUTILS_H

@@ -2,16 +2,16 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/settings/settingsdisplayoptionswidget.h>
-#include <qt/pivx/settings/forms/ui_settingsdisplayoptionswidget.h>
+#include "qt/pivx/settings/settingsdisplayoptionswidget.h"
+#include "qt/pivx/settings/forms/ui_settingsdisplayoptionswidget.h"
 #include <QListView>
 #include <QSettings>
 #include <QDir>
-#include <guiutil.h>
-#include <clientmodel.h>
-#include <optionsmodel.h>
-#include <bitcoinunits.h>
-#include <qt/pivx/qtutils.h>
+#include "guiutil.h"
+#include "clientmodel.h"
+#include "optionsmodel.h"
+#include "bitcoinunits.h"
+#include "qt/pivx/qtutils.h"
 
 SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWidget *parent) :
     PWidget(_window,parent),
@@ -44,6 +44,8 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
 
     ui->labelTitleUrl->setText(tr("Third party transactions URLs"));
     ui->labelTitleUrl->setProperty("cssClass", "text-main-settings");
+    // TODO: Reconnect this option to an action. Hide it for now
+    ui->labelTitleUrl->hide();
 
     // Switch
     ui->pushButtonSwitchBalance->setText(tr("Hide empty balances"));
@@ -87,6 +89,8 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
     // Urls
     ui->lineEditUrl->setPlaceholderText("e.g. https://example.com/tx/%s");
     initCssEditLine(ui->lineEditUrl);
+    // TODO: Reconnect this option to an action. Hide it for now
+    ui->lineEditUrl->hide();
 
     // Buttons
     ui->pushButtonSave->setText(tr("SAVE"));

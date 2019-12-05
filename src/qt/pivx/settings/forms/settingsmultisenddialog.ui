@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">color: rgb(0, 0, 0);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
     <number>0</number>
@@ -32,7 +35,7 @@
    <item>
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">color: rgb(0, 0, 0);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -89,7 +92,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">padding-left:24px;</string>
+           <string notr="true">color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Transaction Details</string>
@@ -265,6 +268,9 @@
                <height>20</height>
               </size>
              </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 0, 0);</string>
+             </property>
              <property name="text">
               <string>TextLabel</string>
              </property>
@@ -325,6 +331,9 @@
             <width>16777215</width>
             <height>20</height>
            </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>TextLabel</string>
