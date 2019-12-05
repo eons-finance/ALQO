@@ -16,11 +16,11 @@
 
 #include <math.h>
 
-unsigned int PoSWorkRequired(const CBlockIndex* pindexLast)
+unsigned int DualRetarget(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
-    uint256 bnTargetLimit = (~uint256(0) >> 24);
-    int64_t nTargetTimespan = Params().TargetSpacing();
-    int64_t nTargetSpacing = nTargetTimespan;
+    uint256 bnTargetLimit = fProofOfStake ? Params().posLimit() : Params().powLimit();
+    int64_t nTargetSpacing = Params().TargetSpacing();
+    int64_t nTargetTimespan = nTargetSpacing * 3;
     int64_t nActualSpacing = 0;
     if (pindexLast->nHeight != 0)
         nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
@@ -38,9 +38,9 @@ unsigned int PoSWorkRequired(const CBlockIndex* pindexLast)
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
 {
-    if (pindexLast->nHeight > Params().LAST_POW_BLOCK())
-        return PoSWorkRequired(pindexLast);
-    return uint256S("000000fffff00000000000000000000000000000000000000000000000000000").GetCompact();
+    if (pindexLast->nHeight < 250) return Params().powLimit().GetCompact();
+    bool fProofOfStake = pindexLast->nHeight > Params().LAST_POW_BLOCK();
+    return DualRetarget(pindexLast, fProofOfStake);
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
@@ -50,7 +50,7 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
     uint256 bnTarget;
     bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
     // Check range
-    if (fNegative || bnTarget == 0 || fOverflow || bnTarget > Params().ProofOfWorkLimit())
+    if (fNegative || bnTarget == 0 || fOverflow || bnTarget > Params().powLimit())
         return error("CheckProofOfWork() : nBits below minimum work");
     // Check proof of work matches claimed amount
     if (hash > bnTarget) {
