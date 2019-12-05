@@ -577,8 +577,6 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                     bool fSuccess = ProcessBlockFound(pblock, *pwallet, reservekey);
                     if (!fSuccess)
                         continue;
-                    else
-                        MilliSleep(60 * 1000 + GetRand(1 * 60 * 1000));
                     SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
                     // In regression test mode, stop mining after a block is found. This

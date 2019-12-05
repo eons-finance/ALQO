@@ -52,12 +52,15 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (   0, uint256S("0000ecb6cb889f2c427cde803e3e89cf27b0ec36c7342a385207265b5005f253"));
+    (   0, uint256S("000040f1123764b16ac29f9c6c994e5beeacaf21f751062f5ab2c651351e0db1"))
+    ( 100, uint256S("0000f37ad8f5d0465fc1c3511d0cf164df3502688e60b7a85df666513c4bfaf0"))
+    ( 200, uint256S("0000952b3e54bbe3bb7a2adf233d4d207d4a17d8a94384a0eb61b4838a15e31a"))
+    ( 250, uint256S("0000ac95d116d7aad7c468d5226c303f8d2f32e1911f05a928bee03488d88929"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1575110000, // * UNIX timestamp of last checkpoint block
-    1,          // * total number of transactions between genesis and last checkpoint
+    1575575101, // * UNIX timestamp of last checkpoint block
+    251,        // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     576         // * estimated number of transactions per day after checkpoint
 };
@@ -67,18 +70,14 @@ static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
     (   0, uint256("0000000000000000000000000000000000000000000000000000000000000000"));
 
 static const Checkpoints::CCheckpointData dataTestnet = {
-    &mapCheckpointsTestnet,
-    1560843157,
-    2501682,
-    250};
+    &mapCheckpointsTestnet, 0, 0, 0};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256("0x001"));
+    boost::assign::map_list_of
+    (   0, uint256("0000000000000000000000000000000000000000000000000000000000000000"));
+
 static const Checkpoints::CCheckpointData dataRegtest = {
-    &mapCheckpointsRegtest,
-    1454124731,
-    0,
-    100};
+    &mapCheckpointsRegtest, 0, 0, 0};
 
 libzerocoin::ZerocoinParams* CChainParams::Zerocoin_Params(bool useModulusV1) const
 {
@@ -110,13 +109,14 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x4a;
-        pchMessageStart[1] = 0xef;
-        pchMessageStart[2] = 0x41;
-        pchMessageStart[3] = 0x0b;
+        pchMessageStart[0] = 0x53;
+        pchMessageStart[1] = 0xae;
+        pchMessageStart[2] = 0x3d;
+        pchMessageStart[3] = 0xff;
         vAlertPubKey = ParseHex("034696359afb387e2aa97bd344546a10a7a2f8982f8e00658a17240152f8bf6fea");
         nDefaultPort = 20480;
-        bnProofOfWorkLimit = uint256S("0000fffff0000000000000000000000000000000000000000000000000000000");
+        bnProofOfWorkLimit =  uint256S("0000fffff0000000000000000000000000000000000000000000000000000000");
+        bnProofOfStakeLimit = uint256S("00fffff000000000000000000000000000000000000000000000000000000000");
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
@@ -161,7 +161,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "ALQO launch 30112019";
+        const char* pszTimestamp = "ALQO launch 06122019";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -172,11 +172,12 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1575110000;
+        genesis.nTime = 1575570915;
         genesis.nBits = 0x1f00ffff;
-        genesis.nNonce = 23554;
+        genesis.nNonce = 13513;
 
         hashGenesisBlock = genesis.GetHash();
+        assert(hashGenesisBlock == uint256S("000040f1123764b16ac29f9c6c994e5beeacaf21f751062f5ab2c651351e0db1"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 83);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 90);
