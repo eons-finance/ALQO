@@ -151,7 +151,6 @@ BITCOIN_CORE_H = \
   spork.h \
   sporkdb.h \
   sporkid.h \
-  stakeinput.h \
   streams.h \
   support/cleanse.h \
   sync.h \
@@ -280,7 +279,6 @@ libbitcoin_wallet_a_SOURCES = \
   zpiv/witness.cpp \
   zpiv/zpivwallet.cpp \
   zpiv/zpivtracker.cpp \
-  stakeinput.cpp \
   genwit.cpp \
   zpiv/zpivmodule.cpp \
   lightzpivthread.cpp \

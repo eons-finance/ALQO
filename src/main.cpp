@@ -3477,17 +3477,9 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
     if (block.IsProofOfStake()) {
         isPoS = true;
         uint256 hashProofOfStake = 0;
-        std::unique_ptr<CStakeInput> stake;
 
-        if (!CheckProofOfStake(block, hashProofOfStake, stake, pindexPrev->nHeight))
+        if(!CheckProofOfStake(block, hashProofOfStake))
             return state.DoS(100, error("%s: proof of stake check failed", __func__));
-
-        if (!stake)
-            return error("%s: null stake ptr", __func__);
-
-        const CAmount& nValueIn = stake->GetValue();
-        if (nValueIn < 1 * COIN)
-            return error("%s() : min amount violation", __func__);
 
         uint256 hash = block.GetHash();
         if(!mapProofOfStake.count(hash)) // add to mapProofOfStake

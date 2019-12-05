@@ -98,12 +98,6 @@ libzerocoin::ZerocoinParams* CChainParams::Zerocoin_Params(bool useModulusV1) co
     return &ZCParamsDec;
 }
 
-bool CChainParams::HasStakeMinAgeOrDepth(const int contextHeight, const uint32_t contextTime,
-        const int utxoFromBlockHeight, const uint32_t utxoFromBlockTime) const
-{
-    return (utxoFromBlockTime + nStakeMinAge <= contextTime);
-}
-
 class CMainParams : public CChainParams
 {
 public:
@@ -133,6 +127,7 @@ public:
         nTargetSpacing = 60;
         nMaturity = 30;
         nStakeMinAge = 60 * 60;
+        nStakeMaxAge = 30 * 24 * 60 * 60;
         nFutureTimeDriftPoW = 7200;
         nFutureTimeDriftPoS = 180;
         nMasternodeCountDrift = 20;
