@@ -79,7 +79,7 @@ public:
 
     /** returns the coinstake maturity (min depth required) **/
     int COINSTAKE_MIN_AGE() const { return nStakeMinAge; }
-    bool HasStakeMinAgeOrDepth(const int contextHeight, const uint32_t contextTime, const int utxoFromBlockHeight, const uint32_t utxoFromBlockTime) const;
+    int COINSTAKE_MAX_AGE() const { return nStakeMaxAge; }
 
     /** returns the max future time (and drift in seconds) allowed for a block in the future **/
     int FutureBlockTimeDrift(const bool isPoS) const { return isPoS ? nFutureTimeDriftPoS : nFutureTimeDriftPoW; }
@@ -168,6 +168,7 @@ protected:
     int nMasternodeCountDrift;
     int nMaturity;
     int nStakeMinAge;
+    int nStakeMaxAge;
     int nFutureTimeDriftPoW;
     int nFutureTimeDriftPoS;
 
