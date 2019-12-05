@@ -32,10 +32,6 @@ RequestDialog::RequestDialog(QWidget *parent) :
     setCssProperty(ui->comboBoxCoin, "btn-combo-coins");
     setCssProperty(ui->comboContainer, "container-purple");
 
-    ui->comboBoxCoin->addItem("ALQO", 0);
-    ui->comboBoxCoin->addItem("zPIV", 1);
-    ui->comboBoxCoin->setView(new QListView());
-
     // Label
     ui->labelSubtitleLabel->setText(tr("Label"));
     setCssProperty(ui->labelSubtitleLabel, "text-title2-dialog");

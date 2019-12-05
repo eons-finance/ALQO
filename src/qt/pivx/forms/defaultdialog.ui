@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <property name="styleSheet">
    <string notr="true">color: rgb(0, 0, 0);</string>
   </property>
@@ -35,7 +38,7 @@
    <item>
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">color: rgb(0, 0, 0);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -92,7 +95,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">padding-left:24px;</string>
+           <string notr="true">color:black;padding-left:24px;</string>
           </property>
           <property name="text">
            <string>Transaction Details</string>
@@ -157,6 +160,9 @@
       </item>
       <item>
        <widget class="QLabel" name="labelMessage">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 0);</string>
+        </property>
         <property name="text">
          <string>Text Label</string>
         </property>

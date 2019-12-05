@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:white;</string>
+   <string notr="true">color:black;background:white;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -89,7 +89,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">padding-left:24px;</string>
+           <string notr="true">color:black;padding-left:24px;</string>
           </property>
           <property name="text">
            <string>Transaction Details</string>

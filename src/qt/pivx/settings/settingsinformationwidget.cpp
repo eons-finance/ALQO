@@ -2,14 +2,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/settings/settingsinformationwidget.h>
-#include <qt/pivx/settings/forms/ui_settingsinformationwidget.h>
-#include <clientmodel.h>
-#include <chainparams.h>
-#include <db.h>
-#include <util.h>
-#include <guiutil.h>
-#include <qt/pivx/qtutils.h>
+#include "qt/pivx/settings/settingsinformationwidget.h"
+#include "qt/pivx/settings/forms/ui_settingsinformationwidget.h"
+#include "clientmodel.h"
+#include "chainparams.h"
+#include "db.h"
+#include "util.h"
+#include "guiutil.h"
+#include "qt/pivx/qtutils.h"
 #include <QDir>
 
 SettingsInformationWidget::SettingsInformationWidget(ALQOGUI* _window,QWidget *parent) :
@@ -108,8 +108,14 @@ SettingsInformationWidget::SettingsInformationWidget(ALQOGUI* _window,QWidget *p
     ui->labelInfoBerkeley->setText(tr("No information"));
 #endif
 
-    connect(ui->pushButtonBackups, &QPushButton::clicked, [](){GUIUtil::showBackups();});
-    connect(ui->pushButtonFile, &QPushButton::clicked, [](){GUIUtil::openConfigfile();});
+    connect(ui->pushButtonBackups, &QPushButton::clicked, [this](){
+        if (!GUIUtil::showBackups())
+            inform(tr("Unable to open backups folder"));
+    });
+    connect(ui->pushButtonFile, &QPushButton::clicked, [this](){
+        if (!GUIUtil::openConfigfile())
+            inform(tr("Unable to open pivx.conf with default application"));
+    });
     connect(ui->pushButtonNetworkMonitor, SIGNAL(clicked()), this, SLOT(openNetworkMonitor()));
 }
 

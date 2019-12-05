@@ -805,18 +805,23 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:16px;
 }
 
+*[cssClass="text-title-right"] {
+    color:#000000;
+    font-size:14px;
+}
+
 *[cssClass="text-title-white"] {
-    color:#ffffff;
+    color:#000000;
     font-size:16px;
 }
 
 *[cssClass="text-content-white"] {
-    color:#ffffff;
+    color:#000000;
     font-size:16px;
 }
 
 *[cssClass="btn-title-grey"] {
-    color:#ffffff;
+    color:#000000;
     font-size:22px;
 }
 
@@ -826,44 +831,44 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="btn-subtitle-grey"] {
-    color:#ffffff;
+    color:#000000;
     font-size:17px;
 }
 
 *[cssClass="text-subtitle"] {
-    color:#B3ffffff;
+    color:#000000;
     font-size:14px;
 }
 
 *[cssClass="text-body2-grey"] {
-    color:#707070;
+    color:#000000;
     font-size:14px;
 }
 
 
 *[cssClass="text-body1"] {
-    color:#ffffff;
+    color:#000000;
     font-size:17px;
 }
 
 *[cssClass="text-body2"] {
-    color:#ffffff;
+    color:#000000;
     font-size:14px;
 }
 
 *[cssClass="text-main-light"] {
-    color:#B3ffffff;
+    color:#000000;
     font-size:17px;
 }
 
 *[cssClass="text-main-grey"] {
-    color:#ffffff;
+    color:#000000;
     font-size:17px;
 }
 
 
 *[cssClass="text-main-settings"] {
-    color:#ffffff;
+    color:#000000;
     font-size:18px;
 }
 
@@ -878,7 +883,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-main-grey-big"] {
-    color:#ffffff;
+    color:#000000;
     font-size:24px;
 }
 
@@ -933,7 +938,7 @@ QPushButton[cssClass="btn-switch"] {
     background-image: url("://ic-switch-off");
     background-position:right center;
     background-repeat:no-repeat;
-    background-color:#ffffff;
+    color:#000000;
     font-size:18px;
     text-align:left;
     color: #bababa;

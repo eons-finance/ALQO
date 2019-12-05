@@ -1500,7 +1500,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:18px;
     border-radius: 2px;
     padding:8px;
-    color: #ffffff;
+    color: #000000;
 }
 
 *[cssClass="edit-primary"]:focus {
@@ -1521,7 +1521,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:18px;
     border-radius: 2px;
     padding:8px;
-    color: #ffffff;
+    color: #000000;
 }
 
 
@@ -1531,7 +1531,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:18px;
     border-radius: 2px;
     padding:8px;
-    color: #ffffff;
+    color: #000000;
 }
 
 QPushButton[cssClass="btn-expand"] {

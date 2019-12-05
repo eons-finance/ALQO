@@ -2,21 +2,21 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/settings/settingsconsolewidget.h>
-#include <qt/pivx/settings/forms/ui_settingsconsolewidget.h>
+#include "qt/pivx/settings/settingsconsolewidget.h"
+#include "qt/pivx/settings/forms/ui_settingsconsolewidget.h"
 #include "QGraphicsDropShadowEffect"
-#include <qt/pivx/qtutils.h>
+#include "qt/pivx/qtutils.h"
 
-#include <clientmodel.h>
-#include <guiutil.h>
+#include "clientmodel.h"
+#include "guiutil.h"
 
-#include <chainparams.h>
-#include <main.h>
-#include <rpc/client.h>
-#include <rpc/server.h>
-#include <util.h>
+#include "chainparams.h"
+#include "main.h"
+#include "rpc/client.h"
+#include "rpc/server.h"
+#include "util.h"
 #ifdef ENABLE_WALLET
-#include <wallet/wallet.h>
+#include "wallet/wallet.h"
 #endif // ENABLE_WALLET
 
 #include <openssl/crypto.h>
@@ -36,8 +36,8 @@
 #include <QTime>
 #include <QTimer>
 #include <QStringList>
-#include <qt/pivx/qtutils.h>
-#include <utilitydialog.h>
+#include "qt/pivx/qtutils.h"
+#include "utilitydialog.h"
 
 const int CONSOLE_HISTORY = 50;
 
@@ -96,6 +96,8 @@ public:
         return new QtRPCTimerBase(func, millis);
     }
 };
+
+#include "qt/pivx/settings/moc_settingsconsolewidget.cpp"
 
 /**
  * Split shell command line into a list of arguments. Aims to emulate \c bash and friends.
@@ -245,16 +247,15 @@ SettingsConsoleWidget::SettingsConsoleWidget(ALQOGUI* _window, QWidget *parent) 
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    ui->left->setProperty("cssClass", "container");
+    setCssProperty({ui->left, ui->messagesWidget}, "container");
     ui->left->setContentsMargins(10,10,10,10);
-    ui->messagesWidget->setProperty("cssClass", "container");
 
     // Title
     ui->labelTitle->setText(tr("Console"));
     setCssTitleScreen(ui->labelTitle);
 
     // Console container
-    ui->consoleWidget->setProperty("cssClass", "container-square");
+    setCssProperty(ui->consoleWidget, "container-square");
     setShadow(ui->consoleWidget);
 
     // Edit
@@ -504,24 +505,22 @@ void SettingsConsoleWidget::changeTheme(bool isLightTheme, QString &theme)
     // Set default style sheet
     if (isLightTheme) {
         ui->messagesWidget->document()->setDefaultStyleSheet(
-                "table { color: #000000;  }"
+                "table { color: #707070;  }"
                 "td.time { color: #808080; padding-top: 3px; } "
                 "td.message { color: #707070;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
                 "td.cmd-request { color: #006060; } "
                 "td.cmd-error { color: red; } "
                 ".secwarning { color: red; }"
-                "b { color: #707070; } "
-                "body { color: #000000; }");
+                "b { color: #707070; } ");
     } else {
         ui->messagesWidget->document()->setDefaultStyleSheet(
                 "table { color: #000000; }"
                 "td.time { color: #808080; padding-top: 3px; } "
-                "td.message { color: #222222;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
+                "td.message { color: #000000;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
                 "td.cmd-request { color: #006060; } "
                 "td.cmd-error { color: red; } "
                 ".secwarning { color: red; }"
-                "b { color: #222222; } "
-                "body { color: #000000; }");
+                "b { color: #000000; } ");
     }
     updateStyle(ui->messagesWidget);
 }
