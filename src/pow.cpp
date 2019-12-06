@@ -16,31 +16,49 @@
 
 #include <math.h>
 
-unsigned int DualRetarget(const CBlockIndex* pindexLast, bool fProofOfStake)
+//! zawy modified for pow/pos (baz)
+unsigned int Lwma3CalculateNextWorkRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
-    uint256 bnTargetLimit = fProofOfStake ? Params().posLimit() : Params().powLimit();
-    int64_t nTargetSpacing = Params().TargetSpacing();
-    int64_t nTargetTimespan = nTargetSpacing * 3;
-    int64_t nActualSpacing = 0;
-    if (pindexLast->nHeight != 0)
-        nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
-    if (nActualSpacing < 0)
-        nActualSpacing = 1;
-    uint256 bnNew;
-    bnNew.SetCompact(pindexLast->nBits);
-    int64_t nInterval = nTargetTimespan / nTargetSpacing;
-    bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
-    bnNew /= ((nInterval + 1) * nTargetSpacing);
-    if (bnNew <= 0 || bnNew > bnTargetLimit)
-        bnNew = bnTargetLimit;
-    return bnNew.GetCompact();
+    const int64_t T = Params().TargetSpacing();
+    const int64_t N = 25;
+    const int64_t k = N * (N + 1) * T / 2;
+    const int64_t height = pindexLast->nHeight;
+    const int64_t lastPow = Params().LAST_POW_BLOCK();
+    const uint256 workLimit = fProofOfStake ? Params().posLimit() : Params().powLimit();
+
+    if ((height < N) || (height > lastPow && (height - lastPow < N)))
+       return workLimit.GetCompact();
+
+    uint256 sumTarget, nextTarget;
+    int64_t thisTimestamp, previousTimestamp;
+    int64_t t = 0, j = 0;
+
+    const CBlockIndex* blockPreviousTimestamp = pindexLast->GetAncestor(height - N);
+    previousTimestamp = blockPreviousTimestamp->GetBlockTime();
+
+    // Loop through N most recent blocks.
+    for (int64_t i = height - N + 1; i <= height; i++) {
+        const CBlockIndex* block = pindexLast->GetAncestor(i);
+        thisTimestamp = (block->GetBlockTime() > previousTimestamp) ?
+                         block->GetBlockTime() : previousTimestamp + 1;
+        int64_t solvetime = std::min(6 * T, thisTimestamp - previousTimestamp);
+        previousTimestamp = thisTimestamp;
+        j++;
+        t += solvetime * j; // Weighted solvetime sum.
+        uint256 target;
+        target.SetCompact(block->nBits);
+        sumTarget += target / (k * N);
+    }
+    nextTarget = t * sumTarget;
+    if (nextTarget > workLimit) { nextTarget = workLimit; }
+
+    return nextTarget.GetCompact();
 }
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
 {
-    if (pindexLast->nHeight < 250) return Params().powLimit().GetCompact();
     bool fProofOfStake = pindexLast->nHeight > Params().LAST_POW_BLOCK();
-    return DualRetarget(pindexLast, fProofOfStake);
+    return Lwma3CalculateNextWorkRequired(pindexLast, fProofOfStake);
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
