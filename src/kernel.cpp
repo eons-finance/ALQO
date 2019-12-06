@@ -264,7 +264,7 @@ uint256 stakeHash(unsigned int nTimeTx, CDataStream ss, unsigned int prevoutInde
     return Hash(ss.begin(), ss.end());
 }
 
-bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned int nTxPrevOffset, const CTransaction& txPrev, const COutPoint& prevout, unsigned int nTimeTx, uint256& hashProofOfStake, bool fMinting, bool fValidate)
+bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, const CTransaction& txPrev, const COutPoint& prevout, unsigned int nTimeTx, uint256& hashProofOfStake, bool fMinting, bool fValidate)
 {
     auto txPrevTime = blockFrom.GetBlockTime();
     if (nTimeTx < txPrevTime)  // Transaction timestamp violation
@@ -294,7 +294,7 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned 
     if (!GetKernelStakeModifier(blockFrom.GetHash(), nTimeTx, nStakeModifier, nStakeModifierHeight, nStakeModifierTime, false))
         return false;
     ss << nStakeModifier;
-    ss << nTimeBlockFrom << nTxPrevOffset << txPrevTime << prevout.n << nTimeTx;
+    ss << nTimeBlockFrom << prevout.hash << txPrevTime << prevout.n << nTimeTx;
     hashProofOfStake = Hash(ss.begin(), ss.end());
 
     // Now check if proof-of-stake hash meets target protocol
@@ -364,7 +364,7 @@ bool CheckProofOfStake(const CBlock &block, uint256& hashProofOfStake)
         return error("CheckProofOfStake(): INFO: failed to find block");
 
     unsigned int nTime = block.nTime;
-    if (!CheckStakeKernelHash(block.nBits, blockprev, sizeof(CBlock), txPrev, txin.prevout, nTime, hashProofOfStake, false, true))
+    if (!CheckStakeKernelHash(block.nBits, blockprev, txPrev, txin.prevout, nTime, hashProofOfStake, false, true))
         return error("CheckProofOfStake() : INFO: check kernel failed on coinstake %s, hashProof=%s \n", tx.GetHash().ToString().c_str(), hashProofOfStake.ToString().c_str());
 
     return true;
