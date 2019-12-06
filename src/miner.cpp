@@ -549,8 +549,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                 fLastLoopOrphan = true;
                 continue;
             } else {
-                LogPrintf("Cooling off.. ");
-                for (unsigned int i = 0; i < 7; i++) {
+                for (unsigned int i = 0; i < 15; i++) {
                      MilliSleep(100);
                      LogPrintf("%d..", i);
                 }
