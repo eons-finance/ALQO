@@ -113,7 +113,7 @@ public:
         vAlertPubKey = ParseHex("034696359afb387e2aa97bd344546a10a7a2f8982f8e00658a17240152f8bf6fea");
         nDefaultPort = 20480;
         bnProofOfWorkLimit =  uint256S("0000fffff0000000000000000000000000000000000000000000000000000000");
-        bnProofOfStakeLimit = uint256S("00fffff000000000000000000000000000000000000000000000000000000000");
+        bnProofOfStakeLimit = uint256S("0001ffff00000000000000000000000000000000000000000000000000000000");
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
