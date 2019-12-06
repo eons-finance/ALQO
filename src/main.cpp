@@ -1705,6 +1705,7 @@ int64_t GetBlockValue(int nHeight)
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
+    if (nHeight <= Params().LAST_POW_BLOCK()) return 0;
     return blockValue * 0.6;
 }
 
