@@ -276,7 +276,7 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, const CTr
     if (nTimeBlockFrom + nStakeMinAge > nTimeTx) // Min age requirement
         return error("CheckStakeKernelHash() : min age violation");
 
-    uint256 bnTargetPerCoinDay;
+    uint256 bnTargetPerCoinDay = 0;
     bnTargetPerCoinDay.SetCompact(nBits);
     CAmount nValueIn = txPrev.vout[prevout.n].nValue;
     // v0.3 protocol kernel hash weight starts from 0 at the 30-day min age
@@ -300,6 +300,8 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, const CTr
     // Now check if proof-of-stake hash meets target protocol
     if (hashProofOfStake > bnCoinDayWeight * bnTargetPerCoinDay)
         return false;
+
+    LogPrintf("hashProof %s\n", hashProofOfStake.ToString().c_str());
 
     return true;
 }
