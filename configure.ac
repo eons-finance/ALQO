@@ -138,12 +138,6 @@ AC_ARG_ENABLE([extended-functional-tests],
     [use_extended_functional_tests=$enableval],
     [use_extended_functional_tests=no])
 
-AC_ARG_WITH([qrencode],
-  [AS_HELP_STRING([--with-qrencode],
-  [enable QR code support (default is yes if qt is enabled and libqrencode is found)])],
-  [use_qr=$withval],
-  [use_qr=auto])
-
 AC_ARG_WITH([qtcharts],
   [AS_HELP_STRING([--with-qtcharts],
   [enable QTCHARTS code support (default is yes if qt is enabled and qtchartview is found)])],
@@ -1092,12 +1086,13 @@ else
   fi
 
   BITCOIN_QT_CHECK(AC_CHECK_LIB([protobuf] ,[main],[PROTOBUF_LIBS=-lprotobuf], BITCOIN_QT_FAIL(libprotobuf not found)))
-
-  BITCOIN_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], BITCOIN_QT_FAIL(libqrencode not found))])
-  BITCOIN_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, BITCOIN_QT_FAIL(libqrencode not found))])
+  BITCOIN_QT_CHECK([AC_CHECK_LIB([Qt5Svg], [main],[SVG_LIBS=-lQt5Svg], BITCOIN_QT_FAIL(svg not found))])
+  BITCOIN_QT_CHECK([AC_CHECK_LIB([Qt5Charts], [main],[CHARTS_LIBS=-lQt5Charts], BITCOIN_QT_FAIL(charts not found))])
+    BITCOIN_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
+    BITCOIN_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
   if test x$use_qtcharts != xno; then
     BITCOIN_QT_CHECK([AC_CHECK_LIB([Qt5Charts], [main],[CHARTS_LIBS=-lQt5Charts], [have_qtcharts=no])])
-    BITCOIN_QT_CHECK([AC_CHECK_HEADER([QtCharts/qchartview.h],, have_qtcharts=no)])
+    BITCOIN_QT_CHECK([AC_CHECK_HEADER([qchartview.h],, have_qtcharts=no)])
   fi
 fi
 
@@ -1262,12 +1257,11 @@ if test x$bitcoin_enable_qt != xno; then
   AC_MSG_RESULT($bitcoin_enable_qt_dbus)
 
   dnl enable qtcharts support
-  AC_MSG_CHECKING([whether to build GUI with support for qtcharts])
+  AC_MSG_CHECKING([whether to build GUI with support for qtcharts codes])
   if test x$have_qtcharts = xno; then
     if test x$use_qtcharts = xyes; then
      AC_MSG_ERROR("QTCharts support requested but cannot be built. use --without-qtcharts")
     fi
-    use_qtcharts=no
     AC_MSG_RESULT(no)
   else
     if test x$use_qtcharts != xno; then
