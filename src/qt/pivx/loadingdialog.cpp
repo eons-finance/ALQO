@@ -2,18 +2,25 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/loadingdialog.h>
-#include <qt/pivx/forms/ui_loadingdialog.h>
+#include "qt/pivx/loadingdialog.h"
+#include "qt/pivx/forms/ui_loadingdialog.h"
 #include <QMovie>
 
 void Worker::process(){
-    try {
-        if (runnable)
+    if (runnable) {
+        try {
             runnable->run(type);
-    } catch (std::exception& e) {
-        QString errorStr = QString::fromStdString(e.what());
-        runnable->onError(errorStr, type);
-        emit error(errorStr, type);
+        } catch (std::exception &e) {
+            QString errorStr = QString::fromStdString(e.what());
+            runnable->onError(errorStr, type);
+            emit error(errorStr, type);
+        } catch (...) {
+            QString errorStr = QString::fromStdString("Unknown error running background task");
+            runnable->onError(errorStr, type);
+            emit error(errorStr, type);
+        }
+    } else {
+        emit error("Null runnable", type);
     }
     emit finished();
 };

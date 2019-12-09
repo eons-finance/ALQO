@@ -2,22 +2,23 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/send.h>
-#include <qt/pivx/forms/ui_send.h>
-#include <qt/pivx/addnewcontactdialog.h>
-#include <qt/pivx/qtutils.h>
-#include <qt/pivx/sendchangeaddressdialog.h>
-#include <qt/pivx/optionbutton.h>
-#include <qt/pivx/sendconfirmdialog.h>
-#include <qt/pivx/myaddressrow.h>
-#include <clientmodel.h>
-#include <optionsmodel.h>
-#include <addresstablemodel.h>
-#include <coincontrol.h>
-#include <script/standard.h>
-#include <zpiv/deterministicmint.h>
-#include <openuridialog.h>
-#include <zpivcontroldialog.h>
+#include "qt/pivx/send.h"
+#include "qt/pivx/forms/ui_send.h"
+#include "qt/pivx/addnewcontactdialog.h"
+#include "qt/pivx/qtutils.h"
+#include "qt/pivx/sendchangeaddressdialog.h"
+#include "qt/pivx/optionbutton.h"
+#include "qt/pivx/sendconfirmdialog.h"
+#include "qt/pivx/myaddressrow.h"
+#include "qt/pivx/guitransactionsutils.h"
+#include "clientmodel.h"
+#include "optionsmodel.h"
+#include "addresstablemodel.h"
+#include "coincontrol.h"
+#include "script/standard.h"
+#include "zpiv/deterministicmint.h"
+#include "openuridialog.h"
+#include "zpivcontroldialog.h"
 
 SendWidget::SendWidget(ALQOGUI* parent) :
     PWidget(parent),
@@ -44,13 +45,24 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     setCssProperty(ui->labelTitle, "text-title-screen");
     ui->labelTitle->setFont(fontLight);
 
+    /* Button Group */
+    ui->pushLeft->setText("ALQO");
+    setCssProperty(ui->pushLeft, "btn-check-left");
+    ui->pushLeft->setChecked(true);
+    ui->pushRight->setText("zALQO");
+    setCssProperty(ui->pushRight, "btn-check-right");
+
     /* Subtitle */
-    ui->labelSubtitle1->setText(tr("You can transfer ALQO coins (ALQO)"));
+    ui->labelSubtitle1->setText(tr("You can transfer public coins (PIV) or private coins (zALQO)"));
     setCssProperty(ui->labelSubtitle1, "text-subtitle");
+
+    ui->labelSubtitle2->setText(tr("Select coin type to spend"));
+    setCssProperty(ui->labelSubtitle2, "text-subtitle");
 
     /* Address */
     ui->labelSubtitleAddress->setText(tr("Enter a ALQO address or contact label"));
     setCssProperty(ui->labelSubtitleAddress, "text-title");
+
 
     /* Amount */
     ui->labelSubtitleAmount->setText(tr("Amount"));
@@ -86,7 +98,7 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     connect(ui->btnCoinControl, SIGNAL(clicked()), this, SLOT(onCoinControlClicked()));
     connect(ui->btnChangeAddress, SIGNAL(clicked()), this, SLOT(onChangeAddressClicked()));
     connect(ui->btnUri, SIGNAL(clicked()), this, SLOT(onOpenUriClicked()));
-    connect(ui->pushButtonReset, SIGNAL(clicked()), this, SLOT(onResetCustomOptions()));
+    connect(ui->pushButtonReset, &QPushButton::clicked, [this](){ onResetCustomOptions(true); });
 
     setCssProperty(ui->coinWidget, "container-coin-type");
     setCssProperty(ui->labelLine, "container-divider");
@@ -123,12 +135,24 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     addEntry();
 
     // Connect
+    connect(ui->pushLeft, &QPushButton::clicked, [this](){onPIVSelected(true);});
+    connect(ui->pushRight,  &QPushButton::clicked, [this](){onPIVSelected(false);});
     connect(ui->pushButtonSave, SIGNAL(clicked()), this, SLOT(onSendClicked()));
     connect(ui->pushButtonAddRecipient, SIGNAL(clicked()), this, SLOT(onAddEntryClicked()));
     connect(ui->pushButtonClear, SIGNAL(clicked()), this, SLOT(clearAll()));
 }
 
 void SendWidget::refreshView(){
+    QString btnText;
+    if(ui->pushLeft->isChecked()){
+        btnText = tr("Send ALQO");
+        ui->pushButtonAddRecipient->setVisible(true);
+    }else{
+        btnText = tr("Send zALQO");
+        ui->pushButtonAddRecipient->setVisible(false);
+    }
+    ui->pushButtonSave->setText(btnText);
+
     refreshAmounts();
 }
 
@@ -143,7 +167,7 @@ void SendWidget::refreshAmounts() {
             total += amount;
     }
 
-    bool isZpiv = false;
+    bool isZpiv = ui->pushRight->isChecked();
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
 
     ui->labelAmountSend->setText(GUIUtil::formatBalance(total, nDisplayUnit, isZpiv));
@@ -198,7 +222,7 @@ void SendWidget::loadWalletModel() {
 }
 
 void SendWidget::clearAll(){
-    onResetCustomOptions();
+    onResetCustomOptions(false);
     if(customFeeDialog) customFeeDialog->clear();
     ui->pushButtonFee->setText(tr("Customize Fee"));
     if(walletModel) walletModel->setWalletDefaultFee();
@@ -206,10 +230,13 @@ void SendWidget::clearAll(){
     refreshAmounts();
 }
 
-void SendWidget::onResetCustomOptions(){
+void SendWidget::onResetCustomOptions(bool fRefreshAmounts){
     CoinControlDialog::coinControl->SetNull();
     ui->btnChangeAddress->setActive(false);
     ui->btnCoinControl->setActive(false);
+    if (fRefreshAmounts) {
+        refreshAmounts();
+    }
 }
 
 void SendWidget::clearEntries(){
@@ -292,7 +319,7 @@ void SendWidget::onSendClicked(){
         return;
     }
 
-    bool sendPiv = true;
+    bool sendPiv = ui->pushLeft->isChecked();
 
     // request unlock only if was locked or unlocked for mixing:
     // this way we let users unlock by walletpassphrase or by menu
@@ -317,10 +344,13 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients){
     prepareStatus = walletModel->prepareTransaction(currentTransaction, CoinControlDialog::coinControl);
 
     // process prepareStatus and on error generate message shown to user
-    processSendCoinsReturn(prepareStatus,
-                           BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(),
-                                                        currentTransaction.getTransactionFee()),
-                           true
+    GuiTransactionsUtils::ProcessSendCoinsReturn(
+            this,
+            prepareStatus,
+            walletModel,
+            BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(),
+                                         currentTransaction.getTransactionFee()),
+            true
     );
 
     if (prepareStatus.status != WalletModel::OK) {
@@ -329,7 +359,11 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients){
     }
 
     showHideOp(true);
-    TxDetailDialog* dialog = new TxDetailDialog(window);
+    QString warningStr = QString();
+//    if (currentTransaction.getTransaction()->fStakeDelegationVoided)
+//        warningStr = tr("WARNING:\nTransaction spends a cold-stake delegation, voiding it.\n"
+//                     "These coins will no longer be cold-staked.");
+    TxDetailDialog* dialog = new TxDetailDialog(window, true, warningStr);
     dialog->setDisplayUnit(walletModel->getOptionsModel()->getDisplayUnit());
     dialog->setData(walletModel, currentTransaction);
     dialog->adjustSize();
@@ -339,12 +373,16 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients){
         // now send the prepared transaction
         WalletModel::SendCoinsReturn sendStatus = dialog->getStatus();
         // process sendStatus and on error generate message shown to user
-        processSendCoinsReturn(sendStatus);
+        GuiTransactionsUtils::ProcessSendCoinsReturn(
+                this,
+                sendStatus,
+                walletModel
+        );
 
         if (sendStatus.status == WalletModel::OK) {
-            CoinControlDialog::coinControl->UnSelectAll();
             clearAll();
             inform(tr("Transaction sent"));
+            dialog->deleteLater();
             return true;
         }
     }
@@ -357,8 +395,8 @@ bool SendWidget::sendZpiv(QList<SendCoinsRecipient> recipients){
     if (!walletModel || !walletModel->getOptionsModel())
         return false;
 
-    if(true) {
-        emit message(tr("Spend Zerocoin"), tr("zPIV is currently undergoing maintenance."), CClientUIInterface::MSG_ERROR);
+    if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
+        emit message(tr("Spend Zerocoin"), tr("zALQO is currently undergoing maintenance."), CClientUIInterface::MSG_ERROR);
         return false;
     }
 
@@ -369,7 +407,7 @@ bool SendWidget::sendZpiv(QList<SendCoinsRecipient> recipients){
         outputs.push_back(std::pair<CBitcoinAddress*, CAmount>(new CBitcoinAddress(rec.address.toStdString()),rec.amount));
     }
 
-    // use mints from zPIV selector if applicable
+    // use mints from zALQO selector if applicable
     std::vector<CMintMeta> vMintsToFetch;
     std::vector<CZerocoinMint> vMintsSelected;
     if (!ZPivControlDialog::setSelectedMints.empty()) {
@@ -408,8 +446,8 @@ bool SendWidget::sendZpiv(QList<SendCoinsRecipient> recipients){
     std::string changeAddress = "";
     if(!boost::get<CNoDestination>(&CoinControlDialog::coinControl->destChange)){
         changeAddress = CBitcoinAddress(CoinControlDialog::coinControl->destChange).ToString();
-    }else{
-        changeAddress = walletModel->getAddressTableModel()->getLastUnusedAddress().toStdString();
+//  }else{
+//      changeAddress = walletModel->getAddressTableModel()->getAddressToShow().toStdString();
     }
 
     if (walletModel->sendZpiv(
@@ -421,17 +459,17 @@ bool SendWidget::sendZpiv(QList<SendCoinsRecipient> recipients){
             changeAddress
     )
             ) {
-        inform(tr("zPIV transaction sent!"));
+        inform(tr("zALQO transaction sent!"));
         ZPivControlDialog::setSelectedMints.clear();
         clearAll();
         return true;
     } else {
         QString body;
         if (receipt.GetStatus() == ZPIV_SPEND_V1_SEC_LEVEL) {
-            body = tr("Version 1 zPIV require a security level of 100 to successfully spend.");
+            body = tr("Version 1 zALQO require a security level of 100 to successfully spend.");
         } else {
             int nNeededSpends = receipt.GetNeededSpends(); // Number of spends we would need for this transaction
-            const int nMaxSpends = Params().Zerocoin_MaxSpendsPerTransaction(); // Maximum possible spends for one zPIV transaction
+            const int nMaxSpends = Params().Zerocoin_MaxSpendsPerTransaction(); // Maximum possible spends for one zALQO transaction
             if (nNeededSpends > nMaxSpends) {
                 body = tr("Too much inputs (") + QString::number(nNeededSpends, 10) +
                        tr(") needed.\nMaximum allowed: ") + QString::number(nMaxSpends, 10);
@@ -441,7 +479,7 @@ bool SendWidget::sendZpiv(QList<SendCoinsRecipient> recipients){
                 body = QString::fromStdString(receipt.GetStatusMessage());
             }
         }
-        emit message("zPIV transaction failed", body, CClientUIInterface::MSG_ERROR);
+        emit message("zALQO transaction failed", body, CClientUIInterface::MSG_ERROR);
         return false;
     }
 }
@@ -471,73 +509,6 @@ void SendWidget::updateEntryLabels(QList<SendCoinsRecipient> recipients){
         }
 
     }
-}
-
-void SendWidget::processSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg, bool fPrepare)
-{
-    bool fAskForUnlock = false;
-
-    QPair<QString, CClientUIInterface::MessageBoxFlags> msgParams;
-    // Default to a warning message, override if error message is needed
-    msgParams.second = CClientUIInterface::MSG_WARNING;
-
-    // This comment is specific to SendCoinsDialog usage of WalletModel::SendCoinsReturn.
-    // WalletModel::TransactionCommitFailed is used only in WalletModel::sendCoins()
-    // all others are used only in WalletModel::prepareTransaction()
-    switch (sendCoinsReturn.status) {
-        case WalletModel::InvalidAddress:
-            msgParams.first = tr("The recipient address is not valid, please recheck.");
-            break;
-        case WalletModel::InvalidAmount:
-            msgParams.first = tr("The amount to pay must be larger than 0.");
-            break;
-        case WalletModel::AmountExceedsBalance:
-            msgParams.first = tr("The amount exceeds your balance.");
-            break;
-        case WalletModel::AmountWithFeeExceedsBalance:
-            msgParams.first = tr("The total exceeds your balance when the %1 transaction fee is included.").arg(msgArg);
-            break;
-        case WalletModel::DuplicateAddress:
-            msgParams.first = tr("Duplicate address found, can only send to each address once per send operation.");
-            break;
-        case WalletModel::TransactionCreationFailed:
-            msgParams.first = tr("Transaction creation failed!");
-            msgParams.second = CClientUIInterface::MSG_ERROR;
-            break;
-        case WalletModel::TransactionCommitFailed:
-            msgParams.first = tr("The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.");
-            msgParams.second = CClientUIInterface::MSG_ERROR;
-            break;
-        case WalletModel::AnonymizeOnlyUnlocked:
-            // Unlock is only need when the coins are send
-            if(!fPrepare)
-                fAskForUnlock = true;
-            else
-                msgParams.first = tr("Error: The wallet was unlocked only to anonymize coins.");
-            break;
-
-        case WalletModel::InsaneFee:
-            msgParams.first = tr("A fee %1 times higher than %2 per kB is considered an insanely high fee.").arg(10000).arg(BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), ::minRelayTxFee.GetFeePerK()));
-            break;
-            // included to prevent a compiler warning.
-        case WalletModel::OK:
-        default:
-            return;
-    }
-
-    // Unlock wallet if it wasn't fully unlocked already
-    if(fAskForUnlock) {
-        walletModel->requestUnlock(AskPassphraseDialog::Context::Unlock_Full, false);
-        if(walletModel->getEncryptionStatus () != WalletModel::Unlocked) {
-            msgParams.first = tr("Error: The wallet was unlocked only to anonymize coins. Unlock canceled.");
-        }
-        else {
-            // Wallet unlocked
-            return;
-        }
-    }
-
-    emit message(tr("Send Coins"), msgParams.first, msgParams.second);
 }
 
 
@@ -637,7 +608,7 @@ void SendWidget::onCoinControlClicked(){
             ui->btnCoinControl->setActive(!ZPivControlDialog::setSelectedMints.empty());
             zPivControl->deleteLater();
         } else {
-            inform(tr("You don't have any zPIV in your balance to select."));
+            inform(tr("You don't have any zALQO in your balance to select."));
         }
     }
 }
@@ -779,7 +750,7 @@ void SendWidget::onDeleteClicked(){
         focusedEntry->deleteLater();
         int entryNumber = focusedEntry->getNumber();
 
-        // Refresh amount total + rest of rows numbers.
+        // remove selected entry and update row number for the others
         QMutableListIterator<SendMultiRow*> it(entries);
         while (it.hasNext()) {
             SendMultiRow* entry = it.next();
@@ -797,6 +768,9 @@ void SendWidget::onDeleteClicked(){
         }
 
         focusedEntry = nullptr;
+
+        // Update total amounts
+        refreshAmounts();
     }
 }
 

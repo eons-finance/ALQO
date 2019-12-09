@@ -5,11 +5,11 @@
 #ifndef CONTACTSDROPDOWN_H
 #define CONTACTSDROPDOWN_H
 
-#include <addresstablemodel.h>
-#include <qt/pivx/pwidget.h>
-#include <qt/pivx/contactdropdownrow.h>
-#include <qt/pivx/furabstractlistitemdelegate.h>
-#include <qt/pivx/addressfilterproxymodel.h>
+#include "addresstablemodel.h"
+#include "qt/pivx/pwidget.h"
+#include "qt/pivx/contactdropdownrow.h"
+#include "qt/pivx/furabstractlistitemdelegate.h"
+#include "qt/pivx/addressfilterproxymodel.h"
 #include <QListView>
 #include <QObject>
 #include <QWidget>
@@ -31,13 +31,14 @@ public:
     explicit ContactsDropdown(int minWidth, int minHeight, PWidget *parent = nullptr);
 
     void resizeList(int minWidth, int mintHeight);
-    void setWalletModel(WalletModel* _model, QString type);
+    void setWalletModel(WalletModel* _model, const QString& type);
+    void setType(const QString& type);
     void changeTheme(bool isLightTheme, QString& theme) override;
 signals:
     void contactSelected(QString address, QString label);
 private:
-    FurAbstractListItemDelegate* delegate;
-    AddressTableModel* model;
+    FurAbstractListItemDelegate* delegate = nullptr;
+    AddressTableModel* model = nullptr;
     AddressFilterProxyModel *filter = nullptr;
     QListView *list;
     QFrame *frameList;

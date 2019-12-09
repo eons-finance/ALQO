@@ -8,6 +8,7 @@
 #ifndef BITCOIN_WALLET_H
 #define BITCOIN_WALLET_H
 
+#include "addressbook.h"
 #include "amount.h"
 #include "base58.h"
 #include "crypter.h"
@@ -15,6 +16,7 @@
 #include "key.h"
 #include "keystore.h"
 #include "main.h"
+#include "pairresult.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "zpiv/zerocoin.h"
@@ -231,6 +233,7 @@ public:
     bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
     std::string GetUniqueWalletBackupName(bool fzpivAuto) const;
     void InitAutoConvertAddresses();
+    CBitcoinAddress ParseIntoAddress(const CTxDestination& dest, const std::string& purpose);
 
 
     /** Zerocin entry changed.
@@ -419,8 +422,10 @@ public:
     //  keystore implementation
     // Generate a new key
     CPubKey GenerateNewKey();
+    PairResult getNewAddress(CBitcoinAddress& ret, const std::string addressLabel, const std::string purpose,
+                                           const CChainParams::Base58Type addrType = CChainParams::PUBKEY_ADDRESS);
+    PairResult getNewAddress(CBitcoinAddress& ret, std::string label);
     CBitcoinAddress GenerateNewAutoMintKey();
-
     int64_t GetKeyCreationTime(CPubKey pubkey);
     int64_t GetKeyCreationTime(const CBitcoinAddress& address);
 
@@ -479,7 +484,7 @@ public:
     int64_t IncOrderPosNext(CWalletDB* pwalletdb = NULL);
 
     void MarkDirty();
-    bool AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet = false);
+    bool AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet, CWalletDB* pwalletdb);
     void SyncTransaction(const CTransaction& tx, const CBlock* pblock);
     bool AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pblock, bool fUpdate);
     void EraseFromWallet(const uint256& hash);
@@ -616,8 +621,11 @@ public:
     DBErrors ZapWalletTx(std::vector<CWalletTx>& vWtx);
 
     bool SetAddressBook(const CTxDestination& address, const std::string& strName, const std::string& purpose);
+    bool DelAddressBook(const CTxDestination& address) const;
+    bool HasAddressBook(const CTxDestination& address) const;
+    bool HasDelegator(const CTxOut& out) const;
 
-    bool DelAddressBook(const CTxDestination& address);
+    std::string purposeForAddress(const CTxDestination& address) const;
 
     bool UpdatedTransaction(const uint256& hashTx);
 

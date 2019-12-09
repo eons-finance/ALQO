@@ -2,13 +2,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/mnmodel.h>
-#include <masternode-sync.h>
-#include <masternodeman.h>
-#include <activemasternode.h>
-#include <sync.h>
-#include <uint256.h>
-#include <wallet/wallet.h>
+#include "qt/pivx/mnmodel.h"
+#include "masternode-sync.h"
+#include "masternodeman.h"
+#include "activemasternode.h"
+#include "sync.h"
+#include "uint256.h"
+#include "wallet/wallet.h"
 
 MNModel::MNModel(QObject *parent) : QAbstractTableModel(parent){
     updateMNList();
@@ -29,7 +29,7 @@ void MNModel::updateMNList(){
         if (!pmn){
             pmn = new CMasternode();
             pmn->vin = txIn;
-            pmn->activeState = CMasternode::MASTERNODE_EXPIRED;
+            pmn->activeState = CMasternode::MASTERNODE_MISSING;
         }
         nodes.insert(QString::fromStdString(mne.getAlias()), std::make_pair(QString::fromStdString(mne.getIp()), pmn));
         if(pwalletMain) {

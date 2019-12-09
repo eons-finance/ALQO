@@ -2,12 +2,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/mninfodialog.h>
-#include <qt/pivx/forms/ui_mninfodialog.h>
-#include <walletmodel.h>
-#include <wallet/wallet.h>
-#include <guiutil.h>
-#include <qt/pivx/qtutils.h>
+#include "qt/pivx/mninfodialog.h"
+#include "qt/pivx/forms/ui_mninfodialog.h"
+#include "walletmodel.h"
+#include "wallet/wallet.h"
+#include "guiutil.h"
+#include "qt/pivx/qtutils.h"
 #include <QDateTime>
 
 MnInfoDialog::MnInfoDialog(QWidget *parent) :
@@ -25,8 +25,8 @@ MnInfoDialog::MnInfoDialog(QWidget *parent) :
     setCssProperty({ui->pushCopy, ui->pushCopyId, ui->pushExport}, "ic-copy-big");
     setCssProperty(ui->btnEsc, "ic-close");
     connect(ui->btnEsc, SIGNAL(clicked()), this, SLOT(closeDialog()));
-    connect(ui->pushCopy, &QPushButton::clicked, [this](){ copyInform(txId, "Master Node public key copied"); });
-    connect(ui->pushCopyId, &QPushButton::clicked, [this](){ copyInform(pubKey, "Collateral tx id copied"); });
+    connect(ui->pushCopy, &QPushButton::clicked, [this](){ copyInform(pubKey, "Master Node public key copied"); });
+    connect(ui->pushCopyId, &QPushButton::clicked, [this](){ copyInform(txId, "Collateral tx id copied"); });
     connect(ui->pushExport, &QPushButton::clicked, [this](){ exportMN = true; accept(); });
 }
 

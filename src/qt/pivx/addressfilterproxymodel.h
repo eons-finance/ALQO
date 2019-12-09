@@ -6,17 +6,26 @@
 #define ALQO_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
 
 #include <QSortFilterProxyModel>
-#include <addresstablemodel.h>
+#include "addresstablemodel.h"
 
 
 class AddressFilterProxyModel final : public QSortFilterProxyModel
 {
-    const QString m_type;
 
 public:
     AddressFilterProxyModel(const QString& type, QObject* parent)
             : QSortFilterProxyModel(parent)
-            , m_type(type) {
+            , m_types({type}) {
+        init();
+    }
+
+    AddressFilterProxyModel(const QStringList& types, QObject* parent)
+            : QSortFilterProxyModel(parent)
+            , m_types(types) {
+        init();
+    }
+
+    void init() {
         setDynamicSortFilter(true);
         setFilterCaseSensitivity(Qt::CaseInsensitive);
         setSortCaseSensitivity(Qt::CaseInsensitive);
@@ -24,8 +33,14 @@ public:
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
+    void setType(const QString& type);
+    void setType(const QStringList& types);
+
 protected:
     bool filterAcceptsRow(int row, const QModelIndex& parent) const override;
+
+private:
+    QStringList m_types;
 };
 
 

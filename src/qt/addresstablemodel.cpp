@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "addresstablemodel.h"
+#include "addressbook.h"
 
 #include "guiutil.h"
 #include "walletmodel.h"
@@ -485,6 +486,13 @@ QString AddressTableModel::labelForAddress(const QString& address) const
         }
     }
     return QString();
+}
+
+/* Look up purpose for address in address book
+ */
+std::string AddressTableModel::purposeForAddress(const std::string& address) const
+{
+    return wallet->purposeForAddress(CBitcoinAddress(address).Get());
 }
 
 int AddressTableModel::lookupAddress(const QString& address) const

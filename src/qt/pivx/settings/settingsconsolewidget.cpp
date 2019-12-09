@@ -247,15 +247,16 @@ SettingsConsoleWidget::SettingsConsoleWidget(ALQOGUI* _window, QWidget *parent) 
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    setCssProperty({ui->left, ui->messagesWidget}, "container");
+    ui->left->setProperty("cssClass", "container");
     ui->left->setContentsMargins(10,10,10,10);
+    ui->messagesWidget->setProperty("cssClass", "container");
 
     // Title
     ui->labelTitle->setText(tr("Console"));
     setCssTitleScreen(ui->labelTitle);
 
     // Console container
-    setCssProperty(ui->consoleWidget, "container-square");
+    ui->consoleWidget->setProperty("cssClass", "container-square");
     setShadow(ui->consoleWidget);
 
     // Edit
@@ -514,13 +515,13 @@ void SettingsConsoleWidget::changeTheme(bool isLightTheme, QString &theme)
                 "b { color: #707070; } ");
     } else {
         ui->messagesWidget->document()->setDefaultStyleSheet(
-                "table { color: #000000; }"
+                "table { color: #FFFFFF; }"
                 "td.time { color: #808080; padding-top: 3px; } "
-                "td.message { color: #000000;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
+                "td.message { color: #FFFFFF;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
                 "td.cmd-request { color: #006060; } "
                 "td.cmd-error { color: red; } "
                 ".secwarning { color: red; }"
-                "b { color: #000000; } ");
+                "b { color: #FFFFFF; } ");
     }
     updateStyle(ui->messagesWidget);
 }

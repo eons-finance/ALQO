@@ -2,17 +2,17 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/addresseswidget.h>
-#include <qt/pivx/forms/ui_addresseswidget.h>
-#include <qt/pivx/addresslabelrow.h>
-#include <qt/pivx/addnewaddressdialog.h>
-#include <qt/pivx/tooltipmenu.h>
+#include "qt/pivx/addresseswidget.h"
+#include "qt/pivx/forms/ui_addresseswidget.h"
+#include "qt/pivx/addresslabelrow.h"
+#include "qt/pivx/addnewaddressdialog.h"
+#include "qt/pivx/tooltipmenu.h"
 
-#include <qt/pivx/addnewcontactdialog.h>
-#include <qt/pivx/pivxgui.h>
-#include <guiutil.h>
-#include <qt/pivx/qtutils.h>
-#include <walletmodel.h>
+#include "qt/pivx/addnewcontactdialog.h"
+#include "qt/pivx/pivxgui.h"
+#include "guiutil.h"
+#include "qt/pivx/qtutils.h"
+#include "walletmodel.h"
 
 #include <QModelIndex>
 #include <QRegExpValidator>
@@ -193,7 +193,7 @@ void AddressesWidget::onStoreContactClicked(){
             return;
         }
 
-        if (walletModel->updateAddressBookLabels(pivAdd.Get(), label.toUtf8().constData(), "send")) {
+        {
             ui->lineEditAddress->setText("");
             ui->lineEditName->setText("");
             setCssEditLine(ui->lineEditAddress, true, true);
@@ -204,8 +204,6 @@ void AddressesWidget::onStoreContactClicked(){
                 ui->listAddresses->setVisible(true);
             }
             inform(tr("New Contact Stored"));
-        } else {
-            inform(tr("Error Storing Contact"));
         }
     }
 }
@@ -217,27 +215,22 @@ void AddressesWidget::onEditClicked(){
     AddNewContactDialog *dialog = new AddNewContactDialog(window);
     dialog->setData(address, currentLabel);
     if(openDialogWithOpaqueBackground(dialog, window)){
-        if(walletModel->updateAddressBookLabels(
-                CBitcoinAddress(address.toStdString()).Get(), dialog->getLabel().toStdString(), "send")){
-            inform(tr("Contact edited"));
-        }else{
-            inform(tr("Contact edit failed"));
-        }
+      if(walletModel->updateAddressBookLabels(CBitcoinAddress(address.toStdString()).Get(), dialog->getLabel().toStdString(), addressTablemodel->purposeForAddress(address.toStdString()))){
+        inform(tr("Contact edited"));
+      }else{
+        inform(tr("Contact edit failed"));
+      }
     }
-    dialog->deleteLater();
 }
 
 void AddressesWidget::onDeleteClicked(){
     if(walletModel) {
-        if (ask(tr("Delete Contact"), tr("You are just about to remove the contact:\n\n%1\n\nAre you sure?").arg(index.data(Qt::DisplayRole).toString().toUtf8().constData()))
-        ) {
             if (this->walletModel->getAddressTableModel()->removeRows(index.row(), 1, index)) {
                 updateListView();
                 inform(tr("Contact Deleted"));
             } else {
                 inform(tr("Error deleting a contact"));
             }
-        }
     }
 }
 

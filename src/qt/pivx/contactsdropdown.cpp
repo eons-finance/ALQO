@@ -2,16 +2,16 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/contactsdropdown.h>
+#include "qt/pivx/contactsdropdown.h"
 
 #include <QPainter>
 #include <QSizePolicy>
-#include <qt/pivx/addresslabelrow.h>
-#include <qt/pivx/contactdropdownrow.h>
-#include <qt/pivx/qtutils.h>
-#include <qt/pivx/furlistrow.h>
-#include <walletmodel.h>
-#include <addresstablemodel.h>
+#include "qt/pivx/addresslabelrow.h"
+#include "qt/pivx/contactdropdownrow.h"
+#include "qt/pivx/qtutils.h"
+#include "qt/pivx/furlistrow.h"
+#include "walletmodel.h"
+#include "addresstablemodel.h"
 
 #define DECORATION_SIZE 70
 #define NUM_ITEMS 3
@@ -81,12 +81,21 @@ ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, PWidget *parent)
     connect(list, SIGNAL(clicked(QModelIndex)), this, SLOT(handleClick(QModelIndex)));
 }
 
-void ContactsDropdown::setWalletModel(WalletModel* _model, QString type){
-    model = _model->getAddressTableModel();
-    this->filter = new AddressFilterProxyModel(type, this);
-    this->filter->setSourceModel(model);
-    list->setModel(this->filter);
-    list->setModelColumn(AddressTableModel::Address);
+void ContactsDropdown::setWalletModel(WalletModel* _model, const QString& type){
+    if (!model) {
+        model = _model->getAddressTableModel();
+        this->filter = new AddressFilterProxyModel(type, this);
+        this->filter->setSourceModel(model);
+        list->setModel(this->filter);
+        list->setModelColumn(AddressTableModel::Address);
+    } else {
+        setType(type);
+    }
+}
+
+void ContactsDropdown::setType(const QString& type) {
+    if (filter)
+        filter->setType(type);
 }
 
 void ContactsDropdown::resizeList(int minWidth, int mintHeight){

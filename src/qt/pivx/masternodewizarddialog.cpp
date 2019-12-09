@@ -2,13 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/masternodewizarddialog.h>
-#include <qt/pivx/forms/ui_masternodewizarddialog.h>
-#include <qt/pivx/qtutils.h>
-#include <optionsmodel.h>
-#include <activemasternode.h>
+#include "qt/pivx/masternodewizarddialog.h"
+#include "qt/pivx/forms/ui_masternodewizarddialog.h"
+#include "qt/pivx/qtutils.h"
+#include "optionsmodel.h"
+#include "pairresult.h"
+#include "activemasternode.h"
 #include <QFile>
 #include <QIntValidator>
+#include <QHostAddress>
 #include <QRegExpValidator>
 
 MasterNodeWizardDialog::MasterNodeWizardDialog(WalletModel *model, QWidget *parent) :
@@ -56,7 +58,7 @@ MasterNodeWizardDialog::MasterNodeWizardDialog(WalletModel *model, QWidget *pare
     setCssSubtitleScreen(ui->labelSubtitleAddressIp);
 
     ui->lineEditIpAddress->setPlaceholderText("e.g 18.255.255.255");
-    ui->lineEditPort->setPlaceholderText("e.g Params().GetDefaultPort()");
+    ui->lineEditPort->setPlaceholderText("e.g 51472");
     initCssEditLine(ui->lineEditIpAddress);
     initCssEditLine(ui->lineEditPort);
     ui->stackedWidget->setCurrentIndex(pos);
@@ -65,7 +67,7 @@ MasterNodeWizardDialog::MasterNodeWizardDialog(WalletModel *model, QWidget *pare
         ui->lineEditPort->setEnabled(false);
         ui->lineEditPort->setText("51474");
     } else {
-        ui->lineEditPort->setText("Params().GetDefaultPort()");
+        ui->lineEditPort->setText("51472");
     }
 
     // Confirm icons
@@ -178,10 +180,19 @@ bool MasterNodeWizardDialog::createMN(){
         std::string port = portStr.toStdString();
 
         // New receive address
-        CBitcoinAddress address = walletModel->getNewAddress(alias);
+        CBitcoinAddress address;
+#if 0
+        PairResult r = walletModel->getNewAddress(address, alias);
+
+        if (!r.result) {
+            // generate address fail
+            inform(tr(r.status->c_str()));
+            return false;
+        }
+#endif
 
         // const QString& addr, const QString& label, const CAmount& amount, const QString& message
-        SendCoinsRecipient sendCoinsRecipient(QString::fromStdString(address.ToString()), "", CAmount(10000) * COIN, "");
+        SendCoinsRecipient sendCoinsRecipient(QString::fromStdString(address.ToString()), QString::fromStdString(alias), CAmount(10000) * COIN, "");
 
         // Send the 10 tx to one of your address
         QList<SendCoinsRecipient> recipients;
@@ -254,7 +265,7 @@ bool MasterNodeWizardDialog::createMN(){
                 if (lineCopy.size() == 0) {
                     lineCopy = "# Masternode config file\n"
                                "# Format: alias IP:port masternodeprivkey collateral_output_txid collateral_output_index\n"
-                               "# Example: mn1 127.0.0.2:40000 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0"
+                               "# Example: mn1 127.0.0.2:51472 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0"
                                "#";
                 }
                 lineCopy += "\n";
@@ -266,7 +277,7 @@ bool MasterNodeWizardDialog::createMN(){
                 int indexOut = -1;
                 for (int i=0; i < (int)walletTx->vout.size(); i++){
                     CTxOut& out = walletTx->vout[i];
-                    if (out.nValue == Params().MasternodeCollateral()){
+                    if (out.nValue == 10000 * COIN){
                         indexOut = i;
                     }
                 }
