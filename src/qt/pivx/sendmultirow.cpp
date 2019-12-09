@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/sendmultirow.h>
-#include <qt/pivx/forms/ui_sendmultirow.h>
+#include "qt/pivx/sendmultirow.h"
+#include "qt/pivx/forms/ui_sendmultirow.h"
 #include <QDoubleValidator>
 
-#include <optionsmodel.h>
-#include <addresstablemodel.h>
-#include <guiutil.h>
-#include <bitcoinunits.h>
-#include <qt/pivx/qtutils.h>
+#include "optionsmodel.h"
+#include "addresstablemodel.h"
+#include "guiutil.h"
+#include "bitcoinunits.h"
+#include "qt/pivx/qtutils.h"
 
 SendMultiRow::SendMultiRow(PWidget *parent) :
     PWidget(parent),
@@ -27,7 +27,7 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
 
     ui->lineEditAmount->setPlaceholderText("0.00 ALQO ");
     initCssEditLine(ui->lineEditAmount);
-    QDoubleValidator *doubleValidator = new QDoubleValidator(0, 9999999, 7, this);
+    QDoubleValidator *doubleValidator = new QDoubleValidator(0, 9999999, 8, this);
     doubleValidator->setNotation(QDoubleValidator::StandardNotation);
     ui->lineEditAmount->setValidator(doubleValidator);
 
@@ -67,9 +67,14 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
 
 void SendMultiRow::amountChanged(const QString& amount){
     if(!amount.isEmpty()) {
-        CAmount value = getAmountValue(amount);
+        QString amountStr = amount;
+        int commaIndex = amountStr.indexOf(',');
+        if (commaIndex != -1) {
+            amountStr = amountStr.remove(commaIndex, 1);
+        }
+        CAmount value = getAmountValue(amountStr);
         if (value > 0) {
-            ui->lineEditAmount->setText(amount);
+            ui->lineEditAmount->setText(amountStr);
             setCssEditLine(ui->lineEditAmount, true, true);
         }
     }
@@ -141,6 +146,7 @@ void SendMultiRow::clear() {
     ui->lineEditAddress->clear();
     ui->lineEditAmount->clear();
     ui->lineEditDescription->clear();
+    setCssProperty(ui->lineEditAddress, "edit-primary-multi-book", true);
 }
 
 bool SendMultiRow::validate()
@@ -244,6 +250,10 @@ bool SendMultiRow::isClear(){
 
 void SendMultiRow::setFocus(){
     ui->lineEditAddress->setFocus();
+}
+
+void SendMultiRow::setOnlyStakingAddressAccepted(bool onlyStakingAddress) {
+    this->onlyStakingAddressAccepted = onlyStakingAddress;
 }
 
 

@@ -2,12 +2,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/sendcustomfeedialog.h>
-#include <qt/pivx/forms/ui_sendcustomfeedialog.h>
-#include <qt/pivx/qtutils.h>
-#include <walletmodel.h>
-#include <optionsmodel.h>
-#include <guiutil.h>
+#include "qt/pivx/sendcustomfeedialog.h"
+#include "qt/pivx/forms/ui_sendcustomfeedialog.h"
+#include "qt/pivx/qtutils.h"
+#include "walletmodel.h"
+#include "optionsmodel.h"
+#include "guiutil.h"
 #include <QListView>
 #include <QComboBox>
 
@@ -23,7 +23,7 @@ SendCustomFeeDialog::SendCustomFeeDialog(QWidget *parent) :
 
     // Text
     ui->labelTitle->setText(tr("Customize Fee"));
-    ui->labelMessage->setText(tr("Customize the transaction fee at your to your liking, depending on the fee value your transaction will be included or not in the blockchain."));
+    ui->labelMessage->setText(tr("Customize the transaction fee, depending on the fee value your transaction will be included or not in the blockchain."));
     setCssProperty(ui->labelTitle, "text-title-dialog");
     setCssProperty(ui->labelMessage, "text-main-grey");
 

@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
-  </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,1">
    <property name="spacing">
     <number>0</number>
@@ -122,9 +119,6 @@
          <widget class="QListView" name="listAddresses">
           <property name="mouseTracking">
            <bool>true</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
           </property>
          </widget>
         </item>
@@ -311,11 +305,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditName">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(0, 0, 0);</string>
-               </property>
-              </widget>
+              <widget class="QLineEdit" name="lineEditName"/>
              </item>
             </layout>
            </item>
@@ -348,11 +338,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditAddress">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(0, 0, 0);</string>
-               </property>
-              </widget>
+              <widget class="QLineEdit" name="lineEditAddress"/>
              </item>
             </layout>
            </item>

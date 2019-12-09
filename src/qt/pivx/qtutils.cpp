@@ -2,16 +2,23 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/qtutils.h>
+#include "qt/pivx/qtutils.h"
 
-#include <qt/pivx/snackbar.h>
-#include <qrencode.h>
-#include <guiconstants.h>
+#include "qt/pivx/snackbar.h"
+#include "qrencode.h"
+#include "guiconstants.h"
 
 #include <QFile>
 #include <QStyle>
 #include <QListView>
 #include <QGraphicsDropShadowEffect>
+
+Qt::Modifier SHORT_KEY
+#ifdef Q_OS_MAC
+        = Qt::CTRL;
+#else
+        = Qt::ALT;
+#endif
 
 // Open dialog at the bottom
 bool openDialog(QDialog *widget, QWidget *gui){
@@ -116,7 +123,9 @@ QPixmap encodeToQr(QString str, QString &errorStr, QColor qrColor){
 }
 
 void setupSettings(QSettings *settings){
-    settings->setValue("lightTheme", false);
+    if(!settings->contains("lightTheme")){
+        settings->setValue("lightTheme", true);
+    }
 }
 
 QSettings *settings = nullptr;
@@ -132,13 +141,13 @@ QSettings* getSettings(){
 }
 
 bool isLightTheme(){
-    return getSettings()->value("lightTheme", false).toBool();
+    return getSettings()->value("lightTheme", true).toBool();
 }
 
 void setTheme(bool isLight){
     QSettings* settings =  getSettings();
-    settings->setValue("theme", "default-dark");
-    settings->setValue("lightTheme", false);
+    settings->setValue("theme", isLight ? "default" : "default-dark");
+    settings->setValue("lightTheme", isLight);
 }
 
 
@@ -154,7 +163,7 @@ void updateStyle(QWidget* widget){
 QColor getRowColor(bool isLightTheme, bool isHovered, bool isSelected){
     if(isLightTheme){
         if (isSelected) {
-            return QColor("#257088ff");
+            return QColor("#25b088ff");
         }else if(isHovered){
             return QColor("#25bababa");
         } else{
@@ -162,11 +171,11 @@ QColor getRowColor(bool isLightTheme, bool isHovered, bool isSelected){
         }
     }else{
         if (isSelected) {
-            return QColor("#257088ff");
+            return QColor("#25b088ff");
         }else if(isHovered){
             return QColor("#25bababa");
         } else{
-            return QColor("#ffffff");
+            return QColor("#0f0b16");
         }
     }
 }
@@ -179,7 +188,7 @@ void initComboBox(QComboBox* combo, QLineEdit* lineEdit){
         lineEdit->setAlignment(Qt::AlignRight);
         combo->setLineEdit(lineEdit);
     }
-    combo->setStyleSheet("selection-background-color:transparent; selection-color:transparent; color:black;");
+    combo->setStyleSheet("selection-background-color:transparent; selection-color:transparent;");
     combo->setView(new QListView());
 }
 

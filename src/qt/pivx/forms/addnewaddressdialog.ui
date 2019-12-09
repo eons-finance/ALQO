@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -113,7 +113,7 @@
         <item>
          <widget class="QLabel" name="labelAddress">
           <property name="text">
-           <string>abFTSi7CCTkgLWD4prWu3arZizeCgGTppc </string>
+           <string>Address</string>
           </property>
          </widget>
         </item>

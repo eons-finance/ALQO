@@ -223,10 +223,11 @@ void CDBEnv::CheckpointLSN(const std::string& strFile)
 }
 
 
-CDB::CDB(const std::string& strFilename, const char* pszMode) : pdb(NULL), activeTxn(NULL)
+CDB::CDB(const std::string& strFilename, const char* pszMode, bool fFlushOnCloseIn) : pdb(NULL), activeTxn(NULL)
 {
     int ret;
     fReadOnly = (!strchr(pszMode, '+') && !strchr(pszMode, 'w'));
+    fFlushOnClose = fFlushOnCloseIn;
     if (strFilename.empty())
         return;
 
@@ -265,8 +266,9 @@ CDB::CDB(const std::string& strFilename, const char* pszMode) : pdb(NULL), activ
                 delete pdb;
                 pdb = NULL;
                 --bitdb.mapFileUseCount[strFile];
+                std::string tempCopy(strFile);
                 strFile = "";
-                throw std::runtime_error(strprintf("CDB : Error %d, can't open database %s", ret, strFile));
+                throw std::runtime_error(strprintf("CDB : Error %d, can't open database %s", ret, tempCopy));
             }
 
             if (fCreate && !Exists(std::string("version"))) {
@@ -303,7 +305,8 @@ void CDB::Close()
     activeTxn = NULL;
     pdb = NULL;
 
-    Flush();
+    if (fFlushOnClose)
+        Flush();
 
     {
         LOCK(bitdb.cs_db);

@@ -5,7 +5,7 @@
 #ifndef TOOLTIPMENU_H
 #define TOOLTIPMENU_H
 
-#include <qt/pivx/pwidget.h>
+#include "qt/pivx/pwidget.h"
 #include <QWidget>
 #include <QModelIndex>
 
@@ -34,18 +34,23 @@ public:
     void setEditBtnText(QString btnText);
     void setDeleteBtnText(QString btnText);
     void setCopyBtnText(QString btnText);
+    void setLastBtnText(QString btnText, int minHeight = 30);
     void setCopyBtnVisible(bool visible);
     void setDeleteBtnVisible(bool visible);
+    void setEditBtnVisible(bool visible);
+    void setLastBtnVisible(bool visible);
 
 signals:
     void onDeleteClicked();
     void onCopyClicked();
     void onEditClicked();
+    void onLastClicked();
 
 private slots:
     void deleteClicked();
     void copyClicked();
     void editClicked();
+    void lastClicked();
 
 private:
     Ui::TooltipMenu *ui;
