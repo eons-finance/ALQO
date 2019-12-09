@@ -286,6 +286,12 @@ bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThreshold
     return Write(std::string("autocombinesettings"), pSettings, true);
 }
 
+bool CWalletDB::WriteDefaultKey(const CPubKey& vchPubKey)
+{
+    nWalletDBUpdated++;
+    return Write(std::string("defaultkey"), vchPubKey);
+}
+
 bool CWalletDB::ReadPool(int64_t nPool, CKeyPool& keypool)
 {
     return Read(std::make_pair(std::string("pool"), nPool), keypool);
