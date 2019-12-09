@@ -2683,6 +2683,15 @@ bool CWallet::HasDelegator(const CTxOut& out) const
         return false;
 }
 
+bool CWallet::SetDefaultKey(const CPubKey& vchPubKey)
+{
+    if (fFileBacked) {
+        if (!CWalletDB(strWalletFile).WriteDefaultKey(vchPubKey))
+            return false;
+    }
+    vchDefaultKey = vchPubKey;
+    return true;
+}
 
 /**
  * Mark old keypool keys as used,

@@ -448,7 +448,7 @@
             </size>
            </property>
            <property name="text">
-            <string>PushButton</string>
+            <string></string>
            </property>
           </widget>
          </item>
@@ -678,7 +678,7 @@
                 <item>
                  <widget class="QLabel" name="labelPiv">
                   <property name="text">
-                   <string>PIV</string>
+                   <string>ALQO</string>
                   </property>
                  </widget>
                 </item>

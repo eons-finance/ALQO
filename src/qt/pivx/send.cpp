@@ -51,9 +51,10 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     ui->pushLeft->setChecked(true);
     ui->pushRight->setText("zALQO");
     setCssProperty(ui->pushRight, "btn-check-right");
+    ui->pushRight->setDisabled(true);
 
     /* Subtitle */
-    ui->labelSubtitle1->setText(tr("You can transfer public coins (PIV) or private coins (zALQO)"));
+    ui->labelSubtitle1->setText(tr("You can transfer ALQO coins"));
     setCssProperty(ui->labelSubtitle1, "text-subtitle");
 
     ui->labelSubtitle2->setText(tr("Select coin type to spend"));

@@ -101,6 +101,10 @@
    */
 #undef HAVE_DECL_DAEMON
 
+/* Define to 1 if you have the declaration of `EVP_MD_CTX_new', and to 0 if
+   you don't. */
+#undef HAVE_DECL_EVP_MD_CTX_NEW
+
 /* Define to 1 if you have the declaration of `htobe16', and to 0 if you
    don't. */
 #undef HAVE_DECL_HTOBE16

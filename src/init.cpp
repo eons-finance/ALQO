@@ -1664,9 +1664,6 @@ bool AppInit2()
         }
         fVerifyingBlocks = false;
 
-        //Inititalize zPIVWallet
-        uiInterface.InitMessage(_("Syncing zPIV wallet..."));
-
         pwalletMain->InitAutoConvertAddresses();
 
         bool fEnableZPivBackups = GetBoolArg("-backupzpiv", true);

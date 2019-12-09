@@ -21,7 +21,7 @@ SendChangeAddressDialog::SendChangeAddressDialog(QWidget *parent) :
     ui->labelTitle->setText(tr("Custom Change Address"));
     ui->labelTitle->setProperty("cssClass", "text-title-dialog");
 
-    ui->labelMessage->setText(tr("The remainder of the value resultant from the inputs minus the outputs value goes to the \"change\" ALQO address"));
+    ui->labelMessage->setText(tr("Remainder of the inputs minus the outputs goes to the \"change\" ALQO address"));
     ui->labelMessage->setProperty("cssClass", "text-main-grey");
 
     ui->lineEditAddress->setPlaceholderText("Enter a ALQO  address (e.g D7VFR83SQbiezrW72hjc… ");
