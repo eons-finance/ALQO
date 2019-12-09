@@ -81,7 +81,7 @@ SettingsBitToolWidget::SettingsBitToolWidget(ALQOGUI* _window, QWidget *parent) 
     // Encrypt
 
     // Address
-    ui->labelSubtitleAddress->setText(tr("Enter a ALQO addres"));
+    ui->labelSubtitleAddress->setText(tr("Enter a ALQO address"));
     setCssProperty(ui->labelSubtitleAddress, "text-title");
 
     ui->addressIn_ENC->setPlaceholderText(tr("Add address"));

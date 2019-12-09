@@ -2,16 +2,16 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/dashboardwidget.h>
-#include <qt/pivx/forms/ui_dashboardwidget.h>
-#include <qt/pivx/sendconfirmdialog.h>
-#include <qt/pivx/txrow.h>
-#include <qt/pivx/qtutils.h>
-#include <guiutil.h>
-#include <walletmodel.h>
-#include <clientmodel.h>
-#include <optionsmodel.h>
-#include <utiltime.h>
+#include "qt/pivx/dashboardwidget.h"
+#include "qt/pivx/forms/ui_dashboardwidget.h"
+#include "qt/pivx/sendconfirmdialog.h"
+#include "qt/pivx/txrow.h"
+#include "qt/pivx/qtutils.h"
+#include "guiutil.h"
+#include "walletmodel.h"
+#include "clientmodel.h"
+#include "optionsmodel.h"
+#include "utiltime.h"
 #include <QPainter>
 #include <QModelIndex>
 #include <QList>
@@ -201,8 +201,7 @@ void DashboardWidget::loadWalletModel(){
             ui->comboBoxSort->setVisible(false);
         }
 
-        connect(ui->pushImgEmpty, SIGNAL(clicked()), window, SLOT(openFAQ()));
-        connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
+        //connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
 
         // Notification pop-up for new transaction
         connect(txModel, SIGNAL(rowsInserted(QModelIndex, int, int)),
@@ -224,16 +223,25 @@ void DashboardWidget::loadWalletModel(){
     updateDisplayUnit();
 }
 
-void DashboardWidget::onTxArrived(const QString& hash) {
+void DashboardWidget::onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType) {
     showList();
 #ifdef USE_QTCHARTS
-    if (walletModel->isCoinStakeMine(hash))
+    if (isCoinStake) {
+        // Update value if this is our first stake
+        if (!hasStakes)
+            hasStakes = stakesFilter->rowCount() > 0;
         tryChartRefresh();
+    }
 #endif
 }
 
 void DashboardWidget::showList(){
-    if (ui->emptyContainer->isVisible()) {
+    if (filter->rowCount() == 0){
+        ui->emptyContainer->setVisible(true);
+        ui->listTransactions->setVisible(false);
+        ui->comboBoxSortType->setVisible(false);
+        ui->comboBoxSort->setVisible(false);
+    } else {
         ui->emptyContainer->setVisible(false);
         ui->listTransactions->setVisible(true);
         ui->comboBoxSortType->setVisible(true);
@@ -525,8 +533,8 @@ bool DashboardWidget::loadChartData(bool withMonthNames) {
     }
 
     chartData = new ChartData();
+    chartData->amountsByCache = getAmountBy(); // pair PIV, zPIV
 
-    chartData->amountsByCache = getAmountBy(); // pair ALQO, zPIV
     std::pair<int,int> range = getChartRange(chartData->amountsByCache);
     if (range.first == 0 && range.second == 0) {
         // Problem loading the chart.
@@ -775,7 +783,7 @@ void DashboardWidget::run(int type) {
     if (type == REQUEST_LOAD_TASK) {
         bool withMonthNames = !isChartMin && (chartShow == YEAR);
         if (loadChartData(withMonthNames))
-        QMetaObject::invokeMethod(this, "onChartRefreshed", Qt::QueuedConnection);
+            QMetaObject::invokeMethod(this, "onChartRefreshed", Qt::QueuedConnection);
     }
 #endif
 }

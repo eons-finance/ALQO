@@ -39,7 +39,7 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(ALQOGUI* _window, QWidget
     ui->labelSubtitle1->setProperty("cssClass", "text-subtitle");
 
     // Address
-    ui->labelSubtitleAddress->setText(tr("Enter a ALQO addres or contact label"));
+    ui->labelSubtitleAddress->setText(tr("Enter a ALQO address or contact label"));
     ui->labelSubtitleAddress->setProperty("cssClass", "text-title");
 
     ui->addressIn_SM->setPlaceholderText(tr("Add address"));

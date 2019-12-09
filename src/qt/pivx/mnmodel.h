@@ -6,8 +6,8 @@
 #define MNMODEL_H
 
 #include <QAbstractTableModel>
-#include <masternode.h>
-#include <masternodeconfig.h>
+#include "masternode.h"
+#include "masternodeconfig.h"
 
 class MNModel : public QAbstractTableModel
 {
@@ -15,7 +15,10 @@ class MNModel : public QAbstractTableModel
 
 public:
     explicit MNModel(QObject *parent = nullptr);
-    ~MNModel() override{}
+    ~MNModel() override {
+        nodes.clear();
+        collateralTxAccepted.clear();
+    }
 
     enum ColumnIndex {
         ALIAS = 0,  /**< User specified MN alias */

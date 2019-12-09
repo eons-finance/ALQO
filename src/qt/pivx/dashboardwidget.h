@@ -5,12 +5,12 @@
 #ifndef DASHBOARDWIDGET_H
 #define DASHBOARDWIDGET_H
 
-#include <qt/pivx/pwidget.h>
-#include <qt/pivx/furabstractlistitemdelegate.h>
-#include <qt/pivx/furlistrow.h>
-#include <transactiontablemodel.h>
-#include <qt/pivx/txviewholder.h>
-#include <transactionfilterproxy.h>
+#include "qt/pivx/pwidget.h"
+#include "qt/pivx/furabstractlistitemdelegate.h"
+#include "qt/pivx/furlistrow.h"
+#include "transactiontablemodel.h"
+#include "qt/pivx/txviewholder.h"
+#include "transactionfilterproxy.h"
 
 #include <atomic>
 #include <cstdlib>
@@ -19,7 +19,7 @@
 #include <QMap>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/alqo-config.h> /* for USE_QTCHARTS */
+#include "config/alqo-config.h" /* for USE_QTCHARTS */
 #endif
 
 #ifdef USE_QTCHARTS
@@ -122,7 +122,7 @@ private slots:
     void onSortTypeChanged(const QString& value);
     void updateDisplayUnit();
     void showList();
-    void onTxArrived(const QString& hash);
+    void onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType);
 
 #ifdef USE_QTCHARTS
     void windowResizeEvent(QResizeEvent *event);

@@ -6,17 +6,17 @@
 #define SETTINGSWIDGET_H
 
 #include <QWidget>
-#include <qt/pivx/pwidget.h>
-#include <qt/pivx/settings/settingsbackupwallet.h>
-#include <qt/pivx/settings/settingsbittoolwidget.h>
-#include <qt/pivx/settings/settingssignmessagewidgets.h>
-#include <qt/pivx/settings/settingswalletrepairwidget.h>
-#include <qt/pivx/settings/settingswalletoptionswidget.h>
-#include <qt/pivx/settings/settingsmainoptionswidget.h>
-#include <qt/pivx/settings/settingsdisplayoptionswidget.h>
-#include <qt/pivx/settings/settingsmultisendwidget.h>
-#include <qt/pivx/settings/settingsinformationwidget.h>
-#include <qt/pivx/settings/settingsconsolewidget.h>
+#include "qt/pivx/pwidget.h"
+#include "qt/pivx/settings/settingsbackupwallet.h"
+#include "qt/pivx/settings/settingsbittoolwidget.h"
+#include "qt/pivx/settings/settingssignmessagewidgets.h"
+#include "qt/pivx/settings/settingswalletrepairwidget.h"
+#include "qt/pivx/settings/settingswalletoptionswidget.h"
+#include "qt/pivx/settings/settingsmainoptionswidget.h"
+#include "qt/pivx/settings/settingsdisplayoptionswidget.h"
+#include "qt/pivx/settings/settingsmultisendwidget.h"
+#include "qt/pivx/settings/settingsinformationwidget.h"
+#include "qt/pivx/settings/settingsconsolewidget.h"
 
 class ALQOGUI;
 
@@ -95,7 +95,7 @@ private:
     QList<QPushButton*> options;
 
     void selectOption(QPushButton* option);
-    void openStandardDialog(QString title = "", QString body = "", QString okBtn = "OK", QString cancelBtn = "");
+    bool openStandardDialog(QString title = "", QString body = "", QString okBtn = "OK", QString cancelBtn = "");
 };
 
 #endif // SETTINGSWIDGET_H

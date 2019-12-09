@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
     <number>0</number>
@@ -35,7 +32,7 @@
    <item>
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -92,7 +89,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
+           <string notr="true">padding-left:24px;</string>
           </property>
           <property name="text">
            <string>Transaction Details</string>
@@ -220,9 +217,6 @@
                <height>50</height>
               </size>
              </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);</string>
-             </property>
             </widget>
            </item>
           </layout>
@@ -268,9 +262,6 @@
                <height>20</height>
               </size>
              </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);</string>
-             </property>
              <property name="text">
               <string>TextLabel</string>
              </property>
@@ -289,9 +280,6 @@
                <width>16777215</width>
                <height>50</height>
               </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 0, 0);</string>
              </property>
              <property name="text">
               <string/>
@@ -332,9 +320,6 @@
             <height>20</height>
            </size>
           </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>TextLabel</string>
           </property>
@@ -353,9 +338,6 @@
             <width>16777215</width>
             <height>50</height>
            </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
           </property>
          </widget>
         </item>

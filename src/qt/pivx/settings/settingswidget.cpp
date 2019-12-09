@@ -2,23 +2,23 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/settings/settingswidget.h>
-#include <qt/pivx/settings/forms/ui_settingswidget.h>
-#include <qt/pivx/settings/settingsbackupwallet.h>
-#include <qt/pivx/settings/settingsbittoolwidget.h>
-#include <qt/pivx/settings/settingswalletrepairwidget.h>
-#include <qt/pivx/settings/settingswalletoptionswidget.h>
-#include <qt/pivx/settings/settingsmainoptionswidget.h>
-#include <qt/pivx/settings/settingsdisplayoptionswidget.h>
-#include <qt/pivx/settings/settingsmultisendwidget.h>
-#include <qt/pivx/settings/settingsinformationwidget.h>
-#include <qt/pivx/settings/settingsconsolewidget.h>
-#include <qt/pivx/qtutils.h>
-#include <qt/pivx/defaultdialog.h>
-#include <optionsmodel.h>
-#include <clientmodel.h>
-#include <utilitydialog.h>
-#include <wallet/wallet.h>
+#include "qt/pivx/settings/settingswidget.h"
+#include "qt/pivx/settings/forms/ui_settingswidget.h"
+#include "qt/pivx/settings/settingsbackupwallet.h"
+#include "qt/pivx/settings/settingsbittoolwidget.h"
+#include "qt/pivx/settings/settingswalletrepairwidget.h"
+#include "qt/pivx/settings/settingswalletoptionswidget.h"
+#include "qt/pivx/settings/settingsmainoptionswidget.h"
+#include "qt/pivx/settings/settingsdisplayoptionswidget.h"
+#include "qt/pivx/settings/settingsmultisendwidget.h"
+#include "qt/pivx/settings/settingsinformationwidget.h"
+#include "qt/pivx/settings/settingsconsolewidget.h"
+#include "qt/pivx/qtutils.h"
+#include "qt/pivx/defaultdialog.h"
+#include "optionsmodel.h"
+#include "clientmodel.h"
+#include "utilitydialog.h"
+#include "wallet/wallet.h"
 #include <QScrollBar>
 #include <QDataWidgetMapper>
 
@@ -66,6 +66,10 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     setCssProperty(ui->pushButtonTools2, "btn-settings-options");
     setCssProperty(ui->pushButtonTools5, "btn-settings-options");
 
+    setCssProperty(ui->pushButtonHelp, "btn-settings-check");
+    setCssProperty(ui->pushButtonHelp1, "btn-settings-options");
+    setCssProperty(ui->pushButtonHelp2, "btn-settings-options");
+
     options = {
         ui->pushButtonFile2,
         ui->pushButtonFile3,
@@ -74,6 +78,7 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
         ui->pushButtonOptions5,
         ui->pushButtonConfiguration3,
         ui->pushButtonConfiguration4,
+        ui->pushButtonHelp2,
         ui->pushButtonTools1,
         ui->pushButtonTools2,
         ui->pushButtonTools5,
@@ -134,6 +139,11 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     ui->pushButtonTools2->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_C));
     connect(ui->pushButtonTools5, SIGNAL(clicked()), this, SLOT(onWalletRepairClicked()));
 
+    // Help
+    connect(ui->pushButtonHelp, SIGNAL(clicked()), this, SLOT(onHelpClicked()));
+    connect(ui->pushButtonHelp1, SIGNAL(clicked()), window, SLOT(openFAQ()));
+    connect(ui->pushButtonHelp2, SIGNAL(clicked()), this, SLOT(onAboutClicked()));
+
     // Get restart command-line parameters and handle restart
     connect(settingsWalletRepairWidget, &SettingsWalletRepairWidget::handleRestart, [this](QStringList arg){emit handleRestart(arg);});
 
@@ -166,7 +176,7 @@ void SettingsWidget::loadClientModel(){
             settingsDisplayOptionsWidget->setClientModel(clientModel);
             settingsWalletOptionsWidget->setClientModel(clientModel);
             /* keep consistency for action triggered elsewhere */
-            connect(optionsModel, SIGNAL(hideOrphansChanged(bool)), this, SLOT(updateHideOrphans(bool)));
+            //connect(optionsModel, SIGNAL(hideOrphansChanged(bool)), this, SLOT(updateHideOrphans(bool)));
 
             // TODO: Connect show restart needed and apply changes.
         }
@@ -196,8 +206,25 @@ void SettingsWidget::onSaveOptionsClicked(){
     if(mapper->submit()) {
         pwalletMain->MarkDirty();
         if (this->clientModel->getOptionsModel()->isRestartRequired()) {
-            openStandardDialog(tr("Restart required"), tr("You wallet will be restarted to apply the changes\n"), tr("OK"));
-            emit handleRestart(QStringList());
+            bool fAcceptRestart = openStandardDialog(tr("Restart required"), tr("Your wallet needs to be restarted to apply the changes\n"), tr("Restart Now"), tr("Restart Later"));
+
+            if (fAcceptRestart) {
+                // Get command-line arguments and remove the application name
+                QStringList args = QApplication::arguments();
+                args.removeFirst();
+
+                // Remove existing repair-options
+                args.removeAll(SALVAGEWALLET);
+                args.removeAll(RESCAN);
+                args.removeAll(ZAPTXES1);
+                args.removeAll(ZAPTXES2);
+                args.removeAll(UPGRADEWALLET);
+                args.removeAll(REINDEX);
+
+                emit handleRestart(args);
+            } else {
+                inform(tr("Options will be applied on next wallet restart"));
+            }
         } else {
             inform(tr("Options stored"));
         }
@@ -217,6 +244,7 @@ void SettingsWidget::onFileClicked() {
         ui->pushButtonOptions->setChecked(false);
         ui->pushButtonTools->setChecked(false);
         ui->pushButtonConfiguration->setChecked(false);
+        ui->pushButtonHelp->setChecked(false);
 
     } else {
         ui->fileButtonsWidget->setVisible(false);
@@ -244,6 +272,7 @@ void SettingsWidget::onConfigurationClicked() {
         ui->pushButtonOptions->setChecked(false);
         ui->pushButtonTools->setChecked(false);
         ui->pushButtonFile->setChecked(false);
+        ui->pushButtonHelp->setChecked(false);
 
     } else {
         ui->configurationButtonsWidget->setVisible(false);
@@ -271,6 +300,7 @@ void SettingsWidget::onOptionsClicked() {
         ui->pushButtonFile->setChecked(false);
         ui->pushButtonTools->setChecked(false);
         ui->pushButtonConfiguration->setChecked(false);
+        ui->pushButtonHelp->setChecked(false);
 
     } else {
         ui->optionsButtonsWidget->setVisible(false);
@@ -304,6 +334,7 @@ void SettingsWidget::onToolsClicked() {
         ui->pushButtonOptions->setChecked(false);
         ui->pushButtonFile->setChecked(false);
         ui->pushButtonConfiguration->setChecked(false);
+        ui->pushButtonHelp->setChecked(false);
 
     } else {
         ui->toolsButtonsWidget->setVisible(false);
@@ -334,7 +365,20 @@ void SettingsWidget::onWalletRepairClicked() {
 
 
 void SettingsWidget::onHelpClicked() {
-    ui->helpButtonsWidget->setVisible(false);
+    if (ui->pushButtonHelp->isChecked()) {
+        ui->helpButtonsWidget->setVisible(true);
+
+        ui->toolsButtonsWidget->setVisible(false);
+        ui->optionsButtonsWidget->setVisible(false);
+        ui->fileButtonsWidget->setVisible(false);
+        ui->configurationButtonsWidget->setVisible(false);
+        ui->pushButtonOptions->setChecked(false);
+        ui->pushButtonFile->setChecked(false);
+        ui->pushButtonConfiguration->setChecked(false);
+        ui->pushButtonTools->setChecked(false);
+    } else {
+        ui->helpButtonsWidget->setVisible(false);
+    }
 }
 
 void SettingsWidget::onAboutClicked() {
@@ -366,13 +410,14 @@ void SettingsWidget::setMapper(){
     settingsDisplayOptionsWidget->setMapper(mapper);
 }
 
-void SettingsWidget::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
+bool SettingsWidget::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
     showHideOp(true);
     DefaultDialog *confirmDialog = new DefaultDialog(window);
     confirmDialog->setText(title, body, okBtn, cancelBtn);
     confirmDialog->adjustSize();
     openDialogWithOpaqueBackground(confirmDialog, window);
     confirmDialog->deleteLater();
+    return confirmDialog->isOk;
 }
 
 SettingsWidget::~SettingsWidget(){

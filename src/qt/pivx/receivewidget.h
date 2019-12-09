@@ -5,10 +5,10 @@
 #ifndef RECEIVEWIDGET_H
 #define RECEIVEWIDGET_H
 
-#include <qt/pivx/pwidget.h>
-#include <addresstablemodel.h>
-#include <qt/pivx/furabstractlistitemdelegate.h>
-#include <qt/pivx/addressfilterproxymodel.h>
+#include "qt/pivx/pwidget.h"
+#include "addresstablemodel.h"
+#include "qt/pivx/furabstractlistitemdelegate.h"
+#include "qt/pivx/addressfilterproxymodel.h"
 
 #include <QSpacerItem>
 #include <QWidget>
@@ -62,6 +62,7 @@ private:
 
     void updateQr(QString address);
     void updateLabel();
+    void showAddressGenerationDialog(bool isPaymentRequest);
 
     bool isShowingDialog = false;
 

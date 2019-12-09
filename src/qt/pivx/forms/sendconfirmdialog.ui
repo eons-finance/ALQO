@@ -20,7 +20,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
@@ -202,9 +202,9 @@ background:transparent;
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>0</y>
-              <width>546</width>
-              <height>601</height>
+              <y>-178</y>
+              <width>556</width>
+              <height>680</height>
              </rect>
             </property>
             <property name="autoFillBackground">
@@ -394,8 +394,8 @@ background:transparent;
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>510</width>
-                     <height>46</height>
+                     <width>522</width>
+                     <height>48</height>
                     </rect>
                    </property>
                    <property name="styleSheet">
@@ -847,6 +847,16 @@ background:transparent;
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="labelWarning">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
