@@ -8,14 +8,14 @@
 #include <QWidget>
 #include <QPushButton>
 
-#include <qt/pivx/pwidget.h>
-#include <qt/pivx/contactsdropdown.h>
-#include <qt/pivx/sendmultirow.h>
-#include <qt/pivx/sendcustomfeedialog.h>
-#include <walletmodel.h>
-#include <coincontroldialog.h>
-#include <zpivcontroldialog.h>
-#include <qt/pivx/tooltipmenu.h>
+#include "qt/pivx/pwidget.h"
+#include "qt/pivx/contactsdropdown.h"
+#include "qt/pivx/sendmultirow.h"
+#include "qt/pivx/sendcustomfeedialog.h"
+#include "walletmodel.h"
+#include "coincontroldialog.h"
+#include "zpivcontroldialog.h"
+#include "qt/pivx/tooltipmenu.h"
 
 static const int MAX_SEND_POPUP_ENTRIES = 8;
 
@@ -69,7 +69,7 @@ private slots:
     void refreshView();
     void onContactMultiClicked();
     void onDeleteClicked();
-    void onResetCustomOptions();
+    void onResetCustomOptions(bool fRefreshAmounts);
 private:
     Ui::send *ui;
     QPushButton *coinIcon;
@@ -95,10 +95,6 @@ private:
     bool sendZpiv(QList<SendCoinsRecipient> recipients);
     void updateEntryLabels(QList<SendCoinsRecipient> recipients);
 
-    // Process WalletModel::SendCoinsReturn and generate a pair consisting
-    // of a message and message flags for use in emit message().
-    // Additional parameter msgArg can be used via .arg(msgArg).
-    void processSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg = QString(), bool fPrepare = false);
 };
 
 #endif // SEND_H

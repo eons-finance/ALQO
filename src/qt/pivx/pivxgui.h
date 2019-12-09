@@ -6,32 +6,31 @@
 #define ALQO_CORE_NEW_GUI_ALQOGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/alqo-config.h>
+#include "config/alqo-config.h"
 #endif
 
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QSystemTrayIcon>
-#include <QWindowStateChangeEvent>
 #include <QLabel>
 
-#include <qt/pivx/navmenuwidget.h>
-#include <qt/pivx/topbar.h>
-#include <qt/pivx/dashboardwidget.h>
-#include <qt/pivx/send.h>
-#include <qt/pivx/receivewidget.h>
-#include <qt/pivx/addresseswidget.h>
-#include <qt/pivx/privacywidget.h>
-#include <qt/pivx/masternodeswidget.h>
-#include <qt/pivx/snackbar.h>
-#include <qt/pivx/settings/settingswidget.h>
-#include <qt/rpcconsole.h>
+#include "qt/pivx/navmenuwidget.h"
+#include "qt/pivx/topbar.h"
+#include "qt/pivx/dashboardwidget.h"
+#include "qt/pivx/send.h"
+#include "qt/pivx/receivewidget.h"
+#include "qt/pivx/addresseswidget.h"
+#include "qt/pivx/masternodeswidget.h"
+#include "qt/pivx/snackbar.h"
+#include "qt/pivx/settings/settingswidget.h"
+#include "qt/rpcconsole.h"
 
 
 class ClientModel;
 class NetworkStyle;
 class Notificator;
 class WalletModel;
+
 
 /**
   ALQO GUI main class. This class represents the main window of the ALQO UI. It communicates with both the client and
@@ -60,7 +59,7 @@ signals:
     void themeChanged(bool isLightTheme, QString& theme);
     void windowResizeEvent(QResizeEvent* event);
 public slots:
-    void changeTheme(bool isLightTheme = false);
+    void changeTheme(bool isLightTheme);
     void goToDashboard();
     void goToSend();
     void goToReceive();

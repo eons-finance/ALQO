@@ -2,21 +2,21 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/pivxgui.h>
+#include "qt/pivx/pivxgui.h"
 
 #ifdef Q_OS_MAC
-#include <macdockiconhandler.h>
+#include "macdockiconhandler.h"
 #endif
 
-#include <qt/guiutil.h>
-#include <clientmodel.h>
-#include <optionsmodel.h>
-#include <networkstyle.h>
-#include <notificator.h>
-#include <guiinterface.h>
-#include <qt/pivx/qtutils.h>
-#include <qt/pivx/defaultdialog.h>
-#include <qt/pivx/settings/settingsfaqwidget.h>
+#include "qt/guiutil.h"
+#include "clientmodel.h"
+#include "optionsmodel.h"
+#include "networkstyle.h"
+#include "notificator.h"
+#include "guiinterface.h"
+#include "qt/pivx/qtutils.h"
+#include "qt/pivx/defaultdialog.h"
+#include "qt/pivx/settings/settingsfaqwidget.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -24,8 +24,12 @@
 #include <QColor>
 #include <QShortcut>
 #include <QKeySequence>
+#include <QWindowStateChangeEvent>
 
-#include <util.h>
+#include "util.h"
+
+#define BASE_WINDOW_WIDTH 1200
+#define BASE_WINDOW_HEIGHT 740
 
 
 const QString ALQOGUI::DEFAULT_WALLET = "~Default";
@@ -36,10 +40,9 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
-    this->setMinimumSize(1200, 740);
-    GUIUtil::restoreWindowGeometry("nWindow", QSize(1200, 740), this);
+    this->setMinimumSize(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT);
+    GUIUtil::restoreWindowGeometry("nWindow", QSize(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT), this);
 
-    QString windowTitle = tr("ALQO") + " - ";
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
     enableWallet = !GetBoolArg("-disablewallet", false);
@@ -47,12 +50,9 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
     enableWallet = false;
 #endif // ENABLE_WALLET
 
-    if (enableWallet) {
-        windowTitle += tr("Wallet");
-    } else {
-        windowTitle += tr("Node");
-    }
-
+    QString windowTitle = tr("ALQO") + " - ";
+    windowTitle += ((enableWallet) ? tr("Wallet") : tr("Node"));
+    windowTitle += " " + networkStyle->getTitleAddText();
     setWindowTitle(windowTitle);
 
 #ifndef Q_OS_MAC
@@ -70,8 +70,8 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
     if(enableWallet){
 
         QFrame* centralWidget = new QFrame(this);
-        this->setMinimumWidth(1200);
-        this->setMinimumHeight(740);
+        this->setMinimumWidth(BASE_WINDOW_WIDTH);
+        this->setMinimumHeight(BASE_WINDOW_HEIGHT);
         QHBoxLayout* centralWidgetLayouot = new QHBoxLayout();
         centralWidget->setLayout(centralWidgetLayouot);
         centralWidgetLayouot->setContentsMargins(0,0,0,0);
@@ -179,6 +179,7 @@ void ALQOGUI::connectActions() {
         goToSettings();
     });
     connect(topBar, &TopBar::showHide, this, &ALQOGUI::showHide);
+    connect(topBar, &TopBar::themeChanged, this, &ALQOGUI::changeTheme);
     connect(settingsWidget, &SettingsWidget::showHide, this, &ALQOGUI::showHide);
     connect(sendWidget, &SendWidget::showHide, this, &ALQOGUI::showHide);
     connect(receiveWidget, &ReceiveWidget::showHide, this, &ALQOGUI::showHide);
@@ -192,7 +193,7 @@ void ALQOGUI::connectActions() {
 void ALQOGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("ALQO client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("ALQO") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->hide();
@@ -482,7 +483,7 @@ void ALQOGUI::changeTheme(bool isLightTheme){
     this->setStyleSheet(css);
 
     // Notify
-    emit themeChanged(false, css);
+    emit themeChanged(isLightTheme, css);
 
     // Update style
     updateStyle(this);
@@ -508,8 +509,11 @@ void ALQOGUI::showHide(bool show){
         opEnabled = false;
     }else{
         QColor bg("#000000");
-        bg = QColor("#00000000");
-        bg.setAlpha(150);
+        bg.setAlpha(200);
+        if(!isLightTheme()){
+            bg = QColor("#00000000");
+            bg.setAlpha(150);
+        }
 
         QPalette palette;
         palette.setColor(QPalette::Window, bg);
@@ -530,7 +534,6 @@ int ALQOGUI::getNavWidth(){
 }
 
 void ALQOGUI::openFAQ(int section){
-    showHide(true);
 }
 
 
@@ -540,10 +543,6 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
     // Single wallet supported for now..
     if(!stackedContainer || !clientModel || !walletModel)
         return false;
-
-    // todo: show out of sync warning..
-    // todo: complete this next method
-    //connect(walletView, SIGNAL(showNormalIfMinimized()), gui, SLOT(showNormalIfMinimized()));
 
     // set the model for every view
     dashboard->setWalletModel(walletModel);

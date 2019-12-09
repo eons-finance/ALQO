@@ -2,18 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <qt/pivx/settings/settingswalletrepairwidget.h>
-#include <qt/pivx/settings/forms/ui_settingswalletrepairwidget.h>
-#include <qt/pivx/qtutils.h>
-
-// Repair parameters
-const QString SALVAGEWALLET("-salvagewallet");
-const QString RESCAN("-rescan");
-const QString ZAPTXES1("-zapwallettxes=1");
-const QString ZAPTXES2("-zapwallettxes=2");
-const QString UPGRADEWALLET("-upgradewallet");
-const QString REINDEX("-reindex");
-const QString RESYNC("-resync");
+#include "qt/pivx/settings/settingswalletrepairwidget.h"
+#include "qt/pivx/settings/forms/ui_settingswalletrepairwidget.h"
+#include "qt/pivx/qtutils.h"
 
 SettingsWalletRepairWidget::SettingsWalletRepairWidget(ALQOGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
