@@ -68,7 +68,6 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
 
     setCssProperty(ui->pushButtonHelp, "btn-settings-check");
     setCssProperty(ui->pushButtonHelp1, "btn-settings-options");
-    setCssProperty(ui->pushButtonHelp2, "btn-settings-options");
 
     options = {
         ui->pushButtonFile2,
@@ -78,7 +77,7 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
         ui->pushButtonOptions5,
         ui->pushButtonConfiguration3,
         ui->pushButtonConfiguration4,
-        ui->pushButtonHelp2,
+        ui->pushButtonHelp1,
         ui->pushButtonTools1,
         ui->pushButtonTools2,
         ui->pushButtonTools5,
@@ -141,8 +140,7 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
 
     // Help
     connect(ui->pushButtonHelp, SIGNAL(clicked()), this, SLOT(onHelpClicked()));
-    connect(ui->pushButtonHelp1, SIGNAL(clicked()), window, SLOT(openFAQ()));
-    connect(ui->pushButtonHelp2, SIGNAL(clicked()), this, SLOT(onAboutClicked()));
+    connect(ui->pushButtonHelp1, SIGNAL(clicked()), this, SLOT(onAboutClicked()));
 
     // Get restart command-line parameters and handle restart
     connect(settingsWalletRepairWidget, &SettingsWalletRepairWidget::handleRestart, [this](QStringList arg){emit handleRestart(arg);});
