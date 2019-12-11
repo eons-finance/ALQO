@@ -29,7 +29,7 @@
 #include "util.h"
 
 #define BASE_WINDOW_WIDTH 1200
-#define BASE_WINDOW_HEIGHT 740
+#define BASE_WINDOW_HEIGHT 640
 
 
 const QString ALQOGUI::DEFAULT_WALLET = "~Default";
