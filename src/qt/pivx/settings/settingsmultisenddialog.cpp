@@ -34,7 +34,7 @@ SettingsMultisendDialog::SettingsMultisendDialog(QWidget *parent) :
     // Address
     ui->labelSubtitleAddress->setText("Enter a ALQO address or contact label");
     setCssProperty(ui->labelSubtitleAddress, "text-title2-dialog");
-    ui->lineEditAddress->setPlaceholderText("e.g D7VFR83SQbiezrW72hjc… ");
+    ui->lineEditAddress->setPlaceholderText("e.g ab4eFQMFvCKrVq8CTGGvJWC… ");
     initCssEditLine(ui->lineEditAddress, true);
     ui->lineEditAddress->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]+"), ui->lineEditAddress));
 
