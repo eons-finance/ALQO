@@ -79,8 +79,6 @@ MasterNodesWidget::MasterNodesWidget(ALQOGUI *parent) :
     /* Containers */
     setCssProperty(ui->left, "container");
     ui->left->setContentsMargins(0,20,0,20);
-    setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(20,20,20,20);
 
     /* Light Font */
     QFont fontLight;

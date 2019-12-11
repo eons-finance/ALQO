@@ -64,7 +64,7 @@ CoinControlDialog::CoinControlDialog(QWidget* parent, bool fMultisigEnabled) : Q
 
     // Title
 
-    ui->labelTitle->setText("Select ALQO Denominations to Spend");
+    ui->labelTitle->setText("Select ALQO inputs to Spend");
     ui->labelTitle->setProperty("cssClass", "text-title-dialog");
 
     // Label Style
