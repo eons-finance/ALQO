@@ -140,7 +140,7 @@ AC_ARG_ENABLE([extended-functional-tests],
 
 AC_ARG_WITH([qtcharts],
   [AS_HELP_STRING([--with-qtcharts],
-  [enable QTCHARTS code support (default is yes if qt is enabled and qtchartview is found)])],
+  [enable qtcharts support (default is yes if qt is enabled and qtchartview is found)])],
   [use_qtcharts=$withval],
   [use_qtcharts=auto])
 
@@ -1142,7 +1142,7 @@ else
     BITCOIN_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
   if test x$use_qtcharts != xno; then
     BITCOIN_QT_CHECK([AC_CHECK_LIB([Qt5Charts], [main],[CHARTS_LIBS=-lQt5Charts], [have_qtcharts=no])])
-    BITCOIN_QT_CHECK([AC_CHECK_HEADER([qchartview.h],, have_qtcharts=no)])
+    BITCOIN_QT_CHECK([AC_CHECK_HEADER([QtCharts/qchartview.h],, have_qtcharts=no)])
   fi
 fi
 
@@ -1314,7 +1314,7 @@ if test x$bitcoin_enable_qt != xno; then
   AC_MSG_RESULT($bitcoin_enable_qt_dbus)
 
   dnl enable qtcharts support
-  AC_MSG_CHECKING([whether to build GUI with support for qtcharts codes])
+  AC_MSG_CHECKING([whether to build GUI with support for qtcharts])
   if test x$have_qtcharts = xno; then
     if test x$use_qtcharts = xyes; then
      AC_MSG_ERROR("QTCharts support requested but cannot be built. use --without-qtcharts")
