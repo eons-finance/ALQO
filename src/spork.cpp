@@ -44,7 +44,7 @@ void CSporkManager::Clear()
     mapSporksActive.clear();
 }
 
-// PIVX: on startup load spork values from previous session if they exist in the sporkDB
+// ALQO: on startup load spork values from previous session if they exist in the sporkDB
 void CSporkManager::LoadSporksFromDB()
 {
     for (const auto& sporkDef : sporkDefs) {
@@ -140,7 +140,7 @@ void CSporkManager::ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStr
         }
         spork.Relay();
 
-        // PIVX: add to spork database.
+        // ALQO: add to spork database.
         pSporkDB->WriteSpork(spork.nSporkID, spork);
     }
     if (strCommand == "getsporks") {
