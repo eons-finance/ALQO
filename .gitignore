@@ -7,12 +7,12 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/pivx
-src/pivxd
-src/pivx-cli
-src/pivx-tx
-src/test/test_pivx
-src/qt/test/test_pivx-qt
+src/alqo
+src/alqod
+src/alqo-cli
+src/alqo-tx
+src/test/test_alqo
+src/qt/test/test_alqo-qt
 
 # autoreconf
 Makefile.in
@@ -38,8 +38,8 @@ confdefs.h
 conftest.cpp
 conftest.err
 libtool
-src/config/pivx-config.h
-src/config/pivx-config.h.in
+src/config/alqo-config.h
+src/config/alqo-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -48,8 +48,13 @@ contrib/devtools/split-debug.sh
 src/univalue/gen
 
 src/qt/*.moc
+src/qt/pivx/*.moc
 src/qt/moc_*.cpp
+src/qt/pivx/moc_*.cpp
+src/qt/pivx/settings/moc_*.cpp
 src/qt/forms/ui_*.h
+src/qt/pivx/settings/forms/ui_*.h
+src/qt/pivx/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
@@ -65,7 +70,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.pivx
+.alqo
 *.a
 *.pb.cc
 *.pb.h
@@ -84,13 +89,13 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-pivx-qt
-PIVX-Qt.app
+alqo-qt
+ALQO-Qt.app
 background.tiff*
 
 # Unit-tests
 Makefile.test
-pivx-qt_test
+alqo-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -106,7 +111,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_pivx.coverage/
+test_alqo.coverage/
 total.coverage/
 coverage_percent.txt
 
