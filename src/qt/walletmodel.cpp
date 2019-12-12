@@ -924,6 +924,12 @@ bool WalletModel::isMine(CBitcoinAddress address)
     return IsMine(*wallet, address.Get());
 }
 
+bool WalletModel::isMine(const QString& addressStr)
+{
+    CBitcoinAddress address(addressStr.toStdString());
+    return IsMine(*wallet, address.Get());
+}
+
 bool WalletModel::isUsed(CBitcoinAddress address)
 {
     return wallet->IsUsed(address);
