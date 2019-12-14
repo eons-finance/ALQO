@@ -799,13 +799,7 @@ bool CMasternodePing::CheckAndUpdate(int& nDos, bool fRequireEnabled, bool fChec
 
             LogPrint("masternode", "CMasternodePing::CheckAndUpdate - Masternode ping accepted, vin: %s\n", vin.prevout.hash.ToString());
 
-            // Echo all MNBs before Dec 31, 2019
-            if (GetTime() < 1577836799) {
-                pmn->UpdateFromNewBroadcast(mnb);
-                mnb.Relay();
-            }
             Relay();
-
             return true;
         }
         LogPrint("masternode", "CMasternodePing::CheckAndUpdate - Masternode ping arrived too early, vin: %s\n", vin.prevout.hash.ToString());
