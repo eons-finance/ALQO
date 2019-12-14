@@ -19,16 +19,14 @@
 class CMasternodeSync;
 CMasternodeSync masternodeSync;
 
-bool fHasSynced = false;
 CMasternodeSync::CMasternodeSync()
 {
-    if (!fHasSynced) Reset();
-    fHasSynced = true;
+    Reset();
 }
 
 bool CMasternodeSync::IsSynced()
 {
-    return RequestedMasternodeAssets == MASTERNODE_SYNC_MNW;
+    return RequestedMasternodeAssets == MASTERNODE_SYNC_FINISHED;
 }
 
 bool CMasternodeSync::IsSporkListSynced()
@@ -85,7 +83,7 @@ bool CMasternodeSync::IsBlockchainSynced()
 void CMasternodeSync::Reset()
 {
     fBlockchainSynced = false;
-    lastProcess = GetTime();
+    lastProcess = 0;
     lastMasternodeList = 0;
     lastMasternodeWinner = 0;
     lastBudgetItem = 0;
@@ -261,11 +259,19 @@ void CMasternodeSync::Process()
     if (tick++ % MASTERNODE_SYNC_TIMEOUT != 0) return;
 
     if (IsSynced()) {
-        return;
+        /* 
+            Resync if we lose all masternodes from sleep/wake or failure to sync originally
+        */
+        if (mnodeman.CountEnabled() == 0) {
+            Reset();
+        } else
+            return;
     }
 
     //try syncing again
-    if (RequestedMasternodeAssets == MASTERNODE_SYNC_FAILED) {
+    if (RequestedMasternodeAssets == MASTERNODE_SYNC_FAILED && lastFailure + (1 * 60) < GetTime()) {
+        Reset();
+    } else if (RequestedMasternodeAssets == MASTERNODE_SYNC_FAILED) {
         return;
     }
 
