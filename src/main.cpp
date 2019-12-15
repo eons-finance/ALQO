@@ -73,6 +73,7 @@ int nScriptCheckThreads = 0;
 bool fImporting = false;
 bool fReindex = false;
 bool fTxIndex = true;
+bool fHeaderCast = false;
 bool fIsBareMultisigStd = true;
 bool fCheckBlockIndex = false;
 bool fVerifyingBlocks = false;
@@ -2935,6 +2936,15 @@ bool ReconsiderBlock(CValidationState& state, CBlockIndex* pindex)
     return true;
 }
 
+bool HeaderCastFlag()
+{
+    if (fHeaderCast)
+        return true;
+    if (chainActive.Height()>Params().HeaderCastBug())
+        fHeaderCast = true;
+    return fHeaderCast;
+}
+
 CBlockIndex* AddToBlockIndex(const CBlock& block)
 {
     // Check for duplicate
@@ -2944,7 +2954,7 @@ CBlockIndex* AddToBlockIndex(const CBlock& block)
         return it->second;
 
     // Construct new block index object
-    CBlockIndex* pindexNew = new CBlockIndex(block);
+    CBlockIndex* pindexNew = new CBlockIndex(HeaderCastFlag()?block:(const CBlockHeader)block);
     assert(pindexNew);
     // We assign the sequence id to blocks only when the full data is available,
     // to avoid miners withholding blocks but broadcasting headers, to get a

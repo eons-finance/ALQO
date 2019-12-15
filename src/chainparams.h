@@ -127,6 +127,7 @@ public:
     int Zerocoin_RequiredStakeDepth() const { return nZerocoinRequiredStakeDepth; }
 
     /** Height or Time Based Activations **/
+    int HeaderCastBug() const { return nHeaderCastBug; }
     int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
     int Zerocoin_StartHeight() const { return nZerocoinStartHeight; }
@@ -173,6 +174,7 @@ protected:
     int nStakeMaxAge;
     int nFutureTimeDriftPoW;
     int nFutureTimeDriftPoS;
+    int nHeaderCastBug;
 
     int nModifierUpdateBlock;
     CAmount nMaxMoneyOut;
