@@ -136,6 +136,7 @@ public:
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 300;
+        nHeaderCastBug = 20000;
         nModifierUpdateBlock = 33554432;
         nZerocoinStartHeight = 33554432;
         nZerocoinStartTime = 2147483647;
