@@ -5701,7 +5701,8 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-    return PROTOCOL_VERSION;
+    if (HeaderCastFlag()) return PROTOCOL_VERSION;
+    return PROTOCOL_VERSION-1;
 }
 
 // requires LOCK(cs_vRecvMsg)
