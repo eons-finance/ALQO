@@ -1617,10 +1617,11 @@ bool AppInit2()
         if (fFirstRun) {
             // Create new keyUser and set as default key
             CPubKey newDefaultKey;
-            if (pwalletMain->GetKeyFromPool(newDefaultKey)) {
-                pwalletMain->SetDefaultKey(newDefaultKey);
-                if (!pwalletMain->SetAddressBook(pwalletMain->vchDefaultKey.GetID(), "", "receive"))
-                    strErrors << _("Cannot write default address") << "\n";
+            // Top up the keypool
+            if (!pwalletMain->TopUpKeyPool()) {
+                // Error generating keys
+                InitError(_("Unable to generate initial key") += "\n");
+                return error("%s %s", __func__ , "Unable to generate initial key");
             }
 
             pwalletMain->SetBestChain(chainActive.GetLocator());
@@ -1677,16 +1678,6 @@ bool AppInit2()
             }
         }
         fVerifyingBlocks = false;
-
-        pwalletMain->InitAutoConvertAddresses();
-
-        bool fEnableZPivBackups = GetBoolArg("-backupzpiv", true);
-        pwalletMain->setZPivAutoBackups(fEnableZPivBackups);
-
-        //Load zerocoin mint hashes to memory
-        pwalletMain->zpivTracker->Init();
-        zwalletMain->LoadMintPoolFromDB();
-        zwalletMain->SyncWithChain();
 
     }  // (!fDisableWallet)
 #else  // ENABLE_WALLET
@@ -1918,11 +1909,6 @@ bool AppInit2()
 
         // Run a thread to flush wallet periodically
         threadGroup.create_thread(boost::bind(&ThreadFlushWalletDB, boost::ref(pwalletMain->strWalletFile)));
-
-        if (GetBoolArg("-precompute", false)) {
-            // Run a thread to precompute any zPIV spends
-            threadGroup.create_thread(boost::bind(&ThreadPrecomputeSpends));
-        }
 
         if (GetBoolArg("-staking", true)) {
             // ppcoin:mint proof-of-stake blocks in the background
