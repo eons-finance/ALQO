@@ -717,13 +717,6 @@
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QLabel" name="labelZpiv">
-                  <property name="text">
-                   <string>zPIV</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </item>
               <item>
