@@ -5766,10 +5766,6 @@ bool ProcessMessages(CNode* pfrom)
         // Message size
         unsigned int nMessageSize = hdr.nMessageSize;
 
-        ///////bazdebug/////////////////////////////////////////////////////////////////////////////////////
-        LogPrintf("peer %d sent %s (size %d)\n", pfrom->id, SanitizeString(hdr.GetCommand()), nMessageSize);
-        ///////bazdebug/////////////////////////////////////////////////////////////////////////////////////
-
         // Checksum
         CDataStream& vRecv = msg.vRecv;
         uint256 hash = Hash(vRecv.begin(), vRecv.begin() + nMessageSize);
@@ -5951,10 +5947,6 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
             for (const CInv& inv : pto->vInventoryToSend) {
                 if (pto->setInventoryKnown.count(inv))
                     continue;
-
-                ///////bazdebug////////////////////////////////////////////////////
-                LogPrintf("we sent %s to peer %d\n", inv.ToString(), pto->GetId());
-                ///////bazdebug////////////////////////////////////////////////////
 
                 // trickle out tx inv to protect privacy
                 if (inv.type == MSG_TX && !fSendTrickle) {
