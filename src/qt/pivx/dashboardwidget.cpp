@@ -79,6 +79,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     ui->pushButtonYear->setChecked(true);
 
     setCssProperty(ui->pushButtonChartArrow, "btn-chart-arrow");
+    setCssProperty(ui->pushButtonChartRight, "btn-chart-arrow-right");
 
     connect(ui->comboBoxYears, SIGNAL(currentIndexChanged(const QString&)), this,SLOT(onChartYearChanged(const QString&)));
 
@@ -169,7 +170,6 @@ void DashboardWidget::handleTransactionClicked(const QModelIndex &index){
     window->showHide(true);
     TxDetailDialog *dialog = new TxDetailDialog(window, false);
     dialog->setData(walletModel, rIndex);
-    dialog->adjustSize();
     openDialogWithOpaqueBackgroundY(dialog, window, 3, 17);
 
     // Back to regular status
@@ -201,6 +201,8 @@ void DashboardWidget::loadWalletModel(){
             ui->comboBoxSort->setVisible(false);
         }
 
+        connect(ui->pushImgEmpty, SIGNAL(clicked()), window, SLOT(openFAQ()));
+        connect(ui->btnHowTo, SIGNAL(clicked()), window, SLOT(openFAQ()));
         //connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
 
         // Notification pop-up for new transaction
@@ -216,6 +218,7 @@ void DashboardWidget::loadWalletModel(){
         stakesFilter->setOnlyStakes(true);
         stakesFilter->setSourceModel(txModel);
         stakesFilter->sort(TransactionTableModel::Date, Qt::AscendingOrder);
+        hasStakes = stakesFilter->rowCount() > 0;
         loadChart();
 #endif
     }
@@ -331,14 +334,14 @@ void DashboardWidget::tryChartRefresh() {
         if (!chart) {
             loadChart();
         } else {
-        // Check for min update time to not reload the UI so often if the node is syncing.
-        int64_t now = GetTime();
-        if (lastRefreshTime + CHART_LOAD_MIN_TIME_INTERVAL < now) {
-            lastRefreshTime = now;
-            refreshChart();
+            // Check for min update time to not reload the UI so often if the node is syncing.
+            int64_t now = GetTime();
+            if (lastRefreshTime + CHART_LOAD_MIN_TIME_INTERVAL < now) {
+                lastRefreshTime = now;
+                refreshChart();
+            }
         }
     }
-}
 }
 
 void DashboardWidget::setChartShow(ChartShowType type) {
@@ -557,7 +560,6 @@ bool DashboardWidget::loadChartData(bool withMonthNames) {
         chartData->xLabels << ((withMonthNames) ? monthsNames[num - 1] : QString::number(num));
 
         chartData->valuesPiv.append(piv);
-        chartData->valueszPiv.append(zpiv);
 
         int max = std::max(piv, zpiv);
         if (max > chartData->maxValue) {
@@ -612,7 +614,7 @@ void DashboardWidget::onChartRefreshed() {
     }
     // init sets
     set0 = new QBarSet("ALQO");
-    set1 = new QBarSet("zPIV");
+    set1 = new QBarSet("");
     set0->setColor(QColor(92,75,125));
     set1->setColor(QColor(176,136,255));
 
@@ -731,10 +733,10 @@ void DashboardWidget::updateAxisX(const QStringList* args) {
 
 void DashboardWidget::onChartArrowClicked(bool goLeft) {
     if (goLeft) {
-    dayStart--;
-    if (dayStart == 0) {
-        dayStart = QDate(yearFilter, monthFilter, 1).daysInMonth();
-    }
+        dayStart--;
+        if (dayStart == 0) {
+            dayStart = QDate(yearFilter, monthFilter, 1).daysInMonth();
+        }
     } else {
         int dayInMonth = QDate(yearFilter, monthFilter, dayStart).daysInMonth();
         dayStart++;
@@ -774,7 +776,6 @@ void DashboardWidget::windowResizeEvent(QResizeEvent *event){
         }
     }
 }
-
 
 #endif
 
