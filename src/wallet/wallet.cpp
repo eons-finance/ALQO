@@ -1487,26 +1487,7 @@ CAmount CWallet::GetBalance() const
 
 CAmount CWallet::GetZerocoinBalance(bool fMatureOnly) const
 {
-    if (fMatureOnly) {
-        // This code is not removed just for when we back to use zPIV in the future, for now it's useless,
-        // every public coin spend is now spendable without need to have new mints on top.
-
-        //if (chainActive.Height() > nLastMaturityCheck)
-        //    mapMintMaturity = GetMintMaturityHeight();
-        //nLastMaturityCheck = chainActive.Height();
-
-        CAmount nBalance = 0;
-        std::vector<CMintMeta> vMints = zpivTracker->GetMints(true);
-        for (auto meta : vMints) {
-            // Every public coin spend is now spendable, no need to mint new coins on top.
-            //if (meta.nHeight >= mapMintMaturity.at(meta.denom) || meta.nHeight >= chainActive.Height() || meta.nHeight == 0)
-            //    continue;
-            nBalance += libzerocoin::ZerocoinDenominationToAmount(meta.denom);
-        }
-        return nBalance;
-    }
-
-    return zpivTracker->GetBalance(false, false);
+    return 0;
 }
 
 CAmount CWallet::GetImmatureZerocoinBalance() const

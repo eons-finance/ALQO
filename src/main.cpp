@@ -4622,49 +4622,6 @@ void static ProcessGetData(CNode* pfrom)
                         pushed = true;
                     }
                 }
-
-                if(nLocalServices & NODE_BLOOM_LIGHT_ZC) {
-                    if (!pushed && inv.type == MSG_PUBCOINS) {
-                        //std::cout << "asking for pubcoins, requested block hash: " << inv.hash.GetHex() << std::endl;
-
-                        bool send = false;
-                        BlockMap::iterator mi = mapBlockIndex.find(inv.hash);
-                        if (mi != mapBlockIndex.end()) {
-                            if (chainActive.Contains(mi->second)) {
-                                send = true;
-                            } else {
-                                // To prevent fingerprinting attacks, only send blocks outside of the active
-                                // chain if they are valid, and no more than a max reorg depth than the best header
-                                // chain we know about.
-                                send = mi->second->IsValid(BLOCK_VALID_SCRIPTS) && (pindexBestHeader != NULL) &&
-                                       (chainActive.Height() - mi->second->nHeight < Params().MaxReorganizationDepth());
-                                if (!send) {
-                                    LogPrintf(
-                                            "ProcessGetData(): ignoring request from peer=%i for old block that isn't in the main chain\n",
-                                            pfrom->GetId());
-                                }
-                            }
-                        }
-                        // Don't send not-validated blocks
-                        if (send && (mi->second->nStatus & BLOCK_HAVE_DATA)) {
-                            try {
-                                std::list<libzerocoin::PublicCoin> pubcoins = GetPubcoinFromBlock((*mi).second);
-                                CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                                ss.reserve(2000);
-                                ss << inv.hash.Get32();
-                                ss << pubcoins.size();
-                                for (const libzerocoin::PublicCoin &pubcoin : pubcoins) {
-                                    ss << pubcoin.getValue();
-                                }
-                                pfrom->PushMessage("pubcoins", ss);
-                                pushed = true;
-                            } catch (std::exception &e) {
-                                PrintExceptionContinue(&e, "ProcessMessages()");
-                            }
-                        }
-                    }
-                }
-
                 if (!pushed && inv.type == MSG_TXLOCK_VOTE) {
                     if (mapTxLockVote.count(inv.hash)) {
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
@@ -4813,7 +4770,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         // Each connection can only send one version message
         if (pfrom->nVersion != 0) {
             pfrom->PushMessage("reject", strCommand, REJECT_DUPLICATE, std::string("Duplicate version message"));
-            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 1);
             return false;
         }
@@ -4927,15 +4883,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         AddTimeData(pfrom->addr, nTimeOffset, 15);
     }
 
-
-    else if (pfrom->nVersion == 0) {
-        // Must have a version message before anything else
-        LOCK(cs_main);
-        Misbehaving(pfrom->GetId(), 1);
-        return false;
-    }
-
-
     else if (strCommand == "verack") {
         pfrom->SetRecvVersion(std::min(pfrom->nVersion, PROTOCOL_VERSION));
 
@@ -4946,7 +4893,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         }
     }
 
-
     else if (strCommand == "addr") {
         std::vector<CAddress> vAddr;
         vRecv >> vAddr;
@@ -4955,7 +4901,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         if (pfrom->nVersion < CADDR_TIME_VERSION && addrman.size() > 1000)
             return true;
         if (vAddr.size() > 1000) {
-            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 20);
             return error("message addr size() = %u", vAddr.size());
         }
@@ -5015,7 +4960,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         std::vector<CInv> vInv;
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
-            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 20);
             return error("message inv size() = %u", vInv.size());
         }
@@ -5064,7 +5008,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         std::vector<CInv> vInv;
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
-            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 20);
             return error("message getdata size() = %u", vInv.size());
         }
@@ -5314,7 +5257,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         // Bypass the normal CBlock deserialization, as we don't want to risk deserializing 2000 full blocks.
         unsigned int nCount = ReadCompactSize(vRecv);
         if (nCount > MAX_HEADERS_RESULTS) {
-            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 20);
             return error("headers message size = %u", nCount);
         }
@@ -5408,59 +5350,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         }
     }
 
-    else if (strCommand == "accvalue"){
-        if(nLocalServices & NODE_BLOOM_LIGHT_ZC) {
-            try {
-                int height;
-                libzerocoin::CoinDenomination den;
-                vRecv >> height;
-                vRecv >> den;
-                CBigNum bnAccValue = 0;
-                //std::cout << "asking for checkpoint value in height: " << height << ", den: " << den << std::endl;
-                if (!GetAccumulatorValue(height, den, bnAccValue)) {
-                    LogPrint("zpiv", "peer misbehaving for request an invalid acc checkpoint \n", __func__);
-                    Misbehaving(pfrom->GetId(), 50);
-                } else {
-                    //std::cout << "Sending acc value, with checksum: " << GetChecksum(bnAccValue) << " for "
-                    //          << bnAccValue.GetDec() << std::endl;
-                    CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                    ss << bnAccValue;
-                    ss << height;
-                    pfrom->PushMessage("accvalueresponse", ss);
-                }
-            } catch (std::exception &e) {
-                // TODO: Response with an error?
-                PrintExceptionContinue(&e, "ProcessMessages()");
-            }
-        }
-    }
-
-    else if (strCommand == "genwit") {
-        if(nLocalServices & NODE_BLOOM_LIGHT_ZC) {
-            try {
-                CGenWit gen;
-                vRecv >> gen;
-                gen.setPfrom(pfrom);
-                if (gen.isValid(chainActive.Height())) {
-                    if (!lightWorker.addWitWork(gen)) {
-                        LogPrint("zpiv", "%s : add genwit request failed \n", __func__);
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        // Invalid request only returns the message without a result.
-                        ss << gen.getRequestNum();
-                        pfrom->PushMessage("pubcoins", ss);
-                    }
-                } else {
-                    CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                    // Invalid request only returns the message without a result.
-                    ss << gen.getRequestNum();
-                    pfrom->PushMessage("pubcoins", ss);
-                }
-            } catch (std::exception &e) {
-                // TODO: Response with an error?
-                PrintExceptionContinue(&e, "ProcessMessages()");
-            }
-        }
-    }
 
     // This asymmetric behavior for inbound and outbound connections was introduced
     // to prevent a fingerprinting attack: an attacker can send specific fake addresses
@@ -5597,7 +5486,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
                 // This isn't a Misbehaving(100) (immediate ban) because the
                 // peer might be an older or different implementation with
                 // a different signature key, etc.
-                LOCK(cs_main);
                 Misbehaving(pfrom->GetId(), 10);
             }
         }
@@ -5608,7 +5496,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
                  strCommand == "filteradd" ||
                  strCommand == "filterclear")) {
         LogPrintf("bloom message=%s\n", strCommand);
-        LOCK(cs_main);
         Misbehaving(pfrom->GetId(), 100);
     }
 
@@ -5618,7 +5505,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
 
         if (!filter.IsWithinSizeConstraints()) {
             // There is no excuse for sending a too-large filter
-            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 100);
         } else {
             LOCK(pfrom->cs_filter);
@@ -5637,16 +5523,13 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         // Nodes must NEVER send a data item > 520 bytes (the max size for a script data object,
         // and thus, the maximum size any matched object can have) in a filteradd message
         if (vData.size() > MAX_SCRIPT_ELEMENT_SIZE) {
-            LOCK(cs_main);
             Misbehaving(pfrom->GetId(), 100);
         } else {
             LOCK(pfrom->cs_filter);
             if (pfrom->pfilter)
                 pfrom->pfilter->insert(vData);
-            else {
-                LOCK(cs_main);
+            else
                 Misbehaving(pfrom->GetId(), 100);
-            }
         }
     }
 
