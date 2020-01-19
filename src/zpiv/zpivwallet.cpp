@@ -69,26 +69,6 @@ CzPIVWallet::CzPIVWallet(std::string strWalletFile)
 
 bool CzPIVWallet::SetMasterSeed(const uint256& seedMaster, bool fResetCount)
 {
-
-    CWalletDB walletdb(strWalletFile);
-    if (pwalletMain->IsLocked())
-        return false;
-
-    if (seedMaster != 0 && !pwalletMain->AddDeterministicSeed(seedMaster)) {
-        return error("%s: failed to set master seed.", __func__);
-    }
-
-    this->seedMaster = seedMaster;
-
-    nCountLastUsed = 0;
-
-    if (fResetCount)
-        walletdb.WriteZPIVCount(nCountLastUsed);
-    else if (!walletdb.ReadZPIVCount(nCountLastUsed))
-        nCountLastUsed = 0;
-
-    mintPool.Reset();
-
     return true;
 }
 
@@ -105,52 +85,7 @@ void CzPIVWallet::AddToMintPool(const std::pair<uint256, uint32_t>& pMint, bool 
 //Add the next 20 mints to the mint pool
 void CzPIVWallet::GenerateMintPool(uint32_t nCountStart, uint32_t nCountEnd)
 {
-
-    //Is locked
-    if (seedMaster == 0)
-        return;
-
-    uint32_t n = nCountLastUsed + 1;
-
-    if (nCountStart > 0)
-        n = nCountStart;
-
-    uint32_t nStop = n + 20;
-    if (nCountEnd > 0)
-        nStop = std::max(n, n + nCountEnd);
-
-    bool fFound;
-
-    uint256 hashSeed = Hash(seedMaster.begin(), seedMaster.end());
-    LogPrintf("%s : n=%d nStop=%d\n", __func__, n, nStop - 1);
-    for (uint32_t i = n; i < nStop; ++i) {
-        if (ShutdownRequested())
-            return;
-
-        fFound = false;
-
-        // Prevent unnecessary repeated minted
-        for (auto& pair : mintPool) {
-            if(pair.second == i) {
-                fFound = true;
-                break;
-            }
-        }
-
-        if(fFound)
-            continue;
-
-        uint512 seedZerocoin = GetZerocoinSeed(i);
-        CBigNum bnValue;
-        CBigNum bnSerial;
-        CBigNum bnRandomness;
-        CKey key;
-        SeedToZPIV(seedZerocoin, bnValue, bnSerial, bnRandomness, key);
-
-        mintPool.Add(bnValue, i);
-        CWalletDB(strWalletFile).WriteMintPoolPair(hashSeed, GetPubCoinHash(bnValue), i);
-        LogPrintf("%s : %s count=%d\n", __func__, bnValue.GetHex().substr(0, 6), i);
-    }
+    return;
 }
 
 // pubcoin hashes are stored to db so that a full accounting of mints belonging to the seed can be tracked without regenerating
