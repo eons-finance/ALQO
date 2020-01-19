@@ -30,10 +30,14 @@ TopBar::TopBar(ALQOGUI* _mainWindow, QWidget *parent) :
 
     // Set parent stylesheet
     this->setStyleSheet(_mainWindow->styleSheet());
-
     /* Containers */
+    ui->containerTop->setContentsMargins(10, 4, 10, 10);
+#ifdef Q_OS_MAC
+    ui->containerTop->load("://bg-dashboard-banner");
+    setCssProperty(ui->containerTop,"container-topbar-no-image");
+#else
     ui->containerTop->setProperty("cssClass", "container-top");
-    ui->containerTop->setContentsMargins(10,4,10,10);
+#endif
 
     std::initializer_list<QWidget*> lblTitles = {ui->labelTitle1, ui->labelTitle3, ui->labelTitle4};
     setCssProperty(lblTitles, "text-title-topbar");
