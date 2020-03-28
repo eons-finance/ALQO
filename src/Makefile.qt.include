@@ -393,7 +393,143 @@ RES_ICONS = \
   qt/res/icons/unit_tupivx.png \
   qt/res/icons/yesvote.png \
   qt/res/icons/novote.png \
-  qt/res/icons/abstainvote.png \
+  qt/res/icons/abstainvote.png
+
+BITCOIN_QT_BASE_CPP = \
+  qt/bantablemodel.cpp \
+  qt/bitcoinaddressvalidator.cpp \
+  qt/bitcoinamountfield.cpp \
+  qt/pivxgui.cpp \
+  qt/bitcoinunits.cpp \
+  qt/blockexplorer.cpp \
+  qt/clientmodel.cpp \
+  qt/csvmodelwriter.cpp \
+  qt/guiutil.cpp \
+  qt/intro.cpp \
+  qt/networkstyle.cpp \
+  qt/notificator.cpp \
+  qt/optionsdialog.cpp \
+  qt/optionsmodel.cpp \
+  qt/peertablemodel.cpp \
+  qt/platformstyle.cpp \
+  qt/qvalidatedlineedit.cpp \
+  qt/qvaluecombobox.cpp \
+  qt/rpcconsole.cpp \
+  qt/splashscreen.cpp \
+  qt/trafficgraphwidget.cpp \
+  qt/utilitydialog.cpp
+
+BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+
+BITCOIN_QT_WALLET_CPP = \
+  qt/addressbookpage.cpp \
+  qt/addresstablemodel.cpp \
+  qt/askpassphrasedialog.cpp \
+  qt/blockexplorer.cpp \
+  qt/coincontroldialog.cpp \
+  qt/coincontroltreewidget.cpp \
+  qt/editaddressdialog.cpp \
+  qt/governancepage.cpp \
+  qt/openuridialog.cpp \
+  qt/paymentrequestplus.cpp \
+  qt/paymentserver.cpp \
+  qt/proposalframe.cpp \
+  qt/recentrequeststablemodel.cpp \
+  qt/transactiondesc.cpp \
+  qt/transactionfilterproxy.cpp \
+  qt/transactionrecord.cpp \
+  qt/transactiontablemodel.cpp \
+  qt/walletmodel.cpp \
+  qt/walletmodeltransaction.cpp \
+  qt/loadingdialog.cpp \
+  qt/zpivcontroldialog.cpp \
+  qt/pwidget.cpp \
+  qt/guitransactionsutils.cpp \
+  qt/snackbar.cpp \
+  qt/navmenuwidget.cpp \
+  qt/lockunlock.cpp \
+  qt/receivedialog.cpp \
+  qt/furabstractlistitemdelegate.cpp \
+  qt/txviewholder.cpp \
+  qt/qtutils.cpp \
+  qt/expandablebutton.cpp \
+  qt/walletpassworddialog.cpp \
+  qt/topbar.cpp \
+  qt/txrow.cpp \
+  qt/addressholder.cpp \
+  qt/addressfilterproxymodel.cpp \
+  qt/dashboardwidget.cpp \
+  qt/coincontrolpivwidget.cpp \
+  qt/addresslabelrow.cpp \
+  qt/contactdropdownrow.cpp \
+  qt/contactsdropdown.cpp \
+  qt/optionbutton.cpp \
+  qt/mninfodialog.cpp \
+  qt/mnmodel.cpp \
+  qt/masternodewizarddialog.cpp \
+  qt/mnrow.cpp \
+  qt/masternodeswidget.cpp \
+  qt/myaddressrow.cpp \
+  qt/csrow.cpp \
+  qt/sendchangeaddressdialog.cpp \
+  qt/sendconfirmdialog.cpp \
+  qt/sendcustomfeedialog.cpp \
+  qt/sendchangeaddressdialog.cpp \
+  qt/sendmultirow.cpp \
+  qt/send.cpp \
+  qt/addnewaddressdialog.cpp \
+  qt/addnewcontactdialog.cpp \
+  qt/requestdialog.cpp \
+  qt/receivewidget.cpp \
+  qt/tooltipmenu.cpp \
+  qt/addresseswidget.cpp \
+  qt/defaultdialog.cpp \
+  qt/denomgenerationdialog.cpp \
+  qt/settings/settingsbackupwallet.cpp \
+  qt/settings/settingsbittoolwidget.cpp \
+  qt/settings/settingsconsolewidget.cpp \
+  qt/settings/settingsdisplayoptionswidget.cpp \
+  qt/settings/settingsinformationwidget.cpp \
+  qt/settings/settingsmainoptionswidget.cpp \
+  qt/settings/settingsmultisenddialog.cpp \
+  qt/settings/settingsmultisendwidget.cpp \
+  qt/settings/settingssignmessagewidgets.cpp \
+  qt/settings/settingswalletoptionswidget.cpp \
+  qt/settings/settingswalletrepairwidget.cpp \
+  qt/settings/settingswidget.cpp \
+  qt/welcomecontentwidget.cpp \
+  qt/splash.cpp
+
+
+BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
+if TARGET_WINDOWS
+BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
+endif
+if ENABLE_WALLET
+BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
+endif
+
+RES_IMAGES = \
+  qt/res/images/about.png \
+  qt/res/images/splash.png \
+  qt/res/images/splash_testnet.png \
+  qt/res/images/splash_regtest.png \
+  qt/res/images/pivx_logo_horizontal.png \
+  qt/res/images/downArrow_dark.png \
+  qt/res/images/downArrow_small_dark.png \
+  qt/res/images/downArrow_small.png \
+  qt/res/images/upArrow_small_dark.png \
+  qt/res/images/upArrow_small.png \
+  qt/res/images/leftArrow_small_dark.png \
+  qt/res/images/rightArrow_small_dark.png \
+  qt/res/images/qtreeview_selected.png
+
+RES_CSS = \
+  qt/res/css/default.css \
+  qt/res/css/style_dark.css \
+  qt/res/css/style_light.css
+
+RES_IMG = \
   qt/res/img/bg-dashboard-banner.png \
   qt/res/img/bg-multi-number-dark.svg \
   qt/res/img/ic-check-locked.svg \
@@ -576,142 +712,6 @@ RES_ICONS = \
   qt/res/img/ani-loading-dark.gif \
   qt/res/img/ani-loading.gif
 
-
-
-BITCOIN_QT_BASE_CPP = \
-  qt/bantablemodel.cpp \
-  qt/bitcoinaddressvalidator.cpp \
-  qt/bitcoinamountfield.cpp \
-  qt/pivxgui.cpp \
-  qt/bitcoinunits.cpp \
-  qt/blockexplorer.cpp \
-  qt/clientmodel.cpp \
-  qt/csvmodelwriter.cpp \
-  qt/guiutil.cpp \
-  qt/intro.cpp \
-  qt/networkstyle.cpp \
-  qt/notificator.cpp \
-  qt/optionsdialog.cpp \
-  qt/optionsmodel.cpp \
-  qt/peertablemodel.cpp \
-  qt/platformstyle.cpp \
-  qt/qvalidatedlineedit.cpp \
-  qt/qvaluecombobox.cpp \
-  qt/rpcconsole.cpp \
-  qt/splashscreen.cpp \
-  qt/trafficgraphwidget.cpp \
-  qt/utilitydialog.cpp
-
-BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
-
-BITCOIN_QT_WALLET_CPP = \
-  qt/addressbookpage.cpp \
-  qt/addresstablemodel.cpp \
-  qt/askpassphrasedialog.cpp \
-  qt/blockexplorer.cpp \
-  qt/coincontroldialog.cpp \
-  qt/coincontroltreewidget.cpp \
-  qt/editaddressdialog.cpp \
-  qt/governancepage.cpp \
-  qt/openuridialog.cpp \
-  qt/paymentrequestplus.cpp \
-  qt/paymentserver.cpp \
-  qt/proposalframe.cpp \
-  qt/recentrequeststablemodel.cpp \
-  qt/transactiondesc.cpp \
-  qt/transactionfilterproxy.cpp \
-  qt/transactionrecord.cpp \
-  qt/transactiontablemodel.cpp \
-  qt/walletmodel.cpp \
-  qt/walletmodeltransaction.cpp \
-  qt/loadingdialog.cpp \
-  qt/zpivcontroldialog.cpp \
-  qt/pwidget.cpp \
-  qt/guitransactionsutils.cpp \
-  qt/snackbar.cpp \
-  qt/navmenuwidget.cpp \
-  qt/lockunlock.cpp \
-  qt/receivedialog.cpp \
-  qt/furabstractlistitemdelegate.cpp \
-  qt/txviewholder.cpp \
-  qt/qtutils.cpp \
-  qt/expandablebutton.cpp \
-  qt/walletpassworddialog.cpp \
-  qt/topbar.cpp \
-  qt/txrow.cpp \
-  qt/addressholder.cpp \
-  qt/addressfilterproxymodel.cpp \
-  qt/dashboardwidget.cpp \
-  qt/coincontrolpivwidget.cpp \
-  qt/addresslabelrow.cpp \
-  qt/contactdropdownrow.cpp \
-  qt/contactsdropdown.cpp \
-  qt/optionbutton.cpp \
-  qt/mninfodialog.cpp \
-  qt/mnmodel.cpp \
-  qt/masternodewizarddialog.cpp \
-  qt/mnrow.cpp \
-  qt/masternodeswidget.cpp \
-  qt/myaddressrow.cpp \
-  qt/csrow.cpp \
-  qt/sendchangeaddressdialog.cpp \
-  qt/sendconfirmdialog.cpp \
-  qt/sendcustomfeedialog.cpp \
-  qt/sendchangeaddressdialog.cpp \
-  qt/sendmultirow.cpp \
-  qt/send.cpp \
-  qt/addnewaddressdialog.cpp \
-  qt/addnewcontactdialog.cpp \
-  qt/requestdialog.cpp \
-  qt/receivewidget.cpp \
-  qt/tooltipmenu.cpp \
-  qt/addresseswidget.cpp \
-  qt/defaultdialog.cpp \
-  qt/denomgenerationdialog.cpp \
-  qt/settings/settingsbackupwallet.cpp \
-  qt/settings/settingsbittoolwidget.cpp \
-  qt/settings/settingsconsolewidget.cpp \
-  qt/settings/settingsdisplayoptionswidget.cpp \
-  qt/settings/settingsinformationwidget.cpp \
-  qt/settings/settingsmainoptionswidget.cpp \
-  qt/settings/settingsmultisenddialog.cpp \
-  qt/settings/settingsmultisendwidget.cpp \
-  qt/settings/settingssignmessagewidgets.cpp \
-  qt/settings/settingswalletoptionswidget.cpp \
-  qt/settings/settingswalletrepairwidget.cpp \
-  qt/settings/settingswidget.cpp \
-  qt/welcomecontentwidget.cpp \
-  qt/splash.cpp
-
-
-BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
-if TARGET_WINDOWS
-BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
-endif
-if ENABLE_WALLET
-BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
-endif
-
-RES_IMAGES = \
-  qt/res/images/about.png \
-  qt/res/images/splash.png \
-  qt/res/images/splash_testnet.png \
-  qt/res/images/splash_regtest.png \
-  qt/res/images/pivx_logo_horizontal.png \
-  qt/res/images/downArrow_dark.png \
-  qt/res/images/downArrow_small_dark.png \
-  qt/res/images/downArrow_small.png \
-  qt/res/images/upArrow_small_dark.png \
-  qt/res/images/upArrow_small.png \
-  qt/res/images/leftArrow_small_dark.png \
-  qt/res/images/rightArrow_small_dark.png \
-  qt/res/images/qtreeview_selected.png
-
-RES_CSS = \
-  qt/res/css/default.css \
-  qt/res/css/style_dark.css \
-  qt/res/css/style_light.css
-
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
 BITCOIN_RC = qt/res/alqo-qt-res.rc
@@ -725,7 +725,7 @@ qt_libbitcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 qt_libbitcoinqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
 
 qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
-  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES)
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_IMG) $(RES_CSS) $(RES_MOVIES)
 
 nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
@@ -788,7 +788,7 @@ $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
-$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_IMG) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
 	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name pivx $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
