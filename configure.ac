@@ -142,7 +142,7 @@ AC_ARG_WITH([qtcharts],
   [AS_HELP_STRING([--with-qtcharts],
   [enable qtcharts support (default is yes if qt is enabled and qtchartview is found)])],
   [use_qtcharts=$withval],
-  [use_qtcharts=auto])
+  [use_qtcharts=no])
 
 AC_ARG_ENABLE([hardening],
   [AS_HELP_STRING([--disable-hardening],
