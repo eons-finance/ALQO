@@ -112,6 +112,10 @@ public slots:
      * The new items are those between start and end inclusive, under the given parent item.
     */
     void processNewTransaction(const QModelIndex& parent, int start, int /*end*/);
+
+    void updateBalances(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
+                        const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
+                        const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
 signals:
     /** Notify that a new transaction appeared */
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
@@ -123,14 +127,7 @@ private slots:
     void updateDisplayUnit();
     void showList();
     void onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType);
-
-#ifdef USE_QTCHARTS
-    void windowResizeEvent(QResizeEvent *event);
-    void changeChartColors();
-    void onChartYearChanged(const QString&);
-    void onChartMonthChanged(const QString&);
-    void onChartArrowClicked(bool goLeft);
-#endif
+    void onBtnReceiveClicked();
 
 private:
     Ui::DashboardWidget *ui;
@@ -180,7 +177,6 @@ private:
     std::pair<int, int> getChartRange(QMap<int, std::pair<qint64, qint64>> amountsBy);
 
 private slots:
-    void onChartRefreshed();
 
 #endif
 

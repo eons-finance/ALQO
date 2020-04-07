@@ -17,16 +17,29 @@ void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionVie
     bool isStateHovered = option.state & QStyle::State_MouseOver;
 
     QRect selectedRect = option.rect;
-    selectedRect.setLeft(0);
-    painter->fillRect(selectedRect, this->row->rectColor(isStateHovered, isStateSelected));
+
+	QFont font = painter->font();
+	QPen pen(QColor(Qt::white), 2);
+	font.setPixelSize(10);
+
+	painter->setRenderHint(QPainter::Antialiasing);
+	painter->setFont(font);
+	painter->setPen(pen);
+	painter->setBrush(QColor(26, 29, 49, 127));
+	painter->drawRoundedRect(selectedRect, 20.0, 20.0);
+
+	//painter->fillPath(path, QColor("transparent"));
+
+    //painter->fillRect(selectedRect, this->row->rectColor(isStateHovered, isStateSelected));
 
     painter->translate(option.rect.topLeft());
     QWidget *row = this->row->createHolder(index.row());
-    row->setStyleSheet(qobject_cast<QWidget*>(parent())->styleSheet());
+
     this->row->init(row, index, isStateHovered, isStateSelected);
     row->setAttribute(Qt::WA_DontShowOnScreen, true);
     row->setGeometry(option.rect);
     row->resize(option.rect.width(),option.rect.height());
+    row->setStyleSheet("color:white; font-size:12px; text-align:right;");
     row->render(painter, QPoint(), QRegion(), QWidget::DrawChildren );
 
     painter->restore();

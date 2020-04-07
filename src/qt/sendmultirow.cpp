@@ -17,20 +17,20 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     iconNumber(new QPushButton())
 {
     ui->setupUi(this);
+    //this->setStyleSheet("QLineEdit {  border: 2px solid gray; border-radius: 20px;}");
     this->setStyleSheet(parent->styleSheet());
 
-    ui->lineEditAddress->setPlaceholderText(tr("Add address"));
+    ui->lineEditAddress->setPlaceholderText(tr("Type/Paste Address"));
     setCssProperty(ui->lineEditAddress, "edit-primary-multi-book");
     ui->lineEditAddress->setAttribute(Qt::WA_MacShowFocusRect, 0);
-    setShadow(ui->stackedAddress);
 
     ui->lineEditAmount->setPlaceholderText("0.00 ALQO ");
     initCssEditLine(ui->lineEditAmount);
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
 
     /* Description */
-    ui->labelSubtitleDescription->setText("Label address (optional)");
-    setCssProperty(ui->labelSubtitleDescription, "text-title");
+    //ui->labelSubtitleDescription->setText("Label address (optional)");
+    //setCssProperty(ui->labelSubtitleDescription, "text-title");
     ui->lineEditDescription->setPlaceholderText(tr("Add description"));
     initCssEditLine(ui->lineEditDescription);
 
@@ -41,20 +41,20 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     // Button Contact
     btnContact = ui->lineEditAddress->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
     // Icon Number
-    ui->stackedAddress->addWidget(iconNumber);
-    iconNumber->show();
-    iconNumber->raise();
+    //ui->stackedAddress->addWidget(iconNumber);
+    //iconNumber->show();
+    //iconNumber->raise();
 
-    setCssProperty(iconNumber, "ic-multi-number");
-    iconNumber->setText("1");
-    iconNumber->setVisible(false);
-    QSize size = QSize(24, 24);
-    iconNumber->setMinimumSize(size);
-    iconNumber->setMaximumSize(size);
+    //setCssProperty(iconNumber, "ic-multi-number");
+    //iconNumber->setText("1");
+    //iconNumber->setVisible(false);
+    //QSize size = QSize(24, 24);
+    //iconNumber->setMinimumSize(size);
+    //iconNumber->setMaximumSize(size);
 
     int posIconX = 0;
     int posIconY = 14;
-    iconNumber->move(posIconX, posIconY);
+    //iconNumber->move(posIconX, posIconY);
 
     connect(ui->lineEditAmount, SIGNAL(textChanged(const QString&)), this, SLOT(amountChanged(const QString&)));
     connect(ui->lineEditAddress, SIGNAL(textChanged(const QString&)), this, SLOT(addressChanged(const QString&)));
@@ -204,7 +204,7 @@ QRect SendMultiRow::getEditLineRect(){
 }
 
 int SendMultiRow::getEditHeight(){
-    return ui->stackedAddress->height();
+    //return ui->stackedAddress->height();
 }
 
 int SendMultiRow::getEditWidth(){
@@ -252,17 +252,17 @@ void SendMultiRow::setOnlyStakingAddressAccepted(bool onlyStakingAddress) {
 
 void SendMultiRow::setNumber(int _number){
     number = _number;
-    iconNumber->setText(QString::number(_number));
+    //iconNumber->setText(QString::number(_number));
 }
 
 void SendMultiRow::hideLabels(){
-    ui->layoutLabel->setVisible(false);
-    iconNumber->setVisible(true);
+    //ui->layoutLabel->setVisible(false);
+    //iconNumber->setVisible(true);
 }
 
 void SendMultiRow::showLabels(){
-    ui->layoutLabel->setVisible(true);
-    iconNumber->setVisible(false);
+    //ui->layoutLabel->setVisible(true);
+    //iconNumber->setVisible(false);
 }
 
 void SendMultiRow::resizeEvent(QResizeEvent *event) {
@@ -270,10 +270,10 @@ void SendMultiRow::resizeEvent(QResizeEvent *event) {
 }
 
 void SendMultiRow::enterEvent(QEvent *) {
-    if(!this->isExpanded && iconNumber->isVisible()){
-        isExpanded = true;
+   // if(!this->isExpanded && iconNumber->isVisible()){
+    //    isExpanded = true;
         ui->btnMenu->setVisible(isExpanded);
-    }
+    //}
 }
 
 void SendMultiRow::leaveEvent(QEvent *) {

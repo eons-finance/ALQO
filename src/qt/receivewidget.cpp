@@ -34,16 +34,10 @@ ReceiveWidget::ReceiveWidget(ALQOGUI* parent) :
                 this
                 );
 
-    // Containers
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(20,20,20,20);
-    setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(0,9,0,0);
-
+    setCssProperty(ui->qrframe, "dash-frame");
+        
     // Title
-    ui->labelTitle->setText(tr("Receive"));
     ui->labelSubtitle1->setText(tr("Scan the QR code or copy the address to receive ALQO."));
-    setCssTitleScreen(ui->labelTitle);
     setCssSubtitleScreen(ui->labelSubtitle1);
 
     // Address
@@ -56,20 +50,18 @@ ReceiveWidget::ReceiveWidget(ALQOGUI* parent) :
     setCssSubtitleScreen(ui->labelLabel);
 
     // Options
-    ui->btnMyAddresses->setTitleClassAndText("btn-title-grey", "My Addresses");
-    ui->btnMyAddresses->setSubTitleClassAndText("text-subtitle", "List your own addresses.");
-    ui->btnMyAddresses->layout()->setMargin(0);
-    ui->btnMyAddresses->setRightIconClass("ic-arrow");
+    ui->btnMyAddresses->setText(tr("My Addresses"));
+    setCssProperty(ui->btnMyAddresses, "btn-primary");
 
-    ui->btnRequest->setTitleClassAndText("btn-title-grey", "Create Request");
-    ui->btnRequest->setSubTitleClassAndText("text-subtitle", "Request payment with a fixed amount.");
-    ui->btnRequest->layout()->setMargin(0);
-
+    ui->btnRequest->setText(tr("Create Request"));
+    ui->btnRequest->setLayoutDirection(Qt::RightToLeft);
+    setCssProperty(ui->btnRequest, "btn-secundary-new");
+    
     ui->pushButtonLabel->setText(tr("Add Label"));
     ui->pushButtonLabel->setLayoutDirection(Qt::RightToLeft);
     setCssProperty(ui->pushButtonLabel, "btn-secundary-label");
 
-    ui->pushButtonNewAddress->setText(tr("Generate Address"));
+    ui->pushButtonNewAddress->setText(tr("Generate"));
     ui->pushButtonNewAddress->setLayoutDirection(Qt::RightToLeft);
     setCssProperty(ui->pushButtonNewAddress, "btn-secundary-new-address");
 
@@ -87,7 +79,6 @@ ReceiveWidget::ReceiveWidget(ALQOGUI* parent) :
 
     spacer = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Expanding);
     ui->btnMyAddresses->setChecked(true);
-    ui->container_right->addItem(spacer);
     ui->listViewAddress->setVisible(false);
 
     // Connect
@@ -234,13 +225,9 @@ void ReceiveWidget::onRequestClicked(){
 void ReceiveWidget::onMyAddressesClicked(){
     bool isVisible = ui->listViewAddress->isVisible();
     if(!isVisible){
-        ui->btnMyAddresses->setRightIconClass("btn-dropdown", true);
         ui->listViewAddress->setVisible(true);
-        ui->container_right->removeItem(spacer);
         ui->listViewAddress->update();
     }else{
-        ui->btnMyAddresses->setRightIconClass("ic-arrow", true);
-        ui->container_right->addItem(spacer);
         ui->listViewAddress->setVisible(false);
     }
 }

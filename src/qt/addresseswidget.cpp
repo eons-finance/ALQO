@@ -70,24 +70,6 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
                 this
     );
 
-    /* Containers */
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(0,20,0,20);
-    setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(20,10,20,20);
-    setCssProperty(ui->listAddresses, "container");
-
-    // Title
-    ui->labelTitle->setText(tr("Contacts"));
-    ui->labelSubtitle1->setText(tr("You can add a new one in the options menu to the side."));
-    setCssTitleScreen(ui->labelTitle);
-    setCssSubtitleScreen(ui->labelSubtitle1);
-
-    // Change eddress option
-    ui->btnAddContact->setTitleClassAndText("btn-title-grey", "Add new contact");
-    ui->btnAddContact->setSubTitleClassAndText("text-subtitle", "Generate a new address to receive tokens.");
-    ui->btnAddContact->setRightIconClass("ic-arrow-down");
-
     // List Addresses
     ui->listAddresses->setItemDelegate(delegate);
     ui->listAddresses->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
@@ -102,19 +84,12 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     ui->labelEmpty->setText(tr("No contacts yet"));
     setCssProperty(ui->labelEmpty, "text-empty");
 
-    // Add Contact
-    setCssProperty(ui->layoutNewContact, "container-options");
-
     // Name
-    ui->labelName->setText(tr("Contact name"));
-    setCssProperty(ui->labelName, "text-title");
-    ui->lineEditName->setPlaceholderText(tr("e.g. John Doe"));
+    ui->lineEditName->setPlaceholderText(tr("Contact name"));
     setCssEditLine(ui->lineEditName, true);
 
     // Address
-    ui->labelAddress->setText(tr("Enter a ALQO address"));
-    setCssProperty(ui->labelAddress, "text-title");
-    ui->lineEditAddress->setPlaceholderText("e.g. ab4eFQMFvCKrVq8CTGGvJWC…");
+    ui->lineEditAddress->setPlaceholderText("ALQO Address");
     setCssEditLine(ui->lineEditAddress, true);
     ui->lineEditAddress->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]+"), ui->lineEditName));
 
@@ -124,7 +99,6 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
 
     connect(ui->listAddresses, SIGNAL(clicked(QModelIndex)), this, SLOT(handleAddressClicked(QModelIndex)));
     connect(ui->btnSave, SIGNAL(clicked()), this, SLOT(onStoreContactClicked()));
-    connect(ui->btnAddContact, SIGNAL(clicked()), this, SLOT(onAddContactShowHideClicked()));
 }
 
 void AddressesWidget::handleAddressClicked(const QModelIndex &index){
@@ -240,13 +214,7 @@ void AddressesWidget::onCopyClicked(){
 }
 
 void AddressesWidget::onAddContactShowHideClicked(){
-    if(!ui->layoutNewContact->isVisible()){
-        ui->btnAddContact->setRightIconClass("btn-dropdown", true);
-        ui->layoutNewContact->setVisible(true);
-    }else {
-        ui->btnAddContact->setRightIconClass("ic-arrow", true);
-        ui->layoutNewContact->setVisible(false);
-    }
+
 }
 
 void AddressesWidget::changeTheme(bool isLightTheme, QString& theme){

@@ -82,7 +82,7 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
         // First the nav
         navMenu = new NavMenuWidget(this);
-        centralWidgetLayouot->addWidget(navMenu);
+        //centralWidgetLayouot->addWidget(navMenu);
 
         this->setCentralWidget(centralWidget);
         this->setContentsMargins(0,0,0,0);
@@ -99,15 +99,17 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         container->setLayout(baseScreensContainer);
 
         // Insert the topbar
-        topBar = new TopBar(this);
-        topBar->setContentsMargins(0,0,0,0);
-        baseScreensContainer->addWidget(topBar);
+//        topBar = new TopBar(this);
+//        topBar->setContentsMargins(0,0,0,0);
+        baseScreensContainer->addWidget(navMenu);
+        //baseScreensContainer->addWidget(topBar);
+        
 
         // Now stacked widget
         stackedContainer = new QStackedWidget(this);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         stackedContainer->setSizePolicy(sizePolicy);
-        stackedContainer->setContentsMargins(0,0,0,0);
+        stackedContainer->setContentsMargins(0,200,0,0);
         baseScreensContainer->addWidget(stackedContainer);
 
         // Init
@@ -178,8 +180,8 @@ void ALQOGUI::connectActions() {
         settingsWidget->showDebugConsole();
         goToSettings();
     });
-    connect(topBar, &TopBar::showHide, this, &ALQOGUI::showHide);
-    connect(topBar, &TopBar::themeChanged, this, &ALQOGUI::changeTheme);
+//    connect(topBar, &TopBar::showHide, this, &ALQOGUI::showHide);
+//    connect(topBar, &TopBar::themeChanged, this, &ALQOGUI::changeTheme);
     connect(settingsWidget, &SettingsWidget::showHide, this, &ALQOGUI::showHide);
     connect(sendWidget, &SendWidget::showHide, this, &ALQOGUI::showHide);
     connect(receiveWidget, &ReceiveWidget::showHide, this, &ALQOGUI::showHide);
@@ -230,14 +232,14 @@ void ALQOGUI::setClientModel(ClientModel* clientModel) {
         // while the client has not yet fully loaded
         createTrayIconMenu();
 
-        topBar->setClientModel(clientModel);
+//        topBar->setClientModel(clientModel);
         dashboard->setClientModel(clientModel);
         sendWidget->setClientModel(clientModel);
         settingsWidget->setClientModel(clientModel);
 
         // Receive and report messages from client model
         connect(clientModel, SIGNAL(message(QString, QString, unsigned int)), this, SLOT(message(QString, QString, unsigned int)));
-        connect(topBar, SIGNAL(walletSynced(bool)), dashboard, SLOT(walletSynced(bool)));
+//        connect(topBar, SIGNAL(walletSynced(bool)), dashboard, SLOT(walletSynced(bool)));
 
         // Get restart command-line parameters and handle restart
         connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg){handleRestart(arg);});
@@ -446,7 +448,7 @@ void ALQOGUI::detectShutdown() {
 void ALQOGUI::goToDashboard(){
     if(stackedContainer->currentWidget() != dashboard){
         stackedContainer->setCurrentWidget(dashboard);
-        topBar->showBottom();
+       // topBar->showBottom();
     }
 }
 
@@ -473,7 +475,7 @@ void ALQOGUI::goToReceive(){
 void ALQOGUI::showTop(QWidget* view){
     if(stackedContainer->currentWidget() != view){
         stackedContainer->setCurrentWidget(view);
-        topBar->showTop();
+       // topBar->showTop();
     }
 }
 
@@ -546,7 +548,7 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
 
     // set the model for every view
     dashboard->setWalletModel(walletModel);
-    topBar->setWalletModel(walletModel);
+//    topBar->setWalletModel(walletModel);
     receiveWidget->setWalletModel(walletModel);
     sendWidget->setWalletModel(walletModel);
     addressesWidget->setWalletModel(walletModel);
@@ -555,7 +557,7 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
 
     // Connect actions..
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &ALQOGUI::message);
-    connect(topBar, &TopBar::message, this, &ALQOGUI::message);
+//    connect(topBar, &TopBar::message, this, &ALQOGUI::message);
     connect(sendWidget, &SendWidget::message,this, &ALQOGUI::message);
     connect(receiveWidget, &ReceiveWidget::message,this, &ALQOGUI::message);
     connect(addressesWidget, &AddressesWidget::message,this, &ALQOGUI::message);
