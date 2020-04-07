@@ -22,88 +22,49 @@
 
 SendWidget::SendWidget(ALQOGUI* parent) :
     PWidget(parent),
-    ui(new Ui::send),
-    coinIcon(new QPushButton()),
-    btnContacts(new QPushButton())
+    ui(new Ui::send)
 {
     ui->setupUi(this);
 
-    this->setStyleSheet(parent->styleSheet());
-
-    /* Containers */
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(0,20,0,20);
-    setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(20,10,20,20);
+    //this->setStyleSheet(parent->styleSheet());
+    setCssProperty(ui->advframe, "dash-frame");
 
     /* Light Font */
     QFont fontLight;
     fontLight.setWeight(QFont::Light);
 
-    /* Title */
-    ui->labelTitle->setText(tr("Send"));
-    setCssProperty(ui->labelTitle, "text-title-screen");
-    ui->labelTitle->setFont(fontLight);
-
-    /* Button Group */
-    ui->pushLeft->setText("ALQO");
-    setCssProperty(ui->pushLeft, "btn-check-left");
-    ui->pushLeft->setChecked(true);
-    ui->pushRight->setText("zALQO");
-    setCssProperty(ui->pushRight, "btn-check-right");
-    ui->pushRight->setDisabled(true);
-
-    /* Subtitle */
-    ui->labelSubtitle1->setText(tr("You can transfer ALQO coins"));
-    setCssProperty(ui->labelSubtitle1, "text-subtitle");
-
-    ui->labelSubtitle2->setText(tr("Select coin type to spend"));
-    setCssProperty(ui->labelSubtitle2, "text-subtitle");
-
-    /* Address */
-    ui->labelSubtitleAddress->setText(tr("Enter a ALQO address or contact label"));
-    setCssProperty(ui->labelSubtitleAddress, "text-title");
-
-
-    /* Amount */
-    ui->labelSubtitleAmount->setText(tr("Amount"));
-    setCssProperty(ui->labelSubtitleAmount, "text-title");
-
     /* Buttons */
     ui->pushButtonFee->setText(tr("Customize fee"));
-    setCssBtnSecondary(ui->pushButtonFee);
+    setCssProperty(ui->pushButtonFee, "btn-primary");
 
     ui->pushButtonClear->setText(tr("Clear all"));
-    setCssProperty(ui->pushButtonClear, "btn-secundary-clear");
+    setCssProperty(ui->pushButtonClear, "btn-primary");
 
-    ui->pushButtonAddRecipient->setText(tr("Add recipient"));
-    setCssProperty(ui->pushButtonAddRecipient, "btn-secundary-add");
+	QPixmap pixmap("://ic-add");
+	QIcon ButtonIcon(pixmap);
+
+    ui->pushButtonAddRecipient->setIcon(ButtonIcon);
+    setCssProperty(ui->pushButtonAddRecipient, "drk-btn");
 
     setCssBtnPrimary(ui->pushButtonSave);
+
     ui->pushButtonReset->setText(tr("Reset to default"));
-    setCssBtnSecondary(ui->pushButtonReset);
+    setCssProperty(ui->pushButtonReset, "btn-primary");
 
     // Coin control
-    ui->btnCoinControl->setTitleClassAndText("btn-title-grey", "Coin Control");
-    ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", "Select the source of the coins.");
+    setCssProperty(ui->btnCoinControl, "btn-primary");
+    ui->btnCoinControl->setText(tr("Coin Control"));
+    ui->btnCoinControl->setChecked(true);
 
     // Change address option
-    ui->btnChangeAddress->setTitleClassAndText("btn-title-grey", "Change Address");
-    ui->btnChangeAddress->setSubTitleClassAndText("text-subtitle", "Customize the change address.");
+    setCssProperty(ui->btnChangeAddress, "btn-primary");
+    ui->btnChangeAddress->setText(tr("Change Address"));
+    ui->btnChangeAddress->setChecked(true);
 
     // Uri
-    ui->btnUri->setTitleClassAndText("btn-title-grey", "Open URI");
-    ui->btnUri->setSubTitleClassAndText("text-subtitle", "Parse a payment request.");
-
-    connect(ui->pushButtonFee, SIGNAL(clicked()), this, SLOT(onChangeCustomFeeClicked()));
-    connect(ui->btnCoinControl, SIGNAL(clicked()), this, SLOT(onCoinControlClicked()));
-    connect(ui->btnChangeAddress, SIGNAL(clicked()), this, SLOT(onChangeAddressClicked()));
-    connect(ui->btnUri, SIGNAL(clicked()), this, SLOT(onOpenUriClicked()));
-    connect(ui->pushButtonReset, &QPushButton::clicked, [this](){ onResetCustomOptions(true); });
-
-    setCssProperty(ui->coinWidget, "container-coin-type");
-    setCssProperty(ui->labelLine, "container-divider");
-
+    setCssProperty(ui->btnUri, "btn-primary");
+    ui->btnUri->setText(tr("Open URI"));
+    ui->btnUri->setChecked(true);
 
     // Total Send
     ui->labelTitleTotalSend->setText(tr("Total to send"));
@@ -117,41 +78,28 @@ SendWidget::SendWidget(ALQOGUI* parent) :
 
     setCssProperty(ui->labelAmountRemaining, "text-body1");
 
-    // Icon Send
-    ui->stackedWidget->addWidget(coinIcon);
-    coinIcon->show();
-    coinIcon->raise();
-
-    setCssProperty(coinIcon, "coin-icon-piv");
-
-    QSize BUTTON_SIZE = QSize(24, 24);
-    coinIcon->setMinimumSize(BUTTON_SIZE);
-    coinIcon->setMaximumSize(BUTTON_SIZE);
-
-    int posX = 0;
-    int posY = 20;
-    coinIcon->move(posX, posY);
+    // Connect
+    connect(ui->pushButtonSave, SIGNAL(clicked()), this, SLOT(onSendClicked()));
+    connect(ui->pushButtonAddRecipient, SIGNAL(clicked()), this, SLOT(onAddEntryClicked()));
+    connect(ui->pushButtonClear, SIGNAL(clicked()), this, SLOT(clearAll()));
+    connect(ui->pushButtonFee, SIGNAL(clicked()), this, SLOT(onChangeCustomFeeClicked()));
+    connect(ui->btnCoinControl, SIGNAL(clicked()), this, SLOT(onCoinControlClicked()));
+    connect(ui->btnChangeAddress, SIGNAL(clicked()), this, SLOT(onChangeAddressClicked()));
+    connect(ui->btnUri, SIGNAL(clicked()), this, SLOT(onOpenUriClicked()));
+    connect(ui->pushButtonReset, &QPushButton::clicked, [this](){ onResetCustomOptions(true); });    
+    connect(ui->checkBoxAdv, SIGNAL(clicked(bool)), ui->advframe, SLOT(setVisible(bool)));
+    
+    ui->advframe->setVisible(false);
 
     // Entry
     addEntry();
 
-    // Connect
-    connect(ui->pushLeft, &QPushButton::clicked, [this](){onPIVSelected(true);});
-    connect(ui->pushRight,  &QPushButton::clicked, [this](){onPIVSelected(false);});
-    connect(ui->pushButtonSave, SIGNAL(clicked()), this, SLOT(onSendClicked()));
-    connect(ui->pushButtonAddRecipient, SIGNAL(clicked()), this, SLOT(onAddEntryClicked()));
-    connect(ui->pushButtonClear, SIGNAL(clicked()), this, SLOT(clearAll()));
+
 }
 
 void SendWidget::refreshView(){
     QString btnText;
-    if(ui->pushLeft->isChecked()){
-        btnText = tr("Send ALQO");
-        ui->pushButtonAddRecipient->setVisible(true);
-    }else{
-        btnText = tr("Send zALQO");
-        ui->pushButtonAddRecipient->setVisible(false);
-    }
+        btnText = tr("SEND");
     ui->pushButtonSave->setText(btnText);
 
     refreshAmounts();
@@ -168,10 +116,10 @@ void SendWidget::refreshAmounts() {
             total += amount;
     }
 
-    bool isZpiv = ui->pushRight->isChecked();
+    //bool isZpiv = ui->pushRight->isChecked();
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
 
-    ui->labelAmountSend->setText(GUIUtil::formatBalance(total, nDisplayUnit, isZpiv));
+    ui->labelAmountSend->setText(GUIUtil::formatBalance(total, nDisplayUnit, false));
 
     CAmount totalAmount = 0;
     if (CoinControlDialog::coinControl->HasSelected()){
@@ -180,14 +128,14 @@ void SendWidget::refreshAmounts() {
         ui->labelTitleTotalRemaining->setText(tr("Total remaining from the selected UTXO"));
     } else {
         // Wallet's balance
-        totalAmount = (isZpiv ? walletModel->getZerocoinBalance() : walletModel->getBalance()) - total;
+        totalAmount = walletModel->getBalance() - total;
         ui->labelTitleTotalRemaining->setText(tr("Total remaining"));
     }
     ui->labelAmountRemaining->setText(
             GUIUtil::formatBalance(
                     totalAmount,
                     nDisplayUnit,
-                    isZpiv
+                    false
                     )
     );
 }
@@ -233,8 +181,6 @@ void SendWidget::clearAll(){
 
 void SendWidget::onResetCustomOptions(bool fRefreshAmounts){
     CoinControlDialog::coinControl->SetNull();
-    ui->btnChangeAddress->setActive(false);
-    ui->btnCoinControl->setActive(false);
     if (fRefreshAmounts) {
         refreshAmounts();
     }
@@ -320,19 +266,17 @@ void SendWidget::onSendClicked(){
         return;
     }
 
-    bool sendPiv = ui->pushLeft->isChecked();
-
     // request unlock only if was locked or unlocked for mixing:
     // this way we let users unlock by walletpassphrase or by menu
     // and make many transactions while unlocking through this dialog
     // will call relock
-    if(!GUIUtil::requestUnlock(walletModel, sendPiv ? AskPassphraseDialog::Context::Send_PIV : AskPassphraseDialog::Context::Send_zALQO, true)){
+    if(!GUIUtil::requestUnlock(walletModel, AskPassphraseDialog::Context::Send_PIV, true)){
         // Unlock wallet was cancelled
         inform(tr("Cannot send, wallet locked"));
         return;
     }
 
-    if((sendPiv) ? send(recipients) : sendZpiv(recipients)) {
+    if(send(recipients)) {
         updateEntryLabels(recipients);
     }
 }
@@ -524,10 +468,8 @@ void SendWidget::onChangeAddressClicked(){
             QString ret;
             if (dialog->getAddress(walletModel, &ret)) {
                 CoinControlDialog::coinControl->destChange = CBitcoinAddress(ret.toStdString()).Get();
-                ui->btnChangeAddress->setActive(true);
             }else{
                 inform(tr("Invalid change address"));
-                ui->btnChangeAddress->setActive(false);
             }
         }
     }
@@ -596,7 +538,6 @@ void SendWidget::onCoinControlClicked(){
                 coinControlDialog->updateView();
             }
             coinControlDialog->exec();
-            ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
             refreshAmounts();
         } else {
             inform(tr("You don't have any ALQO to select."));
@@ -606,7 +547,6 @@ void SendWidget::onCoinControlClicked(){
             ZPivControlDialog *zPivControl = new ZPivControlDialog(this);
             zPivControl->setModel(walletModel);
             zPivControl->exec();
-            ui->btnCoinControl->setActive(!ZPivControlDialog::setSelectedMints.empty());
             zPivControl->deleteLater();
         } else {
             inform(tr("You don't have any zALQO in your balance to select."));
@@ -620,9 +560,7 @@ void SendWidget::onValueChanged() {
 
 void SendWidget::onPIVSelected(bool _isPIV){
     isPIV = _isPIV;
-    setCssProperty(coinIcon, _isPIV ? "coin-icon-piv" : "coin-icon-zpiv");
     refreshView();
-    updateStyle(coinIcon);
 }
 
 void SendWidget::onContactsClicked(SendMultiRow* entry){

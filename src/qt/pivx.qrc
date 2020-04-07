@@ -127,6 +127,7 @@
         <file alias="spinner-034">res/movies/spinner-034.png</file>
     </qresource>
     <qresource prefix="/">
+        <file alias="wallet-bg">res/img/wallet_bg.png</file>
         <file alias="bg-splash">res/img/bg-splash.svg</file>
         <file alias="bg-splash-png">res/img/bg-splash.png</file>
         <file alias="img-logo-pivx-png">res/img/img-logo-pivx.png</file>

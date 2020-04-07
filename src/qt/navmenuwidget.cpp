@@ -14,37 +14,37 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     window(mainWindow)
 {
     ui->setupUi(this);
-    this->setFixedWidth(100);
+    //this->setFixedWidth(100);
     setCssProperty(ui->navContainer_2, "container-nav");
     setCssProperty(ui->imgLogo, "img-nav-logo");
 
     // App version
-    ui->labelVersion->setText(QString(tr("v%1")).arg(QString::fromStdString(FormatVersionFriendly())));
-    ui->labelVersion->setProperty("cssClass", "text-title-white");
+//    ui->labelVersion->setText(QString(tr("v%1")).arg(QString::fromStdString(FormatVersionFriendly())));
+//    ui->labelVersion->setProperty("cssClass", "text-title-white");
 
     // Buttons
     ui->btnDashboard->setProperty("name", "dash");
-    ui->btnDashboard->setText("HOME\n");
+    ui->btnDashboard->setText("HOME");
     ui->btnDashboard->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
     ui->btnSend->setProperty("name", "send");
     ui->btnSend->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui->btnSend->setText("SEND\n");
+    ui->btnSend->setText("SEND");
 
     ui->btnAddress->setProperty("name", "address");
-    ui->btnAddress->setText("CONTACTS\n");
+    ui->btnAddress->setText("CONTACTS");
     ui->btnAddress->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
     ui->btnMaster->setProperty("name", "master");
-    ui->btnMaster->setText("MASTER\r\nNODES");
+    ui->btnMaster->setText("MASTERNODES");
     ui->btnMaster->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
     ui->btnSettings->setProperty("name", "settings");
-    ui->btnSettings->setText("SETTINGS\n");
+    ui->btnSettings->setText("SETTINGS");
     ui->btnSettings->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
     ui->btnReceive->setProperty("name", "receive");
-    ui->btnReceive->setText("RECEIVE\n");
+    ui->btnReceive->setText("RECEIVE");
     ui->btnReceive->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
     btns = {ui->btnDashboard, ui->btnSend, ui->btnReceive, ui->btnAddress, ui->btnMaster, ui->btnSettings};

@@ -200,6 +200,11 @@ QString BitcoinUnits::format(int unit, const CAmount& nIn, bool fPlus, Separator
 // Please take care to use formatHtmlWithUnit instead, when
 // appropriate.
 
+QString BitcoinUnits::simpleFormat(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+{
+    return format(unit, amount, plussign, separators);
+}
+
 QString BitcoinUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
