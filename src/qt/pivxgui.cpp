@@ -119,11 +119,13 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         addressesWidget = new AddressesWidget(this);
         masterNodesWidget = new MasterNodesWidget(this);
         settingsWidget = new SettingsWidget(this);
+        historyWidget = new HistoryWidget(this);
 
         // Add to parent
         stackedContainer->addWidget(dashboard);
         stackedContainer->addWidget(sendWidget);
         stackedContainer->addWidget(receiveWidget);
+        stackedContainer->addWidget(historyWidget);
         stackedContainer->addWidget(addressesWidget);
         stackedContainer->addWidget(masterNodesWidget);
         stackedContainer->addWidget(settingsWidget);
@@ -185,6 +187,7 @@ void ALQOGUI::connectActions() {
     connect(settingsWidget, &SettingsWidget::showHide, this, &ALQOGUI::showHide);
     connect(sendWidget, &SendWidget::showHide, this, &ALQOGUI::showHide);
     connect(receiveWidget, &ReceiveWidget::showHide, this, &ALQOGUI::showHide);
+    connect(historyWidget, &HistoryWidget::showHide, this, &ALQOGUI::showHide);
     connect(addressesWidget, &AddressesWidget::showHide, this, &ALQOGUI::showHide);
     connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &ALQOGUI::showHide);
     connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &ALQOGUI::execDialog);
@@ -452,6 +455,11 @@ void ALQOGUI::goToDashboard(){
     }
 }
 
+void ALQOGUI::goToHistory()
+{
+    showTop(historyWidget);
+}
+
 void ALQOGUI::goToSend(){
     showTop(sendWidget);
 }
@@ -554,6 +562,7 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
     addressesWidget->setWalletModel(walletModel);
     masterNodesWidget->setWalletModel(walletModel);
     settingsWidget->setWalletModel(walletModel);
+    historyWidget->setWalletModel(walletModel);
 
     // Connect actions..
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &ALQOGUI::message);
@@ -562,6 +571,7 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
     connect(receiveWidget, &ReceiveWidget::message,this, &ALQOGUI::message);
     connect(addressesWidget, &AddressesWidget::message,this, &ALQOGUI::message);
     connect(settingsWidget, &SettingsWidget::message, this, &ALQOGUI::message);
+    connect(historyWidget, &HistoryWidget::message,this, &ALQOGUI::message);
 
     // Pass through transaction notifications
     connect(dashboard, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));

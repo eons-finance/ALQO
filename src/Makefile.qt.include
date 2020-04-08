@@ -86,6 +86,7 @@ QT_FORMS_UI = \
   qt/forms/receivewidget.ui \
   qt/forms/tooltipmenu.ui \
   qt/forms/addresseswidget.ui \
+  qt/forms/historywidget.ui \
   qt/forms/defaultdialog.ui \
   qt/forms/denomgenerationdialog.ui \
   qt/settings/forms/settingsbackupwallet.ui \
@@ -178,6 +179,7 @@ QT_MOC_CPP = \
   qt/moc_receivewidget.cpp \
   qt/moc_tooltipmenu.cpp \
   qt/moc_addresseswidget.cpp \
+  qt/moc_historywidget.cpp \
   qt/moc_defaultdialog.cpp \
   qt/moc_denomgenerationdialog.cpp \
   qt/settings/moc_settingsbackupwallet.cpp \
@@ -305,6 +307,7 @@ BITCOIN_QT_H = \
   qt/receivewidget.h \
   qt/tooltipmenu.h \
   qt/addresseswidget.h \
+  qt/historywidget.h \
   qt/defaultdialog.h \
   qt/denomgenerationdialog.h \
   qt/settings/settingsbackupwallet.h \
@@ -483,6 +486,7 @@ BITCOIN_QT_WALLET_CPP = \
   qt/receivewidget.cpp \
   qt/tooltipmenu.cpp \
   qt/addresseswidget.cpp \
+  qt/historywidget.cpp \
   qt/defaultdialog.cpp \
   qt/denomgenerationdialog.cpp \
   qt/settings/settingsbackupwallet.cpp \

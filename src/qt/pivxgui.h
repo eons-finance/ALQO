@@ -24,7 +24,7 @@
 #include "qt/snackbar.h"
 #include "qt/settings/settingswidget.h"
 #include "qt/rpcconsole.h"
-
+#include "qt/historywidget.h"
 
 class ClientModel;
 class NetworkStyle;
@@ -61,6 +61,7 @@ signals:
 public slots:
     void changeTheme(bool isLightTheme);
     void goToDashboard();
+    void goToHistory();
     void goToSend();
     void goToReceive();
     void goToAddresses();
@@ -128,6 +129,7 @@ private:
     AddressesWidget *addressesWidget = nullptr;
     MasterNodesWidget *masterNodesWidget = nullptr;
     SettingsWidget* settingsWidget = nullptr;
+    HistoryWidget* historyWidget = nullptr;
 
     SnackBar *snackBar = nullptr;
 
