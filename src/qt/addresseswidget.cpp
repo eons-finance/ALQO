@@ -86,11 +86,13 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
 
     // Name
     ui->lineEditName->setPlaceholderText(tr("Contact name"));
-    setCssEditLine(ui->lineEditName, true);
+    setCssProperty(ui->lineEditName, "edit-primary");
+    //setCssEditLine(ui->lineEditName, true);
 
     // Address
     ui->lineEditAddress->setPlaceholderText("ALQO Address");
-    setCssEditLine(ui->lineEditAddress, true);
+    //setCssEditLine(ui->lineEditAddress, true);
+    setCssProperty(ui->lineEditAddress, "edit-primary");
     ui->lineEditAddress->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9]+"), ui->lineEditName));
 
     // Buttons

@@ -47,16 +47,10 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
 
     QFont fontBalance = ui->labelAmountPiv->font();
     fontBalance.setWeight(QFont::Bold);
-	fontBalance.setPointSize(60);
+	fontBalance.setPointSize(48);
 	ui->labelAmountPiv->setFont(fontBalance);
     ui->labelAmountPiv->setText("<font color='white'>"+totalPiv+"</font>");
 	
-    // Sync Warning
-    ui->layoutWarning->setVisible(true);
-    ui->lblWarning->setText(tr("Please wait until the wallet is fully synced to see your correct balance"));
-    setCssProperty(ui->lblWarning, "text-warning");
-    setCssProperty(ui->imgWarning, "ic-warning");
-
     //Frames
     // Send Receive Frame
     //Send
@@ -186,11 +180,12 @@ void DashboardWidget::updateBalances(const CAmount& balance, const CAmount& unco
     //CAmount nTotalBalance = balance + unconfirmedBalance;
     CAmount pivAvailableBalance = balance - immatureBalance - nLockedBalance;
     // Set
-    QString totalPiv = GUIUtil::formatBalance(pivAvailableBalance, nDisplayUnit);
+    //QString totalPiv = QString::number(pivAvailableBalance);
+    QString totalPiv = BitcoinUnits::simpleFormat(nDisplayUnit, pivAvailableBalance, false, BitcoinUnits::separatorAlways);
 
     QFont fontBalance = ui->labelAmountPiv->font();
     fontBalance.setWeight(QFont::Bold);
-	fontBalance.setPointSize(60);
+	fontBalance.setPointSize(48);
 	ui->labelAmountPiv->setFont(fontBalance);
     ui->labelAmountPiv->setText("<font color='white'>"+totalPiv+"</font>");
 

@@ -18,10 +18,6 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     setCssProperty(ui->navContainer_2, "container-nav");
     setCssProperty(ui->imgLogo, "img-nav-logo");
 
-    // App version
-//    ui->labelVersion->setText(QString(tr("v%1")).arg(QString::fromStdString(FormatVersionFriendly())));
-//    ui->labelVersion->setProperty("cssClass", "text-title-white");
-
     // Buttons
     ui->btnDashboard->setProperty("name", "dash");
     ui->btnDashboard->setText("HOME");
@@ -35,6 +31,10 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     ui->btnAddress->setText("CONTACTS");
     ui->btnAddress->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
+    ui->btnHistory->setProperty("name", "history");
+    ui->btnHistory->setText("HISTORY");
+    ui->btnHistory->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+
     ui->btnMaster->setProperty("name", "master");
     ui->btnMaster->setText("MASTERNODES");
     ui->btnMaster->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -47,7 +47,7 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     ui->btnReceive->setText("RECEIVE");
     ui->btnReceive->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
-    btns = {ui->btnDashboard, ui->btnSend, ui->btnReceive, ui->btnAddress, ui->btnMaster, ui->btnSettings};
+    btns = {ui->btnDashboard, ui->btnSend, ui->btnReceive, ui->btnAddress, ui->btnMaster, ui->btnSettings, ui->btnHistory};
     onNavSelected(ui->btnDashboard, true);
 
     connectActions();
@@ -63,6 +63,7 @@ void NavMenuWidget::connectActions() {
     connect(ui->btnMaster,SIGNAL(clicked()),this, SLOT(onMasterNodesClicked()));
     connect(ui->btnSettings,SIGNAL(clicked()),this, SLOT(onSettingsClicked()));
     connect(ui->btnReceive,SIGNAL(clicked()),this, SLOT(onReceiveClicked()));
+    connect(ui->btnHistory,SIGNAL(clicked()),this, SLOT(onHistoryClicked()));
 
     ui->btnDashboard->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_1));
     ui->btnSend->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_2));
@@ -70,6 +71,7 @@ void NavMenuWidget::connectActions() {
     ui->btnAddress->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_4));
     ui->btnMaster->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_6));
     ui->btnSettings->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_7));
+    ui->btnHistory->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_8));
 }
 
 void NavMenuWidget::onSendClicked(){
@@ -82,11 +84,15 @@ void NavMenuWidget::onDashboardClicked(){
     onNavSelected(ui->btnDashboard);
 }
 
+void NavMenuWidget::onHistoryClicked(){
+    window->goToHistory();
+    onNavSelected(ui->btnHistory);
+}
+
 void NavMenuWidget::onAddressClicked(){
     window->goToAddresses();
     onNavSelected(ui->btnAddress);
 }
-
 
 void NavMenuWidget::onMasterNodesClicked(){
     window->goToMasterNodes();
@@ -126,7 +132,8 @@ void NavMenuWidget::updateButtonStyles(){
          ui->btnAddress,
          ui->btnMaster,
          ui->btnSettings,
-         ui->btnReceive
+         ui->btnReceive,
+         ui->btnHistory
     });
 }
 

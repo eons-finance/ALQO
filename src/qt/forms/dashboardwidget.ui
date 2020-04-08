@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>897</width>
-    <height>447</height>
+    <height>497</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -95,78 +95,6 @@
            <property name="bottomMargin">
             <number>0</number>
            </property>
-           <item>
-            <widget class="QFrame" name="frameWarning">
-             <property name="styleSheet">
-              <string notr="true">border:none;</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout11" stretch="0,0,2">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item alignment="Qt::AlignVCenter">
-               <widget class="QPushButton" name="imgWarning">
-                <property name="styleSheet">
-                 <string notr="true">border:none;</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>24</width>
-                  <height>24</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_9">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Fixed</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>12</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item alignment="Qt::AlignVCenter">
-               <widget class="QLabel" name="lblWarning">
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>Warning</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <property name="topMargin">

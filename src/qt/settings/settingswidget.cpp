@@ -30,14 +30,10 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
 
     this->setStyleSheet(parent->styleSheet());
 
-    /* Containers */
-    setCssProperty(ui->scrollArea, "container");
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(0,20,0,20);
-    setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(20,10,20,20);
-
     ui->verticalLayout->setAlignment(Qt::AlignTop);
+    
+    setCssProperty(ui->scrollArea, "dash-frame");
+    setCssProperty(ui->stackedWidgetContainer, "dash-frame");
 
     /* Light Font */
     QFont fontLight;
