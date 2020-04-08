@@ -74,7 +74,7 @@ public:
                 row->setObjectName(QStringLiteral("multiSendrow"));
             row->resize(475, 65);
             row->setStyleSheet(QStringLiteral(""));
-            setCssProperty(row, "container");
+            //setCssProperty(row, "container");
             verticalLayout_2 = new QVBoxLayout(row);
             verticalLayout_2->setSpacing(0);
             verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
@@ -145,15 +145,11 @@ SettingsMultisendWidget::SettingsMultisendWidget(PWidget *parent) :
             this
     );
 
-    // Containers
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(10,10,10,10);
-
     // Title
     ui->labelTitle->setText("Multisend");
     setCssTitleScreen(ui->labelTitle);
 
-    ui->labelSubtitle1->setText(tr("MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other ALQO addresses after it matures."));
+    ui->labelSubtitle1->setText(tr("this allows you to automatically send up to 100% of stake or masternode rewards to other ALQO addresses after it matures."));
     setCssSubtitleScreen(ui->labelSubtitle1);
 
     //Button Group
@@ -170,7 +166,7 @@ SettingsMultisendWidget::SettingsMultisendWidget(PWidget *parent) :
     ui->checkBoxStake->setText(tr("Send stakes"));
     ui->checkBoxRewards->setText(tr("Send masternode rewards"));
 
-    setCssProperty(ui->listView, "container");
+    //setCssProperty(ui->listView, "container");
     ui->listView->setItemDelegate(delegate);
     ui->listView->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listView->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));

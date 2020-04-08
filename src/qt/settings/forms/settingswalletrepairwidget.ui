@@ -104,6 +104,9 @@
               </property>
               <item>
                <widget class="QLabel" name="labelTitle">
+                <property name="styleSheet">
+                 <string notr="true">color:white;</string>
+                </property>
                 <property name="text">
                  <string>TextLabel</string>
                 </property>
@@ -111,6 +114,9 @@
               </item>
               <item>
                <widget class="QLabel" name="labelSubtitle1">
+                <property name="styleSheet">
+                 <string notr="true">color:white;</string>
+                </property>
                 <property name="text">
                  <string>TextLabel</string>
                 </property>
@@ -172,6 +178,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelMessageSalvage">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -234,6 +243,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelMessageRescan">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -296,6 +308,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelMessageRecover1">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -358,6 +373,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelMessageRecover2">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -420,6 +438,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelMessageUpgrade">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -482,6 +503,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelMessageRebuild">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -549,6 +573,9 @@
                 <width>0</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
               </property>
               <property name="text">
                <string>TextLabel</string>

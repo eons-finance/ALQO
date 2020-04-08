@@ -247,8 +247,6 @@ SettingsConsoleWidget::SettingsConsoleWidget(ALQOGUI* _window, QWidget *parent) 
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
     ui->messagesWidget->setProperty("cssClass", "container");
 
     // Title

@@ -27,10 +27,6 @@ SettingsBitToolWidget::SettingsBitToolWidget(ALQOGUI* _window, QWidget *parent) 
 
     this->setStyleSheet(parent->styleSheet());
 
-    /* Containers */
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(10,10,10,10);
-
     /* Title */
     ui->labelTitle->setText(tr("BIP38 Tool"));
     setCssTitleScreen(ui->labelTitle);

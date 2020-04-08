@@ -33,7 +33,7 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     ui->verticalLayout->setAlignment(Qt::AlignTop);
     
     setCssProperty(ui->scrollArea, "dash-frame");
-    setCssProperty(ui->stackedWidgetContainer, "dash-frame");
+    //setCssProperty(ui->stackedWidgetContainer, "dash-frame");
 
     /* Light Font */
     QFont fontLight;

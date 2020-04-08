@@ -27,10 +27,6 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(ALQOGUI* _window, QWidget
 
     this->setStyleSheet(parent->styleSheet());
 
-    // Containers
-    ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
-
     // Title
     ui->labelTitle->setText(tr("Sign/Verify Message"));
     ui->labelTitle->setProperty("cssClass", "text-title-screen");

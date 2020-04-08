@@ -18,10 +18,6 @@ SettingsBackupWallet::SettingsBackupWallet(ALQOGUI* _window, QWidget *parent) :
 
     this->setStyleSheet(parent->styleSheet());
 
-    /* Containers */
-    ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
-
     // Title
     ui->labelTitle->setText(tr("Backup Wallet "));
     ui->labelTitle->setProperty("cssClass", "text-title-screen");
@@ -38,7 +34,7 @@ SettingsBackupWallet::SettingsBackupWallet(ALQOGUI* _window, QWidget *parent) :
     ui->labelSubtitle_2->setProperty("cssClass", "text-subtitle");
 
     // Location
-    ui->labelSubtitleLocation->setText(tr("Where"));
+    ui->labelSubtitleLocation->setText(tr("Location"));
     ui->labelSubtitleLocation->setProperty("cssClass", "text-title");
 
     ui->pushButtonDocuments->setText(tr("Set a folder location"));

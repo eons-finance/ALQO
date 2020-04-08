@@ -21,9 +21,7 @@ SettingsInformationWidget::SettingsInformationWidget(ALQOGUI* _window,QWidget *p
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(10,10,10,10);
-    setCssProperty({ui->layoutOptions1, ui->layoutOptions2, ui->layoutOptions3}, "container-options");
+    setCssProperty({ui->layoutOptions1, ui->layoutOptions2, ui->layoutOptions3}, "dash-frame");
 
     // Title
     ui->labelTitle->setText(tr("Information"));

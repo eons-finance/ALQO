@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>438</width>
-    <height>574</height>
+    <height>584</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,6 +74,9 @@
              </property>
              <item>
               <widget class="QLabel" name="labelTitle">
+               <property name="styleSheet">
+                <string notr="true">color:white;</string>
+               </property>
                <property name="text">
                 <string>TextLabel</string>
                </property>
@@ -81,6 +84,9 @@
              </item>
              <item>
               <widget class="QLabel" name="labelSubtitle1">
+               <property name="styleSheet">
+                <string notr="true">color:white;</string>
+               </property>
                <property name="text">
                 <string>TextLabel</string>
                </property>
@@ -269,6 +275,9 @@
                 <height>20</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -327,6 +336,9 @@
                <width>16777215</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color:white;</string>
              </property>
              <property name="text">
               <string>TextLabel</string>
@@ -408,6 +420,9 @@
                 <height>20</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -429,7 +444,7 @@
          <item>
           <widget class="QLabel" name="statusLabel_SM">
            <property name="styleSheet">
-            <string notr="true">padding-top:5px;</string>
+            <string notr="true">padding-top:5px; color:white;</string>
            </property>
            <property name="text">
             <string>TextLabel</string>
