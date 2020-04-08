@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>493</width>
+    <width>533</width>
     <height>654</height>
    </rect>
   </property>
@@ -61,6 +61,9 @@
             </property>
             <item>
              <widget class="QLabel" name="labelTitle">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -68,6 +71,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelSubtitle1">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -103,6 +109,9 @@
           </property>
           <item>
            <widget class="QLabel" name="labelTitleStake">
+            <property name="styleSheet">
+             <string notr="true">color:white;</string>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -156,6 +165,9 @@
            </property>
            <item>
             <widget class="QCheckBox" name="radioButtonSpend">
+             <property name="styleSheet">
+              <string notr="true">color:white;</string>
+             </property>
              <property name="text">
               <string>CheckBox</string>
              </property>
@@ -227,6 +239,9 @@
             </property>
             <item>
              <widget class="QLabel" name="labelTitleNetwork">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -234,6 +249,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelSubtitleNetwork">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -285,6 +303,9 @@
            </property>
            <item>
             <widget class="QCheckBox" name="checkBoxMap">
+             <property name="styleSheet">
+              <string notr="true">color:white;</string>
+             </property>
              <property name="text">
               <string>RadioButton</string>
              </property>
@@ -292,6 +313,9 @@
            </item>
            <item>
             <widget class="QCheckBox" name="checkBoxAllow">
+             <property name="styleSheet">
+              <string notr="true">color:white;</string>
+             </property>
              <property name="text">
               <string>RadioButton</string>
              </property>
@@ -299,6 +323,9 @@
            </item>
            <item>
             <widget class="QCheckBox" name="checkBoxConnect">
+             <property name="styleSheet">
+              <string notr="true">color:white;</string>
+             </property>
              <property name="text">
               <string>RadioButton</string>
              </property>
@@ -335,6 +362,9 @@
             </property>
             <item>
              <widget class="QLabel" name="labelSubtitleProxy">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -378,6 +408,9 @@
             </property>
             <item>
              <widget class="QLabel" name="labelSubtitlePort">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>

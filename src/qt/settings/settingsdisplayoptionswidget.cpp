@@ -21,10 +21,6 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
 
     this->setStyleSheet(parent->styleSheet());
 
-    // Containers
-    ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
-
     // Title
     ui->labelTitle->setText(tr("Display"));
     setCssTitleScreen(ui->labelTitle);
@@ -95,7 +91,7 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
 
     // Buttons
     ui->pushButtonSave->setText(tr("SAVE"));
-    ui->pushButtonReset->setText(tr("Reset to default"));
+    ui->pushButtonReset->setText(tr("Default"));
     setCssBtnPrimary(ui->pushButtonSave);
     setCssBtnSecondary(ui->pushButtonReset);
     setCssBtnSecondary(ui->pushButtonClean);

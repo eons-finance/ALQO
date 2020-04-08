@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>428</width>
+    <width>533</width>
     <height>434</height>
    </rect>
   </property>
@@ -61,6 +61,9 @@
             </property>
             <item>
              <widget class="QLabel" name="labelTitle">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -68,6 +71,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelSubtitle1">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -145,6 +151,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QLabel" name="labelTitleSizeDb">
+            <property name="styleSheet">
+             <string notr="true">color:white;</string>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -195,6 +204,9 @@
          <layout class="QHBoxLayout" name="horizontalThreads">
           <item>
            <widget class="QLabel" name="labelTitleThreads">
+            <property name="styleSheet">
+             <string notr="true">color:white;</string>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -288,6 +300,9 @@
             </property>
             <item>
              <widget class="QLabel" name="labelTitleDown">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>Window</string>
               </property>
@@ -295,6 +310,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelSubtitleDown">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>Customize the application window options</string>
               </property>
@@ -325,6 +343,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="checkBoxMinTaskbar">
+          <property name="styleSheet">
+           <string notr="true">color:white;</string>
+          </property>
           <property name="text">
            <string>CheckBox</string>
           </property>
@@ -348,6 +369,9 @@
         </item>
         <item>
          <widget class="QCheckBox" name="checkBoxMinClose">
+          <property name="styleSheet">
+           <string notr="true">color:white;</string>
+          </property>
           <property name="text">
            <string>CheckBox</string>
           </property>

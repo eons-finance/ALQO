@@ -61,6 +61,9 @@
             </property>
             <item>
              <widget class="QLabel" name="labelTitle">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -68,6 +71,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelSubtitle1">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -640,6 +646,9 @@
                    <height>20</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">color:white;</string>
+                 </property>
                  <property name="text">
                   <string>TextLabel</string>
                  </property>
@@ -710,6 +719,9 @@
                      <width>16777215</width>
                      <height>20</height>
                     </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color:white;</string>
                    </property>
                    <property name="text">
                     <string>TextLabel</string>
@@ -794,6 +806,9 @@
                    <height>20</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">color:white;</string>
+                 </property>
                  <property name="text">
                   <string>TextLabel</string>
                  </property>
@@ -814,6 +829,9 @@
             </item>
             <item>
              <widget class="QLabel" name="statusLabel_ENC">
+              <property name="styleSheet">
+               <string notr="true">color:white;</string>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>

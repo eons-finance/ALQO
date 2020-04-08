@@ -41,8 +41,6 @@ SettingsMainOptionsWidget::SettingsMainOptionsWidget(ALQOGUI* _window, QWidget *
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
     ui->labelDivider->setProperty("cssClass", "container-divider");
 
     // Title
