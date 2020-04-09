@@ -17,7 +17,7 @@
 #include <QModelIndex>
 #include <QRegExpValidator>
 
-#define DECORATION_SIZE 60
+#define DECORATION_SIZE 40
 #define NUM_ITEMS 3
 
 class ContactsHolder : public FurListRow<QWidget*>
@@ -71,6 +71,9 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     );
 
     // List Addresses
+    setCssProperty(ui->listAddresses, "listTransactions");
+    setCssProperty(ui->framecontacts, "dash-frame");
+
     ui->listAddresses->setItemDelegate(delegate);
     ui->listAddresses->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listAddresses->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
@@ -99,31 +102,37 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     ui->btnSave->setText(tr("SAVE"));
     setCssBtnPrimary(ui->btnSave);
 
+    ui->btnCopy->setText(tr("Copy"));
+    ui->btnCopy->setLayoutDirection(Qt::RightToLeft);
+    setCssProperty(ui->btnCopy, "btn-secundary-copy");
+
+    ui->btnDelete->setText(tr("Delete"));
+    ui->btnDelete->setLayoutDirection(Qt::RightToLeft);
+    setCssProperty(ui->btnDelete, "btn-secundary-copy");
+
+    ui->btnEdit->setText(tr("Edit"));
+    ui->btnEdit->setLayoutDirection(Qt::RightToLeft);
+    setCssProperty(ui->btnEdit, "btn-secundary-copy");
+
     connect(ui->listAddresses, SIGNAL(clicked(QModelIndex)), this, SLOT(handleAddressClicked(QModelIndex)));
+    connect(ui->listAddresses, SIGNAL(clicked(QModelIndex)), this, SLOT(handleAddressClicked(QModelIndex)));
+
     connect(ui->btnSave, SIGNAL(clicked()), this, SLOT(onStoreContactClicked()));
+
+    connect(ui->btnCopy, SIGNAL(clicked()), this, SLOT(onCopyClicked()));
+    connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(onDeleteClicked()));
+    connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(onEditClicked()));
+    
+//    ui->framemodify->setVisible(false);
+    
+    loadWalletModel();
 }
 
 void AddressesWidget::handleAddressClicked(const QModelIndex &index){
     ui->listAddresses->setCurrentIndex(index);
-    QRect rect = ui->listAddresses->visualRect(index);
-    QPoint pos = rect.topRight();
-    pos.setX(pos.x() - (DECORATION_SIZE * 2));
-    pos.setY(pos.y() + (DECORATION_SIZE));
-
+    ui->framemodify->setVisible(true);
     QModelIndex rIndex = filter->mapToSource(index);
-
-    if(!this->menu){
-        this->menu = new TooltipMenu(window, this);
-        connect(this->menu, &TooltipMenu::message, this, &AddressesWidget::message);
-        connect(this->menu, SIGNAL(onEditClicked()), this, SLOT(onEditClicked()));
-        connect(this->menu, SIGNAL(onDeleteClicked()), this, SLOT(onDeleteClicked()));
-        connect(this->menu, SIGNAL(onCopyClicked()), this, SLOT(onCopyClicked()));
-    }else {
-        this->menu->hide();
-    }
     this->index = rIndex;
-    menu->move(pos);
-    menu->show();
 }
 
 void AddressesWidget::loadWalletModel(){
@@ -141,7 +150,7 @@ void AddressesWidget::loadWalletModel(){
 void AddressesWidget::updateListView(){
     bool empty = addressTablemodel->sizeSend() == 0;
     ui->emptyContainer->setVisible(empty);
-    ui->listAddresses->setVisible(!empty);
+    ui->framecontacts->setVisible(!empty);
 }
 
 void AddressesWidget::onStoreContactClicked(){
@@ -177,9 +186,14 @@ void AddressesWidget::onStoreContactClicked(){
 
             if (ui->emptyContainer->isVisible()) {
                 ui->emptyContainer->setVisible(false);
-                ui->listAddresses->setVisible(true);
+                ui->framecontacts->setVisible(true);
             }
-            inform(tr("New Contact Stored"));
+            
+			if(walletModel->updateAddressBookLabels(CBitcoinAddress(address.toStdString()).Get(), label.toStdString(), addressTablemodel->purposeForAddress("send"))){
+				inform(tr("New Contact Stored"));
+			}else{
+				inform(tr("New Contact store failed"));
+			}            
         }
     }
 }
@@ -191,7 +205,7 @@ void AddressesWidget::onEditClicked(){
     AddNewContactDialog *dialog = new AddNewContactDialog(window);
     dialog->setData(address, currentLabel);
     if(openDialogWithOpaqueBackground(dialog, window)){
-      if(walletModel->updateAddressBookLabels(CBitcoinAddress(address.toStdString()).Get(), dialog->getLabel().toStdString(), addressTablemodel->purposeForAddress(address.toStdString()))){
+      if(walletModel->updateAddressBookLabels(CBitcoinAddress(address.toStdString()).Get(), dialog->getLabel().toStdString(), addressTablemodel->purposeForAddress("send"))){
         inform(tr("Contact edited"));
       }else{
         inform(tr("Contact edit failed"));

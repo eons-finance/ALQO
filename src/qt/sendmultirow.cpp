@@ -20,19 +20,17 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     //this->setStyleSheet("QLineEdit {  border: 2px solid gray; border-radius: 20px;}");
     this->setStyleSheet(parent->styleSheet());
 
-    ui->lineEditAddress->setPlaceholderText(tr("Type/Paste Address"));
+    ui->lineEditAddress->setPlaceholderText(QString("  ") + " Type/Paste Address");
     setCssProperty(ui->lineEditAddress, "edit-primary-multi-book");
     ui->lineEditAddress->setAttribute(Qt::WA_MacShowFocusRect, 0);
 
-    ui->lineEditAmount->setPlaceholderText("0.00 ALQO ");
-    initCssEditLine(ui->lineEditAmount);
+    ui->lineEditAmount->setPlaceholderText(QString("  ") + " 0.00 ALQO ");
+    setCssProperty(ui->lineEditAmount, "edit-primary");
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
 
     /* Description */
-    //ui->labelSubtitleDescription->setText("Label address (optional)");
-    //setCssProperty(ui->labelSubtitleDescription, "text-title");
-    ui->lineEditDescription->setPlaceholderText(tr("Add description"));
-    initCssEditLine(ui->lineEditDescription);
+    ui->lineEditDescription->setPlaceholderText(QString("  ") + " Add description");
+    setCssProperty(ui->lineEditDescription, "edit-primary");
 
     // Button menu
     setCssProperty(ui->btnMenu, "btn-menu");

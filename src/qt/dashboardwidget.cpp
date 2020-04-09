@@ -61,12 +61,13 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     setCssProperty(ui->sendbtn, "dash-btn");
 
     //Receive
-    setCssProperty(ui->pushButtonCopy, "dash-btn");
+    setCssProperty(ui->pushButtonQR, "dash-btn");
     setCssProperty(ui->labelAddress, "dash-label-sm");
 
     // QR image
     QPixmap pixmap("://img-qr-test");
-    ui->labelQrimage->setPixmap(pixmap.scaled(95, 95, Qt::KeepAspectRatio));
+    ui->btnQr->setIcon(QIcon(pixmap.scaled(ui->btnQr->width(), ui->btnQr->height(), Qt::KeepAspectRatio)));
+
 
     // Transactions
     setCssProperty(ui->frameTransactions, "dash-frame");
@@ -90,7 +91,11 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     if (window)
         connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
 
-    connect(ui->labelQrimage, SIGNAL(clicked()), this, SLOT(onBtnReceiveClicked()));
+    connect(ui->btnQr, SIGNAL(clicked()), this, SLOT(onBtnReceiveClicked()));
+    connect(ui->pushButtonQR, SIGNAL(clicked()), this, SLOT(onBtnReceiveClicked()));
+    
+    connect(ui->sendpagebtn, SIGNAL(clicked()), this, SLOT(showSend()));
+    connect(ui->receivepagebtn, SIGNAL(clicked()), this, SLOT(showReceive()));
 
     loadWalletModel();
 }
@@ -141,17 +146,29 @@ void DashboardWidget::loadWalletModel(){
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
         if(txModel->size() == 0){
-         //   ui->listTransactions->setVisible(false);
+            ui->listTransactions->setVisible(false);
         }
 
         //connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
 
         // Notification pop-up for new transaction
-        connect(txModel, SIGNAL(rowsInserted(QModelIndex, int, int)),
-                this, SLOT(processNewTransaction(QModelIndex, int, int)));
+        connect(txModel, SIGNAL(rowsInserted(QModelIndex, int, int)), this, SLOT(processNewTransaction(QModelIndex, int, int)));
+        
+        QString qraddress = walletModel->getAddressTableModel()->getLastUnusedAddress();
+        ui->labelAddress->setText(qraddress);
 
+		info = new SendCoinsRecipient();
+		info->address = qraddress;
+		QString uri = GUIUtil::formatBitcoinURI(*info);
+		QString error;
+		QPixmap pixmap = encodeToQr(uri, error);
+		if(!pixmap.isNull()){
+			ui->btnQr->setIcon(QIcon(pixmap.scaled(ui->btnQr->width(), ui->btnQr->height(), Qt::KeepAspectRatio)));
+		}else{
+			ui->btnQr->setText(!error.isEmpty() ? error : "Error encoding address");
+		}
     }
-    // update the display unit, to not use the default ("ALQO")
+    // update the display unit, to not use the default ("ALQO")    
     updateDisplayUnit();
 }
 
@@ -252,6 +269,18 @@ void DashboardWidget::processNewTransaction(const QModelIndex& parent, int start
     QString address = txModel->index(start, TransactionTableModel::ToAddress, parent).data().toString();
 
     emit incomingTransaction(date, walletModel->getOptionsModel()->getDisplayUnit(), amount, type, address);
+}
+
+void DashboardWidget::showSend(){
+    if(ui->stackedWidget->currentIndex() != 0){
+        ui->stackedWidget->setCurrentIndex(0);
+    }
+}
+
+void DashboardWidget::showReceive(){
+    if(ui->stackedWidget->currentIndex() != 1){
+        ui->stackedWidget->setCurrentIndex(1);
+    }
 }
 
 DashboardWidget::~DashboardWidget(){

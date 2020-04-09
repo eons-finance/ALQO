@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>677</width>
-    <height>716</height>
+    <width>825</width>
+    <height>655</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -146,7 +146,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <item>
-                 <spacer name="horizontalSpacer_7">
+                 <spacer name="horizontalSpacer_6">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -162,26 +162,17 @@
                  <widget class="QLabel" name="labelQrImg">
                   <property name="minimumSize">
                    <size>
-                    <width>220</width>
-                    <height>220</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>220</width>
-                    <height>220</height>
+                    <width>180</width>
+                    <height>180</height>
                    </size>
                   </property>
                   <property name="text">
                    <string/>
                   </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
                  </widget>
                 </item>
                 <item>
-                 <spacer name="horizontalSpacer_6">
+                 <spacer name="horizontalSpacer_7">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -264,6 +255,9 @@
                <layout class="QHBoxLayout" name="horizontalLayout_6">
                 <item>
                  <widget class="QLabel" name="labelLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color:white;</string>
+                  </property>
                   <property name="text">
                    <string>TextLabel</string>
                   </property>
@@ -284,6 +278,9 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelDate">
+                  <property name="styleSheet">
+                   <string notr="true">color:white;</string>
+                  </property>
                   <property name="text">
                    <string>TextLabel</string>
                   </property>

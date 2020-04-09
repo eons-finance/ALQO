@@ -7,14 +7,14 @@
 
 #include "qt/pwidget.h"
 #include "addresstablemodel.h"
-#include "qt/tooltipmenu.h"
+//#include "qt/tooltipmenu.h"
 #include "furabstractlistitemdelegate.h"
 #include "qt/addressfilterproxymodel.h"
 
 #include <QWidget>
 
 class AddressViewDelegate;
-class TooltipMenu;
+//class TooltipMenu;
 class ALQOGUI;
 class WalletModel;
 
@@ -54,7 +54,7 @@ private:
     AddressFilterProxyModel *filter = nullptr;
 
     bool isOnMyAddresses = true;
-    TooltipMenu* menu = nullptr;
+    //TooltipMenu* menu = nullptr;
 
     // Cached index
     QModelIndex index;
