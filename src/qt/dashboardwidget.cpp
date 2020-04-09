@@ -18,7 +18,7 @@
 #include <QList>
 #include <QGraphicsLayout>
 
-#define DECORATION_SIZE 40
+#define DECORATION_SIZE 51
 #define NUM_ITEMS 3
 #define SHOW_EMPTY_CHART_VIEW_THRESHOLD 4000
 #define REQUEST_LOAD_TASK 1

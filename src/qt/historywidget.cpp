@@ -13,7 +13,7 @@
 #include "optionsmodel.h"
 #include "qt/sendconfirmdialog.h"
 
-#define DECORATION_SIZE 40
+#define DECORATION_SIZE 50
 #define NUM_ITEMS 3
 
 HistoryWidget::HistoryWidget(ALQOGUI *parent) :
