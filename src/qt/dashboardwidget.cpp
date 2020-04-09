@@ -181,7 +181,7 @@ void DashboardWidget::updateBalances(const CAmount& balance, const CAmount& unco
     CAmount pivAvailableBalance = balance - immatureBalance - nLockedBalance;
     // Set
     //QString totalPiv = QString::number(pivAvailableBalance);
-    QString totalPiv = BitcoinUnits::simpleFormat(nDisplayUnit, pivAvailableBalance, false, BitcoinUnits::separatorAlways);
+    QString totalPiv = BitcoinUnits::simplestFormat(nDisplayUnit, pivAvailableBalance, 2, false, BitcoinUnits::separatorAlways);
 
     QFont fontBalance = ui->labelAmountPiv->font();
     fontBalance.setWeight(QFont::Bold);
