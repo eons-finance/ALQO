@@ -235,14 +235,14 @@ void ALQOGUI::setClientModel(ClientModel* clientModel) {
         // while the client has not yet fully loaded
         createTrayIconMenu();
 
-//        topBar->setClientModel(clientModel);
+        navMenu->setClientModel(clientModel);
         dashboard->setClientModel(clientModel);
         sendWidget->setClientModel(clientModel);
         settingsWidget->setClientModel(clientModel);
 
         // Receive and report messages from client model
         connect(clientModel, SIGNAL(message(QString, QString, unsigned int)), this, SLOT(message(QString, QString, unsigned int)));
-//        connect(topBar, SIGNAL(walletSynced(bool)), dashboard, SLOT(walletSynced(bool)));
+        connect(navMenu, SIGNAL(walletSynced(bool)), this, SLOT(walletSynced(bool)));
 
         // Get restart command-line parameters and handle restart
         connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg){handleRestart(arg);});
@@ -451,7 +451,6 @@ void ALQOGUI::detectShutdown() {
 void ALQOGUI::goToDashboard(){
     if(stackedContainer->currentWidget() != dashboard){
         stackedContainer->setCurrentWidget(dashboard);
-       // topBar->showBottom();
     }
 }
 
@@ -556,7 +555,7 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
 
     // set the model for every view
     dashboard->setWalletModel(walletModel);
-//    topBar->setWalletModel(walletModel);
+    navMenu->setWalletModel(walletModel);
     receiveWidget->setWalletModel(walletModel);
     sendWidget->setWalletModel(walletModel);
     addressesWidget->setWalletModel(walletModel);
@@ -566,7 +565,7 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
 
     // Connect actions..
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &ALQOGUI::message);
-//    connect(topBar, &TopBar::message, this, &ALQOGUI::message);
+    //connect(navMenu, &NavMenuWidget::message, this, &ALQOGUI::message);
     connect(sendWidget, &SendWidget::message,this, &ALQOGUI::message);
     connect(receiveWidget, &ReceiveWidget::message,this, &ALQOGUI::message);
     connect(addressesWidget, &AddressesWidget::message,this, &ALQOGUI::message);

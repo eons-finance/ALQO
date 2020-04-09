@@ -35,10 +35,10 @@ SendWidget::SendWidget(ALQOGUI* parent) :
 
     /* Buttons */
     ui->pushButtonFee->setText(tr("Customize fee"));
-    setCssProperty(ui->pushButtonFee, "btn-primary");
+    setCssProperty(ui->pushButtonFee, "btn-primary-sm");
 
     ui->pushButtonClear->setText(tr("Clear all"));
-    setCssProperty(ui->pushButtonClear, "btn-primary");
+    setCssProperty(ui->pushButtonClear, "btn-primary-sm");
 
 	QPixmap pixmap("://ic-add");
 	QIcon ButtonIcon(pixmap);
@@ -49,20 +49,20 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     setCssBtnPrimary(ui->pushButtonSave);
 
     ui->pushButtonReset->setText(tr("Reset to default"));
-    setCssProperty(ui->pushButtonReset, "btn-primary");
+    setCssProperty(ui->pushButtonReset, "btn-primary-sm");
 
     // Coin control
-    setCssProperty(ui->btnCoinControl, "btn-primary");
+    setCssProperty(ui->btnCoinControl, "btn-primary-sm");
     ui->btnCoinControl->setText(tr("Coin Control"));
     ui->btnCoinControl->setChecked(true);
 
     // Change address option
-    setCssProperty(ui->btnChangeAddress, "btn-primary");
+    setCssProperty(ui->btnChangeAddress, "btn-primary-sm");
     ui->btnChangeAddress->setText(tr("Change Address"));
     ui->btnChangeAddress->setChecked(true);
 
     // Uri
-    setCssProperty(ui->btnUri, "btn-primary");
+    setCssProperty(ui->btnUri, "btn-primary-sm");
     ui->btnUri->setText(tr("Open URI"));
     ui->btnUri->setChecked(true);
 

@@ -39,6 +39,7 @@ using namespace QtCharts;
 
 class ALQOGUI;
 class WalletModel;
+class SendCoinsRecipient;
 
 namespace Ui {
 class DashboardWidget;
@@ -119,6 +120,7 @@ public slots:
 signals:
     /** Notify that a new transaction appeared */
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
+
 private slots:
     void handleTransactionClicked(const QModelIndex &index);
     void changeTheme(bool isLightTheme, QString &theme) override;
@@ -128,6 +130,8 @@ private slots:
     void showList();
     void onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType);
     void onBtnReceiveClicked();
+    void showSend();
+    void showReceive();
 
 private:
     Ui::DashboardWidget *ui;
@@ -137,48 +141,7 @@ private:
     TransactionTableModel* txModel;
     int nDisplayUnit = -1;
     bool isSync = false;
-
-#ifdef USE_QTCHARTS
-
-    int64_t lastRefreshTime = 0;
-    std::atomic<bool> isLoading;
-
-    // Chart
-    TransactionFilterProxy* stakesFilter = nullptr;
-    bool isChartInitialized = false;
-    QChartView *chartView = nullptr;
-    QBarSeries *series = nullptr;
-    QBarSet *set0 = nullptr;
-    QBarSet *set1 = nullptr;
-
-    QBarCategoryAxis *axisX = nullptr;
-    QValueAxis *axisY = nullptr;
-
-    QChart *chart = nullptr;
-    bool isChartMin = false;
-    ChartShowType chartShow = YEAR;
-    int yearFilter = 0;
-    int monthFilter = 0;
-    int dayStart = 1;
-    bool hasZpivStakes = false;
-
-    ChartData* chartData = nullptr;
-    bool hasStakes = false;
-
-    void initChart();
-    void showHideEmptyChart(bool show, bool loading, bool forceView = false);
-    bool refreshChart();
-    void tryChartRefresh();
-    void updateStakeFilter();
-    const QMap<int, std::pair<qint64, qint64>> getAmountBy();
-    bool loadChartData(bool withMonthNames);
-    void updateAxisX(const QStringList *arg = nullptr);
-    void setChartShow(ChartShowType type);
-    std::pair<int, int> getChartRange(QMap<int, std::pair<qint64, qint64>> amountsBy);
-
-private slots:
-
-#endif
+    SendCoinsRecipient *info = nullptr;
 
 };
 
