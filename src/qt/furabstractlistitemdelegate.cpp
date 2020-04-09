@@ -26,6 +26,8 @@ void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionVie
 	painter->setFont(font);
 	painter->setPen(pen);
 	painter->setBrush(QColor(26, 29, 49, 127));
+	QMargins margin(0, 4, 0, 4);
+	selectedRect = selectedRect.marginsRemoved(margin);
 	painter->drawRoundedRect(selectedRect, 20.0, 20.0);
 
 	//painter->fillPath(path, QColor("transparent"));
@@ -39,7 +41,7 @@ void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionVie
     row->setAttribute(Qt::WA_DontShowOnScreen, true);
     row->setGeometry(option.rect);
     row->resize(option.rect.width(),option.rect.height());
-    row->setStyleSheet("color:white; font-size:12px; text-align:right;");
+    row->setStyleSheet("color:white; font-size:14px; text-align:right;");
     row->render(painter, QPoint(), QRegion(), QWidget::DrawChildren );
 
     painter->restore();
