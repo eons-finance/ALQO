@@ -545,13 +545,6 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <widget class="QLabel" name="lblRewards">
                     <property name="text">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;REWARDS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
