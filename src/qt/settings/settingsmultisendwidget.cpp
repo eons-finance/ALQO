@@ -141,6 +141,7 @@ SettingsMultisendWidget::SettingsMultisendWidget(PWidget *parent) :
     this->setStyleSheet(parent->styleSheet());
     delegate = new FurAbstractListItemDelegate(
             DECORATION_SIZE,
+            DECORATION_SIZE,
             new MultiSendHolder(isLightTheme()),
             this
     );

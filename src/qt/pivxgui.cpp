@@ -464,6 +464,7 @@ void ALQOGUI::goToSend(){
 }
 
 void ALQOGUI::goToAddresses(){
+    addressesWidget->updateListView();
     showTop(addressesWidget);
 }
 

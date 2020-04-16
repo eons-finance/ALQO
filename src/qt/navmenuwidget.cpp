@@ -171,18 +171,24 @@ void NavMenuWidget::onBtnLockClicked(){
                 connect(ui->pushButtonLock, &ExpandableButton::Mouse_HoverLeave, [this](){
                     QMetaObject::invokeMethod(this, "lockDropdownMouseLeave", Qt::QueuedConnection);
                 }); //, SLOT(lockDropdownMouseLeave()));
-                connect(lockUnlockWidget, SIGNAL(lockClicked(
-                const StateClicked&)),this, SLOT(lockDropdownClicked(
-                const StateClicked&)));
+                connect(lockUnlockWidget, SIGNAL(lockClicked(const StateClicked&)),this, SLOT(lockDropdownClicked( const StateClicked&)));
             }
 
             lockUnlockWidget->updateStatus(walletModel->getEncryptionStatus());
-            if (ui->pushButtonLock->width() <= 40) {
+            //if (ui->pushButtonLock->height() <= 40) {
                 ui->pushButtonLock->setExpanded();
-            }
+            //}
             // Keep it open
             ui->pushButtonLock->setKeepExpanded(true);
-            QMetaObject::invokeMethod(this, "openLockUnlock", Qt::QueuedConnection);
+			//lockUnlockWidget->setFixedHeight(ui->pushButtonLock->height());
+			lockUnlockWidget->adjustSize();
+
+            lockUnlockWidget->move(ui->pushButtonLock->pos().rx() + ui->pushButtonLock->width() +280, ui->pushButtonLock->y() + 10);
+
+			//lockUnlockWidget->raise();
+			//lockUnlockWidget->activateWindow();
+			lockUnlockWidget->show();
+            //QMetaObject::invokeMethod(this, "openLockUnlock", Qt::QueuedConnection);
         }
     }
 }
@@ -191,13 +197,10 @@ void NavMenuWidget::openLockUnlock(){
     lockUnlockWidget->setFixedWidth(ui->pushButtonLock->width());
     lockUnlockWidget->adjustSize();
 
-    lockUnlockWidget->move(
-            ui->pushButtonLock->pos().rx() + window->getNavWidth() + 10,
-            ui->pushButtonLock->y() + 36
-    );
+    lockUnlockWidget->move(ui->pushButtonLock->pos().rx() + window->getNavWidth() + 10, ui->pushButtonLock->y() + 36);
 
-    lockUnlockWidget->raise();
-    lockUnlockWidget->activateWindow();
+    //lockUnlockWidget->raise();
+    //lockUnlockWidget->activateWindow();
     lockUnlockWidget->show();
 }
 
@@ -452,6 +455,10 @@ void NavMenuWidget::refreshStatus(){
     updateStyle(ui->pushButtonLock);
 }
 
+void NavMenuWidget::resizeEvent(QResizeEvent *event){
+    if (lockUnlockWidget && lockUnlockWidget->isVisible()) lockDropdownMouseLeave();
+    QWidget::resizeEvent(event);
+}
 
 NavMenuWidget::~NavMenuWidget(){
     if(timerStakingIcon){

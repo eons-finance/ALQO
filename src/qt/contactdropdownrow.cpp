@@ -16,15 +16,18 @@ ContactDropdownRow::ContactDropdownRow(QWidget *parent) :
 
 void ContactDropdownRow::init(bool isLightTheme, bool isHover) {
     update(isLightTheme, isHover, false);
+
 }
 
 void ContactDropdownRow::update(bool isLightTheme, bool isHover, bool isSelected){
-    ui->lblDivisory->setStyleSheet("background-color:#bababa");
+   // ui->lblDivisory->setStyleSheet("background-color:#bababa");
 }
 
-void ContactDropdownRow::setData(QString address, QString label){
+void ContactDropdownRow::setData(QString address, QString label, bool mini){
     ui->lblAddress->setText(address);
     ui->lblLabel->setText(label);
+    if(mini)
+        ui->lblAddress->setVisible(false);
 }
 
 ContactDropdownRow::~ContactDropdownRow()

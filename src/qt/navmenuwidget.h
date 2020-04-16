@@ -28,6 +28,9 @@ public:
     void setWalletModel(WalletModel* model);
     void setClientModel(ClientModel* model);
     void encryptWallet();
+
+protected:
+    void resizeEvent(QResizeEvent *event) override;
     
 public slots:
     void selectSettings();

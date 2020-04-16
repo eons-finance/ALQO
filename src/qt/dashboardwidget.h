@@ -11,7 +11,7 @@
 #include "transactiontablemodel.h"
 #include "qt/txviewholder.h"
 #include "transactionfilterproxy.h"
-
+#include "qt/contactsdropdown.h"
 #include <atomic>
 #include <cstdlib>
 #include <QWidget>
@@ -101,8 +101,6 @@ public:
     ~DashboardWidget();
 
     void loadWalletModel() override;
-    void loadChart();
-
     void run(int type) override;
     void onError(QString error, int type) override;
 
@@ -132,6 +130,8 @@ private slots:
     void onBtnReceiveClicked();
     void showSend();
     void showReceive();
+    void onSendClicked();
+    void onContactsClicked();
 
 private:
     Ui::DashboardWidget *ui;
@@ -142,7 +142,15 @@ private:
     int nDisplayUnit = -1;
     bool isSync = false;
     SendCoinsRecipient *info = nullptr;
-
+    bool send(QList<SendCoinsRecipient> recipients);
+    ContactsDropdown *menuContacts = nullptr;
+    QAction *btnContact;
+    QString sendRequest(QString url);
+    void SetExchangeInfoTextLabels();
+    int timerid;
+    QTimer* timer;
+    int64_t lastrefresh;
+    CAmount curbal;
 };
 
 #endif // DASHBOARDWIDGET_H

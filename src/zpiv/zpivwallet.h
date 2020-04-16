@@ -9,6 +9,7 @@
 #include "libzerocoin/Coin.h"
 #include "mintpool.h"
 #include "uint256.h"
+#include "wallet/wallet.h"
 #include "zerocoin.h"
 
 class CDeterministicMint;

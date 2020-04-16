@@ -24,8 +24,10 @@ void TxRow::init(bool isLightTheme) {
 void TxRow::setConfirmStatus(bool isConfirm){
     if(isConfirm){
         setCssProperty(ui->lblAddress, "text-list-body1");
+        setCssProperty(ui->lblDate, "text-list-caption");
     }else{
         setCssProperty(ui->lblAddress, "text-list-body-unconfirmed");
+        setCssProperty(ui->lblDate,"text-list-caption-unconfirmed");
     }
 }
 
@@ -37,7 +39,7 @@ void TxRow::updateStatus(bool isLightTheme, bool isHover, bool isSelected){
 }
 
 void TxRow::setDate(QDateTime date){
-//    ui->lblDate->setText(GUIUtil::dateTimeStr(date));
+    ui->lblDate->setText(GUIUtil::dateTimeStr(date));
 }
 
 void TxRow::setLabel(QString str){
@@ -104,7 +106,6 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
         setConfirmStatus(true);
     }
     setCssProperty(ui->lblAmount, css, true);
-    //ui->icon->setIcon(QIcon(path));
 }
 
 TxRow::~TxRow(){

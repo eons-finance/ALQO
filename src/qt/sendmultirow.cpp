@@ -119,6 +119,7 @@ bool SendMultiRow::addressChanged(const QString& str){
 void SendMultiRow::loadWalletModel() {
     if (walletModel && walletModel->getOptionsModel()) {
         displayUnit = walletModel->getOptionsModel()->getDisplayUnit();
+        walletModel->getAddressTableModel()->refresh();
         connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
     }
     clear();

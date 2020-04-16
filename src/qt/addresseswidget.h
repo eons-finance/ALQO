@@ -36,6 +36,7 @@ public:
 
     void loadWalletModel() override;
     void onNewContactClicked();
+    void updateListView();
 
 private slots:
     void handleAddressClicked(const QModelIndex &index);
@@ -43,7 +44,8 @@ private slots:
     void onEditClicked();
     void onDeleteClicked();
     void onCopyClicked();
-    void onAddContactShowHideClicked();
+    void onSortChanged(int idx);
+    void onSortOrderChanged(int idx);
 
     void changeTheme(bool isLightTheme, QString &theme) override;
 private:
@@ -59,7 +61,11 @@ private:
     // Cached index
     QModelIndex index;
 
-    void updateListView();
+    // Cached sort type and order
+    AddressTableModel::ColumnIndex sortType = AddressTableModel::Label;
+    Qt::SortOrder sortOrder = Qt::AscendingOrder;
+
+    void sortAddresses();
 };
 
 #endif // ADDRESSESWIDGET_H
