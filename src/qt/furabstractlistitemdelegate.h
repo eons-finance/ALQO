@@ -24,7 +24,7 @@ class FurAbstractListItemDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    FurAbstractListItemDelegate(int _rowHeight, FurListRow<>* _row, QObject *parent=nullptr);
+    FurAbstractListItemDelegate(int _rowHeight, int _rowWidth, FurListRow<>* _row, QObject *parent=nullptr, bool mini=false);
 
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
@@ -33,6 +33,8 @@ public:
     FurListRow<> *getRowFactory();
 private:
     int rowHeight = 0;
+    int rowWidth = 0;
+    bool mini;
     FurListRow<>* row = nullptr;
 
 };

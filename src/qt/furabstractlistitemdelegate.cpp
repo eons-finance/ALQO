@@ -4,8 +4,8 @@
 
 #include "qt/furabstractlistitemdelegate.h"
 
-FurAbstractListItemDelegate::FurAbstractListItemDelegate(int _rowHeight, FurListRow<> *_row, QObject *parent) :
-    QAbstractItemDelegate(parent), rowHeight(_rowHeight), row(_row){}
+FurAbstractListItemDelegate::FurAbstractListItemDelegate(int _rowHeight, int _rowWidth, FurListRow<> *_row, QObject *parent, bool _mini) :
+    QAbstractItemDelegate(parent), rowHeight(_rowHeight), rowWidth(_rowWidth), row(_row), mini(_mini){}
 
 void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
                   const QModelIndex &index ) const
@@ -26,22 +26,17 @@ void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionVie
 	painter->setFont(font);
 	painter->setPen(pen);
 	painter->setBrush(QColor(26, 29, 49, 127));
-	QMargins margin(0, 4, 0, 4);
+	QMargins margin(2, 4, 2, 4);
 	selectedRect = selectedRect.marginsRemoved(margin);
-	painter->drawRoundedRect(selectedRect, 20.0, 20.0);
-
-	//painter->fillPath(path, QColor("transparent"));
-
-    //painter->fillRect(selectedRect, this->row->rectColor(isStateHovered, isStateSelected));
-
+	painter->drawRoundedRect(selectedRect, rowHeight/3, rowHeight/3);
     painter->translate(option.rect.topLeft());
     QWidget *row = this->row->createHolder(index.row());
 
     this->row->init(row, index, isStateHovered, isStateSelected);
     row->setAttribute(Qt::WA_DontShowOnScreen, true);
     row->setGeometry(option.rect);
-    row->resize(option.rect.width(),option.rect.height());
-    row->setStyleSheet("color:white; font-size:14px; text-align:right;");
+    row->resize(mini ? rowWidth : option.rect.width(),option.rect.height());
+    row->setStyleSheet("color:white; font-size:12px; text-align:right;");
     row->render(painter, QPoint(), QRegion(), QWidget::DrawChildren );
 
     painter->restore();

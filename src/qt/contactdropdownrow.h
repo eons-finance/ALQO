@@ -21,7 +21,7 @@ public:
 
     void init(bool isLightTheme, bool isHover);
     void update(bool isLightTheme, bool isHover, bool isSelected);
-    void setData(QString address, QString label);
+    void setData(QString address, QString label, bool mini = false);
 
 private:
     Ui::ContactDropdownRow *ui;

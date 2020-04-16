@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ALQO_QT_BITCOINUNITS_H
-#define ALQO_QT_BITCOINUNITS_H
+#ifndef XLQ_QT_BITCOINUNITS_H
+#define XLQ_QT_BITCOINUNITS_H
 
 #include "amount.h"
 
@@ -47,7 +47,7 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** ALQO unit definitions. Encapsulates parsing and formatting
+/** XLQ unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
 class BitcoinUnits : public QAbstractListModel
@@ -57,13 +57,13 @@ class BitcoinUnits : public QAbstractListModel
 public:
     explicit BitcoinUnits(QObject* parent);
 
-    /** ALQO units.
+    /** XLQ units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit {
-        ALQO,
-        mALQO,
-        uALQO
+        XLQ,
+        mXLQ,
+        uXLQ
     };
 
     enum SeparatorStyle {
@@ -135,4 +135,4 @@ private:
 };
 typedef BitcoinUnits::Unit BitcoinUnit;
 
-#endif // ALQO_QT_BITCOINUNITS_H
+#endif // XLQ_QT_BITCOINUNITS_H

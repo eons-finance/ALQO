@@ -13,7 +13,7 @@
 #include "walletmodel.h"
 #include "addresstablemodel.h"
 
-#define DECORATION_SIZE 70
+#define DECORATION_SIZE 48
 #define NUM_ITEMS 3
 
 class ContViewHolder : public FurListRow<QWidget*>
@@ -21,7 +21,10 @@ class ContViewHolder : public FurListRow<QWidget*>
 public:
     ContViewHolder();
 
-    explicit ContViewHolder(bool _isLightTheme) : FurListRow(), isLightTheme(_isLightTheme){}
+    explicit ContViewHolder(bool _isLightTheme, bool mini) : FurListRow(), isLightTheme(_isLightTheme){
+		this->mini = mini;
+		
+		}
 
     ContactDropdownRow* createHolder(int pos) override{
         if (!row) row = new ContactDropdownRow();
@@ -35,7 +38,7 @@ public:
         QString address = index.data(Qt::DisplayRole).toString();
         QModelIndex sibling = index.sibling(index.row(), AddressTableModel::Label);
         QString label = sibling.data(Qt::DisplayRole).toString();
-        row->setData(address, label);
+        row->setData(address, label, mini);
     }
 
     QColor rectColor(bool isHovered, bool isSelected) override{
@@ -45,36 +48,39 @@ public:
     ~ContViewHolder() override{}
 
     bool isLightTheme;
+    bool mini;
     ContactDropdownRow* row = nullptr;
 };
 
-ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, PWidget *parent) :
+ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, PWidget *parent, bool mini) :
    PWidget(parent)
 {
 
     this->setStyleSheet(parent->styleSheet());
+    this->mini = mini;
 
     delegate = new FurAbstractListItemDelegate(
-                DECORATION_SIZE,
-                new ContViewHolder(isLightTheme()),
-                this
+                DECORATION_SIZE, mini ? minWidth : DECORATION_SIZE, 
+                new ContViewHolder(isLightTheme(), mini),
+                this,
+                mini
     );
 
     setMinimumWidth(minWidth);
-    setMinimumHeight(minHeight);
+    setMinimumHeight(minHeight);    
     setContentsMargins(0,0,0,0);
-    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+//    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     frameList = new QFrame(this);
     frameList->setProperty("cssClass", "container-border-light");
     frameList->setContentsMargins(10,10,10,10);
-    frameList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+//    frameList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     list = new QListView(frameList);
     list->setMinimumWidth(minWidth);
     list->setProperty("cssClass", "container-border-light");
     list->setItemDelegate(delegate);
     list->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
-    list->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
+    list->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE));
     list->setAttribute(Qt::WA_MacShowFocusRect, false);
     list->setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -86,6 +92,7 @@ void ContactsDropdown::setWalletModel(WalletModel* _model, const QString& type){
         model = _model->getAddressTableModel();
         this->filter = new AddressFilterProxyModel(type, this);
         this->filter->setSourceModel(model);
+        this->filter->sort(AddressTableModel::Label, Qt::AscendingOrder);
         list->setModel(this->filter);
         list->setModelColumn(AddressTableModel::Address);
     } else {
@@ -99,17 +106,18 @@ void ContactsDropdown::setType(const QString& type) {
 }
 
 void ContactsDropdown::resizeList(int minWidth, int mintHeight){
-    list->setMinimumWidth(minWidth);
-    setMinimumWidth(minWidth);
-    setMinimumHeight(mintHeight);
-    frameList->setMinimumHeight(mintHeight);
-    frameList->setMinimumWidth(minWidth);
-    list->setMinimumHeight(mintHeight);
-    list->resize(mintHeight,mintHeight);
-    list->adjustSize();
+//    list->setMinimumWidth(minWidth);
+//    setMinimumWidth(minWidth);
+//    setMinimumHeight(mintHeight);
+//    frameList->setMinimumHeight(mintHeight);
+//    frameList->setMinimumWidth(minWidth);
+//    list->setMinimumHeight(mintHeight);
     frameList->resize(minWidth, mintHeight);
-    resize(minWidth, mintHeight);
-    adjustSize();
+    list->resize(mintHeight,mintHeight);
+    //list->adjustSize();
+    
+    //resize(minWidth, mintHeight);
+    //adjustSize();
     update();
 }
 

@@ -246,6 +246,11 @@ AddressTableModel::~AddressTableModel()
     delete priv;
 }
 
+void AddressTableModel::refresh()
+{
+	priv->refreshAddressTable();
+}
+
 int AddressTableModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent);
@@ -264,7 +269,9 @@ int AddressTableModel::sizeSend() const{
 int AddressTableModel::sizeRecv() const{
     return priv->sizeRecv();
 }
-
+int AddressTableModel::size() const{
+    return priv->size();
+}
 QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid())

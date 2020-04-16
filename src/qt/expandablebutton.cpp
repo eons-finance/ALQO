@@ -20,6 +20,7 @@ ExpandableButton::ExpandableButton(QWidget *parent) :
     this->setStyleSheet(parent->styleSheet());
     ui->pushButton->setCheckable(true);
     this->layout()->setSizeConstraint(QLayout::SetFixedSize);
+    //ui->pushButton->setStyleSheet("border-radius: 15px; border: 2px solid white;");
 
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(mousePressEvent()));
 }

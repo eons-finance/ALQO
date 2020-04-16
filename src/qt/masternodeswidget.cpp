@@ -68,7 +68,7 @@ MasterNodesWidget::MasterNodesWidget(ALQOGUI *parent) :
     ui->setupUi(this);
 
     delegate = new FurAbstractListItemDelegate(
-            DECORATION_SIZE,
+            DECORATION_SIZE,DECORATION_SIZE,
             new MNHolder(isLightTheme()),
             this
     );

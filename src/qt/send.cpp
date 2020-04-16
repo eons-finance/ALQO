@@ -565,17 +565,19 @@ void SendWidget::onPIVSelected(bool _isPIV){
 
 void SendWidget::onContactsClicked(SendMultiRow* entry){
     focusedEntry = entry;
+ 
     if(menu && menu->isVisible()){
         menu->hide();
     }
-
+    
     int contactsSize = walletModel->getAddressTableModel()->sizeSend();
+/*
     if(contactsSize == 0) {
         inform(tr("No contacts available, you can go to the contacts screen and add some there!"));
         return;
     }
-
-    int height = (contactsSize <= 2) ? entry->getEditHeight() * ( 2 * (contactsSize + 1 )) : entry->getEditHeight() * 4;
+*/
+    int height = 200;//(contactsSize <= 2) ? entry->getEditHeight() * ( 2 * (contactsSize + 1 )) : entry->getEditHeight() * 4;
     int width = entry->getEditWidth();
 
     if(!menuContacts){
@@ -609,9 +611,9 @@ void SendWidget::onContactsClicked(SendMultiRow* entry){
         pos.setY((pos.y() + (focusedEntry->getEditHeight() - 12) * 4));
     } else {
         pos = focusedEntry->getEditLineRect().bottomLeft();
-        pos.setY((pos.y() + (focusedEntry->getEditHeight() - 12) * 3));
+        pos.setY((pos.y() - (focusedEntry->getEditHeight() - 12) * 11));
     }
-    pos.setX(pos.x() + 20);
+    pos.setX(pos.x() + focusedEntry->getEditWidth() + 20);
     menuContacts->move(pos);
     menuContacts->show();
 }

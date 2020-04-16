@@ -32,6 +32,7 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
     txHolder = new TxViewHolder(isLightTheme());
     txViewDelegate = new FurAbstractListItemDelegate(
         DECORATION_SIZE,
+        DECORATION_SIZE,
         txHolder,
         this
     );

@@ -30,6 +30,7 @@ ReceiveWidget::ReceiveWidget(ALQOGUI* parent) :
 
     delegate = new FurAbstractListItemDelegate(
                 DECORATION_SIZE,
+                DECORATION_SIZE,
                 new AddressHolder(isLightTheme()),
                 this
                 );
