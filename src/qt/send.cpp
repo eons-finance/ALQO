@@ -67,7 +67,7 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     ui->btnUri->setChecked(true);
 
     // Total Send
-    ui->labelTitleTotalSend->setText(tr("Total to send"));
+    ui->labelTitleTotalSend->setText(tr("Total to Send"));
     setCssProperty(ui->labelTitleTotalSend, "text-title");
 
     ui->labelAmountSend->setText("0.00 ALQO");
@@ -129,7 +129,7 @@ void SendWidget::refreshAmounts() {
     } else {
         // Wallet's balance
         totalAmount = walletModel->getBalance() - total;
-        ui->labelTitleTotalRemaining->setText(tr("Total remaining"));
+        ui->labelTitleTotalRemaining->setText(tr("Total Remaining"));
     }
     ui->labelAmountRemaining->setText(
             GUIUtil::formatBalance(

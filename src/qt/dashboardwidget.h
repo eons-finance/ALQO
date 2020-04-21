@@ -17,6 +17,7 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QMap>
+#include <QPushButton>
 
 #if defined(HAVE_CONFIG_H)
 #include "config/alqo-config.h" /* for USE_QTCHARTS */
@@ -132,6 +133,7 @@ private slots:
     void showReceive();
     void onSendClicked();
     void onContactsClicked();
+    void loadContacts();
 
 private:
     Ui::DashboardWidget *ui;
@@ -151,6 +153,7 @@ private:
     QTimer* timer;
     int64_t lastrefresh;
     CAmount curbal;
+    QPushButton *buttons[3];
 };
 
 #endif // DASHBOARDWIDGET_H

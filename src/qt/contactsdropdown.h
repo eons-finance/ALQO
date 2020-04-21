@@ -34,6 +34,7 @@ public:
     void setWalletModel(WalletModel* _model, const QString& type);
     void setType(const QString& type);
     void changeTheme(bool isLightTheme, QString& theme) override;
+    QMap<QString, QString> getMini();
 signals:
     void contactSelected(QString address, QString label);
 private:

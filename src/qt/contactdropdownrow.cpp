@@ -26,8 +26,10 @@ void ContactDropdownRow::update(bool isLightTheme, bool isHover, bool isSelected
 void ContactDropdownRow::setData(QString address, QString label, bool mini){
     ui->lblAddress->setText(address);
     ui->lblLabel->setText(label);
-    if(mini)
+    if(mini){
         ui->lblAddress->setVisible(false);
+        ui->lblLabel->setProperty("cssClass", "text-list-contact-title1-sm");
+	}
 }
 
 ContactDropdownRow::~ContactDropdownRow()

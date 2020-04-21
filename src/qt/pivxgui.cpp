@@ -41,6 +41,16 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
     this->setMinimumSize(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT);
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+
+	QFont font("Gotham Book");
+	//font.setStyleHint(QFont::Monospace);
+	QApplication::setFont(font);
+
+
+ //   setWindowFlags(Qt::FramelessWindowHint);
+
     GUIUtil::restoreWindowGeometry("nWindow", QSize(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT), this);
 
 #ifdef ENABLE_WALLET

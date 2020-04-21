@@ -44,11 +44,11 @@ void TxRow::setDate(QDateTime date){
 
 void TxRow::setLabel(QString str){
     ui->lblAddress->setText(str);
-    setCssProperty(ui->lblAddress, "tx-source");
+    //setCssProperty(ui->lblAddress, "tx-source");
 }
 
 void TxRow::setAmount(QString str){
-    setCssProperty(ui->lblAmount, "tx-amount");
+    //setCssProperty(ui->lblAmount, "tx-amount");
     ui->lblAmount->setText(str);
 }
 

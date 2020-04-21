@@ -34,9 +34,8 @@ public:
 private:
     int rowHeight = 0;
     int rowWidth = 0;
-    bool mini;
     FurListRow<>* row = nullptr;
-
+    bool mini;
 };
 
 #endif // FURABSTRACTLISTITEMDELEGATE_H
