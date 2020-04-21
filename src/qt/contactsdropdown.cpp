@@ -142,13 +142,10 @@ QMap<QString, QString> ContactsDropdown::getMini(){
 		QString label = model->index( i, 0 ).data(Qt::DisplayRole).toString();
 		QModelIndex sibling = model->index( i, 0 ).sibling(model->index( i, 0 ).row(), AddressTableModel::Address);
 		QString address = sibling.data(Qt::DisplayRole).toString();
-		QMessageBox::information(this,"Success",address);
-		QMessageBox::information(this,"Success",label);
 	    strings[label] = address;
 	}
     
     return strings;
-    //QModelIndex rIndex = (filter) ? filter->mapToSource(index) : index;
 }
 
 void ContactsDropdown::changeTheme(bool isLightTheme, QString& theme){

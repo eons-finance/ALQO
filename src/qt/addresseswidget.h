@@ -46,6 +46,7 @@ private slots:
     void onCopyClicked();
     void onSortChanged(int idx);
     void onSortOrderChanged(int idx);
+    void lineEditTextCahnged(const QString& text);
 
     void changeTheme(bool isLightTheme, QString &theme) override;
 private:

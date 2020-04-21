@@ -102,6 +102,8 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     setCssProperty(ui->lineEditName, "edit-primary");
     setCssEditLine(ui->lineEditName, true);
 
+    connect(ui->lineEditName, SIGNAL(textChanged(const QString &)), this, SLOT(lineEditTextCahnged(const QString&)));
+
     // Address
     ui->lineEditAddress->setPlaceholderText("ALQO Address");
     setCssEditLine(ui->lineEditAddress, true);
@@ -135,6 +137,15 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     ui->framemodify->setVisible(false);
 
     loadWalletModel();
+}
+
+void AddressesWidget::lineEditTextCahnged(const QString& text)
+{
+	if (text.length() > 8)
+	{
+		ui->lineEditName->setText(text.left(text.length()-1));
+		inform(tr("Contacts name cannot exceed 8 characters"));
+	}
 }
 
 void AddressesWidget::handleAddressClicked(const QModelIndex &index){

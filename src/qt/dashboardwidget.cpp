@@ -92,7 +92,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     ui->sendpagebtn->setChecked(true);
 
     //Receive
-    setCssProperty(ui->pushButtonQR, "dash-label-address");
+    setCssProperty(ui->pushButtonQR, "dash-btn-send");
     setCssProperty(ui->labelAddress, "dash-label-sm");
 
     // QR image
@@ -507,18 +507,7 @@ void DashboardWidget::loadContacts(){
 		connect(buttons[j], SIGNAL(clicked()), this, SLOT(onContactsClicked()));
 	}
 
-/*
-    menuContacts->resizeList(width, height);
-    menuContacts->setStyleSheet(this->styleSheet());
-    menuContacts->adjustSize();
-
-    QPoint pos;
-    pos = ui->lineEditContact->rect().bottomLeft();
-    pos.setY((pos.y() + (ui->lineEditContact->height() - 12) * 11));
-    pos.setX(pos.x() + ui->lineEditContact->width() - 20);
-    menuContacts->move(pos);*/
     menuContacts->hide();
-
 }
 
 const QString marketdetails = "https://explorer.alqo.app/api/getmarketinfo";
