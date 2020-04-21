@@ -13,7 +13,7 @@
 #include "walletmodel.h"
 #include "addresstablemodel.h"
 
-#define DECORATION_SIZE 48
+#define DECORATION_SIZE 40
 #define NUM_ITEMS 3
 
 class ContViewHolder : public FurListRow<QWidget*>
@@ -83,6 +83,8 @@ ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, PWidget *parent,
     list->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE));
     list->setAttribute(Qt::WA_MacShowFocusRect, false);
     list->setSelectionBehavior(QAbstractItemView::SelectRows);
+    list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    list->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     connect(list, SIGNAL(clicked(QModelIndex)), this, SLOT(handleClick(QModelIndex)));
 }
@@ -128,6 +130,25 @@ void ContactsDropdown::handleClick(const QModelIndex &index){
     QString label = sibling.data(Qt::DisplayRole).toString();
     emit contactSelected(address, label);
     close();
+}
+
+QMap<QString, QString> ContactsDropdown::getMini(){
+
+	QAbstractItemModel* model = list->model();
+	int max = model->rowCount() > 3 ? 3 : model->rowCount();
+	QMap<QString, QString> strings;
+	for ( int i = 0 ; i < max ; ++i )
+	{
+		QString label = model->index( i, 0 ).data(Qt::DisplayRole).toString();
+		QModelIndex sibling = model->index( i, 0 ).sibling(model->index( i, 0 ).row(), AddressTableModel::Address);
+		QString address = sibling.data(Qt::DisplayRole).toString();
+		QMessageBox::information(this,"Success",address);
+		QMessageBox::information(this,"Success",label);
+	    strings[label] = address;
+	}
+    
+    return strings;
+    //QModelIndex rIndex = (filter) ? filter->mapToSource(index) : index;
 }
 
 void ContactsDropdown::changeTheme(bool isLightTheme, QString& theme){

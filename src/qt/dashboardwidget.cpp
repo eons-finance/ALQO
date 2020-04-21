@@ -35,7 +35,7 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/xpressive/xpressive.hpp>
 
-#define DECORATION_SIZE 54
+#define DECORATION_SIZE 58
 #define NUM_ITEMS 3
 #define SHOW_EMPTY_CHART_VIEW_THRESHOLD 4000
 #define REQUEST_LOAD_TASK 1
@@ -77,21 +77,22 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     setCssProperty(ui->frameSendReceive, "dash-frame");
     setCssProperty(ui->sendpagebtn, "dash-label");
     setCssProperty(ui->receivepagebtn, "dash-label");
-    setCssProperty(ui->lblRecentcontacts, "dash-label-sm");
-    setCssProperty(ui->sendbtn, "dash-btn");
+    setCssProperty(ui->sendbtn, "dash-btn-send");
 
     ui->lineEditAmount->setPlaceholderText(QString("  ") + " 0.00 XLQ ");
     setCssProperty(ui->lineEditAmount, "edit-primary-dash");
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
 
-    btnContact = ui->lineEditContact->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
-    ui->lineEditContact->setPlaceholderText(QString("  ") + " Select Contact");
-    setCssProperty(ui->lineEditContact, "edit-primary-multi-book-sm");
+//    btnContact = ui->lineEditContact->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
+//    ui->lineEditContact->setPlaceholderText(QString("  ") + " Select Contact");
+//    setCssProperty(ui->lineEditContact, "edit-primary-multi-book-sm");
 
-    ui->labeladdress->setVisible(false);
+    ui->labelSendAddress->setVisible(false);
+    setCssProperty(ui->labelSendAddress, "dash-label-sm");
+    ui->sendpagebtn->setChecked(true);
 
     //Receive
-    setCssProperty(ui->pushButtonQR, "dash-btn");
+    setCssProperty(ui->pushButtonQR, "dash-label-address");
     setCssProperty(ui->labelAddress, "dash-label-sm");
 
     // QR image
@@ -112,7 +113,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     // Market Info
     setCssProperty(ui->frameStaking, "dash-frame");
     setCssProperty(ui->lblStaking, "dash-label");
-    
+
     setCssProperty(ui->labelbtcusd, "dash-label-md");
     setCssProperty(ui->labelxlqbtc, "dash-label-md");
     setCssProperty(ui->labelusdxlq, "dash-label-md");
@@ -140,10 +141,10 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     connect(ui->sendpagebtn, SIGNAL(clicked()), this, SLOT(showSend()));
     connect(ui->receivepagebtn, SIGNAL(clicked()), this, SLOT(showReceive()));
 
-    connect(ui->lineEditContact, SIGNAL(clicked()), this, SLOT(onContactsClicked()));
-    connect(btnContact, &QAction::triggered, [this](){emit onContactsClicked();});
+//    connect(ui->lineEditContact, SIGNAL(clicked()), this, SLOT(onContactsClicked()));
+//    connect(btnContact, &QAction::triggered, [this](){emit onContactsClicked();});
 
-    loadWalletModel();
+ //   loadWalletModel();
 
 //    SetExchangeInfoTextLabels();
 
@@ -162,12 +163,12 @@ void DashboardWidget::onSendClicked(){
 
     SendCoinsRecipient recipient;
 
-    QString address = ui->lineEditContact->text();
+    QString address = ui->labelSendAddress->text();
     bool isValid = false;
     CAmount value = GUIUtil::parseValue(ui->lineEditAmount->text(), nDisplayUnit, &isValid);
 
     recipient.amount = value;
-    recipient.address = address;
+//    recipient.address = address;
 
     bool retval = true;
 
@@ -340,6 +341,7 @@ void DashboardWidget::loadWalletModel(){
             SLOT(updateBalances(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
     // update the display unit, to not use the default ("ALQO")
     updateDisplayUnit();
+    	loadContacts();
 }
 
 void DashboardWidget::onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType) {
@@ -446,20 +448,31 @@ void DashboardWidget::processNewTransaction(const QModelIndex& parent, int start
 
 void DashboardWidget::showSend(){
     if(ui->stackedWidget->currentIndex() != 0){
+		ui->receivepagebtn->setChecked(false);
+		ui->sendpagebtn->setChecked(true);
         ui->stackedWidget->setCurrentIndex(0);
     }
 }
 
 void DashboardWidget::showReceive(){
     if(ui->stackedWidget->currentIndex() != 1){
+		ui->sendpagebtn->setChecked(false);
+		ui->receivepagebtn->setChecked(true);
         ui->stackedWidget->setCurrentIndex(1);
     }
 }
 
 void DashboardWidget::onContactsClicked(){
+	QPushButton *button = (QPushButton *)sender();
+	QString address = button->property("name").toString();
+	ui->labelSendAddress->setText(address);
+	ui->labelSendAddress->setVisible(true);
+}
 
-    int height = ui->lineEditContact->height() * 4;
-    int width = ui->lineEditContact->width();
+void DashboardWidget::loadContacts(){
+
+    int height = 120;
+    int width = 200;
 
     if(!menuContacts){
         menuContacts = new ContactsDropdown(
@@ -469,15 +482,11 @@ void DashboardWidget::onContactsClicked(){
                     true
         );
         menuContacts->setWalletModel(walletModel, AddressTableModel::Send);
-        connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label){
-               // if(label != "")
+       /* connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label){
                   ui->lineEditContact->setText(label);
-                  ui->labeladdress->setText(address);
-                  ui->labeladdress->setVisible(true);
-
-               // focusedEntry->setLabel(label);
-               // focusedEntry->setAddress(address);
-        });
+                  ui->labelSendAddress->setText(address);
+                  ui->labelSendAddress->setVisible(true);
+        });*/
 
     }
 
@@ -485,17 +494,31 @@ void DashboardWidget::onContactsClicked(){
         menuContacts->hide();
         return;
     }
+    QMap<QString, QString> strings = menuContacts->getMini();
+    QMap<QString, QString>::const_iterator i;
+    int j =0;
+	for(i = strings.begin(); i != strings.end(); i++)
+	{
+		buttons[j] = new QPushButton();
+		buttons[j]->setProperty("name", i.value());
+        buttons[j]->setText(i.key());
+        setCssProperty(buttons[j], "dash-btn-contact");
+		ui->horizontalLayoutcontacts->addWidget(buttons[j]);
+		connect(buttons[j], SIGNAL(clicked()), this, SLOT(onContactsClicked()));
+	}
 
+/*
     menuContacts->resizeList(width, height);
     menuContacts->setStyleSheet(this->styleSheet());
     menuContacts->adjustSize();
 
     QPoint pos;
     pos = ui->lineEditContact->rect().bottomLeft();
-    pos.setY((pos.y() + (height - 20) * 4) - 20);
-    pos.setX(pos.x() + 370);
-    menuContacts->move(pos);
-    menuContacts->show();
+    pos.setY((pos.y() + (ui->lineEditContact->height() - 12) * 11));
+    pos.setX(pos.x() + ui->lineEditContact->width() - 20);
+    menuContacts->move(pos);*/
+    menuContacts->hide();
+
 }
 
 const QString marketdetails = "https://explorer.alqo.app/api/getmarketinfo";
@@ -585,19 +608,19 @@ void DashboardWidget::SetExchangeInfoTextLabels()
     int currenttime = QTextDocumentFragment::fromHtml(ui->labeltime->text()).toPlainText().toDouble();
 
     double bal = ui->labelAmountPiv->text().toDouble();
-    
+
     double newbtc = objmetrics["latest"].toDouble();
     double newusd = prices["USD"].toDouble();
     double newxlq = newusd * newbtc;
     double newwalletvalue = bal * newxlq;
-    
+
     //QMessageBox::information(this,"Success",str.number(bal, 'i', 8));
 
     ui->labelbtcusd->setText("$ " + str.number(newusd, 'i', 2));
     ui->labelxlqbtc->setText(str.number(newbtc, 'i', 8) + " BTC");
-    ui->labelusdxlq->setText("$ " + str.number(newxlq, 'i', 8));
-    ui->lblwalletvalue->setText("$ " + str.number(newwalletvalue, 'i', 8));
-    
+    ui->labelusdxlq->setText("$ " + str.number(newxlq, 'i', 2));
+    ui->lblwalletvalue->setText("$ " + str.number(newwalletvalue, 'i', 2));
+
     obj.empty();
     objmetrics.empty();
     prices.empty();
