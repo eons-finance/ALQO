@@ -45,15 +45,29 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:10px;
 }
 
-*[cssClass="tx-amount"] {
-    color:white;
-    text-align: right;
-    background-color: #1a1d31;
-    font-size:10px;
-}
-
 *[cssClass="dash-btn"] {
     color: white;
+}
+
+*[cssClass="dash-btn-send"] {
+    color: white;
+    border:1px solid #505BB9;
+    background-color:#505BB9;
+    border-radius: 15px;
+    padding:5px 15px 5px 15px;
+}
+
+*[cssClass="dash-btn-contact"] {
+    color: white;
+    border:1px solid #505BB9;
+    background-color:#505BB9;
+    border-radius: 5px;
+    padding:3px 10px 3px 10px;
+    font-size:8px;
+}
+
+*[cssClass="dash-btn-contact"]:checked {
+    color: #3DE4CD;
 }
 
 *[cssClass="dash-label"] {
@@ -61,8 +75,13 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:16px;
 }
 
+*[cssClass="dash-label"]:checked {
+    color: #3DE4CD;
+    text-decoration: underline;
+}
+
 *[cssClass="dash-label-md"] {
-    text-align:right;
+    text-align: right;
 }
 
 *[cssClass="dash-label-sm"] {
@@ -814,6 +833,12 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:12px;
 }
 
+*[cssClass="text-list-contact-title1-sm"] {
+    color:#000000;
+    font-size:12px;
+    text-align:center;
+}
+
 *[cssClass="text-list-title1"] {
     color:#ffffff;
     font-size:12px;
@@ -845,7 +870,6 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     color:#000000;
     font-size:12px;
 }
-
 
 *[cssClass="text-list-body1-grey"] {
     color:#E6000000;
@@ -881,10 +905,13 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:12px;
 }
 
-
 *[cssClass="text-list-amount-receive"] {
-    color:#008d36;
-    font-size:16px;
+    color:green;
+    background-color: #3DE4CD;
+    text-align: right;
+    font-size:12px;
+    border-radius:6px;
+    padding: 4px;
 }
 
 
