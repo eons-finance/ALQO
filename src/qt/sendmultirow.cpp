@@ -17,7 +17,6 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     iconNumber(new QPushButton())
 {
     ui->setupUi(this);
-    //this->setStyleSheet("QLineEdit {  border: 2px solid gray; border-radius: 20px;}");
     this->setStyleSheet(parent->styleSheet());
 
     ui->lineEditAddress->setPlaceholderText(QString("  ") + " Type/Paste Address");

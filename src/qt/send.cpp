@@ -46,7 +46,7 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     ui->pushButtonAddRecipient->setIcon(ButtonIcon);
     setCssProperty(ui->pushButtonAddRecipient, "drk-btn");
 
-    setCssBtnPrimary(ui->pushButtonSave);
+    setCssBtnSecondary(ui->pushButtonSave);
 
     ui->pushButtonReset->setText(tr("Reset to default"));
     setCssProperty(ui->pushButtonReset, "btn-primary-sm");
@@ -93,7 +93,6 @@ SendWidget::SendWidget(ALQOGUI* parent) :
 
     // Entry
     addEntry();
-
 
 }
 

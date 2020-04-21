@@ -66,7 +66,6 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     ui->pushButtonSync->setButtonClassStyle("cssClass", "btn-check-sync");
     ui->pushButtonSync->setButtonText(" %54 Synchronizing..");
 
-    ui->pushButtonLock->setButtonClassStyle("cssClass", "btn-check-lock");
     ui->pushButtonLock->setButtonText("Wallet Locked  ");
     ui->pushButtonLock->setButtonClassStyle("cssClass", "btn-check-status-lock");
 
