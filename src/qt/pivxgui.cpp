@@ -124,6 +124,7 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
         // Init
         dashboard = new DashboardWidget(this);
+        chartsWidget = new ChartsWidget(this);
         sendWidget = new SendWidget(this);
         receiveWidget = new ReceiveWidget(this);
         addressesWidget = new AddressesWidget(this);
@@ -134,6 +135,7 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         // Add to parent
         stackedContainer->addWidget(dashboard);
         stackedContainer->addWidget(sendWidget);
+        stackedContainer->addWidget(chartsWidget);
         stackedContainer->addWidget(receiveWidget);
         stackedContainer->addWidget(historyWidget);
         stackedContainer->addWidget(addressesWidget);
@@ -196,6 +198,7 @@ void ALQOGUI::connectActions() {
 //    connect(topBar, &TopBar::themeChanged, this, &ALQOGUI::changeTheme);
     connect(settingsWidget, &SettingsWidget::showHide, this, &ALQOGUI::showHide);
     connect(sendWidget, &SendWidget::showHide, this, &ALQOGUI::showHide);
+    connect(chartsWidget, &ChartsWidget::showHide, this, &ALQOGUI::showHide);
     connect(receiveWidget, &ReceiveWidget::showHide, this, &ALQOGUI::showHide);
     connect(historyWidget, &HistoryWidget::showHide, this, &ALQOGUI::showHide);
     connect(addressesWidget, &AddressesWidget::showHide, this, &ALQOGUI::showHide);
@@ -252,7 +255,7 @@ void ALQOGUI::setClientModel(ClientModel* clientModel) {
 
         // Receive and report messages from client model
         connect(clientModel, SIGNAL(message(QString, QString, unsigned int)), this, SLOT(message(QString, QString, unsigned int)));
-        connect(navMenu, SIGNAL(walletSynced(bool)), this, SLOT(walletSynced(bool)));
+        connect(dashboard, SIGNAL(walletSynced(bool)), this, SLOT(walletSynced(bool)));
 
         // Get restart command-line parameters and handle restart
         connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg){handleRestart(arg);});
@@ -490,6 +493,10 @@ void ALQOGUI::goToReceive(){
     showTop(receiveWidget);
 }
 
+void ALQOGUI::goToCharts(){
+    showTop(chartsWidget);
+}
+
 void ALQOGUI::showTop(QWidget* view){
     if(stackedContainer->currentWidget() != view){
         stackedContainer->setCurrentWidget(view);
@@ -573,6 +580,7 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
     masterNodesWidget->setWalletModel(walletModel);
     settingsWidget->setWalletModel(walletModel);
     historyWidget->setWalletModel(walletModel);
+    chartsWidget->setWalletModel(walletModel);
 
     // Connect actions..
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &ALQOGUI::message);
@@ -582,9 +590,12 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
     connect(addressesWidget, &AddressesWidget::message,this, &ALQOGUI::message);
     connect(settingsWidget, &SettingsWidget::message, this, &ALQOGUI::message);
     connect(historyWidget, &HistoryWidget::message,this, &ALQOGUI::message);
+    connect(chartsWidget, &ChartsWidget::message,this, &ALQOGUI::message);
 
     // Pass through transaction notifications
     connect(dashboard, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
+    connect(historyWidget, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
+    connect(chartsWidget, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
 
     return true;
 }

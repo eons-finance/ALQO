@@ -152,6 +152,8 @@ void HelpMessageDialog::showOrPrint()
 ShutdownWindow::ShutdownWindow(QWidget* parent, Qt::WindowFlags f) : QWidget(parent, f)
 {
     QVBoxLayout* layout = new QVBoxLayout();
+    this->setStyleSheet(GUIUtil::loadStyleSheet());
+    //this->setStyleSheet(parent->styleSheet());
     layout->addWidget(new QLabel(
         tr("ALQO is shutting down...") + "<br /><br />" +
         tr("Do not shut down the computer until this window disappears.")));

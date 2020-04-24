@@ -7,11 +7,11 @@
 #include "transactiontablemodel.h"
 #include <QModelIndex>
 
-#define ADDRESS_SIZE 12
+#define ADDRESS_SIZE 5
 
 QWidget* TxViewHolder::createHolder(int pos){
     if (!txRow) txRow = new TxRow();
-    txRow->init(isLightTheme);
+    txRow->init(isLightTheme, mini);
     return txRow;
 }
 

@@ -189,10 +189,10 @@ void updateStyle(QWidget* widget){
 
 QColor getRowColor(bool isLightTheme, bool isHovered, bool isSelected){
     if (isSelected) {
-		return QColor(0, 0, 0, 127);
+		return QColor(255, 255, 255, 127);
         //return QColor("transparent");
     } else{
-		return QColor(0, 0, 0, 127);
+		return QColor(255, 255, 255, 127);
 //        return QColor("transparent");
     }
 }

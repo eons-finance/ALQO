@@ -17,6 +17,7 @@
 #include "qt/navmenuwidget.h"
 #include "qt/topbar.h"
 #include "qt/dashboardwidget.h"
+#include "qt/chartswidget.h"
 #include "qt/send.h"
 #include "qt/receivewidget.h"
 #include "qt/addresseswidget.h"
@@ -61,6 +62,7 @@ signals:
 public slots:
     void changeTheme(bool isLightTheme);
     void goToDashboard();
+    void goToCharts();
     void goToHistory();
     void goToSend();
     void goToReceive();
@@ -124,6 +126,7 @@ private:
     QStackedWidget *stackedContainer = nullptr;
 
     DashboardWidget *dashboard = nullptr;
+    ChartsWidget *chartsWidget = nullptr;
     SendWidget *sendWidget = nullptr;
     ReceiveWidget *receiveWidget = nullptr;
     AddressesWidget *addressesWidget = nullptr;

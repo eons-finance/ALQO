@@ -41,8 +41,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 *[cssClass="tx-source"] {
     color:white;
     text-align: left;
-    background-color: transparent;
-    font-size:10px;
+    font-size:14px;
 }
 
 *[cssClass="dash-btn"] {
@@ -95,7 +94,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="container-border-light"] {
-    background-color:rgba(26, 29, 49, 0.9);
+    background-color:rgba(26, 29, 49, 0.7);
     border:  1px solid #ffffff;
     border-radius:20px;
 }
@@ -146,6 +145,38 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 QPushButton[cssClass="img-nav-logo"] {
     qproperty-icon: url("://img-nav-logo");
     qproperty-iconSize: 49px 60px;
+}
+
+*[cssClass="btn-nav-charts"] {
+/*    qproperty-icon: url("://ic-nav-receive") off,
+    url("://ic-nav-receive-active") on;
+    qproperty-iconSize: 24px 40px;*/
+    background-color:transparent;
+    padding-top: 25px;
+    font-size:14px;
+    color: #ffffff;
+}
+
+*[cssClass="btn-nav-charts"]:checked {
+    background-color: transparent;
+    padding-top: 25px;
+    font-size:14px;
+    color: #3DE4CD;
+    text-decoration: underline;
+}
+
+*[cssClass="btn-nav-charts"]:hover {
+    background-color: transparent;
+    color: #777777;
+}
+
+*[cssClass="btn-nav-charts-active"] {
+/*    qproperty-icon:url("://ic-nav-receive-active")  ;
+    qproperty-iconSize: 24px 40px;*/
+    background-color: transparent;
+    font-size:14px;
+    color: #3DE4CD;
+    text-decoration: underline black;
 }
 
 *[cssClass="btn-nav-receive"] {
@@ -452,7 +483,7 @@ QPushButton[cssClass="btn-qr"] {
 
 
 QPushButton[cssClass="btn-check-sync"] {
-    qproperty-icon: url("://ic-check-sync");
+    qproperty-icon: url("://sync");
     qproperty-iconSize: 24px 24px;
     background-color:#50222222;
     color:#FFFFFF;
@@ -506,7 +537,7 @@ QPushButton[cssClass="btn-check-mint"]:checked {
 
 
 QPushButton[cssClass="btn-check-stack"] {
-    qproperty-icon: url("://ic-check-staking");
+    qproperty-icon: url("://staking");
     qproperty-iconSize: 24px 24px;
     color:#ffffff;
     background-color:#50222222;
@@ -584,7 +615,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
  ********************/
 
 QPushButton[cssClass="btn-check-connect"] {
-    qproperty-icon: url("://ic-check-connect") ;
+    qproperty-icon: url("://connections") ;
     qproperty-iconSize: 24px 24px;
     color:#ffffff;
     background-color:#50000000;
@@ -611,8 +642,8 @@ QPushButton[cssClass="btn-check-connect"]:checked {
 QPushButton[cssClass="btn-check-status-lock"] {
     background-color:#50222222;
     border-bottom:2px solid #b088ff;
-    qproperty-icon: url("://ic-wallet-status-locked") off,
-    url("://ic-wallet-status-locked") on ;
+    qproperty-icon: url("://locked") off,
+    url("://locked") on ;
     qproperty-iconSize: 24px 24px;
     color:#ffffff;
     border-radius:2px;
@@ -621,8 +652,8 @@ QPushButton[cssClass="btn-check-status-lock"] {
 QPushButton[cssClass="btn-check-status-unlock"] {
     background-color:#40222222;
     border-bottom:2px solid #222222;
-    qproperty-icon: url("://ic-wallet-status-unlocked") off,
-    url("://ic-wallet-status-unlocked") on ;
+    qproperty-icon: url("://unlocked") off,
+    url("://unlocked") on ;
     qproperty-iconSize: 24px 24px;
     color:#B3FFFFFF;
     border-radius:2px;
@@ -631,8 +662,8 @@ QPushButton[cssClass="btn-check-status-unlock"] {
 QPushButton[cssClass="btn-check-status-staking"] {
     background-color:#50222222;
     border-bottom:2px solid #222222;
-    qproperty-icon: url("://ic-wallet-status-staking") off,
-    url("://ic-wallet-status-staking") on ;
+    qproperty-icon: url("://staking_unlocked") off,
+    url("://staking_unlocked") on ;
     qproperty-iconSize: 24px 24px;
     color:#ffffff;
     border-radius:2px;
@@ -882,12 +913,12 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-list-caption"] {
-    color:#B3000000;
-    font-size:12px;
+    color:#ffffff;
+    font-size:14px;
 }
 
 *[cssClass="text-list-caption-medium"] {
-    color:#B3000000;
+    color:#ffffff;
     font-size:14px;
 }
 
@@ -906,19 +937,25 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-list-amount-receive"] {
-    color:green;
+    color:#505BB9;
     background-color: #3DE4CD;
-    text-align: right;
-    font-size:12px;
-    border-radius:6px;
+    text-align: center;
+    font-size:14px;
+    font-weight: bold;
+    border-radius:18px;
     padding: 4px;
 }
 
-
 *[cssClass="text-list-amount-send"] {
-    color:#f84444;
-    font-size:16px;
+    color:#ffffff;
+    background-color: #505BB9;
+    text-align: center;
+    font-size:14px;
+    font-weight: bold;
+    border-radius:18px;
+    padding: 4px;
 }
+
 
 *[cssClass="text-list-amount-unconfirmed"] {
     color:#B6B6B6;
@@ -931,7 +968,7 @@ HH       TEXT
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="text-title-screen"] {
-    color:#000000;
+    color:#ffffff;
     font-size:22px;
 }
 
@@ -976,7 +1013,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-subtitle"] {
-    color:#000000;
+    color:#ffffff;
     font-size:14px;
 }
 
@@ -1418,15 +1455,10 @@ QLineEdit[cssClass="edit-primary-book"]:hover {
 }
 
 *[cssClass="edit-primary-multi-book"] {
-    border: 1px solid #bababa;
-    background-image: url("://ic-address-send");
-    background-position:right center;
-    background-repeat:no-repeat;
+    border: 2px solid white;
     background-color:rgba(26, 29, 49, 0.6);
     font-size:18px;
     border-radius: 25px;
-    padding-right: 12px;
-    padding-left: 12px;
     color: #ffffff;
     text-align:left;
 }
@@ -1835,14 +1867,14 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-stake-piv"] {
-    color:#000000;
+    color:#ffffff;
     font-size:16px;
     padding:10px;
-    border-bottom: 5px solid #000000;
+    border-bottom: 5px solid #ffffff;
 }
 
 *[cssClass="text-stake-piv-disable"] {
-    color:#FFFFFF;
+    color:#777777;
     font-size:48px;
     padding:10px;
 }
@@ -1873,7 +1905,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-chart-piv"] {
-    color:#000000;
+    color:#ffffff;
     font-size:16px;
     padding-left:4px;
 }
@@ -1895,7 +1927,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
 *[cssClass="container-chart"] {
-    background-color:#ffffff;
+    background-color:transparent;
 }
 
 QPushButton[cssClass="btn-chart-arrow"] {

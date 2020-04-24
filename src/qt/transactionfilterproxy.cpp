@@ -20,6 +20,7 @@ const QDateTime TransactionFilterProxy::MAX_DATE = QDateTime::fromTime_t(0xFFFFF
 TransactionFilterProxy::TransactionFilterProxy(QObject* parent) : QSortFilterProxyModel(parent),
                                                                   dateFrom(MIN_DATE),
                                                                   dateTo(MAX_DATE),
+                                                                  m_search_string(),
                                                                   addrPrefix(),
                                                                   typeFilter(COMMON_TYPES),
                                                                   watchOnlyFilter(WatchOnlyFilter_All),
@@ -71,6 +72,13 @@ void TransactionFilterProxy::setDateRange(const QDateTime& from, const QDateTime
 {
     this->dateFrom = from;
     this->dateTo = to;
+    invalidateFilter();
+}
+
+void TransactionFilterProxy::setSearchString(const QString &search_string)
+{
+    if (m_search_string == search_string) return;
+    m_search_string = search_string;
     invalidateFilter();
 }
 

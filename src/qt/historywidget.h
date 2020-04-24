@@ -34,8 +34,9 @@ public:
 
 public slots:
 
-    void walletSynced(bool isSync);
-
+    void changedAmount();
+    void changedSearch();
+   
 private slots:
 
     void handleTransactionClicked(const QModelIndex &index);
@@ -53,6 +54,11 @@ private:
     TransactionTableModel* txModel;
     int nDisplayUnit = -1;
     bool isSync = false;
+    QAction *btnSearch;
+
+signals:
+    /** Notify that a new transaction appeared */
+    void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
 };
 
 #endif // HISTORYWIDGET_H

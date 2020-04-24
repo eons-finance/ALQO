@@ -58,6 +58,7 @@ public:
 public slots:
     void clear();
     void updateDisplayUnit();
+    void deleteClicked();
 
 signals:
     void removeEntry(SendMultiRow* entry);
@@ -74,7 +75,7 @@ protected:
 private slots:
     void amountChanged(const QString&);
     bool addressChanged(const QString&);
-    void deleteClicked();
+    
     //void on_payTo_textChanged(const QString& address);
     //void on_addressBookButton_clicked();
 
@@ -82,6 +83,7 @@ private:
     Ui::SendMultiRow *ui;
     QPushButton *iconNumber;
     QAction *btnContact;
+    QAction *btnSave;
 
     int displayUnit;
     int number = 0;

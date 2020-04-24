@@ -19,7 +19,7 @@ class TxViewHolder : public FurListRow<QWidget*>
 public:
     TxViewHolder();
 
-    explicit TxViewHolder(bool _isLightTheme) : FurListRow(), isLightTheme(_isLightTheme){}
+    explicit TxViewHolder(bool _isLightTheme, bool _mini) : FurListRow(), isLightTheme(_isLightTheme), mini(_mini){}
 
     QWidget* createHolder(int pos) override;
 
@@ -43,6 +43,7 @@ private:
     int nDisplayUnit;
     TransactionFilterProxy *filter = nullptr;
     TxRow* txRow = nullptr;
+    bool mini = false;
 };
 
 #endif // TXVIEWHOLDER_H

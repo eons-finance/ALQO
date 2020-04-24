@@ -29,13 +29,25 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
 	fonttitle.setPointSize(48);
 	ui->labelTitle->setFont(fonttitle);
 
-    txHolder = new TxViewHolder(isLightTheme());
+    txHolder = new TxViewHolder(isLightTheme(), false);
     txViewDelegate = new FurAbstractListItemDelegate(
         DECORATION_SIZE,
         DECORATION_SIZE,
         txHolder,
         this
     );
+
+    // Delay before filtering transactions in ms
+    static const int input_filter_delay = 200;
+
+    QTimer* amount_typing_delay = new QTimer(this);
+    amount_typing_delay->setSingleShot(true);
+    amount_typing_delay->setInterval(input_filter_delay);
+
+    QTimer* prefix_typing_delay = new QTimer(this);
+    prefix_typing_delay->setSingleShot(true);
+    prefix_typing_delay->setInterval(input_filter_delay);
+
     
     // Sort Transactions
     SortEdit* lineEdit = new SortEdit(ui->comboBoxSort);
@@ -45,12 +57,10 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
     ui->comboBoxSort->addItem("Date asc", SortTx::DATE_ASC);
     ui->comboBoxSort->addItem("Amount desc", SortTx::AMOUNT_ASC);
     ui->comboBoxSort->addItem("Amount asc", SortTx::AMOUNT_DESC);
-    connect(ui->comboBoxSort, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(onSortChanged(const QString&)));
 
     // Sort type
     SortEdit* lineEditType = new SortEdit(ui->comboBoxSortType);
     initComboBox(ui->comboBoxSortType, lineEditType);
-    connect(lineEditType, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortType->showPopup();});
 
     QSettings settings;
     ui->comboBoxSortType->addItem(tr("All"), TransactionFilterProxy::ALL_TYPES);
@@ -61,10 +71,9 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
     ui->comboBoxSortType->addItem(tr("MN reward"), TransactionFilterProxy::TYPE(TransactionRecord::MNReward));
     ui->comboBoxSortType->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
     ui->comboBoxSortType->setCurrentIndex(0);
-    connect(ui->comboBoxSortType, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(onSortTypeChanged(const QString&)));
 
     // Transactions
-    setCssProperty(ui->frametransactions, "dash-frame");
+    //setCssProperty(ui->frametransactions, "dash-frame");
     setCssProperty(ui->listTransactions, "listTransactions");
 
     ui->listTransactions->setItemDelegate(txViewDelegate);
@@ -80,11 +89,46 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
     ui->labelEmpty->setText(tr("No transactions yet"));
     setCssProperty(ui->labelEmpty, "text-empty");
 
+    /* Filter */
+    ui->lineEditFilter->setPlaceholderText("Filter by name/type/date");
+    setCssProperty(ui->lineEditFilter, "edit-primary");
 
+    // Button Search
+    btnSearch = ui->lineEditFilter->addAction(QIcon("://ic-watch-password-white"), QLineEdit::TrailingPosition);
+
+    connect(ui->lineEditAmount, &QLineEdit::textChanged, amount_typing_delay, static_cast<void (QTimer::*)()>(&QTimer::start));
+    connect(amount_typing_delay, &QTimer::timeout, this, &HistoryWidget::changedAmount);
+    connect(ui->lineEditFilter, &QLineEdit::textChanged, prefix_typing_delay, static_cast<void (QTimer::*)()>(&QTimer::start));
+    connect(prefix_typing_delay, &QTimer::timeout, this, &HistoryWidget::changedSearch);
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
-    
+    connect(ui->comboBoxSortType, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(onSortTypeChanged(const QString&)));
+    connect(ui->comboBoxSort, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(onSortChanged(const QString&)));
+    connect(lineEditType, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortType->showPopup();});
+
+    ui->lineEditAmount->setVisible(false);
     
     loadWalletModel();
+}
+
+void HistoryWidget::changedSearch()
+{
+    if(!filter)
+        return;
+    filter->setSearchString(ui->lineEditFilter->text());
+}
+
+void HistoryWidget::changedAmount()
+{
+    if(!filter)
+        return;
+    CAmount amount_parsed = 0;
+    if (BitcoinUnits::parse(walletModel->getOptionsModel()->getDisplayUnit(), ui->lineEditAmount->text(), &amount_parsed)) {
+        filter->setMinAmount(amount_parsed);
+    }
+    else
+    {
+        filter->setMinAmount(0);
+    }
 }
 
 void HistoryWidget::loadWalletModel(){
@@ -111,8 +155,6 @@ void HistoryWidget::loadWalletModel(){
 
         connect(ui->pushImgEmpty, SIGNAL(clicked()), window, SLOT(openFAQ()));
         connect(ui->btnHowTo, SIGNAL(clicked()), window, SLOT(openFAQ()));
-        // Notification pop-up for new transaction
-        connect(txModel, SIGNAL(rowsInserted(QModelIndex, int, int)), this, SLOT(processNewTransaction(QModelIndex, int, int)));
 
     }
     // update the display unit, to not use the default ("ALQO")
@@ -205,12 +247,6 @@ void HistoryWidget::onSortTypeChanged(const QString& value){
     // Store settings
     QSettings settings;
     settings.setValue("transactionType", filterByType);
-}
-
-void HistoryWidget::walletSynced(bool sync){
-    if (this->isSync != sync) {
-        this->isSync = sync;
-    }
 }
 
 void HistoryWidget::onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType) {

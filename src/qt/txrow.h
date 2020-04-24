@@ -21,7 +21,7 @@ public:
     explicit TxRow(QWidget *parent = nullptr);
     ~TxRow();
 
-    void init(bool isLightTheme);
+    void init(bool isLightTheme, bool _mini);
     void updateStatus(bool isLightTheme, bool isHover, bool isSelected);
 
     void setDate(QDateTime);
@@ -30,9 +30,14 @@ public:
     void setType(bool isLightTheme, int type, bool isConfirmed);
     void setConfirmStatus(bool isConfirmed);
 
+protected:
+    void paintEvent( QPaintEvent *e );
+
 private:
+    bool mini = false;
     Ui::TxRow *ui;
     bool isConfirmed = false;
+    
 };
 
 #endif // TXROW_H
