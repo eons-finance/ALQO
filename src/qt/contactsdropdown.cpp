@@ -13,7 +13,7 @@
 #include "walletmodel.h"
 #include "addresstablemodel.h"
 
-#define DECORATION_SIZE 40
+#define DECORATION_SIZE 50
 #define NUM_ITEMS 3
 
 class ContViewHolder : public FurListRow<QWidget*>
@@ -72,7 +72,7 @@ ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, PWidget *parent,
 //    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     frameList = new QFrame(this);
-    frameList->setProperty("cssClass", "container-border-light");
+    //frameList->setProperty("cssClass", "container-border-light");
     frameList->setContentsMargins(10,10,10,10);
 //    frameList->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     list = new QListView(frameList);
@@ -83,8 +83,10 @@ ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, PWidget *parent,
     list->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE));
     list->setAttribute(Qt::WA_MacShowFocusRect, false);
     list->setSelectionBehavior(QAbstractItemView::SelectRows);
-    list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    list->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    if (mini){ 
+		list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		list->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	}
 
     connect(list, SIGNAL(clicked(QModelIndex)), this, SLOT(handleClick(QModelIndex)));
 }
@@ -116,10 +118,10 @@ void ContactsDropdown::resizeList(int minWidth, int mintHeight){
 //    list->setMinimumHeight(mintHeight);
     frameList->resize(minWidth, mintHeight);
     list->resize(mintHeight,mintHeight);
-    //list->adjustSize();
+    list->adjustSize();
     
     //resize(minWidth, mintHeight);
-    //adjustSize();
+    adjustSize();
     update();
 }
 

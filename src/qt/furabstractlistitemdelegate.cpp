@@ -20,7 +20,6 @@ void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionVie
     bool isStateHovered = option.state & QStyle::State_MouseOver;
 
     QRect selectedRect = option.rect;
-
 	QFont font = painter->font();
 	QPen pen(QColor(Qt::white), 1);
 	font.setPixelSize(10);
@@ -32,18 +31,18 @@ void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionVie
 	QMargins margin(0, 4, 0, 4);
 	selectedRect = selectedRect.marginsRemoved(margin);
 	painter->drawRoundedRect(selectedRect, rowHeight/2, rowHeight/2);
-    painter->translate(option.rect.topLeft());
-    QWidget *row = this->row->createHolder(index.row());
 
+    painter->translate(option.rect.topLeft());
+    QWidget *row = this->row->createHolder(index.row());    
+    row->setStyleSheet(qobject_cast<QWidget*>(parent())->styleSheet());
     this->row->init(row, index, isStateHovered, isStateSelected);
     row->setAttribute(Qt::WA_DontShowOnScreen, true);
+    //row->setAttribute(Qt::WA_StyledBackground, true);
     row->setGeometry(option.rect);
     row->resize(mini ? rowWidth : option.rect.width(),option.rect.height());
-    row->setStyleSheet("color:#ffffff; font-size:12px; text-align:right; padding-left: 2px; padding-right: 2px; QLabel#lblAmount{background-color: #3DE4CD; text-align: right; border-radius:6px;}");
     row->render(painter, QPoint(), QRegion(), QWidget::DrawChildren );
 
     painter->restore();
-
 }
 
 FurListRow<>* FurAbstractListItemDelegate::getRowFactory(){

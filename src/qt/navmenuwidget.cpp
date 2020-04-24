@@ -50,7 +50,11 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     ui->btnReceive->setText("RECEIVE");
     ui->btnReceive->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
-    btns = {ui->btnDashboard, ui->btnSend, ui->btnReceive, ui->btnAddress, ui->btnMaster, ui->btnSettings, ui->btnHistory};
+    ui->btnCharts->setProperty("name", "charts");
+    ui->btnCharts->setText("STAKING");
+    ui->btnCharts->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+
+    btns = {ui->btnDashboard, ui->btnSend, ui->btnReceive, ui->btnAddress, ui->btnMaster, ui->btnSettings, ui->btnHistory, ui->btnCharts};
     onNavSelected(ui->btnDashboard, true);
 
     ui->pushButtonConnection->setButtonClassStyle("cssClass", "btn-check-connect-inactive");
@@ -77,6 +81,11 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     connect(ui->btnSettings,SIGNAL(clicked()),this, SLOT(onSettingsClicked()));
     connect(ui->btnReceive,SIGNAL(clicked()),this, SLOT(onReceiveClicked()));
     connect(ui->btnHistory,SIGNAL(clicked()),this, SLOT(onHistoryClicked()));
+    connect(ui->btnCharts,SIGNAL(clicked()),this, SLOT(onChartsClicked()));
+
+	QPixmap bgPixmap("://alqo_logo");
+	QPixmap scaled = bgPixmap.scaled( QSize(103, 317), Qt::KeepAspectRatio, Qt::SmoothTransformation );
+	ui->labelLogo->setPixmap(scaled);
     
     connectActions();
 }
@@ -93,6 +102,7 @@ void NavMenuWidget::connectActions() {
     ui->btnMaster->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_6));
     ui->btnSettings->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_7));
     ui->btnHistory->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_8));
+    ui->btnHistory->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_9));
 }
 
 void NavMenuWidget::onSendClicked(){
@@ -103,6 +113,11 @@ void NavMenuWidget::onSendClicked(){
 void NavMenuWidget::onDashboardClicked(){
     window->goToDashboard();
     onNavSelected(ui->btnDashboard);
+}
+
+void NavMenuWidget::onChartsClicked(){
+    window->goToCharts();
+    onNavSelected(ui->btnCharts);
 }
 
 void NavMenuWidget::onHistoryClicked(){

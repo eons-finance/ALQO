@@ -28,10 +28,11 @@ SendWidget::SendWidget(ALQOGUI* parent) :
 
     //this->setStyleSheet(parent->styleSheet());
     setCssProperty(ui->advframe, "dash-frame");
-
+    //setCssProperty(ui->scrollArea, "dash-frame");
+        
     /* Light Font */
-    QFont fontLight;
-    fontLight.setWeight(QFont::Light);
+    //QFont fontLight;
+    //fontLight.setWeight(QFont::Light);
 
     /* Buttons */
     ui->pushButtonFee->setText(tr("Customize fee"));
@@ -220,7 +221,7 @@ SendMultiRow* SendWidget::createEntry(){
     entries.append(sendMultiRow);
     ui->scrollAreaWidgetContents->layout()->addWidget(sendMultiRow);
     connect(sendMultiRow, &SendMultiRow::onContactsClicked, this, &SendWidget::onContactsClicked);
-    connect(sendMultiRow, &SendMultiRow::onMenuClicked, this, &SendWidget::onMenuClicked);
+    connect(sendMultiRow, &SendMultiRow::deleteClicked, this, &SendWidget::onDeleteClicked);
     connect(sendMultiRow, &SendMultiRow::onValueChanged, this, &SendWidget::onValueChanged);
     return sendMultiRow;
 }
@@ -578,6 +579,7 @@ void SendWidget::onContactsClicked(SendMultiRow* entry){
 */
     int height = 200;//(contactsSize <= 2) ? entry->getEditHeight() * ( 2 * (contactsSize + 1 )) : entry->getEditHeight() * 4;
     int width = entry->getEditWidth();
+
 
     if(!menuContacts){
         menuContacts = new ContactsDropdown(

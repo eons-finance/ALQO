@@ -42,6 +42,7 @@ public slots:
 private slots:
     void onSendClicked();
     void onDashboardClicked();
+    void onChartsClicked();
     void onHistoryClicked();
     void onAddressClicked();
     void onMasterNodesClicked();
@@ -55,7 +56,6 @@ private slots:
     void openLockUnlock();
 
 signals:
-
     void walletSynced(bool isSync);
     
 private:

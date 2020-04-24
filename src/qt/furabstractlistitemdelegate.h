@@ -31,6 +31,7 @@ public:
                       const QModelIndex &index ) const;
 
     FurListRow<> *getRowFactory();
+
 private:
     int rowHeight = 0;
     int rowWidth = 0;

@@ -13,10 +13,12 @@ TxRow::TxRow(QWidget *parent) :
     ui(new Ui::TxRow)
 {
     ui->setupUi(this);
+    
     //setCssProperty(ui->frame, "tx-frame");
 }
 
-void TxRow::init(bool isLightTheme) {
+void TxRow::init(bool isLightTheme, bool _mini) {
+	this->mini=_mini;
     setConfirmStatus(true);
     updateStatus(isLightTheme, false, false);
 }
@@ -44,29 +46,43 @@ void TxRow::setDate(QDateTime date){
 
 void TxRow::setLabel(QString str){
     ui->lblAddress->setText(str);
-    //setCssProperty(ui->lblAddress, "tx-source");
 }
 
 void TxRow::setAmount(QString str){
-    //setCssProperty(ui->lblAmount, "tx-amount");
     ui->lblAmount->setText(str);
 }
 
 void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
     QString path;
     QString css;
-    bool sameIcon = false;
+    QString txtype;
+    QString color;
+
     switch (type) {
         case TransactionRecord::ZerocoinMint:
             path = "://ic-transaction-mint";
             css = "text-list-amount-send";
+            txtype = "ZerocoinMint";
+            color = "#3DE4CD";
             break;
         case TransactionRecord::Generated:
-        case TransactionRecord::StakeZPIV:
+            path = "://ic-transaction-staked";
+            css = "text-list-amount-receive";
+            txtype = "Mined";
+            color = "#3DE4CD";
+            break;
         case TransactionRecord::MNReward:
+            path = "://ic-transaction-staked";
+            css = "text-list-amount-receive";
+            txtype = "Masternode";
+            color = "#3DE4CD";
+            break;
+        case TransactionRecord::StakeZPIV:
         case TransactionRecord::StakeMint:
             path = "://ic-transaction-staked";
             css = "text-list-amount-receive";
+            txtype = "Stake";
+            color = "#3DE4CD";
             break;
         case TransactionRecord::RecvWithObfuscation:
         case TransactionRecord::RecvWithAddress:
@@ -74,6 +90,8 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
         case TransactionRecord::RecvFromZerocoinSpend:
             path = "://ic-transaction-received";
             css = "text-list-amount-receive";
+            txtype = "Received";
+            color = "#3DE4CD";
             break;
         case TransactionRecord::SendToAddress:
         case TransactionRecord::SendToOther:
@@ -82,20 +100,21 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
         case TransactionRecord::ZerocoinSpend_FromMe:
             path = "://ic-transaction-sent";
             css = "text-list-amount-send";
+            txtype = "Sent";
+            color = "#505BB9";
             break;
         case TransactionRecord::SendToSelf:
             path = "://ic-transaction-mint";
             css = "text-list-amount-send";
+            txtype = "Moved";
+            color = "#3DE4CD";
             break;
         default:
             path = "://ic-pending";
-            sameIcon = true;
             css = "text-list-amount-unconfirmed";
+            txtype = "Unknown";
+            color = "#505BB9";
             break;
-    }
-
-    if (!isLightTheme && !sameIcon){
-        path += "-dark";
     }
 
     if (!isConfirmed){
@@ -105,7 +124,31 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
     }else{
         setConfirmStatus(true);
     }
+
+//    ui->icon->setIcon(QIcon(path));
+    ui->icon->setVisible(false);
+    
+//    QString amount =  ui->lblAmount->text();
+//    ui->lblAmount->setTextFormat(Qt::RichText);
+//    ui->lblAmount->setText(amount);
+
+    if(!mini){
+		//ui->lblType->setTextFormat(Qt::RichText);
+		ui->lblType->setText(txtype);		
+		ui->lblType->setStyleSheet("color:"+color+"; text-align:center; font-weight: bold;");
+	}else{		
+		ui->lblType->setVisible(false);
+	}
     setCssProperty(ui->lblAmount, css, true);
+    
+}
+
+void TxRow::paintEvent(QPaintEvent *)
+{
+	QStyleOption opt;
+	opt.init(this);
+	QPainter p(this);
+	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
 TxRow::~TxRow(){

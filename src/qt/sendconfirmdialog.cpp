@@ -195,7 +195,7 @@ void TxDetailDialog::onOutputsClicked() {
                     QLabel *label = nullptr;
                     QString labelRes;
                     CTxDestination dest;
-                    bool isCsAddress = false;
+                    //bool isCsAddress = false;
                     if (ExtractDestination(out.scriptPubKey, dest)) {
                         std::string address = CBitcoinAddress(dest).ToString();
                         labelRes = QString::fromStdString(address);

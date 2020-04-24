@@ -68,7 +68,7 @@
         <file alias="yesvote">res/icons/yesvote.png</file>
         <file alias="novote">res/icons/novote.png</file>
         <file alias="abstainvote">res/icons/abstainvote.png</file>
-        <file alias="onion">res/icons/onion.png</file>
+        <file alias="onion">res/icons/onion.png</file>          
     </qresource>
     <qresource prefix="/css">
         <file alias="default-dark">res/css/style_dark.css</file>
@@ -304,5 +304,12 @@
         <file alias="ani-loading-dark">res/img/ani-loading-dark.gif</file>
         <file alias="ani-loading">res/img/ani-loading.gif</file>
         <file alias="ic-pending">res/img/ic-pending.svg</file>
+        <file alias="connections">res/img/connections.png</file>
+        <file alias="locked">res/img/locked.png</file>
+        <file alias="unlocked">res/img/unlocked.png</file>
+        <file alias="sync">res/img/sync.png</file>
+        <file alias="staking">res/img/staking.png</file>
+        <file alias="staking_unlocked">res/img/staking_unlocked.png</file>    
+        <file alias="alqo_logo">res/img/alqo_logo.png</file> 
     </qresource>
 </RCC>

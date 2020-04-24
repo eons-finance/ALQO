@@ -23,21 +23,6 @@
 #include "config/alqo-config.h" /* for USE_QTCHARTS */
 #endif
 
-#ifdef USE_QTCHARTS
-
-#include <QtCharts/QChartView>
-#include <QtCharts/QBarSeries>
-#include <QtCharts/QBarCategoryAxis>
-#include <QtCharts/QBarSet>
-#include <QtCharts/QChart>
-#include <QtCharts/QValueAxis>
-
-QT_CHARTS_USE_NAMESPACE
-
-using namespace QtCharts;
-
-#endif
-
 class ALQOGUI;
 class WalletModel;
 class SendCoinsRecipient;
@@ -67,26 +52,6 @@ enum SortTx {
     DATE_DESC = 1,
     AMOUNT_ASC = 2,
     AMOUNT_DESC = 3
-};
-
-enum ChartShowType {
-    ALL,
-    YEAR,
-    MONTH,
-    DAY
-};
-
-class ChartData {
-public:
-    ChartData() {}
-
-    QMap<int, std::pair<qint64, qint64>> amountsByCache;
-    qreal maxValue = 0;
-    qint64 totalPiv = 0;
-    qint64 totalZpiv = 0;
-    QList<qreal> valuesPiv;
-    QList<qreal> valueszPiv;
-    QStringList xLabels;
 };
 
 QT_BEGIN_NAMESPACE
@@ -119,6 +84,9 @@ public slots:
 signals:
     /** Notify that a new transaction appeared */
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
+   
+protected:
+    void paintEvent( QPaintEvent *e );
 
 private slots:
     void handleTransactionClicked(const QModelIndex &index);
@@ -134,7 +102,8 @@ private slots:
     void onSendClicked();
     void onContactsClicked();
     void loadContacts();
-
+    void SetExchangeInfoTextLabels();
+    
 private:
     Ui::DashboardWidget *ui;
     FurAbstractListItemDelegate* txViewDelegate;
@@ -148,7 +117,6 @@ private:
     ContactsDropdown *menuContacts = nullptr;
     QAction *btnContact;
     QString sendRequest(QString url);
-    void SetExchangeInfoTextLabels();
     int timerid;
     QTimer* timer;
     int64_t lastrefresh;

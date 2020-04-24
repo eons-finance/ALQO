@@ -50,7 +50,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     lastrefresh = 0;
     curbal =0;
 
-    txHolder = new TxViewHolder(isLightTheme());
+    txHolder = new TxViewHolder(isLightTheme(), true);
     txViewDelegate = new FurAbstractListItemDelegate(
         DECORATION_SIZE,DECORATION_SIZE,
         txHolder,
@@ -130,8 +130,6 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
 
 
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
-    if (window)
-        connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
 
     connect(ui->sendbtn, SIGNAL(clicked()), this, SLOT(onSendClicked()));
 
@@ -590,13 +588,13 @@ void DashboardWidget::SetExchangeInfoTextLabels()
 
     // get current values (so we can see color label text baes on increase/decrease)
 
-    double currentbtc = QTextDocumentFragment::fromHtml(ui->labelbtcusd->text()).toPlainText().toDouble();
-    double currentusd = QTextDocumentFragment::fromHtml(ui->labelusdxlq->text()).toPlainText().toDouble();
-    double currentxlq = QTextDocumentFragment::fromHtml(ui->labelxlqbtc->text()).toPlainText().toDouble();
-    double currentwalletvalue = QTextDocumentFragment::fromHtml(ui->lblwalletvalue->text()).toPlainText().toDouble();
-    int currenttime = QTextDocumentFragment::fromHtml(ui->labeltime->text()).toPlainText().toDouble();
+//    double currentbtc = QTextDocumentFragment::fromHtml(ui->labelbtcusd->text()).toPlainText().toDouble();
+//    double currentusd = QTextDocumentFragment::fromHtml(ui->labelusdxlq->text()).toPlainText().toDouble();
+//    double currentxlq = QTextDocumentFragment::fromHtml(ui->labelxlqbtc->text()).toPlainText().toDouble();
+//    double currentwalletvalue = QTextDocumentFragment::fromHtml(ui->lblwalletvalue->text()).toPlainText().toDouble();
+//    int currenttime = QTextDocumentFragment::fromHtml(ui->labeltime->text()).toPlainText().toDouble();
 
-    double bal = ui->labelAmountPiv->text().toDouble();
+    double bal = QTextDocumentFragment::fromHtml(ui->labelAmountPiv->text()).toPlainText().toDouble();
 
     double newbtc = objmetrics["latest"].toDouble();
     double newusd = prices["USD"].toDouble();
@@ -614,6 +612,14 @@ void DashboardWidget::SetExchangeInfoTextLabels()
     objmetrics.empty();
     prices.empty();
 
+}
+
+void DashboardWidget::paintEvent(QPaintEvent *)
+{
+	QStyleOption opt;
+	opt.init(this);
+	QPainter p(this);
+	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
 DashboardWidget::~DashboardWidget(){
