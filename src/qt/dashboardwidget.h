@@ -86,7 +86,6 @@ signals:
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
    
 protected:
-    void paintEvent( QPaintEvent *e );
 
 private slots:
     void handleTransactionClicked(const QModelIndex &index);

@@ -8,7 +8,7 @@
 
 #include <QGraphicsLayout>
 
-#define SHOW_EMPTY_CHART_VIEW_THRESHOLD 4000
+#define SHOW_EMPTY_CHART_VIEW_THRESHOLD 1
 #define REQUEST_LOAD_TASK 1
 #define CHART_LOAD_MIN_TIME_INTERVAL 15
 
@@ -20,18 +20,14 @@ ChartsWidget::ChartsWidget(ALQOGUI* parent) :
     this->setStyleSheet(parent->styleSheet());
 
     // Title
-    
+
     QFont fonttitle = ui->labelTitle->font();
-    fonttitle.setWeight(QFont::Bold);
+    //fonttitle.setWeight(QFont::Bold);
 	fonttitle.setPointSize(48);
-	ui->labelTitle->setFont(fonttitle);    
-    
-    ui->labelTitle2->setText(tr("Staking Rewards"));
-    //setCssTitleScreen(ui->labelTitle);
-    setCssTitleScreen(ui->labelTitle2);
+	ui->labelTitle->setFont(fonttitle);
 
     // Staking Information
-    ui->labelMessage->setText(tr("Amount of ALQO staked."));
+    ui->labelMessage->setText(tr("ALQO Staked"));
     setCssSubtitleScreen(ui->labelMessage);
     setCssProperty(ui->labelSquarePiv, "square-chart-piv");
     setCssProperty(ui->labelPiv, "text-chart-piv");
@@ -59,23 +55,21 @@ ChartsWidget::ChartsWidget(ALQOGUI* parent) :
 
     connect(ui->comboBoxYears, SIGNAL(currentIndexChanged(const QString&)), this,SLOT(onChartYearChanged(const QString&)));
 
+    ui->labelMessageEmpty->setText(tr("You can verify the staking activity in the status bar at the top right of the wallet.\nIt will start automatically as soon as the wallet has enough confirmations on any unspent balances, and the wallet has synced."));
+    setCssSubtitleScreen(ui->labelMessageEmpty);
+
     // Chart State
     ui->layoutChart->setVisible(false);
     ui->emptyContainerChart->setVisible(true);
     setShadow(ui->layoutShadow);
 
-    bool hasCharts = true;
     isLoading = false;
     setChartShow(YEAR);
     connect(ui->pushButtonYear, &QPushButton::clicked, [this](){setChartShow(YEAR);});
     connect(ui->pushButtonMonth, &QPushButton::clicked, [this](){setChartShow(MONTH);});
     connect(ui->pushButtonAll, &QPushButton::clicked, [this](){setChartShow(ALL);});
 
-    if (hasCharts) {
-        ui->labelEmptyChart->setText(tr("You have no staking rewards"));
-    } else {
-        ui->labelEmptyChart->setText(tr("No charts library"));
-    }
+    ui->labelEmptyChart->setText(tr("You have no staking rewards"));
 
     if (window)
         connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
@@ -168,8 +162,8 @@ void ChartsWidget::loadChart(){
 void ChartsWidget::showHideEmptyChart(bool showEmpty, bool loading, bool forceView) {
     if (stakesFilter->rowCount() > SHOW_EMPTY_CHART_VIEW_THRESHOLD || forceView) {
         if (ui->emptyContainerChart->isVisible() != showEmpty) {
-            ui->layoutChart->setVisible(!showEmpty);
-            ui->emptyContainerChart->setVisible(showEmpty);
+            ui->layoutChart->setVisible(true);
+            ui->emptyContainerChart->setVisible(false);
         }
     }
     // Enable/Disable sort buttons
@@ -187,6 +181,13 @@ void ChartsWidget::initChart() {
     axisX = new QBarCategoryAxis();
     axisY = new QValueAxis();
 
+    QBrush axisBrush(Qt::white);
+    axisX->setLabelsBrush(axisBrush);
+    axisY->setLabelsBrush(axisBrush);
+
+    axisX->setGridLineVisible(false);
+    axisY->setGridLineVisible(false);
+
     // Chart style
     chart->legend()->setVisible(false);
     chart->legend()->setAlignment(Qt::AlignTop);
@@ -197,43 +198,26 @@ void ChartsWidget::initChart() {
     chart->addAxis(axisX, Qt::AlignBottom);
     chart->addAxis(axisY, Qt::AlignRight);
     chart->setAnimationOptions(QChart::SeriesAnimations);
+    chart->setBackgroundVisible(false);
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setRubberBand( QChartView::HorizontalRubberBand );
     chartView->setContentsMargins(0,0,0,0);
+    setCssProperty(chartView, "container-chart");
 
     QHBoxLayout *baseScreensContainer = new QHBoxLayout(this);
     baseScreensContainer->setMargin(0);
-    baseScreensContainer;
+    baseScreensContainer->addWidget(chartView);
     ui->chartContainer->setLayout(baseScreensContainer);
     ui->chartContainer->setContentsMargins(0,0,0,0);
     setCssProperty(ui->chartContainer, "container-chart");
 }
 
 void ChartsWidget::changeChartColors(){
-    QColor gridLineColorX;
-    QColor linePenColorY;
-    QColor backgroundColor;
-    QColor gridY;
-    if(isLightTheme()){
-        gridLineColorX = QColor(255,255,255);
-        linePenColorY = gridLineColorX;
-        backgroundColor = linePenColorY;
-        axisY->setGridLineColor(QColor("#1a000000"));
-    }else{
-        gridY = QColor("#40ffffff");
-        axisY->setGridLineColor(gridY);
-        gridLineColorX = QColor(15,11,22);
-        linePenColorY =  gridLineColorX;
-        backgroundColor = linePenColorY;
-    }
-
-    axisX->setGridLineColor(gridLineColorX);
-    axisY->setLinePenColor(linePenColorY);
-    chart->setBackgroundBrush(QBrush(backgroundColor));
-    if (set0) set0->setBorderColor(gridLineColorX);
-    if (set1) set1->setBorderColor(gridLineColorX);
+    
+    if (set0) set0->setBorderColor(QColor("#3DE4CD"));
+    if (set1) set1->setBorderColor(QColor("#3DE4CD"));
 }
 
 void ChartsWidget::updateStakeFilter() {
@@ -404,7 +388,8 @@ void ChartsWidget::onChartRefreshed() {
     // init sets
     set0 = new QBarSet("ALQO");
     set1 = new QBarSet("");
-    set0->setColor(QColor(92,75,125));
+    set0->setColor(QColor("#3DE4CD"));
+    set0->setBorderColor(QColor("#3DE4CD"));
     set1->setColor(QColor(176,136,255));
 
     if(!series) {

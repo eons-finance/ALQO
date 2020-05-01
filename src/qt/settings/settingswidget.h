@@ -47,17 +47,14 @@ signals:
 
 private slots:
     // File
-    void onFileClicked();
     void onBackupWalletClicked();
     void onSignMessageClicked();
 
     // Wallet Configuration
-    void onConfigurationClicked();
     void onBipToolClicked();
     void onMultisendClicked();
 
     // Options
-    void onOptionsClicked();
     void onMainOptionsClicked();
     void onWalletOptionsClicked();
     void onDisplayOptionsClicked();
@@ -65,13 +62,11 @@ private slots:
     void onDiscardChanges();
 
     // Tools
-    void onToolsClicked();
     void onInformationClicked();
     void onDebugConsoleClicked();
     void onWalletRepairClicked();
 
     // Help
-    void onHelpClicked();
     void onAboutClicked();
 
     void onResetAction();

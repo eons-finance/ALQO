@@ -106,6 +106,9 @@
              <height>240</height>
             </size>
            </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -187,7 +190,7 @@
                    </layout>
                   </item>
                   <item>
-                   <spacer name="verticalSpacer_9">
+                   <spacer name="verticalSpacer_5">
                     <property name="orientation">
                      <enum>Qt::Vertical</enum>
                     </property>
@@ -244,6 +247,10 @@
                         <height>30</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">border:  1px solid #bababa;  background-color:transparent;
+    font-size: 12px;  border-radius: 10px;  padding:5px; color: #ffffff;</string>
+                      </property>
                       <property name="maxLength">
                        <number>17</number>
                       </property>
@@ -283,12 +290,15 @@
                      </spacer>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="sendbtn">
+                     <widget class="QPushButton" name="pushButtonSend">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">    color: white;  border:1px solid #505BB9;  background-color:#505BB9;  border-radius: 11px;   padding:5px 12px 5px 12px;</string>
                       </property>
                       <property name="text">
                        <string>Send</string>

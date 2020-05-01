@@ -27,6 +27,7 @@
 #include <QTextTable>
 #include <QTextCursor>
 #include <QVBoxLayout>
+#include <QDesktopWidget>
 
 /** "Help message" or "About" dialog box */
 HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
@@ -147,16 +148,27 @@ void HelpMessageDialog::showOrPrint()
 #endif
 }
 
-
 /** "Shutdown" window */
 ShutdownWindow::ShutdownWindow(QWidget* parent, Qt::WindowFlags f) : QWidget(parent, f)
 {
     QVBoxLayout* layout = new QVBoxLayout();
     this->setStyleSheet(GUIUtil::loadStyleSheet());
-    //this->setStyleSheet(parent->styleSheet());
-    layout->addWidget(new QLabel(
+    this->setAttribute( Qt::WA_TranslucentBackground, true );
+
+    QLabel *label = new QLabel();
+    QPixmap pixmap("://bg-splash-png");
+    label->setPixmap(pixmap.scaled(256,256,Qt::KeepAspectRatio));
+    label->setAlignment(Qt::AlignHCenter);
+    layout->addWidget(label);
+
+	QSpacerItem *spacer = new QSpacerItem(20, 40, QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addItem(spacer);
+
+    QLabel *textlabel = new QLabel(
         tr("ALQO is shutting down...") + "<br /><br />" +
-        tr("Do not shut down the computer until this window disappears.")));
+        tr("Do not shut down the computer until this window disappears."));
+    textlabel->setStyleSheet("color:white; text-align:center; font-size:14px;");   
+    layout->addWidget(textlabel);
     setLayout(layout);
 }
 
@@ -170,11 +182,14 @@ void ShutdownWindow::showShutdownWindow(QMainWindow* window)
     // We don't hold a direct pointer to the shutdown window after creation, so use
     // Qt::WA_DeleteOnClose to make sure that the window will be deleted eventually.
     shutdownWindow->setAttribute(Qt::WA_DeleteOnClose);
-    shutdownWindow->setWindowTitle(window->windowTitle());
+    //shutdownWindow->setWindowTitle(window->windowTitle());
+    
+    shutdownWindow->setWindowFlags(Qt::FramelessWindowHint);
 
-    // Center shutdown window at where main window was
-    const QPoint global = window->mapToGlobal(window->rect().center());
-    shutdownWindow->move(global.x() - shutdownWindow->width() / 2, global.y() - shutdownWindow->height() / 2);
+	QRect screenGeometry = QApplication::desktop()->screenGeometry();
+	int x = (screenGeometry.width() - shutdownWindow->width()) / 2;
+	int y = (screenGeometry.height() - shutdownWindow->height()) / 2;
+	shutdownWindow->move(x, y);
     shutdownWindow->show();
 }
 

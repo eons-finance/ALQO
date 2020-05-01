@@ -14,9 +14,9 @@ SettingsWalletRepairWidget::SettingsWalletRepairWidget(ALQOGUI* _window, QWidget
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
-    ui->scrollStack->setProperty("cssClass", "container");
+    //ui->left->setProperty("cssClass", "container");
+    //ui->left->setContentsMargins(10,10,10,10);
+    //ui->scrollStack->setProperty("cssClass", "container");
 
     // Title
     ui->labelTitle->setText(tr("Wallet Repair"));

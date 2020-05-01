@@ -35,7 +35,7 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     ui->btnAddress->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
     ui->btnHistory->setProperty("name", "history");
-    ui->btnHistory->setText("TRANSACTIONS");
+    ui->btnHistory->setText("HISTORY");
     ui->btnHistory->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
     ui->btnMaster->setProperty("name", "master");
@@ -197,7 +197,9 @@ void NavMenuWidget::onBtnLockClicked(){
 			//lockUnlockWidget->setFixedHeight(ui->pushButtonLock->height());
 			lockUnlockWidget->adjustSize();
 
-            lockUnlockWidget->move(ui->pushButtonLock->pos().rx() + ui->pushButtonLock->width() +280, ui->pushButtonLock->y() + 10);
+        //    lockUnlockWidget->move(ui->pushButtonLock->pos().rx() + ui->pushButtonLock->width() + 380, ui->pushButtonLock->y() + 20);
+            lockUnlockWidget->move(window->getNavWidth() - ui->pushButtonLock->pos().rx() + 10, ui->pushButtonLock->y() + 42);
+            
 
 			//lockUnlockWidget->raise();
 			//lockUnlockWidget->activateWindow();

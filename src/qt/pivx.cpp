@@ -15,12 +15,13 @@
 #include "guiutil.h"
 #include "intro.h"
 #include "net.h"
-#include "networkstyle.h"
-#include "optionsmodel.h"
+#include "qt/networkstyle.h"
+#include "qt/optionsmodel.h"
 #include "qt/splash.h"
 #include "qt/welcomecontentwidget.h"
-#include "utilitydialog.h"
-#include "winshutdownmonitor.h"
+#include "qt/utilitydialog.h"
+#include "qt/winshutdownmonitor.h"
+
 
 #ifdef ENABLE_WALLET
 #include "paymentserver.h"

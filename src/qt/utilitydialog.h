@@ -34,7 +34,6 @@ private:
     QString text;
 };
 
-
 /** "Shutdown" window */
 class ShutdownWindow : public QWidget
 {
@@ -47,5 +46,6 @@ public:
 protected:
     void closeEvent(QCloseEvent* event);
 };
+
 
 #endif // ALQO_QT_UTILITYDIALOG_H

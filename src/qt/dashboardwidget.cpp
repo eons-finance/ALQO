@@ -77,11 +77,11 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     setCssProperty(ui->frameSendReceive, "dash-frame");
     setCssProperty(ui->sendpagebtn, "dash-label");
     setCssProperty(ui->receivepagebtn, "dash-label");
-    setCssProperty(ui->sendbtn, "dash-btn-send");
+    setCssProperty(ui->pushButtonSend, "dash-btn-send");
 
     ui->lineEditAmount->setPlaceholderText(QString("  ") + " 0.00 XLQ ");
-    setCssProperty(ui->lineEditAmount, "edit-primary-dash");
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
+    setCssProperty(ui->lineEditAmount, "edit-primary-dash");
 
 //    btnContact = ui->lineEditContact->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
 //    ui->lineEditContact->setPlaceholderText(QString("  ") + " Select Contact");
@@ -98,7 +98,6 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     // QR image
     QPixmap pixmap("://img-qr-test");
     ui->btnQr->setIcon(QIcon(pixmap.scaled(ui->btnQr->width(), ui->btnQr->height(), Qt::KeepAspectRatio)));
-
 
     // Transactions
     setCssProperty(ui->frameTransactions, "dash-frame");
@@ -128,10 +127,9 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     ui->lblwalletvalue->setTextFormat(Qt::RichText);
     ui->labeltime->setTextFormat(Qt::RichText);
 
-
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
 
-    connect(ui->sendbtn, SIGNAL(clicked()), this, SLOT(onSendClicked()));
+    connect(ui->pushButtonSend, SIGNAL(clicked()), this, SLOT(onSendClicked()));
 
     connect(ui->btnQr, SIGNAL(clicked()), this, SLOT(onBtnReceiveClicked()));
     connect(ui->pushButtonQR, SIGNAL(clicked()), this, SLOT(onBtnReceiveClicked()));
@@ -612,14 +610,6 @@ void DashboardWidget::SetExchangeInfoTextLabels()
     objmetrics.empty();
     prices.empty();
 
-}
-
-void DashboardWidget::paintEvent(QPaintEvent *)
-{
-	QStyleOption opt;
-	opt.init(this);
-	QPainter p(this);
-	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
 DashboardWidget::~DashboardWidget(){
