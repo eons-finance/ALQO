@@ -77,8 +77,8 @@ MasterNodesWidget::MasterNodesWidget(ALQOGUI *parent) :
     this->setStyleSheet(parent->styleSheet());
 
     /* Containers */
-    setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(0,20,0,20);
+    //setCssProperty(ui->left, "container");
+    //ui->left->setContentsMargins(0,20,0,20);
 
     /* Light Font */
     QFont fontLight;
@@ -89,11 +89,11 @@ MasterNodesWidget::MasterNodesWidget(ALQOGUI *parent) :
     setCssTitleScreen(ui->labelTitle);
     ui->labelTitle->setFont(fontLight);
 
-    ui->labelSubtitle1->setText(tr("Full nodes that incentivize node operators to perform the core consensus functions\nand vote on the treasury system receiving a periodic reward."));
-    setCssSubtitleScreen(ui->labelSubtitle1);
+    //ui->labelSubtitle1->setText(tr("Full nodes that incentivize node operators to perform the core consensus functions\nand vote on the treasury system receiving a periodic reward."));
+    //setCssSubtitleScreen(ui->labelSubtitle1);
 
     /* Buttons */
-    ui->pushButtonSave->setText(tr("Create Masternode Controller"));
+    ui->pushButtonSave->setText(tr("Create Masternode"));
     setCssBtnPrimary(ui->pushButtonSave);
 
     setCssProperty(ui->listMn, "container");

@@ -160,10 +160,22 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelQrImg">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
-                    <width>180</width>
-                    <height>180</height>
+                    <width>220</width>
+                    <height>220</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>220</width>
+                    <height>220</height>
                    </size>
                   </property>
                   <property name="text">

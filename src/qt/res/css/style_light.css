@@ -52,17 +52,17 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     color: white;
     border:1px solid #505BB9;
     background-color:#505BB9;
-    border-radius: 15px;
-    padding:5px 15px 5px 15px;
+    border-radius: 11px;
+    padding:5px 12px 5px 12px;
 }
 
 *[cssClass="dash-btn-contact"] {
     color: white;
     border:1px solid #505BB9;
     background-color:#505BB9;
-    border-radius: 8px;
+    border-radius: 9px;
     padding:3px 12px 3px 12px;
-    font-size:8px;
+    font-size:9px;
 }
 
 *[cssClass="dash-btn-contact"]:checked {
@@ -148,9 +148,6 @@ QPushButton[cssClass="img-nav-logo"] {
 }
 
 *[cssClass="btn-nav-charts"] {
-/*    qproperty-icon: url("://ic-nav-receive") off,
-    url("://ic-nav-receive-active") on;
-    qproperty-iconSize: 24px 40px;*/
     background-color:transparent;
     padding-top: 25px;
     font-size:14px;
@@ -163,6 +160,10 @@ QPushButton[cssClass="img-nav-logo"] {
     font-size:14px;
     color: #3DE4CD;
     text-decoration: underline;
+}
+
+*[cssClass="btn-nav-charts"]:checked:hover  {
+    background-color: transparent;
 }
 
 *[cssClass="btn-nav-charts"]:hover {
@@ -547,10 +548,10 @@ QPushButton[cssClass="btn-check-stack"] {
 
 
 QPushButton[cssClass="btn-check-stack-inactive"] {
-    qproperty-icon: url("://ic-check-staking-off");
+    qproperty-icon: url("://staking_off");
     qproperty-iconSize: 24px 24px;
-    color:#B3FFFFFF;
-    background-color:#40222222;
+    color:#FFFFFF;
+    background-color:#222222;
     border-bottom:2px solid #222222;
     border-radius:2px;
 }
@@ -737,13 +738,13 @@ QPushButton[cssClass="btn-check-peers"] {
     qproperty-icon: url("://ic-check-peers") ;
     qproperty-iconSize: 24px 24px;
     color:#FFFFFF;
-    background-color:#50222222;
+    background-color:#222222;
     border-bottom:2px solid #b088ff;
     border-radius:2px;
 }
 
 QPushButton[cssClass="btn-check-peers"]:checked {
-    background-color:#50222222;
+    background-color:#222222;
     color:#FFFFFF;
     border-bottom:2px solid #b088ff;
 }
@@ -752,7 +753,7 @@ QPushButton[cssClass="btn-check-peers-inactive"] {
     qproperty-icon: url("://ic-check-peers-off");
     qproperty-iconSize: 24px 24px;
     color:#B3FFFFFF;
-    background-color:#40222222;
+    background-color:#222222;
     border-bottom:2px solid #b088ff;
     border-radius:2px;
 }
@@ -765,15 +766,14 @@ QPushButton[cssClass="btn-check-lock-sub-menu-unlocked"] {
     background-repeat:no-repeat;
     background-color: transparent;
     text-align: left;
+    padding-left: 30px;
     color:#FFFFFF;
-    border: 2px solid white;
-    border-radius:10px;
+    border-bottom:0px;
+    border-radius:0px;
 }
 
 QPushButton[cssClass="btn-check-lock-sub-menu-unlocked"]:checked {
-    background-color:#50b088ff;
-    border: 2px solid white;
-    border-radius:10px;
+    background-color:#b088ff;
 }
 
 QPushButton[cssClass="btn-check-lock-sub-menu-unlocked"]:hover {
@@ -786,15 +786,14 @@ QPushButton[cssClass="btn-check-lock-sub-menu-locked"] {
     background-repeat:no-repeat;
     background-color: transparent;
     text-align: left;
+    padding-left: 30px;
     color:#FFFFFF;
-    border: 2px solid white;
-    border-radius:10px;
+    border-bottom:0px;
+    border-radius:0px;
 }
 
 QPushButton[cssClass="btn-check-lock-sub-menu-locked"]:checked {
     background-color:#50b088ff;
-    border: 2px solid white;
-    border-radius:10px;
 }
 
 QPushButton[cssClass="btn-check-lock-sub-menu-locked"]:hover {
@@ -808,15 +807,14 @@ QPushButton[cssClass="btn-check-lock-sub-menu-staking"] {
     background-repeat:no-repeat;
     background-color: transparent;
     text-align: left;
+    padding-left: 30px;
     color:#FFFFFF;
-    border-radius:10px;
-    border: 1px solid white;
+    border-bottom:0px;
+    border-radius:0px;
 }
 
 QPushButton[cssClass="btn-check-lock-sub-menu-staking"]:checked {
-    background-color:#50000000;
-    border: 2px solid white;
-    border-radius:10px;
+    background-color:#b088ff;
 }
 
 QPushButton[cssClass="btn-check-lock-sub-menu-staking"]:hover {
@@ -1740,10 +1738,10 @@ HH       LINE EDIT
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="edit-primary-dash"] {
-    border:  1px solid #bababa;
-    background-color:rgba(26, 29, 49, 0.6);
+    border:  1px solid white;
+    background-color:transparent;
     font-size: 12px;
-    border-radius: 15px;
+    border-radius: 10px;
     padding:5px;
     color: #ffffff;
 }
@@ -1870,7 +1868,6 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     color:#ffffff;
     font-size:16px;
     padding:10px;
-    border-bottom: 5px solid #ffffff;
 }
 
 *[cssClass="text-stake-piv-disable"] {
@@ -1916,7 +1913,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="square-chart-piv"] {
-    background-color:#000000;
+    background-color:#3DE4CD;
     border:none;
 }
 
@@ -3296,8 +3293,8 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
 *[cssClass="container-snackbar"]{
-    background-color:#382d4d;
-    border-top:2px solid #b088ff;
+    background-color:rgba(26, 29, 49, 0.6);
+    border-top:2px solid #bababa;
 }
 
 *[cssClass="text-snackbar"]{

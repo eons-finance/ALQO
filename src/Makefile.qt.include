@@ -102,7 +102,8 @@ QT_FORMS_UI = \
   qt/settings/forms/settingswalletrepairwidget.ui \
   qt/settings/forms/settingswidget.ui \
   qt/forms/welcomecontentwidget.ui \
-  qt/forms/splash.ui
+  qt/forms/splash.ui \
+  qt/forms/chartswidget.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -195,7 +196,8 @@ QT_MOC_CPP = \
   qt/settings/moc_settingswalletrepairwidget.cpp \
   qt/settings/moc_settingswidget.cpp \
   qt/moc_welcomecontentwidget.cpp \
-  qt/moc_splash.cpp
+  qt/moc_splash.cpp \
+  qt/moc_chartswidget.cpp
 
 BITCOIN_MM = \
   qt/macdockiconhandler.mm \
@@ -323,7 +325,8 @@ BITCOIN_QT_H = \
   qt/settings/settingswalletrepairwidget.h \
   qt/settings/settingswidget.h \
   qt/welcomecontentwidget.h \
-  qt/splash.h
+  qt/splash.h \
+  qt/chartswidget.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
@@ -502,7 +505,8 @@ BITCOIN_QT_WALLET_CPP = \
   qt/settings/settingswalletrepairwidget.cpp \
   qt/settings/settingswidget.cpp \
   qt/welcomecontentwidget.cpp \
-  qt/splash.cpp
+  qt/splash.cpp \
+  qt/chartswidget.cpp
 
 
 BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
@@ -767,7 +771,7 @@ if ENABLE_ZMQ
 qt_alqo_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 qt_alqo_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
-  $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(CHARTS_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
+  $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 qt_alqo_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 qt_alqo_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX

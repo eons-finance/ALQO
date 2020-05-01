@@ -58,16 +58,16 @@ MasterNodeWizardDialog::MasterNodeWizardDialog(WalletModel *model, QWidget *pare
     setCssSubtitleScreen(ui->labelSubtitleAddressIp);
 
     ui->lineEditIpAddress->setPlaceholderText("e.g 18.255.255.255");
-    ui->lineEditPort->setPlaceholderText("e.g 51472");
+    ui->lineEditPort->setPlaceholderText("e.g 20480");
     initCssEditLine(ui->lineEditIpAddress);
     initCssEditLine(ui->lineEditPort);
     ui->stackedWidget->setCurrentIndex(pos);
     ui->lineEditPort->setValidator(new QIntValidator(0, 9999999, ui->lineEditPort));
     if(walletModel->isTestnet()){
         ui->lineEditPort->setEnabled(false);
-        ui->lineEditPort->setText("51474");
+        ui->lineEditPort->setText("20480");
     } else {
-        ui->lineEditPort->setText("51472");
+        ui->lineEditPort->setText("20480");
     }
 
     // Confirm icons
@@ -99,8 +99,8 @@ void MasterNodeWizardDialog::onNextClicked(){
             ui->pushName1->setChecked(true);
             icConfirm1->setVisible(true);
             ui->pushNumber3->setChecked(true);
-
             ui->btnBack->setVisible(true);
+            ui->lineEditName->setFocus();
             break;
         }
         case 1:{
@@ -119,6 +119,7 @@ void MasterNodeWizardDialog::onNextClicked(){
             icConfirm3->setVisible(true);
             ui->pushNumber4->setChecked(true);
             ui->btnBack->setVisible(true);
+            ui->lineEditIpAddress->setFocus();
             break;
         }
         case 2:{
@@ -138,7 +139,8 @@ void MasterNodeWizardDialog::onNextClicked(){
     pos++;
 }
 
-bool MasterNodeWizardDialog::createMN(){
+bool MasterNodeWizardDialog::createMN()
+{
     if (walletModel) {
         /**
          *
@@ -171,7 +173,7 @@ bool MasterNodeWizardDialog::createMN(){
         }
         // TODO: Validate IP address..
         int portInt = portStr.toInt();
-        if (portInt <= 0 && portInt > 999999){
+        if (portInt <= 0 && portInt > 999999) {
             returnStr = tr("Invalid port number");
             return false;
         }
@@ -180,16 +182,13 @@ bool MasterNodeWizardDialog::createMN(){
         std::string port = portStr.toStdString();
 
         // New receive address
-        CBitcoinAddress address;
-#if 0
-        PairResult r = walletModel->getNewAddress(address, alias);
+        CBitcoinAddress address = walletModel->getNewAddress(alias);
 
-        if (!r.result) {
+        if (!address.IsValid()) {
             // generate address fail
-            inform(tr(r.status->c_str()));
+            inform(tr("Failed to get new valid address"));
             return false;
         }
-#endif
 
         // const QString& addr, const QString& label, const CAmount& amount, const QString& message
         SendCoinsRecipient sendCoinsRecipient(QString::fromStdString(address.ToString()), QString::fromStdString(alias), CAmount(10000) * COIN, "");
@@ -282,7 +281,7 @@ bool MasterNodeWizardDialog::createMN(){
                     }
                 }
                 if (indexOut == -1) {
-                    returnStr = tr("Invalid collaterall output index");
+                    returnStr = tr("Invalid collateral output index");
                     return false;
                 }
                 std::string indexOutStr = std::to_string(indexOut);
@@ -307,22 +306,30 @@ bool MasterNodeWizardDialog::createMN(){
 
                 mnEntry = masternodeConfig.add(alias, ipAddress+":"+port, mnKeyString, txID, indexOutStr);
 
-                returnStr = tr("Master node created!");
+                // Lock collateral output
+                COutPoint collateralOut(walletTx->GetHash(), indexOut);
+                walletModel->lockCoin(collateralOut);
+
+                returnStr = tr("Master node created! Wait %1 confirmations before starting it.").arg(MASTERNODE_MIN_CONFIRMATIONS);
                 return true;
             } else{
                 returnStr = tr("masternode.conf file doesn't exists");
             }
+        } else {
+            returnStr = tr("Cannot send collateral transaction");
         }
     }
     return false;
 }
 
-void MasterNodeWizardDialog::onBackClicked(){
+void MasterNodeWizardDialog::onBackClicked()
+{
     if (pos == 0) return;
     pos--;
-    switch(pos){
+    switch(pos) {
         case 0:{
             ui->stackedWidget->setCurrentIndex(0);
+            ui->btnNext->setFocus();
             ui->pushNumber1->setChecked(true);
             ui->pushNumber4->setChecked(false);
             ui->pushNumber3->setChecked(false);
@@ -335,6 +342,7 @@ void MasterNodeWizardDialog::onBackClicked(){
         }
         case 1:{
             ui->stackedWidget->setCurrentIndex(1);
+            ui->lineEditName->setFocus();
             ui->pushNumber4->setChecked(false);
             ui->pushNumber3->setChecked(true);
             ui->pushName4->setChecked(false);
@@ -413,7 +421,8 @@ void MasterNodeWizardDialog::processSendCoinsReturn(const WalletModel::SendCoins
     inform(msgParams.first);
 }
 
-void MasterNodeWizardDialog::inform(QString text){
+void MasterNodeWizardDialog::inform(QString text)
+{
     if (!snackBar)
         snackBar = new SnackBar(nullptr, this);
     snackBar->setText(text);
@@ -433,7 +442,8 @@ void MasterNodeWizardDialog::initBtn(std::initializer_list<QPushButton*> args){
     }
 }
 
-MasterNodeWizardDialog::~MasterNodeWizardDialog(){
-    if(snackBar) delete snackBar;
+MasterNodeWizardDialog::~MasterNodeWizardDialog()
+{
+    if (snackBar) delete snackBar;
     delete ui;
 }
