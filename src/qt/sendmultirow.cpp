@@ -57,6 +57,9 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     //int posIconX = 0;
     //int posIconY = 14;
     //iconNumber->move(posIconX, posIconY);
+    
+    ui->lblDivisory->setStyleSheet("background-color:#bababa;");
+
 
     connect(ui->lineEditAmount, SIGNAL(textChanged(const QString&)), this, SLOT(amountChanged(const QString&)));
     connect(ui->lineEditAddress, SIGNAL(textChanged(const QString&)), this, SLOT(addressChanged(const QString&)));

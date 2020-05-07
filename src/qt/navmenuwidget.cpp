@@ -11,6 +11,8 @@
 #include <qt/walletmodel.h>
 #include <qt/clientmodel.h>
 
+#include <QDesktopServices>
+
 NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::NavMenuWidget),
@@ -84,10 +86,17 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     connect(ui->btnCharts,SIGNAL(clicked()),this, SLOT(onChartsClicked()));
 
 	QPixmap bgPixmap("://alqo_logo");
-	QPixmap scaled = bgPixmap.scaled( QSize(103, 317), Qt::KeepAspectRatio, Qt::SmoothTransformation );
+	QPixmap scaled = bgPixmap.scaled( QSize(110, 30), Qt::KeepAspectRatio, Qt::SmoothTransformation );
 	ui->labelLogo->setPixmap(scaled);
+	
+	
+	connect(ui->imgLogo, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
     
     connectActions();
+}
+
+void NavMenuWidget::slotOpenUrl() {
+    QDesktopServices::openUrl(QUrl("https://alqo.app"));
 }
 
 /**
@@ -195,16 +204,8 @@ void NavMenuWidget::onBtnLockClicked(){
             // Keep it open
             ui->pushButtonLock->setKeepExpanded(true);
 			//lockUnlockWidget->setFixedHeight(ui->pushButtonLock->height());
-			lockUnlockWidget->adjustSize();
 
-        //    lockUnlockWidget->move(ui->pushButtonLock->pos().rx() + ui->pushButtonLock->width() + 380, ui->pushButtonLock->y() + 20);
-            lockUnlockWidget->move(window->getNavWidth() - ui->pushButtonLock->pos().rx() + 10, ui->pushButtonLock->y() + 42);
-            
-
-			//lockUnlockWidget->raise();
-			//lockUnlockWidget->activateWindow();
-			lockUnlockWidget->show();
-            //QMetaObject::invokeMethod(this, "openLockUnlock", Qt::QueuedConnection);
+            QMetaObject::invokeMethod(this, "openLockUnlock", Qt::QueuedConnection);
         }
     }
 }
@@ -213,10 +214,10 @@ void NavMenuWidget::openLockUnlock(){
     lockUnlockWidget->setFixedWidth(ui->pushButtonLock->width());
     lockUnlockWidget->adjustSize();
 
-    lockUnlockWidget->move(ui->pushButtonLock->pos().rx() + window->getNavWidth() + 10, ui->pushButtonLock->y() + 36);
+    lockUnlockWidget->move(window->getNavWidth() - ui->pushButtonLock->pos().rx(), ui->pushButtonLock->y() + ui->pushButtonLock->height());
 
-    //lockUnlockWidget->raise();
-    //lockUnlockWidget->activateWindow();
+    lockUnlockWidget->raise();
+    lockUnlockWidget->activateWindow();
     lockUnlockWidget->show();
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>60</height>
+    <height>69</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,6 +33,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="labelName">
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
        <property name="text">
         <string>Savings</string>
        </property>
@@ -53,6 +56,9 @@
      </item>
      <item>
       <widget class="QLabel" name="labelDate">
+       <property name="styleSheet">
+        <string notr="true">color:white;</string>
+       </property>
        <property name="text">
         <string>Jan. 19, 2019</string>
        </property>
@@ -62,6 +68,9 @@
    </item>
    <item>
     <widget class="QLabel" name="labelAddress">
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
      <property name="text">
       <string>DN6i46dytMPVhV1JMGZFuQBh7BZZ6nNLox</string>
      </property>

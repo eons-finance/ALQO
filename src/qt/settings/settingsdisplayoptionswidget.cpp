@@ -49,13 +49,15 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
     ui->pushButtonSwitchBalance->setVisible(false);
 
     // Combobox
-    ui->comboBoxLanguage->setProperty("cssClass", "btn-combo");
+    ui->comboBoxLanguage->setProperty("cssClass", "btn-combo-small");
     ui->comboBoxLanguage->setView(new QListView());
     ui->comboBoxLanguage->setEditable(true);
     QLineEdit* LanguageEdit = new QLineEdit(ui->comboBoxLanguage);
     LanguageEdit->setReadOnly(true);
     LanguageEdit->setAlignment(Qt::AlignRight);
     ui->comboBoxLanguage->setLineEdit(LanguageEdit);
+    ui->comboBoxLanguage->setStyleSheet("selection-background-color:transparent; selection-color:transparent;");
+
 
     ui->comboBoxUnit->setProperty("cssClass", "btn-combo");
     ui->comboBoxUnit->setView(new QListView());
@@ -66,6 +68,7 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
     UnitEdit->setReadOnly(true);
     UnitEdit->setAlignment(Qt::AlignRight);
     ui->comboBoxUnit->setLineEdit(UnitEdit);
+    ui->comboBoxUnit->setStyleSheet("selection-background-color:transparent; selection-color:transparent; color:white;");
 
     ui->comboBoxDigits->setProperty("cssClass", "btn-combo-options");
 
@@ -75,6 +78,7 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
     DigitsEdit->setReadOnly(true);
     DigitsEdit->setAlignment(Qt::AlignRight);
     ui->comboBoxDigits->setLineEdit(DigitsEdit);
+    ui->comboBoxDigits->setStyleSheet("selection-background-color:transparent; selection-color:transparent; color:white;");
 
     /* Number of displayed decimal digits selector */
     QString digits;
