@@ -86,8 +86,8 @@ MasterNodesWidget::MasterNodesWidget(ALQOGUI *parent) :
 
     /* Title */
     ui->labelTitle->setText(tr("Masternodes"));
-    setCssTitleScreen(ui->labelTitle);
-    ui->labelTitle->setFont(fontLight);
+    //setCssTitleScreen(ui->labelTitle);
+    //ui->labelTitle->setFont(fontLight);
 
     //ui->labelSubtitle1->setText(tr("Full nodes that incentivize node operators to perform the core consensus functions\nand vote on the treasury system receiving a periodic reward."));
     //setCssSubtitleScreen(ui->labelSubtitle1);
@@ -96,7 +96,7 @@ MasterNodesWidget::MasterNodesWidget(ALQOGUI *parent) :
     ui->pushButtonSave->setText(tr("Create Masternode"));
     setCssBtnPrimary(ui->pushButtonSave);
 
-    setCssProperty(ui->listMn, "container");
+    setCssProperty(ui->listMn, "dash-frame");
     ui->listMn->setItemDelegate(delegate);
     ui->listMn->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listMn->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));

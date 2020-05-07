@@ -54,6 +54,7 @@ private slots:
     void lockDropdownClicked(const StateClicked&);
     void refreshStatus();
     void openLockUnlock();
+    void slotOpenUrl();
 
 signals:
     void walletSynced(bool isSync);

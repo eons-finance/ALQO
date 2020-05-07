@@ -36,11 +36,11 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     //setCssProperty(ui->stackedWidgetContainer, "dash-frame");
 
     /* Light Font */
-    QFont fontLight;
-    fontLight.setWeight(QFont::Light);
+    //QFont fontLight;
+    //fontLight.setWeight(QFont::Light);
 
     /* Title */
-    ui->labelTitle->setText(tr("Settings"));
+    ui->labelTitle->setText("Settings");
     //setCssProperty(ui->labelTitle, "text-title-screen");
     //ui->labelTitle->setFont(fontLight);
 
