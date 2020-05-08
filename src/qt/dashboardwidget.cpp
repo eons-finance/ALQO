@@ -548,12 +548,8 @@ QString DashboardWidget::sendRequest(QString url)
 
     if (reply->error() == QNetworkReply::NoError) {
         Response = reply->readAll();
-       // qDebug() << "Success" <<Response;
-       //  QMessageBox::information(this,"Success",Response);
-
         delete reply;
     } else {
-	//	qDebug() << "Failure" <<reply->errorString();
         Response = "Error";
     //    QMessageBox::information(this,"Error",reply->errorString());
 
@@ -584,7 +580,7 @@ void DashboardWidget::SetExchangeInfoTextLabels()
     //QMessageBox::information(this,"Success",strJson);
 
 
-    // get current values (so we can see color label text baes on increase/decrease)
+    // get current values (so we can see color label text based on increase/decrease)
 
 //    double currentbtc = QTextDocumentFragment::fromHtml(ui->labelbtcusd->text()).toPlainText().toDouble();
 //    double currentusd = QTextDocumentFragment::fromHtml(ui->labelusdxlq->text()).toPlainText().toDouble();
@@ -592,12 +588,11 @@ void DashboardWidget::SetExchangeInfoTextLabels()
 //    double currentwalletvalue = QTextDocumentFragment::fromHtml(ui->lblwalletvalue->text()).toPlainText().toDouble();
 //    int currenttime = QTextDocumentFragment::fromHtml(ui->labeltime->text()).toPlainText().toDouble();
 
-    double bal = QTextDocumentFragment::fromHtml(ui->labelAmountPiv->text()).toPlainText().toDouble();
 
     double newbtc = objmetrics["latest"].toDouble();
     double newusd = prices["USD"].toDouble();
     double newxlq = newusd * newbtc;
-    double newwalletvalue = bal * newxlq;
+    double newwalletvalue = walletModel->getBalance()/COIN * newxlq;
 
     //QMessageBox::information(this,"Success",str.number(bal, 'i', 8));
 

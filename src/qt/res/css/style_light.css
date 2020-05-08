@@ -795,6 +795,8 @@ QPushButton[cssClass="btn-check-lock-sub-menu-locked"] {
 
 QPushButton[cssClass="btn-check-lock-sub-menu-locked"]:checked {
     background-color:#50b088ff;
+    padding-right: 30px;
+    margin-right: 30px;
 }
 
 QPushButton[cssClass="btn-check-lock-sub-menu-locked"]:hover {
