@@ -17,7 +17,7 @@ class TransactionFilterProxy : public QSortFilterProxyModel
     Q_OBJECT
 
 public:
-    explicit TransactionFilterProxy(QObject* parent = 0);
+    explicit TransactionFilterProxy(QObject *parent = nullptr);
 
     /** Earliest date that can be represented (far in the past) */
     static const QDateTime MIN_DATE;
@@ -43,6 +43,7 @@ public:
     }
 
     void setAddressPrefix(const QString& addrPrefix);
+    void setSearchString(const QString &);
     /**
       @note Type filter takes a bit field created with TYPE() or ALL_TYPES
      */
@@ -76,6 +77,7 @@ protected:
 private:
     QDateTime dateFrom;
     QDateTime dateTo;
+    QString m_search_string;
     QString addrPrefix;
     quint32 typeFilter;
     WatchOnlyFilter watchOnlyFilter;

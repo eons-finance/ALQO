@@ -7,6 +7,7 @@
 
 #include <QKeyEvent>
 #include <QTreeWidget>
+#include <QAbstractItemView>
 
 class CoinControlTreeWidget : public QTreeWidget
 {
