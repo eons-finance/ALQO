@@ -1700,7 +1700,7 @@ double ConvertBitsToDouble(unsigned int nBits)
 int64_t GetBlockValue(int nHeight)
 {
     if (nHeight <= 161)
-        return 500000 * COIN;  // 161 x 500000 = 81.5m (ALQO chainswap)
+        return 500000 * COIN;  // 161 x 500000 = 80.5m (ALQO chainswap)
     return 5 * COIN;           // and 5 per block for each block after
 }
 
