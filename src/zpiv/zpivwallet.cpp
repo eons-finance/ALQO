@@ -40,7 +40,7 @@ CzPIVWallet::CzPIVWallet(std::string strWalletFile)
 
     //Don't try to do anything if the wallet is locked.
     if (pwalletMain->IsLocked()) {
-        seedMaster = 0;
+        seedMaster.SetNull();
         nCountLastUsed = 0;
         this->mintPool = CMintPool();
         return;
@@ -74,7 +74,7 @@ bool CzPIVWallet::SetMasterSeed(const uint256& seedMaster, bool fResetCount)
 
 void CzPIVWallet::Lock()
 {
-    seedMaster = 0;
+    seedMaster.SetNull();
 }
 
 void CzPIVWallet::AddToMintPool(const std::pair<uint256, uint32_t>& pMint, bool fVerbose)

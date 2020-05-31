@@ -95,11 +95,7 @@ CoinControlDialog::CoinControlDialog(QWidget* parent, bool fMultisigEnabled) : Q
     ui->pushButtonSelectAll->setProperty("cssClass", "btn-check");
     ui->pushButtonToggleLock->setProperty("cssClass", "btn-check");
 
-    ui->btnEsc->setText("");
-    ui->btnEsc->setProperty("cssClass", "ic-close");
     ui->pushButtonOk->setProperty("cssClass", "btn-primary");
-
-    connect(ui->btnEsc, SIGNAL(clicked()), this, SLOT(close()));
 
     this->fMultisigEnabled = fMultisigEnabled;
 
@@ -687,7 +683,7 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
     }
 
     // actually update labels
-    int nDisplayUnit = BitcoinUnits::ALQO;
+    int nDisplayUnit = BitcoinUnits::XLQ;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 

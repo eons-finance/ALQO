@@ -487,7 +487,7 @@ bool WalletModel::createZpivSpend(
         std::string changeAddress
         ){
 
-    CBitcoinAddress *changeAdd = (!changeAddress.empty()) ? new CBitcoinAddress(changeAddress) : nullptr;
+//    CBitcoinAddress *changeAdd = (!changeAddress.empty()) ? new CBitcoinAddress(changeAddress) : nullptr;
     CAmount value = 0;
     for(std::pair<CBitcoinAddress*, CAmount> pair : outputs){
         value += pair.second;
