@@ -137,6 +137,9 @@ libbitcoinconsensus.pc
 .idea
 CMakeLists.txt
 cmake-build-debug
+<<<<<<< HEAD
 src/qt/settings/forms/ui_*.h
 src/qt/settings/moc_*.cpp
 alqo-qt.pro
+=======
+>>>>>>> 87cb7284550456d1b54d1c6c82f359b8f05ccc3d

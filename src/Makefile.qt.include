@@ -150,7 +150,10 @@ QT_MOC_CPP = \
   qt/moc_navmenuwidget.cpp \
   qt/moc_lockunlock.cpp \
   qt/moc_expandablebutton.cpp \
+<<<<<<< HEAD
   qt/moc_qslidestakingwidget.cpp \
+=======
+>>>>>>> 87cb7284550456d1b54d1c6c82f359b8f05ccc3d
   qt/moc_furabstractlistitemdelegate.cpp \
   qt/moc_receivedialog.cpp \
   qt/moc_walletpassworddialog.cpp \
@@ -280,7 +283,10 @@ BITCOIN_QT_H = \
   qt/txviewholder.h \
   qt/qtutils.h \
   qt/expandablebutton.h \
+<<<<<<< HEAD
   qt/qslidestakingwidget.h \
+=======
+>>>>>>> 87cb7284550456d1b54d1c6c82f359b8f05ccc3d
   qt/walletpassworddialog.h \
   qt/topbar.h \
   qt/txrow.h \
@@ -461,7 +467,10 @@ BITCOIN_QT_WALLET_CPP = \
   qt/txviewholder.cpp \
   qt/qtutils.cpp \
   qt/expandablebutton.cpp \
+<<<<<<< HEAD
   qt/qslidestakingwidget.cpp \
+=======
+>>>>>>> 87cb7284550456d1b54d1c6c82f359b8f05ccc3d
   qt/walletpassworddialog.cpp \
   qt/topbar.cpp \
   qt/txrow.cpp \
