@@ -2,10 +2,6 @@
     <qresource prefix="/icons">
         <file alias="bitcoin">res/icons/bitcoin.png</file>
         <file alias="address-book">res/icons/address-book.png</file>
-<<<<<<< HEAD
-=======
-        <file alias="quit">res/icons/quit.png</file>
->>>>>>> 87cb7284550456d1b54d1c6c82f359b8f05ccc3d
         <file alias="send">res/icons/send.png</file>
         <file alias="send_dark">res/icons/send_dark.png</file>
         <file alias="connect_0">res/icons/connect0_16.png</file>
@@ -72,10 +68,7 @@
         <file alias="novote">res/icons/novote.png</file>
         <file alias="abstainvote">res/icons/abstainvote.png</file>
         <file alias="onion">res/icons/onion.png</file>
-<<<<<<< HEAD
         <file alias="quit">res/icons/quit.png</file>
-=======
->>>>>>> 87cb7284550456d1b54d1c6c82f359b8f05ccc3d
     </qresource>
     <qresource prefix="/css">
         <file alias="default-dark">res/css/style_dark.css</file>
@@ -318,10 +311,7 @@
         <file alias="staking">res/img/staking.png</file>
         <file alias="staking_unlocked">res/img/staking_unlocked.png</file>
         <file alias="staking_off">res/img/staking_off.png</file>
-<<<<<<< HEAD
         <file alias="ALQO_WALLET_BG_4x">res/img/ALQO-Wallet-BG@4x.png</file>
-=======
->>>>>>> 87cb7284550456d1b54d1c6c82f359b8f05ccc3d
         <file alias="alqo_logo">res/img/alqo_logo.png</file>
     </qresource>
 </RCC>
