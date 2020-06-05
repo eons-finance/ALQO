@@ -8,6 +8,7 @@
 #include <qt/pwidget.h>
 #include <qt/lockunlock.h>
 #include <QWidget>
+#include <QPushButton>
 
 class ALQOGUI;
 class WalletModel;
@@ -28,6 +29,7 @@ public:
     void setWalletModel(WalletModel* model);
     void setClientModel(ClientModel* model);
     void encryptWallet();
+    void UpdateLogoButtonPos();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -38,7 +40,8 @@ public slots:
     void setNumBlocks(int count);
     void updateAutoMintStatus();
     void updateStakingStatus();
-    
+    void windowResizeEvent(QResizeEvent* event);
+
 private slots:
     void onSendClicked();
     void onDashboardClicked();
@@ -48,7 +51,6 @@ private slots:
     void onMasterNodesClicked();
     void onSettingsClicked();
     void onReceiveClicked();
-    void updateButtonStyles();
     void onBtnLockClicked();
     void lockDropdownMouseLeave();
     void lockDropdownClicked(const StateClicked&);
@@ -64,12 +66,12 @@ private:
     ALQOGUI* window;
     LockUnlock *lockUnlockWidget = nullptr;
     QList<QWidget*> btns;
+    QPushButton* logoButton;
     
     ClientModel* clientModel = nullptr;
     WalletModel* walletModel = nullptr;
     
     void connectActions();
-    void onNavSelected(QWidget* active, bool startup = false);
 
     QTimer* timerStakingIcon = nullptr;
 };

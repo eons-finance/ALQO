@@ -86,6 +86,7 @@ signals:
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
    
 protected:
+    CAmount getAmountValue(QString amount);
 
 private slots:
     void handleTransactionClicked(const QModelIndex &index);

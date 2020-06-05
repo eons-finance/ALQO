@@ -120,20 +120,37 @@
              <layout class="QHBoxLayout" name="horizontalLayout_6">
               <item>
                <widget class="QPushButton" name="sendpagebtn">
+                <property name="font">
+                 <font>
+                  <family>Ubuntu</family>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>SEND</string>
+                 <string>Send</string>
                 </property>
                 <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="receivepagebtn">
+                <property name="font">
+                 <font/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
-                 <string>RECEIVE</string>
+                 <string>Receive</string>
                 </property>
                 <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -248,8 +265,10 @@
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">border:  1px solid #bababa;  background-color:transparent;
-    font-size: 12px;  border-radius: 10px;  padding:5px; color: #ffffff;</string>
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string/>
                       </property>
                       <property name="maxLength">
                        <number>17</number>
@@ -298,7 +317,18 @@
                        </sizepolicy>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">    color: white;  border:1px solid #505BB9;  background-color:#505BB9;  border-radius: 11px;   padding:5px 12px 5px 12px;</string>
+                       <string notr="true">QPushButton {
+color: #3de4cd;
+border: 1px solid #3de4cd;
+border-radius: 6px;
+background-color:  rgb(26, 29, 49);
+padding: 8px 30px;
+font-size: 12px;
+}
+QPushButton:hover{
+	color: #1a1d31;
+background-color: #3de4cd;
+}</string>
                       </property>
                       <property name="text">
                        <string>Send</string>
@@ -469,8 +499,13 @@
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QLabel" name="lblTransactions">
+            <property name="font">
+             <font>
+              <family>Ubuntu</family>
+             </font>
+            </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;LATEST TRANSACTIONS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Latest Transactions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -564,10 +599,10 @@
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">color:white;</string>
                   </property>
                   <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;MARKETS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Markets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                  </widget>
                 </item>
@@ -590,6 +625,12 @@
                <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
                  <widget class="QLabel" name="label">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string>BTC/USD</string>
                   </property>
@@ -610,6 +651,9 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelbtcusd">
+                  <property name="styleSheet">
+                   <string notr="true">color:  #3de4cd;</string>
+                  </property>
                   <property name="text">
                    <string>$10000</string>
                   </property>
@@ -621,6 +665,9 @@
                <layout class="QHBoxLayout" name="horizontalLayout_14">
                 <item>
                  <widget class="QLabel" name="label_3">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string>USD/XQL</string>
                   </property>
@@ -641,6 +688,9 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelusdxlq">
+                  <property name="styleSheet">
+                   <string notr="true">color:  #3de4cd;</string>
+                  </property>
                   <property name="text">
                    <string>$ 10</string>
                   </property>
@@ -652,6 +702,9 @@
                <layout class="QHBoxLayout" name="horizontalLayout_15">
                 <item>
                  <widget class="QLabel" name="label_2">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string>BTC/XQL</string>
                   </property>
@@ -672,6 +725,9 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelxlqbtc">
+                  <property name="styleSheet">
+                   <string notr="true">color:  #3de4cd;</string>
+                  </property>
                   <property name="text">
                    <string>0.001 BTC</string>
                   </property>
@@ -683,6 +739,9 @@
                <layout class="QHBoxLayout" name="horizontalLayout_7">
                 <item>
                  <widget class="QLabel" name="lblAmountStaked">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string>Wallet Value</string>
                   </property>
@@ -703,6 +762,9 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="lblwalletvalue">
+                  <property name="styleSheet">
+                   <string notr="true">color:  #3de4cd;</string>
+                  </property>
                   <property name="text">
                    <string>0.000</string>
                   </property>

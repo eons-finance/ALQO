@@ -26,7 +26,7 @@
 #include "qt/settings/settingswidget.h"
 #include "qt/rpcconsole.h"
 #include "qt/historywidget.h"
-
+#include "qt/qslidestakingwidget.h"
 class ClientModel;
 class NetworkStyle;
 class Notificator;
@@ -123,7 +123,7 @@ private:
     // Frame
     NavMenuWidget *navMenu = nullptr;
     TopBar *topBar = nullptr;
-    QStackedWidget *stackedContainer = nullptr;
+    QSlideStackedWidget *stackedContainer = nullptr;
 
     DashboardWidget *dashboard = nullptr;
     ChartsWidget *chartsWidget = nullptr;

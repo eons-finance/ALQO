@@ -19,7 +19,7 @@
 #include <QModelIndex>
 #include <QList>
 #include <QGraphicsLayout>
-
+#include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -62,26 +62,25 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     ui->dashLayout->setContentsMargins(0,0,0,0);
 
     // Balance
-    //setCssProperty(ui->labelAmountPiv, "dash-balance");
+    setCssProperty(ui->labelAmountPiv, "dash-balance");
     QString totalPiv = GUIUtil::formatBalance(0, nDisplayUnit);
 
-    QFont fontBalance = ui->labelAmountPiv->font();
-    fontBalance.setWeight(QFont::Bold);
-	fontBalance.setPointSize(48);
-	ui->labelAmountPiv->setFont(fontBalance);
-    ui->labelAmountPiv->setText("<font color='white'>"+totalPiv+"</font>");
+    ui->labelAmountPiv->setText(totalPiv);
 
     //Frames
     // Send Receive Frame
     //Send
     setCssProperty(ui->frameSendReceive, "dash-frame");
-    setCssProperty(ui->sendpagebtn, "dash-label");
-    setCssProperty(ui->receivepagebtn, "dash-label");
+    setCssProperty(ui->sendpagebtn, "tab-button");
+    setCssProperty(ui->receivepagebtn, "tab-button");
     setCssProperty(ui->pushButtonSend, "dash-btn-send");
 
     ui->lineEditAmount->setPlaceholderText(QString("  ") + " 0.00 XLQ ");
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
-    setCssProperty(ui->lineEditAmount, "edit-primary-dash");
+    setCssProperty(ui->lineEditAmount, "edit-primary");
+    connect(ui->lineEditAmount, &QLineEdit::textChanged, this, [this]() {
+        setCssEditLine(ui->lineEditAmount, true, true);
+    });
 
 //    btnContact = ui->lineEditContact->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
 //    ui->lineEditContact->setPlaceholderText(QString("  ") + " Select Contact");
@@ -152,6 +151,12 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
 
 }
 
+CAmount DashboardWidget::getAmountValue(QString amount){
+    bool isValid = false;
+    CAmount value = GUIUtil::parseValue(amount, nDisplayUnit, &isValid);
+    return isValid ? value : -1;
+}
+
 void DashboardWidget::onSendClicked(){
 
     if (!walletModel || !walletModel->getOptionsModel())
@@ -160,18 +165,15 @@ void DashboardWidget::onSendClicked(){
     SendCoinsRecipient recipient;
 
     QString address = ui->labelSendAddress->text();
-    bool isValid = false;
-    CAmount value = GUIUtil::parseValue(ui->lineEditAmount->text(), nDisplayUnit, &isValid);
+    CAmount value = getAmountValue(ui->lineEditAmount->text());
 
     recipient.amount = value;
-//    recipient.address = address;
-
-    bool retval = true;
+    recipient.address = address;
 
     // Sending a zero amount or dust is invalid
     if (value <= 0 || GUIUtil::isDust(address, value)) {
         setCssEditLine(ui->lineEditAmount, false, true);
-        retval = false;
+        return;
     }
 
     // request unlock only if was locked or unlocked for mixing:

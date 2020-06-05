@@ -25,11 +25,10 @@
 #include <QShortcut>
 #include <QKeySequence>
 #include <QWindowStateChangeEvent>
-
 #include "util.h"
 
 #define BASE_WINDOW_WIDTH 1200
-#define BASE_WINDOW_HEIGHT 640
+#define BASE_WINDOW_HEIGHT 720
 
 
 const QString ALQOGUI::DEFAULT_WALLET = "~Default";
@@ -116,7 +115,7 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         
 
         // Now stacked widget
-        stackedContainer = new QStackedWidget(this);
+        stackedContainer = new QSlideStackedWidget(this);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         stackedContainer->setSizePolicy(sizePolicy);
         stackedContainer->setContentsMargins(0,200,0,0);
@@ -463,7 +462,7 @@ void ALQOGUI::detectShutdown() {
 
 void ALQOGUI::goToDashboard(){
     if(stackedContainer->currentWidget() != dashboard){
-        stackedContainer->setCurrentWidget(dashboard);
+        stackedContainer->slideInWgt(dashboard, QSlideStackedWidget::RIGHT2LEFT);
     }
 }
 
@@ -499,7 +498,7 @@ void ALQOGUI::goToCharts(){
 
 void ALQOGUI::showTop(QWidget* view){
     if(stackedContainer->currentWidget() != view){
-        stackedContainer->setCurrentWidget(view);
+        stackedContainer->slideInWgt(view, QSlideStackedWidget::RIGHT2LEFT);
        // topBar->showTop();
     }
 }

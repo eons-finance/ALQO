@@ -10,7 +10,7 @@
 #include <qt/optionsmodel.h>
 #include <qt/walletmodel.h>
 #include <qt/clientmodel.h>
-
+#include <QDebug>
 #include <QDesktopServices>
 
 NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
@@ -21,43 +21,12 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     ui->setupUi(this);
     //this->setFixedWidth(100);
     setCssProperty(ui->navContainer_2, "container-nav");
-    setCssProperty(ui->imgLogo, "img-nav-logo");
-
     // Buttons
-    ui->btnDashboard->setProperty("name", "dash");
-    ui->btnDashboard->setText("HOME");
-    ui->btnDashboard->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-    ui->btnSend->setProperty("name", "send");
-    ui->btnSend->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui->btnSend->setText("SEND");
-
-    ui->btnAddress->setProperty("name", "address");
-    ui->btnAddress->setText("CONTACTS");
-    ui->btnAddress->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-    ui->btnHistory->setProperty("name", "history");
-    ui->btnHistory->setText("HISTORY");
-    ui->btnHistory->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-    ui->btnMaster->setProperty("name", "master");
-    ui->btnMaster->setText("MASTERNODES");
-    ui->btnMaster->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-    ui->btnSettings->setProperty("name", "settings");
-    ui->btnSettings->setText("SETTINGS");
-    ui->btnSettings->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-    ui->btnReceive->setProperty("name", "receive");
-    ui->btnReceive->setText("RECEIVE");
-    ui->btnReceive->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-    ui->btnCharts->setProperty("name", "charts");
-    ui->btnCharts->setText("STAKING");
-    ui->btnCharts->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-    btns = {ui->btnDashboard, ui->btnSend, ui->btnReceive, ui->btnAddress, ui->btnMaster, ui->btnSettings, ui->btnHistory, ui->btnCharts};
-    onNavSelected(ui->btnDashboard, true);
+    logoButton = new QPushButton(this);
+    logoButton->setGeometry(0, 0, 100, 100);
+    logoButton->setIconSize(QSize(100, 100));
+    setCssProperty(logoButton, "img-nav-logo");
+    UpdateLogoButtonPos();
 
     ui->pushButtonConnection->setButtonClassStyle("cssClass", "btn-check-connect-inactive");
     ui->pushButtonConnection->setButtonText("No Connection");
@@ -84,17 +53,20 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     connect(ui->btnReceive,SIGNAL(clicked()),this, SLOT(onReceiveClicked()));
     connect(ui->btnHistory,SIGNAL(clicked()),this, SLOT(onHistoryClicked()));
     connect(ui->btnCharts,SIGNAL(clicked()),this, SLOT(onChartsClicked()));
-
-	QPixmap bgPixmap("://alqo_logo");
-	QPixmap scaled = bgPixmap.scaled( QSize(110, 30), Qt::KeepAspectRatio, Qt::SmoothTransformation );
-	ui->labelLogo->setPixmap(scaled);
-	
-	
-	connect(ui->imgLogo, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
+    connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
+    setCssProperty(ui->labelLogo, "label-logo");
+    connect(logoButton, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
     
     connectActions();
 }
 
+void NavMenuWidget::UpdateLogoButtonPos() {
+    logoButton->move((window->size().width() - logoButton->size().width()) / 2, 20);
+}
+
+void NavMenuWidget::windowResizeEvent(QResizeEvent* event) {
+    UpdateLogoButtonPos();
+}
 void NavMenuWidget::slotOpenUrl() {
     QDesktopServices::openUrl(QUrl("https://alqo.app"));
 }
@@ -107,79 +79,47 @@ void NavMenuWidget::connectActions() {
     ui->btnDashboard->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_1));
     ui->btnSend->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_2));
     ui->btnReceive->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_3));
-    ui->btnAddress->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_4));
-    ui->btnMaster->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_6));
-    ui->btnSettings->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_7));
-    ui->btnHistory->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_8));
-    ui->btnHistory->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_9));
+    ui->btnHistory->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_4));
+    ui->btnCharts->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_5));
+    ui->btnAddress->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_6));
+    ui->btnMaster->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_7));
+    ui->btnSettings->setShortcut(QKeySequence(SHORT_KEY + Qt::Key_8));
 }
 
 void NavMenuWidget::onSendClicked(){
     window->goToSend();
-    onNavSelected(ui->btnSend);
 }
 
 void NavMenuWidget::onDashboardClicked(){
     window->goToDashboard();
-    onNavSelected(ui->btnDashboard);
 }
 
 void NavMenuWidget::onChartsClicked(){
     window->goToCharts();
-    onNavSelected(ui->btnCharts);
 }
 
 void NavMenuWidget::onHistoryClicked(){
     window->goToHistory();
-    onNavSelected(ui->btnHistory);
 }
 
 void NavMenuWidget::onAddressClicked(){
     window->goToAddresses();
-    onNavSelected(ui->btnAddress);
 }
 
 void NavMenuWidget::onMasterNodesClicked(){
     window->goToMasterNodes();
-    onNavSelected(ui->btnMaster);
 }
 
 void NavMenuWidget::onSettingsClicked(){
     window->goToSettings();
-    onNavSelected(ui->btnSettings);
 }
 
 void NavMenuWidget::onReceiveClicked(){
     window->goToReceive();
-    onNavSelected(ui->btnReceive);
-}
-
-void NavMenuWidget::onNavSelected(QWidget* active, bool startup) {
-    QString start = "btn-nav-";
-    foreach (QWidget* w, btns) {
-        QString clazz = start + w->property("name").toString();
-        if (w == active) {
-            clazz += "-active";
-        }
-        setCssProperty(w, clazz);
-    }
-    if (!startup) updateButtonStyles();
 }
 
 void NavMenuWidget::selectSettings(){
     onSettingsClicked();
-}
-
-void NavMenuWidget::updateButtonStyles(){
-    forceUpdateStyle({
-         ui->btnDashboard,
-         ui->btnSend,
-         ui->btnAddress,
-         ui->btnMaster,
-         ui->btnSettings,
-         ui->btnReceive,
-         ui->btnHistory
-    });
 }
 
 void NavMenuWidget::onBtnLockClicked(){

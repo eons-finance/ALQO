@@ -19,7 +19,7 @@
 #include "zpiv/deterministicmint.h"
 #include "openuridialog.h"
 #include "zpivcontroldialog.h"
-
+#include <QDebug>
 SendWidget::SendWidget(ALQOGUI* parent) :
     PWidget(parent),
     ui(new Ui::send)
@@ -244,7 +244,6 @@ void SendWidget::resizeEvent(QResizeEvent *event){
 
 
 void SendWidget::onSendClicked(){
-
     if (!walletModel || !walletModel->getOptionsModel())
         return;
 

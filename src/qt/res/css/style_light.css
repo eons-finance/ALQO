@@ -4,8 +4,8 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container"] {
     background-color:#1a1d31;
-    border-image: url("://wallet-bg") 40 0 0 0 stretch stretch;
-    opacity: 0.4;
+    border-image: url("://ALQO_WALLET_BG_4x") 40 0 0 0 stretch stretch;
+    opacity: 0.8;
 }
 
 *[cssClass="listTransactions"] {
@@ -16,7 +16,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 *[cssClass="dash-frame"] {
     border: 3px;
     border-radius: 20px;
-    background-color: rgba(26, 29, 49, 0.6);
+    background-color: rgba(26, 29, 49);
 }
 
 *[cssClass="tx-frame"] {
@@ -49,11 +49,17 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="dash-btn-send"] {
-    color: white;
-    border:1px solid #505BB9;
-    background-color:#505BB9;
-    border-radius: 11px;
-    padding:5px 12px 5px 12px;
+    color: #3de4cd;
+    border: 1px solid #3de4cd;
+    border-radius: 6px;
+    background-color:  rgb(26, 29, 49);
+    padding: 8px 30px;
+    font-size: 12px;
+}
+
+*[cssClass="dash-btn-send"]:hover {
+    color: #1a1d31;
+    background-color: #3de4cd;
 }
 
 *[cssClass="dash-btn-contact"] {
@@ -67,6 +73,22 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="dash-btn-contact"]:checked {
     color: #3DE4CD;
+}
+
+*[cssClass="tab-button"] {
+    color: white;
+    font-size:14px;
+    padding: 5px 15px;
+    border-bottom: 5px solid rgb(0, 0, 0, 0);
+}
+*[cssClass="tab-button"]:hover {
+    color: white;
+    border-bottom: 5px solid #3DE4CD;
+}
+
+*[cssClass="tab-button"]:checked {
+    color: #3DE4CD;
+    border-bottom: 5px solid #3DE4CD;
 }
 
 *[cssClass="dash-label"] {
@@ -140,12 +162,16 @@ HH       NAVIGATION
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container-nav"] {
-    background-color: qlineargradient(y1:0, y2: 1, stop: 0 #1a1d31, stop: 1 #1a1d31);
+    /*background-color: qlineargradient(y1:0, y2: 1, stop: 0 #1a1d31, stop: 1 #1a1d31);*/
 }
 
 *[cssClass="img-nav-logo"] {
     qproperty-icon: url("://img-nav-logo");
     qproperty-iconSize: 100px 100px;
+}
+
+*[cssClass="label-logo"] {
+    border-image: url("://alqo_logo");
 }
 
 *[cssClass="btn-nav-charts"] {
@@ -367,35 +393,28 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     url("://ic-nav-address-active") on ;
     qproperty-iconSize: 24px 40px;*/
     background-color:transparent;
+    color: white;
     font-size:14px;
-    color: #ffffff;
+    padding: 5px 15px;
+    border-bottom: 5px solid rgb(0, 0, 0, 0);
 }
 
 *[cssClass="btn-nav-address"]:checked {
-    background-color: transparent;
-    font-size:14px;
     color: #3DE4CD;
-    text-decoration: underline;
-}
-
-*[cssClass="btn-nav-address"]:checked:hover  {
-    background-color: transparent;
-    color: #000000;
+    border-bottom: 5px solid #3DE4CD;
 }
 
 *[cssClass="btn-nav-address"]:hover {
-    background-color: transparent;
-    color: #777777;
+    color: white;
+    border-bottom: 5px solid #8affef;
 }
 
 
 *[cssClass="btn-nav-address-active"] {
 /*    qproperty-icon:url("://ic-nav-address-active")  ;
     qproperty-iconSize: 24px 40px;*/
-    background-color: transparent;
-    font-size:14px;
     color: #3DE4CD;
-    text-decoration: underline black;
+    border-bottom: 5px solid #3DE4CD;
 }
 
 *[cssClass="btn-nav-master"] {
@@ -1762,42 +1781,33 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="edit-primary"] {
-    border:  1px solid #ffffff;
-    background-color:rgba(26, 29, 49, 0.6);
-    font-size:18px;
-    border-radius: 25px;
-    padding:8px;
-    color: #ffffff;
-}
-
-*[cssClass="edit-primary"]:focus {
-    border: 1px solid #b088ff;
-}
-
-*[cssClass="edit-primary"]:focus:hover {
-    border: 1px solid #b088ff;
-}
-
-*[cssClass="edit-primary"]:hover {
-    border: 1px solid #707070;
+    border:  1px solid #3de4cd;
+    background-color: #0f0f1f;
+    font-size: 12px;
+    border-radius: 6px;
+    padding-right:8px;
+    padding-left:8px;
+    color: #3de4cd;
 }
 
 *[cssClass="edit-primary-disabled"] {
-    border:  1px solid #33ffffff;
-    background-color:#0f0b16;
-    font-size:18px;
-    border-radius: 25px;
-    padding:8px;
-    color: #FFFFFF;
+    border:  1px solid #999;
+    background-color: #ddd;
+    font-size: 12px;
+    border-radius: 6px;
+    padding-right:8px;
+    padding-left:8px;
+    color: #999;
 }
 
 *[cssClass="edit-primary-error"] {
-    border:  1px solid #f84444;
-    background-color:rgba(26, 29, 49, 0.6);
-    font-size:18px;
-    border-radius: 25px;
-    padding:8px;
-    color: #ffffff;
+    border:  1px solid red;
+    background-color: #0f0f1f;
+    font-size: 12px;
+    border-radius: 6px;
+    padding-right:8px;
+    padding-left:8px;
+    color: #3de4cd;
 }
 
 QPushButton[cssClass="btn-expand"] {
@@ -1851,7 +1861,11 @@ HH      DASHBOARD
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
-
+*[cssClass="dash-balance"] {
+    font-size: 48px;
+    color:white;
+    font-weight: 800;
+}
 *[cssClass="text-warning"] {
     color:#f84444;
     font-size:16px;

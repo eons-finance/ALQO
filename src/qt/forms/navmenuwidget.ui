@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>946</width>
-    <height>149</height>
+    <width>869</width>
+    <height>213</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -37,239 +37,257 @@ margin:0px;</string>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
-               <widget class="QLabel" name="labelLogo">
-                <property name="text">
-                 <string>TextLabel</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <item>
-             <spacer name="horizontalSpacer_8">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_5">
-              <item>
-               <widget class="QPushButton" name="imgLogo">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>64</width>
-                  <height>64</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_7">
-              <item>
-               <widget class="QFrame" name="innerframe">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_5">
-                 <property name="spacing">
-                  <number>12</number>
+         <widget class="QFrame" name="logoHeader">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>120</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="topMargin">
+              <number>20</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <item>
+                <widget class="QFrame" name="labelLogo">
+                 <property name="minimumSize">
+                  <size>
+                   <width>110</width>
+                   <height>30</height>
+                  </size>
                  </property>
-                 <property name="rightMargin">
-                  <number>1</number>
+                 <property name="maximumSize">
+                  <size>
+                   <width>110</width>
+                   <height>30</height>
+                  </size>
                  </property>
-                 <item alignment="Qt::AlignRight">
-                  <widget class="QWidget" name="layoutSync" native="true">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>36</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>36</height>
-                    </size>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_9">
-                    <property name="leftMargin">
-                     <number>0</number>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_7">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <item>
+                <widget class="QFrame" name="innerframe">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <property name="spacing">
+                   <number>12</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>1</number>
+                  </property>
+                  <item alignment="Qt::AlignRight">
+                   <widget class="QWidget" name="layoutSync" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>36</height>
+                     </size>
                     </property>
-                    <property name="topMargin">
-                     <number>0</number>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>36</height>
+                     </size>
                     </property>
-                    <property name="rightMargin">
-                     <number>0</number>
+                    <layout class="QVBoxLayout" name="verticalLayout_9">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="ExpandableButton" name="pushButtonSync" native="true">
+                       <property name="minimumSize">
+                        <size>
+                         <width>36</width>
+                         <height>36</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>36</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="ExpandableButton" name="pushButtonMint" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>36</width>
+                      <height>36</height>
+                     </size>
                     </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="ExpandableButton" name="pushButtonStack" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>36</width>
+                      <height>36</height>
+                     </size>
                     </property>
-                    <item>
-                     <widget class="ExpandableButton" name="pushButtonSync" native="true">
-                      <property name="minimumSize">
-                       <size>
-                        <width>36</width>
-                        <height>36</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>36</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ExpandableButton" name="pushButtonMint" native="true">
-                   <property name="minimumSize">
-                    <size>
-                     <width>36</width>
-                     <height>36</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ExpandableButton" name="pushButtonStack" native="true">
-                   <property name="minimumSize">
-                    <size>
-                     <width>36</width>
-                     <height>36</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ExpandableButton" name="pushButtonConnection" native="true">
-                   <property name="minimumSize">
-                    <size>
-                     <width>36</width>
-                     <height>36</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ExpandableButton" name="pushButtonLock" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>36</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-         </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="ExpandableButton" name="pushButtonConnection" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>36</width>
+                      <height>36</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="ExpandableButton" name="pushButtonLock" native="true">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>36</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -305,7 +323,7 @@ margin:0px;</string>
              </spacer>
             </item>
             <item>
-             <widget class="QToolButton" name="btnDashboard">
+             <widget class="QPushButton" name="btnDashboard">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -318,13 +336,30 @@ margin:0px;</string>
                 <height>0</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 8px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
+              </property>
               <property name="text">
-               <string/>
+               <string>Home</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>16</width>
+                <height>16</height>
                </size>
               </property>
               <property name="checkable">
@@ -339,7 +374,7 @@ margin:0px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="btnSend">
+             <widget class="QPushButton" name="btnSend">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -352,13 +387,30 @@ margin:0px;</string>
                 <height>0</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 6px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
+              </property>
               <property name="text">
-               <string/>
+               <string>Send</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>16</width>
+                <height>16</height>
                </size>
               </property>
               <property name="checkable">
@@ -370,7 +422,7 @@ margin:0px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="btnReceive">
+             <widget class="QPushButton" name="btnReceive">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -383,69 +435,30 @@ margin:0px;</string>
                 <height>0</height>
                </size>
               </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="autoExclusive">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="btnHistory">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 6px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
               </property>
               <property name="text">
-               <string/>
+               <string>Receive</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
-                <height>32</height>
-               </size>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="autoExclusive">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="btnCharts">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>32</width>
-                <height>32</height>
+                <width>16</width>
+                <height>16</height>
                </size>
               </property>
               <property name="checkable">
@@ -457,7 +470,7 @@ margin:0px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="btnAddress">
+             <widget class="QPushButton" name="btnHistory">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -470,13 +483,30 @@ margin:0px;</string>
                 <height>0</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 6px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
+              </property>
               <property name="text">
-               <string/>
+               <string>History</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>16</width>
+                <height>16</height>
                </size>
               </property>
               <property name="checkable">
@@ -488,7 +518,7 @@ margin:0px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="btnMaster">
+             <widget class="QPushButton" name="btnCharts">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -501,13 +531,30 @@ margin:0px;</string>
                 <height>0</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 6px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
+              </property>
               <property name="text">
-               <string/>
+               <string>Staking</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>16</width>
+                <height>16</height>
                </size>
               </property>
               <property name="checkable">
@@ -519,7 +566,7 @@ margin:0px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="btnSettings">
+             <widget class="QPushButton" name="btnAddress">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -532,13 +579,126 @@ margin:0px;</string>
                 <height>0</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 6px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
+              </property>
               <property name="text">
-               <string/>
+               <string>Contacts</string>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnMaster">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 6px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
+              </property>
+              <property name="text">
+               <string>Masternodes</string>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSettings">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    color: white;
+    font-size:16px;
+    padding: 2px 6px;
+    border-bottom: 3px solid rgb(0, 0, 0, 0);
+}
+QPushButton:hover {
+    color: white;
+    border-bottom: 3px solid #3DE4CD;
+}
+
+QPushButton:checked {
+    color: #3DE4CD;
+    border-bottom: 3px solid #3DE4CD;
+}</string>
+              </property>
+              <property name="text">
+               <string>Settings</string>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
                </size>
               </property>
               <property name="checkable">
