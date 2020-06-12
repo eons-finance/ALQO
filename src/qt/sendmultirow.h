@@ -53,6 +53,7 @@ public:
     QRect getEditLineRect();
     int getEditHeight();
     int getEditWidth();
+    QPoint getEditPos();
     int getMenuBtnWidth();
 
 public slots:

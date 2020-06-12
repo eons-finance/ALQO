@@ -28,7 +28,7 @@
 #include "util.h"
 
 #define BASE_WINDOW_WIDTH 1200
-#define BASE_WINDOW_HEIGHT 720
+#define BASE_WINDOW_HEIGHT 800
 
 
 const QString ALQOGUI::DEFAULT_WALLET = "~Default";
@@ -120,6 +120,7 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         stackedContainer->setSizePolicy(sizePolicy);
         stackedContainer->setContentsMargins(0,200,0,0);
         baseScreensContainer->addWidget(stackedContainer);
+        stackedContainer->setSpeed(300);
 
         // Init
         dashboard = new DashboardWidget(this);
@@ -134,9 +135,9 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         // Add to parent
         stackedContainer->addWidget(dashboard);
         stackedContainer->addWidget(sendWidget);
-        stackedContainer->addWidget(chartsWidget);
         stackedContainer->addWidget(receiveWidget);
         stackedContainer->addWidget(historyWidget);
+        stackedContainer->addWidget(chartsWidget);
         stackedContainer->addWidget(addressesWidget);
         stackedContainer->addWidget(masterNodesWidget);
         stackedContainer->addWidget(settingsWidget);
@@ -462,7 +463,7 @@ void ALQOGUI::detectShutdown() {
 
 void ALQOGUI::goToDashboard(){
     if(stackedContainer->currentWidget() != dashboard){
-        stackedContainer->slideInWgt(dashboard, QSlideStackedWidget::RIGHT2LEFT);
+        stackedContainer->slideInWgt(dashboard, QSlideStackedWidget::LEFT2RIGHT);
     }
 }
 
@@ -497,8 +498,10 @@ void ALQOGUI::goToCharts(){
 }
 
 void ALQOGUI::showTop(QWidget* view){
-    if(stackedContainer->currentWidget() != view){
-        stackedContainer->slideInWgt(view, QSlideStackedWidget::RIGHT2LEFT);
+    int newIndex = stackedContainer->indexOf(view);
+    int oldIndex = stackedContainer->currentIndex();
+    if(newIndex != oldIndex){
+        stackedContainer->slideInIdx(newIndex, (newIndex > oldIndex ? QSlideStackedWidget::RIGHT2LEFT : QSlideStackedWidget::LEFT2RIGHT));
        // topBar->showTop();
     }
 }

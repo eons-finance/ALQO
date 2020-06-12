@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>902</width>
-    <height>641</height>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,46 +16,6 @@
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelTitle">
-         <property name="styleSheet">
-          <string notr="true">color:white;</string>
-         </property>
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt; color:#ffffff;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
      <item>
       <spacer name="verticalSpacer">
        <property name="orientation">
@@ -71,6 +31,9 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <spacer name="horizontalSpacer_4">
          <property name="orientation">
@@ -87,9 +50,47 @@
        <item>
         <widget class="QFrame" name="verticalFrame">
          <property name="styleSheet">
-          <string notr="true">QLabel{ border: 2px solid white; border-radius: 15px; background-color: transparent; color:white;}QPushButton{color:white; text-align:center;}</string>
+          <string notr="true">QFrame#verticalFrame {
+   background: rgba(26, 29, 49, 0.8);
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
+}
+QLabel {
+color: white;
+font-size:20px;
+}
+QPushButton {
+color: #3de4cd;
+border: none;
+padding: 10px 30px;
+font-size: 16px;
+}
+QPushButton:hover{
+border: 1px solid #3de4cd;
+}
+
+QPushButton:checked
+{
+	color: #1a1d31;
+background-color: #3de4cd;
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_10">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QLabel" name="label">
             <property name="sizePolicy">
@@ -101,17 +102,19 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>50</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">text-align:center;</string>
+             <string notr="true">text-align:center;
+background: transparent;
+font-weight: 800;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Wallet Data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -129,14 +132,17 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Wallet</string>
@@ -144,8 +150,11 @@
             <property name="checkable">
              <bool>true</bool>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -160,13 +169,13 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -176,7 +185,7 @@
              <bool>true</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -191,13 +200,13 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -207,7 +216,7 @@
              <bool>true</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -222,14 +231,17 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Sign/Verify Message</string>
@@ -238,7 +250,7 @@
              <bool>true</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -253,17 +265,19 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>50</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">text-align:center;</string>
+             <string notr="true">text-align:center;
+background: transparent;
+font-weight: 800;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -281,14 +295,17 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Main</string>
@@ -300,7 +317,7 @@
              <bool>false</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -315,13 +332,13 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -331,7 +348,7 @@
              <bool>true</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -346,13 +363,13 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -362,7 +379,7 @@
              <bool>true</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -377,13 +394,13 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -396,7 +413,7 @@
              <bool>false</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -411,13 +428,13 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -427,7 +444,7 @@
              <bool>true</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -442,13 +459,13 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -458,7 +475,7 @@
              <bool>true</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -473,14 +490,33 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>32</height>
+              <height>16777215</height>
              </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">
+QPushButton {
+color: #3de4cd;
+border: none;
+border-bottom-left-radius: 20px;
+padding: 10px 30px;
+font-size: 16px;
+}
+QPushButton:hover{
+border: 1px solid #3de4cd;
+}
+
+QPushButton:checked
+{
+	color: #1a1d31;
+background-color: #3de4cd;
+}</string>
             </property>
             <property name="text">
              <string>About ALQO</string>
@@ -489,7 +525,7 @@
              <bool>false</bool>
             </property>
             <property name="autoExclusive">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -497,18 +533,48 @@
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QStackedWidget" name="stackedWidgetContainer">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QWidget" name="stackedContainer" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="leftMargin">
+           <number>15</number>
+          </property>
+          <property name="topMargin">
+           <number>15</number>
+          </property>
+          <property name="rightMargin">
+           <number>15</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QSlideStackedWidget" name="stackedWidgetContainer">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
        </item>
        <item>
         <spacer name="horizontalSpacer">
@@ -529,6 +595,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QSlideStackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>qt/qslidestakingwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

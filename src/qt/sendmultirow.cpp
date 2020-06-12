@@ -17,7 +17,7 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     iconNumber(new QPushButton())
 {
     ui->setupUi(this);
-    this->setStyleSheet(parent->styleSheet());
+    //this->setStyleSheet(parent->styleSheet());
 
     ui->lineEditAddress->setPlaceholderText(QString("  ") + " Type/Paste Address");
     setCssProperty(ui->lineEditAddress, "edit-primary-multi-book");
@@ -210,7 +210,11 @@ QRect SendMultiRow::getEditLineRect(){
 }
 
 int SendMultiRow::getEditHeight(){
-    //return ui->stackedAddress->height();
+    return ui->lineEditAddress->height();
+}
+
+QPoint SendMultiRow::getEditPos() {
+    return ui->lineEditAddress->pos();
 }
 
 int SendMultiRow::getEditWidth(){
@@ -223,6 +227,7 @@ int SendMultiRow::getNumber(){
 
 void SendMultiRow::setAddress(const QString& address) {
     ui->lineEditAddress->setText(address);
+    ui->lineEditAddress->setCursorPosition(0);
     ui->lineEditAmount->setFocus();
 }
 

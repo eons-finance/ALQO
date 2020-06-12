@@ -7,7 +7,8 @@
 #include "transactiontablemodel.h"
 #include <QModelIndex>
 
-#define ADDRESS_SIZE 5
+#define ADDRESSLEFT_SIZE 10
+#define ADDRESSRIGHT_SIZE 5
 
 QWidget* TxViewHolder::createHolder(int pos){
     if (!txRow) txRow = new TxRow();
@@ -33,7 +34,7 @@ void TxViewHolder::init(QWidget* holder,const QModelIndex &index, bool isHovered
             type != TransactionRecord::Other){
         QString address = rIndex.data(Qt::DisplayRole).toString();
         if(address.length() > 20) {
-            address = address.left(ADDRESS_SIZE) + "..." + address.right(ADDRESS_SIZE);
+            address = address.left(ADDRESSLEFT_SIZE) + "..." + address.right(ADDRESSRIGHT_SIZE);
         }
         label += address;
     } else if (type == TransactionRecord::Other) {

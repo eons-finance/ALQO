@@ -86,7 +86,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
 //    ui->lineEditContact->setPlaceholderText(QString("  ") + " Select Contact");
 //    setCssProperty(ui->lineEditContact, "edit-primary-multi-book-sm");
 
-    ui->labelSendAddress->setVisible(false);
+    //ui->labelSendAddress->setVisible(false);
     setCssProperty(ui->labelSendAddress, "dash-label-sm");
     ui->sendpagebtn->setChecked(true);
 
@@ -135,7 +135,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
 
     connect(ui->sendpagebtn, SIGNAL(clicked()), this, SLOT(showSend()));
     connect(ui->receivepagebtn, SIGNAL(clicked()), this, SLOT(showReceive()));
-
+    ui->stackedWidget->setSpeed(350);
 //    connect(ui->lineEditContact, SIGNAL(clicked()), this, SLOT(onContactsClicked()));
 //    connect(btnContact, &QAction::triggered, [this](){emit onContactsClicked();});
 
@@ -448,15 +448,15 @@ void DashboardWidget::showSend(){
     if(ui->stackedWidget->currentIndex() != 0){
 		ui->receivepagebtn->setChecked(false);
 		ui->sendpagebtn->setChecked(true);
-        ui->stackedWidget->setCurrentIndex(0);
+        ui->stackedWidget->slideInIdx(0, QSlideStackedWidget::LEFT2RIGHT);
     }
 }
 
 void DashboardWidget::showReceive(){
     if(ui->stackedWidget->currentIndex() != 1){
 		ui->sendpagebtn->setChecked(false);
-		ui->receivepagebtn->setChecked(true);
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->receivepagebtn->setChecked(true);
+        ui->stackedWidget->slideInIdx(1, QSlideStackedWidget::RIGHT2LEFT);
     }
 }
 
@@ -498,6 +498,8 @@ void DashboardWidget::loadContacts(){
 	for(i = strings.begin(); i != strings.end(); i++)
 	{
 		buttons[j] = new QPushButton();
+        buttons[j]->setCheckable(true);
+        buttons[j]->setAutoExclusive(true);
 		buttons[j]->setProperty("name", i.value());
         buttons[j]->setText(i.key());
         setCssProperty(buttons[j], "dash-btn-contact");

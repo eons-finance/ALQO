@@ -88,10 +88,12 @@
               <item>
                <widget class="QLabel" name="labelTitle">
                 <property name="styleSheet">
-                 <string notr="true">color:white;</string>
+                 <string notr="true">font-size:48px;
+color:white;
+</string>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt; color:#ffffff;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>Masternodes</string>
                 </property>
                </widget>
               </item>

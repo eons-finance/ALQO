@@ -33,33 +33,13 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     ui->verticalLayout->setAlignment(Qt::AlignTop);
     
     //setCssProperty(ui->scrollArea, "dash-frame");
-    //setCssProperty(ui->stackedWidgetContainer, "dash-frame");
+   // setCssProperty(ui->stackedWidgetContainer, "dash-frame");
 
     /* Light Font */
     //QFont fontLight;
     //fontLight.setWeight(QFont::Light);
 
     /* Title */
-    ui->labelTitle->setText("Settings");
-    //setCssProperty(ui->labelTitle, "text-title-screen");
-    //ui->labelTitle->setFont(fontLight);
-
-    setCssProperty(ui->pushButtonBackup, "btn-settings-options");
-    setCssProperty(ui->pushButtonMultisend, "btn-settings-options");
-
-    setCssProperty(ui->pushButtonBip38, "btn-settings-options");
-    setCssProperty(ui->pushButtonSignVerify, "btn-settings-options");
-
-    setCssProperty(ui->pushButtonMain, "btn-settings-options");
-    setCssProperty(ui->pushButtonWallet, "btn-settings-options");
-    setCssProperty(ui->pushButtonDisplay, "btn-settings-options");
-
-    setCssProperty(ui->pushButtonInformation, "btn-settings-options");
-    setCssProperty(ui->pushButtonConsole, "btn-settings-options");
-    setCssProperty(ui->pushButtonRepair, "btn-settings-options");
-
-    setCssProperty(ui->pushButtonHelp, "btn-settings-options");
-
     options = {
         ui->pushButtonBackup,
         ui->pushButtonMultisend,
@@ -212,44 +192,44 @@ void SettingsWidget::onSaveOptionsClicked(){
 }
 
 void SettingsWidget::onBackupWalletClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsBackupWallet);
+    ui->stackedWidgetContainer->slideInWgt(settingsBackupWallet, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonBackup);
 }
 
 void SettingsWidget::onSignMessageClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsSingMessageWidgets);
+    ui->stackedWidgetContainer->slideInWgt(settingsSingMessageWidgets, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonSignVerify);
 }
 
 void SettingsWidget::onBipToolClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsBitToolWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsBitToolWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonBip38);
 }
 
 void SettingsWidget::onMultisendClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsMultisendWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsMultisendWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonMultisend);
 }
 
 
 void SettingsWidget::onMainOptionsClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsMainOptionsWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsMainOptionsWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonMain);
 }
 
 void SettingsWidget::onWalletOptionsClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsWalletOptionsWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsWalletOptionsWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonWallet);
 }
 
 void SettingsWidget::onDisplayOptionsClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsDisplayOptionsWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsDisplayOptionsWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonDisplay);
 }
 
 
 void SettingsWidget::onInformationClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsInformationWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsInformationWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonInformation);
 }
 
@@ -259,12 +239,12 @@ void SettingsWidget::showDebugConsole(){
 }
 
 void SettingsWidget::onDebugConsoleClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsConsoleWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsConsoleWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonConsole);
 }
 
 void SettingsWidget::onWalletRepairClicked() {
-    ui->stackedWidgetContainer->setCurrentWidget(settingsWalletRepairWidget);
+    ui->stackedWidgetContainer->slideInWgt(settingsWalletRepairWidget, QSlideStackedWidget::LEFT2RIGHT);
     selectOption(ui->pushButtonRepair);
 }
 

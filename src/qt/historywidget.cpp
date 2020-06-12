@@ -25,7 +25,6 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
     this->setStyleSheet(parent->styleSheet());
 
     QFont fonttitle = ui->labelTitle->font();
-    fonttitle.setWeight(QFont::Bold);
 	fonttitle.setPointSize(48);
 	ui->labelTitle->setFont(fonttitle);
 

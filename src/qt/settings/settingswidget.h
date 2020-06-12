@@ -17,7 +17,6 @@
 #include "qt/settings/settingsmultisendwidget.h"
 #include "qt/settings/settingsinformationwidget.h"
 #include "qt/settings/settingsconsolewidget.h"
-
 class ALQOGUI;
 
 QT_BEGIN_NAMESPACE

@@ -45,7 +45,7 @@
             <string notr="true">color:white;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;RECEIVE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;Receive&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -240,6 +240,14 @@
                     <height>0</height>
                    </size>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">    border:  1px solid #0f0f1f;
+    background-color: #0f0f1f;
+    font-size: 15px;
+    border-radius: 6px;
+    padding: 8px;
+    color: #3de4cd;</string>
+                  </property>
                   <property name="text">
                    <string>No address</string>
                   </property>
@@ -342,6 +350,21 @@
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item alignment="Qt::AlignHCenter">
             <widget class="QPushButton" name="pushButtonLabel">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+color: #3de4cd;
+border: 1px solid #3de4cd;
+border-radius: 6px;
+background-color:  rgb(26, 29, 49);
+padding: 7px 15px;
+font-size: 13px;
+}
+QPushButton:hover{
+	color: #1a1d31;
+background-color: #3de4cd;
+}
+</string>
+             </property>
              <property name="text">
               <string>Add Label</string>
              </property>
@@ -349,6 +372,21 @@
            </item>
            <item alignment="Qt::AlignHCenter">
             <widget class="QPushButton" name="pushButtonNewAddress">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+color: #3de4cd;
+border: 1px solid #3de4cd;
+border-radius: 6px;
+background-color:  rgb(26, 29, 49);
+padding: 7px 15px;
+font-size: 13px;
+}
+QPushButton:hover{
+	color: #1a1d31;
+background-color: #3de4cd;
+}
+</string>
+             </property>
              <property name="text">
               <string>Generate</string>
              </property>
@@ -356,6 +394,21 @@
            </item>
            <item>
             <widget class="QPushButton" name="btnRequest">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+color: #3de4cd;
+border: 1px solid #3de4cd;
+border-radius: 6px;
+background-color:  rgb(26, 29, 49);
+padding: 7px 15px;
+font-size: 13px;
+}
+QPushButton:hover{
+	color: #1a1d31;
+background-color: #3de4cd;
+}
+</string>
+             </property>
              <property name="text">
               <string>PushButton</string>
              </property>
@@ -363,6 +416,21 @@
            </item>
            <item alignment="Qt::AlignHCenter">
             <widget class="QPushButton" name="pushButtonCopy">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+color: #3de4cd;
+border: 1px solid #3de4cd;
+border-radius: 6px;
+background-color:  rgb(26, 29, 49);
+padding: 7px 15px;
+font-size: 13px;
+}
+QPushButton:hover{
+	color: #1a1d31;
+background-color: #3de4cd;
+}
+</string>
+             </property>
              <property name="text">
               <string>Copy</string>
              </property>
@@ -427,6 +495,21 @@
              <height>50</height>
             </size>
            </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+color: #3de4cd;
+border: 1px solid #3de4cd;
+border-radius: 6px;
+background-color:  rgb(26, 29, 49);
+padding: 8px 30px;
+font-size: 20px;
+}
+QPushButton:hover{
+	color: #1a1d31;
+background-color: #3de4cd;
+}
+</string>
+           </property>
            <property name="text">
             <string>PushButton</string>
            </property>
@@ -463,7 +546,47 @@
       </layout>
      </item>
      <item>
-      <widget class="QListView" name="listViewAddress"/>
+      <widget class="QFrame" name="frame">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame#frame{
+border-radius: 20px;
+background-color: rgba(26, 29, 49, 0.8)
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="topMargin">
+         <number>10</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <property name="bottomMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QListView" name="listViewAddress">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
     </layout>
    </item>
