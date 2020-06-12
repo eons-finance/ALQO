@@ -101,7 +101,7 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
             path = "://ic-transaction-sent";
             css = "text-list-amount-send";
             txtype = "Sent";
-            color = "#505BB9";
+            color = "#ff0000";
             break;
         case TransactionRecord::SendToSelf:
             path = "://ic-transaction-mint";

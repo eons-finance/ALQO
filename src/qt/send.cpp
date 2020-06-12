@@ -19,16 +19,16 @@
 #include "zpiv/deterministicmint.h"
 #include "openuridialog.h"
 #include "zpivcontroldialog.h"
-#include <QDebug>
+#include <QScrollBar>
+
 SendWidget::SendWidget(ALQOGUI* parent) :
     PWidget(parent),
     ui(new Ui::send)
 {
     ui->setupUi(this);
 
-    //this->setStyleSheet(parent->styleSheet());
+    this->setStyleSheet(parent->styleSheet());
     setCssProperty(ui->advframe, "dash-frame");
-    //setCssProperty(ui->scrollArea, "dash-frame");
         
     /* Light Font */
     //QFont fontLight;
@@ -40,12 +40,6 @@ SendWidget::SendWidget(ALQOGUI* parent) :
 
     ui->pushButtonClear->setText(tr("Clear all"));
     setCssProperty(ui->pushButtonClear, "btn-primary-sm");
-
-	QPixmap pixmap("://ic-add");
-	QIcon ButtonIcon(pixmap);
-
-    ui->pushButtonAddRecipient->setIcon(ButtonIcon);
-    setCssProperty(ui->pushButtonAddRecipient, "drk-btn");
 
     setCssBtnSecondary(ui->pushButtonSave);
 
@@ -94,14 +88,12 @@ SendWidget::SendWidget(ALQOGUI* parent) :
 
     // Entry
     addEntry();
-
 }
 
 void SendWidget::refreshView(){
     QString btnText;
         btnText = tr("SEND");
     ui->pushButtonSave->setText(btnText);
-
     refreshAmounts();
 }
 
@@ -606,14 +598,8 @@ void SendWidget::onContactsClicked(SendMultiRow* entry){
     menuContacts->adjustSize();
 
     QPoint pos;
-    if (entries.size() > 1){
-        pos = entry->pos();
-        pos.setY((pos.y() + (focusedEntry->getEditHeight() - 12) * 4));
-    } else {
-        pos = focusedEntry->getEditLineRect().bottomLeft();
-        pos.setY((pos.y() - (focusedEntry->getEditHeight() - 12) * 11));
-    }
-    pos.setX(pos.x() + focusedEntry->getEditWidth() + 20);
+    pos.setY(ui->scrollArea->pos().y() + focusedEntry->pos().y() + focusedEntry->getEditPos().y() + focusedEntry->getEditHeight() + 9 - ui->scrollArea->verticalScrollBar()->value());
+    pos.setX(ui->scrollArea->pos().x() + focusedEntry->pos().x() + focusedEntry->getEditPos().x());
     menuContacts->move(pos);
     menuContacts->show();
 }

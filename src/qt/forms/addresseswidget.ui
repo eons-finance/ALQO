@@ -76,7 +76,8 @@
          <item>
           <widget class="QLabel" name="label">
            <property name="styleSheet">
-            <string notr="true">color:white;</string>
+            <string notr="true">color:white;
+margin-left:10px;</string>
            </property>
            <property name="text">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Add New Contact&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -180,6 +181,21 @@
                <height>50</height>
               </size>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+color: #3de4cd;
+border: 1px solid #3de4cd;
+border-radius: 10px;
+background-color:  rgb(26, 29, 49);
+padding: 8px 30px;
+font-size: 20px;
+}
+QPushButton:hover{
+	color: #1a1d31;
+background-color: #3de4cd;
+}
+</string>
+             </property>
              <property name="text">
               <string>OK</string>
              </property>
@@ -218,7 +234,8 @@
            <item>
             <widget class="QLabel" name="label_3">
              <property name="styleSheet">
-              <string notr="true">color:white;</string>
+              <string notr="true">color:white;
+margin-left:10px;</string>
              </property>
              <property name="text">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Existing Contacts&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

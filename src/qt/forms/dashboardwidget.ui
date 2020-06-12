@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>970</width>
-    <height>483</height>
+    <height>513</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -39,8 +39,29 @@
        </item>
        <item>
         <widget class="QLabel" name="labelAmountPiv">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;0.000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">color: white;
+font-size: 30px;
+padding-bottom: 1px;</string>
+         </property>
+         <property name="text">
+          <string>XLQ</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+         </property>
+         <property name="margin">
+          <number>0</number>
          </property>
         </widget>
        </item>
@@ -158,7 +179,7 @@
              </layout>
             </item>
             <item>
-             <widget class="QStackedWidget" name="stackedWidget">
+             <widget class="QSlideStackedWidget" name="stackedWidget">
               <property name="currentIndex">
                <number>0</number>
               </property>
@@ -225,7 +246,7 @@
                   <item>
                    <widget class="QLabel" name="labelSendAddress">
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; color:#ffffff;&quot;&gt;AA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string/>
                     </property>
                    </widget>
                   </item>
@@ -356,6 +377,9 @@ background-color: #3de4cd;
               </widget>
               <widget class="QWidget" name="receive">
                <layout class="QVBoxLayout" name="verticalLayout_7">
+                <property name="topMargin">
+                 <number>9</number>
+                </property>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_9">
                   <item>
@@ -370,23 +394,26 @@ background-color: #3de4cd;
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>140</width>
-                        <height>140</height>
+                        <width>100</width>
+                        <height>100</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>140</width>
-                        <height>140</height>
+                        <width>100</width>
+                        <height>100</height>
                        </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border:1px solid red;</string>
                       </property>
                       <property name="text">
                        <string/>
                       </property>
                       <property name="iconSize">
                        <size>
-                        <width>70</width>
-                        <height>70</height>
+                        <width>100</width>
+                        <height>100</height>
                        </size>
                       </property>
                      </widget>
@@ -414,6 +441,19 @@ background-color: #3de4cd;
                      <set>Qt::AlignCenter</set>
                     </property>
                    </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_9">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
                   </item>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -669,7 +709,7 @@ background-color: #3de4cd;
                    <string notr="true"/>
                   </property>
                   <property name="text">
-                   <string>USD/XQL</string>
+                   <string>USD/XLQ</string>
                   </property>
                  </widget>
                 </item>
@@ -706,7 +746,7 @@ background-color: #3de4cd;
                    <string notr="true"/>
                   </property>
                   <property name="text">
-                   <string>BTC/XQL</string>
+                   <string>BTC/XLQ</string>
                   </property>
                  </widget>
                 </item>
@@ -855,6 +895,14 @@ background-color: #3de4cd;
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QSlideStackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>qt/qslidestakingwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

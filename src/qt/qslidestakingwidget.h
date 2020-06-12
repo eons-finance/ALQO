@@ -1,4 +1,5 @@
-
+#ifndef QSLIDESTAKEDWIDGET_H
+#define QSLIDESTAKEDWIDGET_H
 #include <QWidget>
 #include <QStackedWidget>
 #include <QEasingCurve>
@@ -41,4 +42,4 @@ protected:
     bool m_active;
     QList<QWidget*> blockedPageList;
 };
-
+#endif

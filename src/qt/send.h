@@ -41,6 +41,7 @@ public:
 
     void loadClientModel() override;
     void loadWalletModel() override;
+    void UpdateAddButtonPos();
 
 signals:
     /** Signal raised when a URI was entered or dragged to the GUI */

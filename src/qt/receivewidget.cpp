@@ -71,7 +71,7 @@ ReceiveWidget::ReceiveWidget(ALQOGUI* parent) :
     setCssProperty(ui->pushButtonCopy, "btn-secundary-copy");
 
     // List Addresses
-    setCssProperty(ui->listViewAddress, "container");
+    setCssProperty(ui->listViewAddress, "container-list-address");
     ui->listViewAddress->setItemDelegate(delegate);
     ui->listViewAddress->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listViewAddress->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
@@ -80,7 +80,7 @@ ReceiveWidget::ReceiveWidget(ALQOGUI* parent) :
 
     spacer = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Expanding);
     ui->btnMyAddresses->setChecked(true);
-    ui->listViewAddress->setVisible(false);
+    ui->frame->setVisible(false);
 
     // Connect
     connect(ui->pushButtonLabel, SIGNAL(clicked()), this, SLOT(onLabelClicked()));
@@ -226,10 +226,10 @@ void ReceiveWidget::onRequestClicked(){
 void ReceiveWidget::onMyAddressesClicked(){
     bool isVisible = ui->listViewAddress->isVisible();
     if(!isVisible){
-        ui->listViewAddress->setVisible(true);
+        ui->frame->setVisible(true);
         ui->listViewAddress->update();
     }else{
-        ui->listViewAddress->setVisible(false);
+        ui->frame->setVisible(false);
     }
 }
 
