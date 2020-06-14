@@ -59,9 +59,12 @@ bool openDialogWithOpaqueBackgroundY(QDialog *widget, ALQOGUI *gui, double posX,
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
     QPropertyAnimation* animation = new QPropertyAnimation(widget, "pos");
     animation->setDuration(300);
-    int xPos = gui->width() / posX ;
+    //int xPos = gui->width() / posX ;
+    int xPos = (gui->width() - widget->width()) / 2;
+
     animation->setStartValue(QPoint(xPos, gui->height()));
-    animation->setEndValue(QPoint(xPos, gui->height() / posY));//- (gui->height()) / posY  ));
+    //animation->setEndValue(QPoint(xPos, gui->height() / posY));//- (gui->height()) / posY  ));
+    animation->setEndValue(QPoint(xPos, (gui->height() - widget->height()) /2 ));
     animation->setEasingCurve(QEasingCurve::OutQuad);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
     widget->activateWindow();
@@ -261,8 +264,16 @@ void setCssTextBodyDialog(std::initializer_list<QWidget*> args){
     foreach (QWidget* w, args) { setCssTextBodyDialog(w); }
 }
 
-void setCssTextBodyDialog(QWidget* widget) {
+void setCssTextLabelDialog(std::initializer_list<QWidget*> args){
+    foreach (QWidget* w, args) { setCssTextLabelDialog(w); }
+}
+
+void setCssTextLabelDialog(QWidget* widget) {
     setCssProperty(widget, "text-body1-dialog", false);
+}
+
+void setCssTextBodyDialog(QWidget* widget) {
+    setCssProperty(widget, "text-body2-dialog", false);
 }
 
 void setCssTitleScreen(QLabel* label) {

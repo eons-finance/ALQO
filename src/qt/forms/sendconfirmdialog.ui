@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>574</width>
-    <height>680</height>
+    <width>597</width>
+    <height>665</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -146,6 +146,24 @@
        </layout>
       </item>
       <item>
+       <widget class="QLabel" name="labelDivider9">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>2</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#3de4cd;
+margin-left: 15px;
+margin-right: 15px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -202,9 +220,9 @@ background:transparent;
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>-178</y>
-              <width>556</width>
-              <height>680</height>
+              <y>0</y>
+              <width>579</width>
+              <height>652</height>
              </rect>
             </property>
             <property name="autoFillBackground">
@@ -301,22 +319,6 @@ background:transparent;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelDivider9">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>1</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QWidget" name="contentOutputs" native="true">
                   <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,3,0">
                    <property name="spacing">
@@ -394,7 +396,7 @@ background:transparent;
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>522</width>
+                     <width>545</width>
                      <height>48</height>
                     </rect>
                    </property>
@@ -407,7 +409,7 @@ background:transparent;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelDivider8">
+                 <widget class="QLabel" name="labelDivider6">
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
@@ -415,7 +417,7 @@ background:transparent;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
+                   <string notr="true">background-color:#fff;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -449,22 +451,6 @@ background:transparent;
                     </widget>
                    </item>
                   </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelDivider6">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>1</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
                  </widget>
                 </item>
                 <item>
@@ -563,22 +549,6 @@ background:transparent;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelDivider1">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>1</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QWidget" name="contentFee" native="true">
                   <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="0,1">
                    <property name="leftMargin">
@@ -616,7 +586,7 @@ background:transparent;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
+                   <string notr="true">background-color:#fff;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -661,7 +631,7 @@ background:transparent;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
+                   <string notr="true">background-color:#fff;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -706,7 +676,7 @@ background:transparent;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
+                   <string notr="true">background-color:#fff;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -740,22 +710,6 @@ background:transparent;
                     </widget>
                    </item>
                   </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelDivider3">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>1</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
                  </widget>
                 </item>
                 <item>
@@ -796,7 +750,7 @@ background:transparent;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color:#bababa;</string>
+                   <string notr="true">background-color:#fff;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -870,7 +824,13 @@ background:transparent;
       </item>
       <item>
        <widget class="QWidget" name="containerButtons" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout1" stretch="1,2,2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout1" stretch="0,0,0">
          <property name="leftMargin">
           <number>10</number>
          </property>
@@ -892,10 +852,22 @@ background:transparent;
          </item>
          <item>
           <widget class="QPushButton" name="btnCancel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>200</width>
-             <height>50</height>
+             <width>150</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
             </size>
            </property>
            <property name="text">
@@ -905,10 +877,22 @@ background:transparent;
          </item>
          <item>
           <widget class="QPushButton" name="btnSave">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>200</width>
-             <height>50</height>
+             <width>150</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
             </size>
            </property>
            <property name="text">

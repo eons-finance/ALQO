@@ -313,5 +313,8 @@
         <file alias="staking_off">res/img/staking_off.png</file>
         <file alias="ALQO_WALLET_BG_4x">res/img/ALQO-Wallet-BG@4x.png</file>
         <file alias="alqo_logo">res/img/alqo_logo.png</file>
+        <file alias="ic-delete">res/img/ic-delete.svg</file>
+        <file alias="ic-edit">res/img/ic-edit.svg</file>
+        <file alias="ic-delete-sm">res/img/ic-delete-sm.png</file>
     </qresource>
 </RCC>

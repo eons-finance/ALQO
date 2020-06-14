@@ -8,6 +8,7 @@
 #include <QWidget>
 #include <QPushButton>
 
+#include "qt/sendconfirmdialog.h"
 #include "qt/pwidget.h"
 #include "qt/contactsdropdown.h"
 #include "qt/sendmultirow.h"
@@ -54,6 +55,7 @@ public slots:
     void onOpenUriClicked();
     void onValueChanged();
     void refreshAmounts();
+    void windowResizeEvent(QResizeEvent* event);
     void changeTheme(bool isLightTheme, QString &theme) override;
 
 protected:
@@ -69,13 +71,12 @@ private slots:
     void clearAll();
     void refreshView();
     void onContactMultiClicked();
-    void onDeleteClicked();
+    void onDeleteClicked(SendMultiRow*);
     void onResetCustomOptions(bool fRefreshAmounts);
 private:
     Ui::send *ui;
     QPushButton *coinIcon;
     QPushButton *btnContacts;
-
     SendCustomFeeDialog* customFeeDialog = nullptr;
     bool isCustomFeeSelected = false;
 

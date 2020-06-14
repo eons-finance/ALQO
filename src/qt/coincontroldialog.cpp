@@ -96,6 +96,7 @@ CoinControlDialog::CoinControlDialog(QWidget* parent, bool fMultisigEnabled) : Q
     ui->pushButtonToggleLock->setProperty("cssClass", "btn-check");
 
     ui->pushButtonOk->setProperty("cssClass", "btn-primary");
+    ui->pushButtonCancel->setProperty("cssClass", "btn-primary");
 
     this->fMultisigEnabled = fMultisigEnabled;
 
@@ -144,6 +145,8 @@ CoinControlDialog::CoinControlDialog(QWidget* parent, bool fMultisigEnabled) : Q
     connect(clipboardPriorityAction, SIGNAL(triggered()), this, SLOT(clipboardPriority()));
     connect(clipboardLowOutputAction, SIGNAL(triggered()), this, SLOT(clipboardLowOutput()));
     connect(clipboardChangeAction, SIGNAL(triggered()), this, SLOT(clipboardChange()));
+
+    connect(ui->pushButtonCancel, SIGNAL(clicked()), this, SLOT(close()));
 
     ui->labelCoinControlQuantity->addAction(clipboardQuantityAction);
     ui->labelCoinControlAmount->addAction(clipboardAmountAction);

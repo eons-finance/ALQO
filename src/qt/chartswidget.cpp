@@ -38,7 +38,7 @@ ChartsWidget::ChartsWidget(ALQOGUI* parent) :
 
     setCssProperty(ui->labelChart, "legend-chart");
 
-    ui->labelAmountPiv->setText("0 ALQO");
+    ui->labelAmountPiv->setText("0 XLQ");
     setCssProperty(ui->labelAmountPiv, "text-stake-piv-disable");
 
     setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
@@ -386,7 +386,7 @@ void ChartsWidget::onChartRefreshed() {
         axisX->clear();
     }
     // init sets
-    set0 = new QBarSet("ALQO");
+    set0 = new QBarSet("XLQ");
     set1 = new QBarSet("");
     set0->setColor(QColor("#3DE4CD"));
     set0->setBorderColor(QColor("#3DE4CD"));
@@ -405,7 +405,6 @@ void ChartsWidget::onChartRefreshed() {
     // Total
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
     if (chartData->totalPiv > 0) {
-        setCssProperty(ui->labelAmountPiv, "text-stake-piv");
     } else {
         setCssProperty(ui->labelAmountPiv, "text-stake-piv-disable");
     }

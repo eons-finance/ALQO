@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>602</width>
-    <height>607</height>
+    <height>628</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,7 +54,7 @@
        <number>30</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>10</number>
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -286,6 +286,20 @@
                     <height>50</height>
                    </size>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit {
+    border:  1px solid #0f0f1f;
+    background-color: #0f0f1f;
+    font-size: 12px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding: 8px;
+    color: #3de4cd;
+}
+QLineEdit:focus {
+    border:  1px solid #3de4cd;
+}</string>
+                  </property>
                  </widget>
                 </item>
                 <item>
@@ -313,15 +327,20 @@
                     <number>0</number>
                    </property>
                    <property name="rightMargin">
-                    <number>10</number>
+                    <number>0</number>
                    </property>
                    <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="comboBoxCoin">
+                     <property name="styleSheet">
+                      <string notr="true">background: #3de4cd;
+color: rgb(26, 29, 49);
+font-size: 25px;</string>
+                     </property>
                      <property name="text">
-                      <string>PIV</string>
+                      <string>XLQ</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>

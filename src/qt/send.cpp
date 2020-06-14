@@ -8,7 +8,6 @@
 #include "qt/qtutils.h"
 #include "qt/sendchangeaddressdialog.h"
 #include "qt/optionbutton.h"
-#include "qt/sendconfirmdialog.h"
 #include "qt/myaddressrow.h"
 #include "qt/guitransactionsutils.h"
 #include "clientmodel.h"
@@ -74,6 +73,7 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     setCssProperty(ui->labelAmountRemaining, "text-body1");
 
     // Connect
+    //connect(parent, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
     connect(ui->pushButtonSave, SIGNAL(clicked()), this, SLOT(onSendClicked()));
     connect(ui->pushButtonAddRecipient, SIGNAL(clicked()), this, SLOT(onAddEntryClicked()));
     connect(ui->pushButtonClear, SIGNAL(clicked()), this, SLOT(clearAll()));
@@ -95,6 +95,10 @@ void SendWidget::refreshView(){
         btnText = tr("SEND");
     ui->pushButtonSave->setText(btnText);
     refreshAmounts();
+}
+
+void SendWidget::windowResizeEvent(QResizeEvent* event) {
+
 }
 
 void SendWidget::refreshAmounts() {
@@ -520,27 +524,28 @@ void SendWidget::onChangeCustomFeeClicked(){
 }
 
 void SendWidget::onCoinControlClicked(){
+    showHideOp(true);
     if(isPIV){
         if (walletModel->getBalance() > 0) {
             if (!coinControlDialog) {
-                coinControlDialog = new CoinControlDialog();
+                coinControlDialog = new CoinControlDialog(window);
                 coinControlDialog->setModel(walletModel);
             } else {
                 coinControlDialog->updateView();
             }
-            coinControlDialog->exec();
+            openDialogWithOpaqueBackgroundY(coinControlDialog, window);
             refreshAmounts();
         } else {
             inform(tr("You don't have any ALQO to select."));
         }
     }else{
         if (walletModel->getZerocoinBalance() > 0) {
-            ZPivControlDialog *zPivControl = new ZPivControlDialog(this);
+            ZPivControlDialog *zPivControl = new ZPivControlDialog(window);
             zPivControl->setModel(walletModel);
-            zPivControl->exec();
+            openDialogWithOpaqueBackgroundY(zPivControl, window);
             zPivControl->deleteLater();
         } else {
-            inform(tr("You don't have any zALQO in your balance to select."));
+            inform(tr("You don't have any ALQO in your balance to select."));
         }
     }
 }
@@ -671,19 +676,21 @@ void SendWidget::onContactMultiClicked(){
 
 }
 
-void SendWidget::onDeleteClicked(){
-    if (focusedEntry) {
-        focusedEntry->hide();
-        focusedEntry->deleteLater();
-        int entryNumber = focusedEntry->getNumber();
+void SendWidget::onDeleteClicked(SendMultiRow* selectedEntry){
+    if (selectedEntry) {
+        if (entries.size() == 1)
+            return;
+        selectedEntry->hide();
+        selectedEntry->deleteLater();
+        int entryNumber = selectedEntry->getNumber();
 
         // remove selected entry and update row number for the others
         QMutableListIterator<SendMultiRow*> it(entries);
         while (it.hasNext()) {
             SendMultiRow* entry = it.next();
-            if (focusedEntry == entry){
+            if (selectedEntry == entry){
                 it.remove();
-            } else if (focusedEntry && entry->getNumber() > entryNumber){
+            } else if (selectedEntry && entry->getNumber() > entryNumber){
                 entry->setNumber(entry->getNumber() - 1);
             }
         }
@@ -694,7 +701,7 @@ void SendWidget::onDeleteClicked(){
             sendMultiRow->showLabels();
         }
 
-        focusedEntry = nullptr;
+        selectedEntry = nullptr;
 
         // Update total amounts
         refreshAmounts();

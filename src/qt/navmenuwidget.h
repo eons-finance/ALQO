@@ -64,6 +64,7 @@ signals:
 private:
     Ui::NavMenuWidget *ui;
     ALQOGUI* window;
+    AskPassphraseDialog *dlg = nullptr;
     LockUnlock *lockUnlockWidget = nullptr;
     QList<QWidget*> btns;
     QPushButton* logoButton;

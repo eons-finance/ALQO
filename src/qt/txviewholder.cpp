@@ -24,7 +24,7 @@ void TxViewHolder::init(QWidget* holder,const QModelIndex &index, bool isHovered
     QDateTime date = rIndex.data(TransactionTableModel::DateRole).toDateTime();
     qint64 amount = rIndex.data(TransactionTableModel::AmountRole).toLongLong();
     QString amountText = BitcoinUnits::simpleFormat(nDisplayUnit, amount, true, BitcoinUnits::separatorAlways);
-    QModelIndex indexType = rIndex.sibling(rIndex.row(),TransactionTableModel::Type);
+    //QModelIndex indexType = rIndex.sibling(rIndex.row(),TransactionTableModel::Type);
     QString label ;//= indexType.data(Qt::DisplayRole).toString();
     int type = rIndex.data(TransactionTableModel::TypeRole).toInt();
 

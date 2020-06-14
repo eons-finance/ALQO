@@ -19,6 +19,7 @@
 #include <QMap>
 #include <QPushButton>
 
+#include "qt/sendconfirmdialog.h"
 #if defined(HAVE_CONFIG_H)
 #include "config/alqo-config.h" /* for USE_QTCHARTS */
 #endif
@@ -68,6 +69,7 @@ public:
 
     void loadWalletModel() override;
     void run(int type) override;
+    void UpdateTxDialogPos();
     void onError(QString error, int type) override;
 
 public slots:
@@ -103,6 +105,7 @@ private slots:
     void onContactsClicked();
     void loadContacts();
     void SetExchangeInfoTextLabels();
+    void windowResizeEvent(QResizeEvent* event);
     
 private:
     Ui::DashboardWidget *ui;
