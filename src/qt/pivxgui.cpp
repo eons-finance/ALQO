@@ -15,7 +15,6 @@
 #include "notificator.h"
 #include "guiinterface.h"
 #include "qt/qtutils.h"
-#include "qt/defaultdialog.h"
 #include "qt/settings/settingsfaqwidget.h"
 
 #include <QHBoxLayout>
@@ -524,6 +523,9 @@ void ALQOGUI::resizeEvent(QResizeEvent* event){
     // background
     showHide(opEnabled);
     // Notify
+//    if (dialog) {
+//        dialog->move(QPoint((this->width() - dialog->width()) / 2, (this->height()  - dialog->height()) / 2));
+//    }
     emit windowResizeEvent(event);
 }
 
@@ -537,11 +539,11 @@ void ALQOGUI::showHide(bool show){
         op->setVisible(false);
         opEnabled = false;
     }else{
-        QColor bg("#000000");
+        QColor bg("#0f0f1f");
         bg.setAlpha(200);
         if(!isLightTheme()){
-            bg = QColor("#00000000");
-            bg.setAlpha(150);
+            bg = QColor(15, 15, 31, 0);
+            bg.setAlpha(100);
         }
 
         QPalette palette;

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>428</width>
     <height>60</height>
    </rect>
   </property>
@@ -30,7 +30,7 @@
     <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>100</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
     <number>0</number>
@@ -46,7 +46,7 @@
      <property name="styleSheet">
       <string notr="true"/>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,2,0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,2,0,0">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -69,7 +69,7 @@
       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QLabel" name="label">
         <property name="styleSheet">
-         <string notr="true">padding-left:45px;
+         <string notr="true">
 font-size: 15px;
 color:white;</string>
         </property>
@@ -80,6 +80,19 @@ color:white;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item alignment="Qt::AlignVCenter">
        <widget class="QPushButton" name="pushButton">

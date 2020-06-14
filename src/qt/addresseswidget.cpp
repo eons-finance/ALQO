@@ -120,11 +120,11 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
 
     ui->btnDelete->setText(tr("Delete"));
     ui->btnDelete->setLayoutDirection(Qt::RightToLeft);
-    setCssProperty(ui->btnDelete, "btn-secundary-copy");
+    setCssProperty(ui->btnDelete, "btn-secondary-delete");
 
     ui->btnEdit->setText(tr("Edit"));
     ui->btnEdit->setLayoutDirection(Qt::RightToLeft);
-    setCssProperty(ui->btnEdit, "btn-secundary-copy");
+    setCssProperty(ui->btnEdit, "btn-secondary-edit");
 
     connect(ui->listAddresses, SIGNAL(clicked(QModelIndex)), this, SLOT(handleAddressClicked(QModelIndex)));
 

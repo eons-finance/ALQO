@@ -27,6 +27,7 @@
 #include "qt/rpcconsole.h"
 #include "qt/historywidget.h"
 #include "qt/qslidestakingwidget.h"
+#include "qt/defaultdialog.h"
 class ClientModel;
 class NetworkStyle;
 class Notificator;

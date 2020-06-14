@@ -150,7 +150,7 @@
           <widget class="QFrame" name="frametransactions">
            <property name="styleSheet">
             <string notr="true">border-radius: 10px;
-background-color:  rgb(26, 29, 49);</string>
+background-color:  rgba(26, 29, 49, 0.8);</string>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -171,7 +171,7 @@ background-color:  rgb(26, 29, 49);</string>
                <bool>true</bool>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">background:transparent;</string>
               </property>
               <property name="verticalScrollBarPolicy">
                <enum>Qt::ScrollBarAlwaysOff</enum>

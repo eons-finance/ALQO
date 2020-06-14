@@ -19,7 +19,7 @@ MnInfoDialog::MnInfoDialog(QWidget *parent) :
     setCssProperty(ui->frame, "container-dialog");
     ui->labelTitle->setText(tr("Master Node Information"));
     setCssProperty(ui->labelTitle, "text-title-dialog");
-    setCssTextBodyDialog({ui->labelAmount, ui->labelSend, ui->labelInputs, ui->labelFee, ui->labelId});
+    setCssTextLabelDialog({ui->labelAmount, ui->labelSend, ui->labelInputs, ui->labelFee, ui->labelId});
     setCssProperty({ui->labelDivider1, ui->labelDivider4, ui->labelDivider6, ui->labelDivider7, ui->labelDivider8, ui->labelDivider9}, "container-divider");
     setCssTextBodyDialog({ui->textAmount, ui->textAddress, ui->textInputs, ui->textStatus, ui->textId, ui->textExport});
     setCssProperty({ui->pushCopy, ui->pushCopyId, ui->pushExport}, "ic-copy-big");

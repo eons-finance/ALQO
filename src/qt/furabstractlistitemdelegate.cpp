@@ -28,7 +28,7 @@ void FurAbstractListItemDelegate::paint(QPainter *painter, const QStyleOptionVie
 
     if (isStateHovered || isStateSelected) {
         painter->setPen(Qt::NoPen);
-        painter->setBrush(QColor("#0f0f1f"));
+        painter->setBrush(QColor("#1c1f33"));
         painter->drawRect(option.rect);
     }
 

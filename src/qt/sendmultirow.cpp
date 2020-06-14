@@ -19,28 +19,23 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     ui->setupUi(this);
     //this->setStyleSheet(parent->styleSheet());
 
-    ui->lineEditAddress->setPlaceholderText(QString("  ") + " Type/Paste Address");
+    ui->lineEditAddress->setPlaceholderText("Type/Paste Address");
     setCssProperty(ui->lineEditAddress, "edit-primary-multi-book");
     ui->lineEditAddress->setAttribute(Qt::WA_MacShowFocusRect, 0);
 
-    ui->lineEditAmount->setPlaceholderText(QString("  ") + " 0.00 ALQO ");
+    ui->lineEditAmount->setPlaceholderText("0.00 ALQO ");
     setCssProperty(ui->lineEditAmount, "edit-primary");
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
 
     /* Description */
-    ui->lineEditDescription->setPlaceholderText(QString("  ") + " Add description");
+    ui->lineEditDescription->setPlaceholderText("Add description");
     setCssProperty(ui->lineEditDescription, "edit-primary");
 
     // Button menu
 //    setCssProperty(ui->btnMenu, "btn-menu");
 //    ui->btnMenu->setVisible(false);
 
-    // Button Contact
-	QPixmap bgPixmap("://ic-address-send");
-	QPixmap scaled = bgPixmap.scaled( QSize(18, 18), Qt::KeepAspectRatio, Qt::SmoothTransformation );
-	//QIcon icon(scaled);
-
-    btnSave = ui->lineEditAddress->addAction(QIcon(scaled), QLineEdit::TrailingPosition);
+    btnDelete = ui->lineEditAddress->addAction(QIcon("://ic-delete-sm"), QLineEdit::TrailingPosition);
     btnContact = ui->lineEditAddress->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
     // Icon Number
     //ui->stackedAddress->addWidget(iconNumber);
@@ -64,7 +59,9 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     connect(ui->lineEditAmount, SIGNAL(textChanged(const QString&)), this, SLOT(amountChanged(const QString&)));
     connect(ui->lineEditAddress, SIGNAL(textChanged(const QString&)), this, SLOT(addressChanged(const QString&)));
     connect(btnContact, &QAction::triggered, [this](){emit onContactsClicked(this);});
-    connect(btnSave, &QAction::triggered, [this](){emit removeEntry(this);});
+    connect(btnDelete, &QAction::triggered, [this](){
+        emit deleteClicked(this);
+    });
 }
 
 void SendMultiRow::amountChanged(const QString& amount){
@@ -135,10 +132,6 @@ void SendMultiRow::loadWalletModel() {
 void SendMultiRow::updateDisplayUnit(){
     // Update edit text..
     displayUnit = walletModel->getOptionsModel()->getDisplayUnit();
-}
-
-void SendMultiRow::deleteClicked() {
-    emit removeEntry(this);
 }
 
 void SendMultiRow::clear() {

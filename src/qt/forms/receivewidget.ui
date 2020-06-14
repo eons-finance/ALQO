@@ -357,7 +357,7 @@ border: 1px solid #3de4cd;
 border-radius: 6px;
 background-color:  rgb(26, 29, 49);
 padding: 7px 15px;
-font-size: 13px;
+font-size: 16px;
 }
 QPushButton:hover{
 	color: #1a1d31;
@@ -379,7 +379,7 @@ border: 1px solid #3de4cd;
 border-radius: 6px;
 background-color:  rgb(26, 29, 49);
 padding: 7px 15px;
-font-size: 13px;
+font-size: 16px;
 }
 QPushButton:hover{
 	color: #1a1d31;
@@ -401,7 +401,7 @@ border: 1px solid #3de4cd;
 border-radius: 6px;
 background-color:  rgb(26, 29, 49);
 padding: 7px 15px;
-font-size: 13px;
+font-size: 16px;
 }
 QPushButton:hover{
 	color: #1a1d31;
@@ -410,7 +410,7 @@ background-color: #3de4cd;
 </string>
              </property>
              <property name="text">
-              <string>PushButton</string>
+              <string>Create Request</string>
              </property>
             </widget>
            </item>
@@ -423,7 +423,7 @@ border: 1px solid #3de4cd;
 border-radius: 6px;
 background-color:  rgb(26, 29, 49);
 padding: 7px 15px;
-font-size: 13px;
+font-size: 16px;
 }
 QPushButton:hover{
 	color: #1a1d31;
@@ -556,7 +556,7 @@ background-color: #3de4cd;
        <property name="styleSheet">
         <string notr="true">QFrame#frame{
 border-radius: 20px;
-background-color: rgba(26, 29, 49, 0.8)
+background-color: rgba(26, 29, 49, 0.4)
 }</string>
        </property>
        <property name="frameShape">

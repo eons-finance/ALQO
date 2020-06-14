@@ -25,7 +25,7 @@ SnackBar::SnackBar(ALQOGUI* _window, QWidget *parent) :
         connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
     else {
         ui->horizontalLayout->setContentsMargins(0,0,0,0);
-        ui->label->setStyleSheet("font-size: 15px; color:white;");
+        ui->label->setStyleSheet("font-size: 20px; color:white;");
     }
 }
 

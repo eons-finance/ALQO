@@ -66,6 +66,9 @@ void NavMenuWidget::UpdateLogoButtonPos() {
 
 void NavMenuWidget::windowResizeEvent(QResizeEvent* event) {
     UpdateLogoButtonPos();
+    if (dlg) {
+        dlg->move(QPoint((window->width() - dlg->width()) / 2, (window->height() - dlg->height()) / 2));
+    }
 }
 void NavMenuWidget::slotOpenUrl() {
     QDesktopServices::openUrl(QUrl("https://alqo.app"));
@@ -165,9 +168,10 @@ void NavMenuWidget::encryptWallet() {
     if (!walletModel)
         return;
 
-    AskPassphraseDialog *dlg = new AskPassphraseDialog(AskPassphraseDialog::Mode::Encrypt, window,
+    dlg = new AskPassphraseDialog(AskPassphraseDialog::Mode::Encrypt, window,
                             walletModel, AskPassphraseDialog::Context::Encrypt);
     dlg->adjustSize();
+    window->showHide(true);
     openDialogWithOpaqueBackgroundY(dlg, window);
 
     refreshStatus();

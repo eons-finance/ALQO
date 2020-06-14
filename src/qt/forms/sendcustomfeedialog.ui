@@ -306,7 +306,10 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,2,1">
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
+        <property name="spacing">
+         <number>15</number>
+        </property>
         <item>
          <spacer name="horizontalSpacer1">
           <property name="orientation">
@@ -324,8 +327,8 @@
          <widget class="QPushButton" name="btnCancel">
           <property name="minimumSize">
            <size>
-            <width>180</width>
-            <height>50</height>
+            <width>150</width>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
@@ -337,27 +340,14 @@
          <widget class="QPushButton" name="btnSave">
           <property name="minimumSize">
            <size>
-            <width>180</width>
-            <height>50</height>
+            <width>150</width>
+            <height>40</height>
            </size>
           </property>
           <property name="text">
            <string>OK</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </item>

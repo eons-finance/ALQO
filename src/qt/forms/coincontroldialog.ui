@@ -588,13 +588,13 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="spacing">
-         <number>0</number>
+         <number>19</number>
         </property>
         <property name="leftMargin">
          <number>20</number>
         </property>
         <property name="rightMargin">
-         <number>26</number>
+         <number>20</number>
         </property>
         <item>
          <spacer name="horizontalSpacer_3">
@@ -608,6 +608,19 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonCancel">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Cancel</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonOk">

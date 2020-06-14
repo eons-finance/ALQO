@@ -4,7 +4,6 @@
 
 #include "qt/dashboardwidget.h"
 #include "qt/forms/ui_dashboardwidget.h"
-#include "qt/sendconfirmdialog.h"
 #include "qt/guitransactionsutils.h"
 
 #include <qt/receivedialog.h>
@@ -126,6 +125,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     ui->lblwalletvalue->setTextFormat(Qt::RichText);
     ui->labeltime->setTextFormat(Qt::RichText);
 
+    //connect(parent, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
 
     connect(ui->pushButtonSend, SIGNAL(clicked()), this, SLOT(onSendClicked()));
@@ -155,6 +155,16 @@ CAmount DashboardWidget::getAmountValue(QString amount){
     bool isValid = false;
     CAmount value = GUIUtil::parseValue(amount, nDisplayUnit, &isValid);
     return isValid ? value : -1;
+}
+
+void DashboardWidget::windowResizeEvent(QResizeEvent* event) {
+    UpdateTxDialogPos();
+}
+
+void DashboardWidget::UpdateTxDialogPos() {
+//    if (dialog) {
+//        dialog->move(QPoint((window->width() - dialog->width()) / 2, (window->height() - dialog->height()) / 2));
+//    }
 }
 
 void DashboardWidget::onSendClicked(){
@@ -216,7 +226,7 @@ bool DashboardWidget::send(QList<SendCoinsRecipient> recipients){
         return false;
     }
 
-    showHideOp(true);
+    window->showHide(true);
     QString warningStr = QString();
 //    if (currentTransaction.getTransaction()->fStakeDelegationVoided)
 //        warningStr = tr("WARNING:\nTransaction spends a cold-stake delegation, voiding it.\n"
@@ -285,7 +295,7 @@ void DashboardWidget::handleTransactionClicked(const QModelIndex &index){
     QModelIndex rIndex = filter->mapToSource(index);
 
     window->showHide(true);
-    TxDetailDialog *dialog = new TxDetailDialog(window, false);
+    TxDetailDialog* dialog = new TxDetailDialog(window, false);
     dialog->setData(walletModel, rIndex);
     openDialogWithOpaqueBackgroundY(dialog, window, 3, 17);
 
@@ -367,7 +377,7 @@ void DashboardWidget::updateBalances(const CAmount& balance, const CAmount& unco
     //CAmount nTotalBalance = balance + unconfirmedBalance;
     CAmount pivAvailableBalance = balance - immatureBalance - nLockedBalance;
     CAmount pivimmatureBalance = immatureBalance;
-    CAmount pivlockedBalance = nLockedBalance;
+    //CAmount pivlockedBalance = nLockedBalance;
     curbal = pivAvailableBalance;
     // Set
     //QString totalPiv = QString::number(pivAvailableBalance);

@@ -59,10 +59,9 @@ public:
 public slots:
     void clear();
     void updateDisplayUnit();
-    void deleteClicked();
 
 signals:
-    void removeEntry(SendMultiRow* entry);
+    void deleteClicked(SendMultiRow* selectedEntry);
     void onContactsClicked(SendMultiRow* entry);
     void onMenuClicked(SendMultiRow* entry);
     void onValueChanged();
@@ -84,7 +83,7 @@ private:
     Ui::SendMultiRow *ui;
     QPushButton *iconNumber;
     QAction *btnContact;
-    QAction *btnSave;
+    QAction *btnDelete;
 
     int displayUnit;
     int number = 0;
