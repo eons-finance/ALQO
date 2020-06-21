@@ -229,7 +229,17 @@
             </widget>
            </item>
            <item alignment="Qt::AlignHCenter">
-            <widget class="QComboBox" name="comboBoxRecommended"/>
+            <widget class="QComboBox" name="comboBoxRecommended">
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>

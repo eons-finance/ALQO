@@ -29,7 +29,7 @@ SendCustomFeeDialog::SendCustomFeeDialog(QWidget *parent) :
 
     // Recommended
     setCssProperty(ui->labelFee, "text-main-grey-big");
-    setCssProperty(ui->comboBoxRecommended, "btn-combo-dialog");
+    setCssProperty(ui->comboBoxRecommended, "btn-combo");
     ui->comboBoxRecommended->setView(new QListView());
     ui->comboBoxRecommended->addItem(tr("Normal"), 5);
     ui->comboBoxRecommended->addItem(tr("Slow"), 20);

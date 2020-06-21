@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>773</width>
-    <height>653</height>
+    <width>734</width>
+    <height>669</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -199,7 +199,7 @@ background-color: #3de4cd;
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>280</height>
+             <height>0</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -225,7 +225,7 @@ background-color: #3de4cd;
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>747</width>
+              <width>708</width>
               <height>16</height>
              </rect>
             </property>

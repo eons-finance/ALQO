@@ -411,8 +411,8 @@ void ALQOGUI::message(const QString& title, const QString& message, unsigned int
 
 bool ALQOGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
     DefaultDialog *dialog;
+    showHide(true);
     if (isVisible()) {
-        showHide(true);
         dialog = new DefaultDialog(this);
         dialog->setText(title, body, okBtn, cancelBtn);
         dialog->adjustSize();
@@ -420,6 +420,7 @@ bool ALQOGUI::openStandardDialog(QString title, QString body, QString okBtn, QSt
     } else {
         dialog = new DefaultDialog();
         dialog->setText(title, body, okBtn);
+        dialog->setStyleForFirstMessage();
         dialog->setWindowTitle(tr("ALQO"));
         dialog->adjustSize();
         dialog->raise();

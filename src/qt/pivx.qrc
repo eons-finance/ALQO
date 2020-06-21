@@ -276,8 +276,6 @@
         <file alias="img-empty-dark-transactions">res/img/img-empty-dark-transactions.svg</file>
         <file alias="img-empty-dark-privacy">res/img/img-empty-privacy-dark.svg</file>
         <file alias="img-empty-error">res/img/img-empty-error.svg</file>
-        <file alias="img-empty-masternode">res/img/img-empty-masternode.svg</file>
-        <file alias="img-empty-multisend">res/img/img-empty-multisend.svg</file>
         <file alias="img-empty-peers">res/img/img-empty-peers.svg</file>
         <file alias="img-empty-privacy">res/img/img-empty-privacy.svg</file>
         <file alias="img-empty-staking-off">res/img/img-empty-staking-off.svg</file>
@@ -316,5 +314,8 @@
         <file alias="ic-delete">res/img/ic-delete.svg</file>
         <file alias="ic-edit">res/img/ic-edit.svg</file>
         <file alias="ic-delete-sm">res/img/ic-delete-sm.png</file>
+        <file alias="alqo-bg-sm">res/img/AlqoWalletBG-SM.jpg</file>
+        <file alias="img-empty-multisend">res/img/img-empty-multisend.png</file>
+        <file alias="img-empty-masternode">res/img/img-empty-masternode.png</file>
     </qresource>
 </RCC>

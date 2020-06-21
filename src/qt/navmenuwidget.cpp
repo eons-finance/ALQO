@@ -157,7 +157,7 @@ void NavMenuWidget::openLockUnlock(){
     lockUnlockWidget->setFixedWidth(ui->pushButtonLock->width());
     lockUnlockWidget->adjustSize();
 
-    lockUnlockWidget->move(window->getNavWidth() - ui->pushButtonLock->pos().rx(), ui->pushButtonLock->y() + ui->pushButtonLock->height());
+    lockUnlockWidget->move(window->getNavWidth() - ui->pushButtonLock->pos().x() - 8, ui->pushButtonLock->y() + ui->pushButtonLock->height() + 12);
 
     lockUnlockWidget->raise();
     lockUnlockWidget->activateWindow();
