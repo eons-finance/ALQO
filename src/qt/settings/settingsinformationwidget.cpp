@@ -21,19 +21,17 @@ SettingsInformationWidget::SettingsInformationWidget(ALQOGUI* _window,QWidget *p
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    setCssProperty({ui->layoutOptions1, ui->layoutOptions2, ui->layoutOptions3}, "dash-frame");
+
 
     // Title
     ui->labelTitle->setText(tr("Information"));
     setCssTitleScreen(ui->labelTitle);
 
-    ui->labelTitleGeneral->setText(tr("General"));
     ui->labelTitleClient->setText(tr("Client Version: "));
     ui->labelTitleAgent->setText(tr("User Agent:"));
     ui->labelTitleBerkeley->setText(tr("Using BerkeleyDB version:"));
     ui->labelTitleDataDir->setText(tr("Datadir: "));
     ui->labelTitleTime->setText(tr("Startup Time:  "));
-    ui->labelTitleNetwork->setText(tr("Network"));
     ui->labelTitleName->setText(tr("Name:"));
     ui->labelTitleConnections->setText(tr("Number Connections:"));
 
@@ -58,26 +56,13 @@ SettingsInformationWidget::SettingsInformationWidget(ALQOGUI* _window,QWidget *p
         ui->labelInfoBlockNumber
         }, "text-main-settings");
 
-    setCssProperty({
-        ui->labelTitleGeneral,
-        ui->labelTitleNetwork,
-        ui->labelTitleBlockchain,
-        ui->labelTitleMemory,
-
-    },"text-title");
-
-    ui->labelTitleBlockchain->setText(tr("Blockchain"));
     ui->labelTitleBlockNumber->setText(tr("Current Number of Blocks:"));
     ui->labelTitleBlockTime->setText(tr("Last Block Time:"));
 
-    ui->labelTitleMemory->setText(tr("Memory Pool"));
-    ui->labelTitleMemory->setVisible(false);
-
     ui->labelTitleNumberTransactions->setText(tr("Current Number of Transactions:"));
-    ui->labelTitleNumberTransactions->setVisible(false);
 
     ui->labelInfoNumberTransactions->setText("0");
-    ui->labelInfoNumberTransactions->setVisible(false);
+    ui->memorypool_Group->setVisible(false);
 
     // Information Network
     ui->labelInfoName->setText(tr("Main"));
@@ -88,7 +73,10 @@ SettingsInformationWidget::SettingsInformationWidget(ALQOGUI* _window,QWidget *p
     ui->labelInfoBlockNumber->setText("0");
     ui->labelInfoBlockTime->setText("Sept 6, 2018. Thursday, 8:21:49 PM");
     ui->labelInfoBlockTime->setProperty("cssClass", "text-main-grey");
-
+    setCssProperty(ui->generalGroup, "information-group");
+    setCssProperty(ui->networkGroup, "information-group");
+    setCssProperty(ui->blockchainGroup, "information-group");
+    setCssProperty(ui->memorypool_Group, "information-group");
     // Buttons
     ui->pushButtonFile->setText(tr("Wallet Conf"));
     ui->pushButtonNetworkMonitor->setText(tr("Network Monitor"));

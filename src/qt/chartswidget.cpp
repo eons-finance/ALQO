@@ -485,7 +485,7 @@ std::pair<int, int> ChartsWidget::getChartRange(QMap<int, std::pair<qint64, qint
             return std::make_pair(keys.first(), keys.last() + 1);
         }
         case MONTH:
-            return std::make_pair(dayStart, dayStart + 9);
+            return std::make_pair(dayStart, dayStart + 31);
         default:
             inform(tr("Error loading chart, invalid show option"));
             return std::make_pair(0, 0);

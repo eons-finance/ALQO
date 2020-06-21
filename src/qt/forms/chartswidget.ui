@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>565</width>
-    <height>746</height>
+    <width>709</width>
+    <height>672</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -182,6 +182,18 @@
        </item>
        <item>
         <widget class="QWidget" name="layoutChart" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>601</width>
+           <height>0</height>
+          </size>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_8" stretch="3,0">
           <property name="spacing">
            <number>16</number>
@@ -463,7 +475,7 @@
                 <item>
                  <widget class="QFrame" name="chartContainer">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -488,9 +500,9 @@ margin:0px;</string>
           </item>
           <item alignment="Qt::AlignVCenter">
            <widget class="QWidget" name="containerSort" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="3,2">
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="3,0,2">
              <property name="spacing">
-              <number>28</number>
+              <number>0</number>
              </property>
              <property name="leftMargin">
               <number>0</number>
@@ -617,6 +629,19 @@ margin:0px;</string>
                 </item>
                </layout>
               </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_14">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
              <item>
               <widget class="QGroupBox" name="container_chart_dropboxes">

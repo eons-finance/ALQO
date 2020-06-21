@@ -47,19 +47,16 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
     prefix_typing_delay->setSingleShot(true);
     prefix_typing_delay->setInterval(input_filter_delay);
 
-    
-    // Sort Transactions
-    SortEdit* lineEdit = new SortEdit(ui->comboBoxSort);
-    initComboBox(ui->comboBoxSort, lineEdit);
-    connect(lineEdit, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSort->showPopup();});
+
+    setCssProperty(ui->comboBoxSort, "btn-combo");
+    ui->comboBoxSort->setView(new QListView());
     ui->comboBoxSort->addItem("Date desc", SortTx::DATE_DESC);
     ui->comboBoxSort->addItem("Date asc", SortTx::DATE_ASC);
     ui->comboBoxSort->addItem("Amount desc", SortTx::AMOUNT_ASC);
     ui->comboBoxSort->addItem("Amount asc", SortTx::AMOUNT_DESC);
 
-    // Sort type
-    SortEdit* lineEditType = new SortEdit(ui->comboBoxSortType);
-    initComboBox(ui->comboBoxSortType, lineEditType);
+    setCssProperty(ui->comboBoxSortType, "btn-combo");
+    ui->comboBoxSortType->setView(new QListView());
 
     QSettings settings;
     ui->comboBoxSortType->addItem(tr("All"), TransactionFilterProxy::ALL_TYPES);
@@ -89,20 +86,19 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
     setCssProperty(ui->labelEmpty, "text-empty");
 
     /* Filter */
-    ui->lineEditFilter->setPlaceholderText("Filter by name/type/date");
-    setCssProperty(ui->lineEditFilter, "edit-primary");
+    ui->lineEditFilter->setPlaceholderText("Filter by address/date/amount");
+    setCssProperty(ui->lineEditFilter, "edit-primary-bg");
 
     // Button Search
-    btnSearch = ui->lineEditFilter->addAction(QIcon("://ic-watch-password-white"), QLineEdit::TrailingPosition);
+    //btnSearch = ui->lineEditFilter->addAction(QIcon("://ic-watch-password-white"), QLineEdit::TrailingPosition);
 
-    connect(ui->lineEditAmount, &QLineEdit::textChanged, amount_typing_delay, static_cast<void (QTimer::*)()>(&QTimer::start));
-    connect(amount_typing_delay, &QTimer::timeout, this, &HistoryWidget::changedAmount);
+    //connect(ui->lineEditAmount, &QLineEdit::textChanged, amount_typing_delay, static_cast<void (QTimer::*)()>(&QTimer::start));
+    //connect(amount_typing_delay, &QTimer::timeout, this, &HistoryWidget::changedAmount);
     connect(ui->lineEditFilter, &QLineEdit::textChanged, prefix_typing_delay, static_cast<void (QTimer::*)()>(&QTimer::start));
     connect(prefix_typing_delay, &QTimer::timeout, this, &HistoryWidget::changedSearch);
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
     connect(ui->comboBoxSortType, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(onSortTypeChanged(const QString&)));
     connect(ui->comboBoxSort, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(onSortChanged(const QString&)));
-    connect(lineEditType, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortType->showPopup();});
 
     ui->lineEditAmount->setVisible(false);
     
@@ -147,7 +143,7 @@ void HistoryWidget::loadWalletModel(){
 
         if(txModel->size() == 0){
             ui->emptyContainer->setVisible(true);
-            ui->listTransactions->setVisible(false);
+            ui->frametransactions->setVisible(false);
             ui->comboBoxSortType->setVisible(false);
             ui->comboBoxSort->setVisible(false);
         }
@@ -180,12 +176,12 @@ void HistoryWidget::handleTransactionClicked(const QModelIndex &index){
 void HistoryWidget::showList(){
     if (filter->rowCount() == 0){
         ui->emptyContainer->setVisible(true);
-        ui->listTransactions->setVisible(false);
+        ui->frametransactions->setVisible(false);
         ui->comboBoxSortType->setVisible(false);
         ui->comboBoxSort->setVisible(false);
     } else {
         ui->emptyContainer->setVisible(false);
-        ui->listTransactions->setVisible(true);
+        ui->frametransactions->setVisible(true);
         ui->comboBoxSortType->setVisible(true);
         ui->comboBoxSort->setVisible(true);
     }
@@ -238,7 +234,7 @@ void HistoryWidget::onSortTypeChanged(const QString& value){
 
     if (filter->rowCount() == 0){
         ui->emptyContainer->setVisible(true);
-        ui->listTransactions->setVisible(false);
+        ui->frametransactions->setVisible(false);
     } else {
         showList();
     }

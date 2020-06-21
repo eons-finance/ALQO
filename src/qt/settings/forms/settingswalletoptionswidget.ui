@@ -375,13 +375,13 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
              </widget>
@@ -421,13 +421,13 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
              </widget>
@@ -458,13 +458,13 @@
            <widget class="QPushButton" name="pushButtonReset">
             <property name="minimumSize">
              <size>
-              <width>160</width>
-              <height>50</height>
+              <width>170</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>50</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -477,8 +477,8 @@
            <widget class="QPushButton" name="pushButtonClean">
             <property name="minimumSize">
              <size>
-              <width>0</width>
-              <height>50</height>
+              <width>150</width>
+              <height>40</height>
              </size>
             </property>
             <property name="text">
@@ -506,14 +506,14 @@
            <widget class="QPushButton" name="pushButtonSave">
             <property name="minimumSize">
              <size>
-              <width>200</width>
-              <height>50</height>
+              <width>100</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>200</width>
-              <height>50</height>
+              <height>40</height>
              </size>
             </property>
             <property name="text">

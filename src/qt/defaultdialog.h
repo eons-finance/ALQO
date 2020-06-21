@@ -18,7 +18,7 @@ class DefaultDialog : public QDialog
 public:
     explicit DefaultDialog(QWidget *parent = nullptr);
     ~DefaultDialog();
-
+    void setStyleForFirstMessage();
     void setText(QString title = "", QString message = "", QString okBtnText = "", QString cancelBtnText = "");
 
     bool isOk = false;

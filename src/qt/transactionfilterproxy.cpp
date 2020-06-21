@@ -8,6 +8,7 @@
 #include "transactionrecord.h"
 #include "transactiontablemodel.h"
 
+#include "util.h"
 #include <cstdlib>
 
 #include <QDateTime>
@@ -20,7 +21,7 @@ const QDateTime TransactionFilterProxy::MAX_DATE = QDateTime::fromTime_t(0xFFFFF
 TransactionFilterProxy::TransactionFilterProxy(QObject* parent) : QSortFilterProxyModel(parent),
                                                                   dateFrom(MIN_DATE),
                                                                   dateTo(MAX_DATE),
-                                                                  m_search_string(),
+                                                                  m_search_string(""),
                                                                   addrPrefix(),
                                                                   typeFilter(COMMON_TYPES),
                                                                   watchOnlyFilter(WatchOnlyFilter_All),
@@ -42,6 +43,13 @@ bool TransactionFilterProxy::filterAcceptsRow(int sourceRow, const QModelIndex& 
     QString label = index.data(TransactionTableModel::LabelRole).toString();
     qint64 amount = llabs(index.data(TransactionTableModel::AmountRole).toLongLong());
     int status = index.data(TransactionTableModel::StatusRole).toInt();
+
+    QString dateStr = datetime.toString("dd.MM.yyyy");
+    QString amountText = BitcoinUnits::simpleFormat(BitcoinUnits::XLQ, amount, true, BitcoinUnits::separatorAlways);
+    if (!m_search_string.isEmpty()) {
+        if (!address.contains(m_search_string) && !amountText.contains(m_search_string) && !dateStr.contains(m_search_string))
+            return false;
+    }
 
     if (!showInactive && status == TransactionStatus::Conflicted)
         return false;

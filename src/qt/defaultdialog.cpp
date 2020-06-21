@@ -38,16 +38,20 @@ DefaultDialog::DefaultDialog(QWidget *parent) :
     connect(ui->btnSave, &QPushButton::clicked, [this](){this->isOk = true; accept();});
 }
 
+void DefaultDialog::setStyleForFirstMessage() {
+    ui->frame->setProperty("cssClass", "container-dialog-without-border");
+    ui->btnEsc->setVisible(false);
+}
 void DefaultDialog::setText(QString title, QString message, QString okBtnText, QString cancelBtnText){
-    if(!okBtnText.isNull()) ui->btnSave->setText(okBtnText);
-    if(!cancelBtnText.isNull()){
+    if(!okBtnText.isEmpty()) ui->btnSave->setText(okBtnText);
+    if(!cancelBtnText.isEmpty()){
         ui->btnCancel->setVisible(true);
         ui->btnCancel->setText(cancelBtnText);
     }else{
         ui->btnCancel->setVisible(false);
     }
-    if(!message.isNull()) ui->labelMessage->setText(message);
-    if(!title.isNull()) ui->labelTitle->setText(title);
+    if(!message.isEmpty()) ui->labelMessage->setText(message);
+    if(!title.isEmpty()) ui->labelTitle->setText(title);
 }
 
 DefaultDialog::~DefaultDialog()

@@ -137,7 +137,12 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QTextEdit" name="messagesWidget"/>
+            <widget class="QTextEdit" name="messagesWidget">
+             <property name="styleSheet">
+              <string notr="true"> background-color: #0f0f1f;
+border-radius: 20px;</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

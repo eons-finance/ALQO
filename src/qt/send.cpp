@@ -524,9 +524,9 @@ void SendWidget::onChangeCustomFeeClicked(){
 }
 
 void SendWidget::onCoinControlClicked(){
-    showHideOp(true);
     if(isPIV){
         if (walletModel->getBalance() > 0) {
+            showHideOp(true);
             if (!coinControlDialog) {
                 coinControlDialog = new CoinControlDialog(window);
                 coinControlDialog->setModel(walletModel);

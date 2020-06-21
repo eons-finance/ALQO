@@ -247,7 +247,7 @@ SettingsConsoleWidget::SettingsConsoleWidget(ALQOGUI* _window, QWidget *parent) 
     this->setStyleSheet(parent->styleSheet());
 
     // Containers
-    ui->messagesWidget->setProperty("cssClass", "listTransactions");
+   // ui->messagesWidget->setProperty("cssClass", "listTransactions");
 
     // Title
     ui->labelTitle->setText(tr("Console"));

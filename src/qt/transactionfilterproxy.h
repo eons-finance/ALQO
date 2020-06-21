@@ -7,7 +7,7 @@
 #define ALQO_QT_TRANSACTIONFILTERPROXY_H
 
 #include "amount.h"
-
+#include "bitcoinunits.h"
 #include <QDateTime>
 #include <QSortFilterProxyModel>
 

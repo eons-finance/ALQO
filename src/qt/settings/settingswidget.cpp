@@ -19,9 +19,6 @@
 #include "clientmodel.h"
 #include "utilitydialog.h"
 #include "wallet/wallet.h"
-#include <QScrollBar>
-#include <QDataWidgetMapper>
-
 SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     PWidget(parent),
     ui(new Ui::SettingsWidget)
@@ -66,7 +63,7 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     settingsMultisendWidget = new SettingsMultisendWidget(this);
     settingsInformationWidget = new SettingsInformationWidget(window, this);
     settingsConsoleWidget = new SettingsConsoleWidget(window, this);
-
+    ui->stackedWidgetContainer->setSpeed(300);
     ui->stackedWidgetContainer->addWidget(settingsBackupWallet);
     ui->stackedWidgetContainer->addWidget(settingsBitToolWidget);
     ui->stackedWidgetContainer->addWidget(settingsSingMessageWidgets);

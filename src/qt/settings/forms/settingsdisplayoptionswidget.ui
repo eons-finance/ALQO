@@ -131,13 +131,13 @@
            <widget class="QComboBox" name="comboBoxLanguage">
             <property name="minimumSize">
              <size>
-              <width>380</width>
+              <width>180</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>280</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -187,10 +187,10 @@
            </spacer>
           </item>
           <item>
-           <widget class="QValueComboBox" name="comboBoxUnit" native="true">
+           <widget class="QValueComboBox" name="comboBoxUnit">
             <property name="minimumSize">
              <size>
-              <width>180</width>
+              <width>100</width>
               <height>0</height>
              </size>
             </property>
@@ -249,7 +249,7 @@
            <widget class="QComboBox" name="comboBoxDigits">
             <property name="minimumSize">
              <size>
-              <width>180</width>
+              <width>100</width>
               <height>0</height>
              </size>
             </property>
@@ -441,7 +441,7 @@
  <customwidgets>
   <customwidget>
    <class>QValueComboBox</class>
-   <extends>QWidget</extends>
+   <extends>QComboBox</extends>
    <header>qvaluecombobox.h</header>
   </customwidget>
  </customwidgets>

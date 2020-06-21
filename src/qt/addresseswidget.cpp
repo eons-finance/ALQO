@@ -82,13 +82,23 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     ui->listAddresses->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     // Sort Controls
-    SortEdit* lineEdit = new SortEdit(ui->comboBoxSort);
-    connect(lineEdit, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSort->showPopup();});
+    setCssProperty(ui->comboBoxSort, "btn-contacts-combo");
+    setCssProperty(ui->comboBoxSortOrder, "btn-contacts-combo");
     connect(ui->comboBoxSort, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &AddressesWidget::onSortChanged);
-    SortEdit* lineEditOrder = new SortEdit(ui->comboBoxSortOrder);
-    connect(lineEditOrder, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortOrder->showPopup();});
+
     connect(ui->comboBoxSortOrder, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &AddressesWidget::onSortOrderChanged);
-    fillAddressSortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
+    //fillAddressSortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
+    ui->comboBoxSort->setView(new QListView());
+
+    ui->comboBoxSort->addItem(QObject::tr("by Label"), AddressTableModel::Label);
+    ui->comboBoxSort->addItem(QObject::tr("by Address"), AddressTableModel::Address);
+    ui->comboBoxSort->addItem(QObject::tr("by Date"), AddressTableModel::Date);
+    ui->comboBoxSort->setCurrentIndex(0);
+
+    ui->comboBoxSortOrder->setView(new QListView());
+    ui->comboBoxSortOrder->addItem("asc", Qt::AscendingOrder);
+    ui->comboBoxSortOrder->addItem("desc", Qt::DescendingOrder);
+    ui->comboBoxSortOrder->setCurrentIndex(0);
 
     //Empty List
     ui->emptyContainer->setVisible(false);
