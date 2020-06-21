@@ -419,7 +419,6 @@ void DashboardWidget::onSortChanged(const QString& value){
 
 void DashboardWidget::onSortTypeChanged(const QString& value){
     if (!filter) return;
-
 }
 
 void DashboardWidget::walletSynced(bool sync){
@@ -614,6 +613,11 @@ void DashboardWidget::SetExchangeInfoTextLabels()
     ui->labelxlqbtc->setText(str.number(newbtc, 'i', 8) + " BTC");
     ui->labelusdxlq->setText("$ " + str.number(newxlq, 'i', 2));
     ui->lblwalletvalue->setText("$ " + str.number(newwalletvalue, 'i', 2));
+    ui->labelUSD->setText("≈ " + str.number(newwalletvalue, 'i', 2) + " USD");
+    if (newwalletvalue <= 0)
+        ui->labelUSD->hide();
+    else
+        ui->labelUSD->show();
 
     obj.empty();
     objmetrics.empty();

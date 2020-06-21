@@ -617,11 +617,11 @@ RES_IMG = \
   qt/res/img/ic-address-book.svg \
   qt/res/img/ic-clear-liliac.svg \
   qt/res/img/ic-nav-settings-active.svg \
-  qt/res/img/img-empty-masternode.svg \
+  qt/res/img/img-empty-masternode.png \
   qt/res/img/ic-address-send-white.svg \
   qt/res/img/ic-clear-purple.svg \
   qt/res/img/ic-nav-settings-hover.svg \
-  qt/res/img/img-empty-multisend.svg \
+  qt/res/img/img-empty-multisend.png \
   qt/res/img/ic-address-send.svg \
   qt/res/img/ic-close-white.svg \
   qt/res/img/ic-nav-settings.svg \
