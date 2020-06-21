@@ -33,9 +33,9 @@ SettingsBitToolWidget::SettingsBitToolWidget(ALQOGUI* _window, QWidget *parent) 
 
     //Button Group
     ui->pushLeft->setText(tr("Encrypt"));
-    setCssProperty(ui->pushLeft, "btn-check-left");
+    setCssProperty(ui->pushLeft, "btn-nav");
     ui->pushRight->setText(tr("Decrypt"));
-    setCssProperty(ui->pushRight, "btn-check-right");
+    setCssProperty(ui->pushRight, "btn-nav");
     ui->pushLeft->setChecked(true);
 
     // Subtitle
@@ -68,14 +68,14 @@ SettingsBitToolWidget::SettingsBitToolWidget(ALQOGUI* _window, QWidget *parent) 
     setCssBtnPrimary(ui->pushButtonDecrypt);
 
     ui->pushButtonImport->setText(tr("Import Address"));
-    setCssProperty(ui->pushButtonImport, "btn-text-primary");
+    setCssProperty(ui->pushButtonImport, "btn-primary");
 
     connect(ui->pushLeft, &QPushButton::clicked, [this](){onEncryptSelected(true);});
     connect(ui->pushRight,  &QPushButton::clicked, [this](){onEncryptSelected(false);});
 
 
     // Encrypt
-
+    ui->stackedWidget->setSpeed(300);
     // Address
     ui->labelSubtitleAddress->setText(tr("Enter a ALQO address"));
     setCssProperty(ui->labelSubtitleAddress, "text-title");
@@ -127,7 +127,10 @@ void SettingsBitToolWidget::setAddress_ENC(const QString& address){
 }
 
 void SettingsBitToolWidget::onEncryptSelected(bool isEncr) {
-    ui->stackedWidget->setCurrentIndex(isEncr);
+    if (isEncr)
+        ui->stackedWidget->slideInIdx(0, QSlideStackedWidget::RIGHT2LEFT);
+    else
+        ui->stackedWidget->slideInIdx(1, QSlideStackedWidget::LEFT2RIGHT);
 }
 
 QString specialChar = "\"@!#$%&'()*+,-./:;<=>?`{|}~^_[]\\";
@@ -211,7 +214,7 @@ void SettingsBitToolWidget::onAddressesClicked(){
         return;
     }
 
-    int height = (addressSize <= 2) ? ui->addressIn_ENC->height() * ( 2 * (addressSize + 1 )) : ui->addressIn_ENC->height() * 4;
+    int height = 300;//(addressSize <= 2) ? ui->addressIn_ENC->height() * ( 2 * (addressSize + 1 )) : ui->addressIn_ENC->height() * 4;
     int width = ui->containerAddressEnc->width();
 
     if(!menuContacts){
@@ -236,9 +239,9 @@ void SettingsBitToolWidget::onAddressesClicked(){
     menuContacts->setStyleSheet(this->styleSheet());
     menuContacts->adjustSize();
 
-    QPoint pos = ui->containerAddressEnc->rect().bottomLeft();
-    pos.setY(pos.y() + ui->containerAddressEnc->height());
-    pos.setX(pos.x() + 10);
+    QPoint pos;
+    pos.setY(ui->stackedWidget->pos().y() + ui->containerAddressEnc->pos().y() + ui->containerAddressEnc->height());
+    pos.setX(ui->addressIn_ENC->pos().x());
     menuContacts->move(pos);
     menuContacts->show();
 }

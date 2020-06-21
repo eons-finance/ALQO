@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>438</width>
-    <height>584</height>
+    <width>582</width>
+    <height>574</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -136,7 +136,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_4">
                  <property name="spacing">
-                  <number>0</number>
+                  <number>2</number>
                  </property>
                  <property name="leftMargin">
                   <number>0</number>
@@ -204,16 +204,6 @@
                   </widget>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-               <widget class="QLabel" name="labelSubtitleSwitch">
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
                </widget>
               </item>
              </layout>
@@ -288,13 +278,13 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
              </widget>
@@ -350,13 +340,13 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>140</height>
+               <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>140</height>
+               <height>16777215</height>
               </size>
              </property>
             </widget>
@@ -433,7 +423,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
              </widget>
@@ -492,8 +482,8 @@
             <widget class="QPushButton" name="pushButtonClear">
              <property name="minimumSize">
               <size>
-               <width>200</width>
-               <height>50</height>
+               <width>150</width>
+               <height>40</height>
               </size>
              </property>
              <property name="text">
@@ -505,14 +495,14 @@
             <widget class="QPushButton" name="pushButtonSave">
              <property name="minimumSize">
               <size>
-               <width>200</width>
-               <height>50</height>
+               <width>150</width>
+               <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
-               <height>50</height>
+               <width>150</width>
+               <height>40</height>
               </size>
              </property>
              <property name="text">
