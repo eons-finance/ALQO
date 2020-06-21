@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>93</width>
+    <width>117</width>
     <height>161</height>
    </rect>
   </property>
@@ -17,6 +17,21 @@
    <string notr="true">margin:0px; padding:0px; border:none;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QWidget" name="container" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -36,11 +51,14 @@
        <number>0</number>
       </property>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QPushButton" name="pushButtonStaking">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -59,6 +77,12 @@
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -71,7 +95,7 @@
         <item>
          <widget class="QPushButton" name="pushButtonLocked">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -90,6 +114,12 @@
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -102,7 +132,7 @@
         <item>
          <widget class="QPushButton" name="pushButtonUnlocked">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -121,6 +151,12 @@
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
           </property>
           <property name="checkable">
            <bool>true</bool>
