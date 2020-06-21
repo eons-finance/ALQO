@@ -35,6 +35,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
 {
     ui->setupUi(this);
     this->setStyleSheet(parent->styleSheet());
+    this->setProperty("cssClass", "black-frame");
     GUIUtil::restoreWindowGeometry("nHelpMessageDialogWindow", this->size(), this);
 
     QString version = tr("ALQO") + " " + tr("version") + " " + QString::fromStdString(FormatFullVersion());
@@ -152,8 +153,12 @@ void HelpMessageDialog::showOrPrint()
 ShutdownWindow::ShutdownWindow(QWidget* parent, Qt::WindowFlags f) : QWidget(parent, f)
 {
     QVBoxLayout* layout = new QVBoxLayout();
+    layout->setContentsMargins(20, 10, 20, 10);
     this->setStyleSheet(GUIUtil::loadStyleSheet());
-    this->setAttribute( Qt::WA_TranslucentBackground, true );
+    //this->setAttribute( Qt::WA_TranslucentBackground, true );
+    this->setProperty("cssClass", "main-frame");
+    QSpacerItem *spacer2 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Fixed);
+    layout->addItem(spacer2);
 
     QLabel *label = new QLabel();
     QPixmap pixmap("://bg-splash-png");
@@ -161,13 +166,14 @@ ShutdownWindow::ShutdownWindow(QWidget* parent, Qt::WindowFlags f) : QWidget(par
     label->setAlignment(Qt::AlignHCenter);
     layout->addWidget(label);
 
-	QSpacerItem *spacer = new QSpacerItem(20, 40, QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QSpacerItem *spacer = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Fixed);
 	layout->addItem(spacer);
 
     QLabel *textlabel = new QLabel(
         tr("ALQO is shutting down...") + "<br /><br />" +
         tr("Do not shut down the computer until this window disappears."));
-    textlabel->setStyleSheet("color:white; text-align:center; font-size:14px;");   
+    textlabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    textlabel->setStyleSheet("color:white; font-size:14px;");
     layout->addWidget(textlabel);
     setLayout(layout);
 }

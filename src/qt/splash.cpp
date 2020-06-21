@@ -30,7 +30,7 @@ Splash::Splash(QWidget *parent) :
     setWindowTitle("ALQO");
 
     this->setStyleSheet(GUIUtil::loadStyleSheet());
-    this->setAttribute( Qt::WA_TranslucentBackground, true );
+    //this->setAttribute( Qt::WA_TranslucentBackground, true );
     ui->progressBar->setAttribute( Qt::WA_TranslucentBackground, true );
 
     ui->progressBar->setTextVisible(false);

@@ -49,36 +49,22 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
     ui->pushButtonSwitchBalance->setVisible(false);
 
     // Combobox
-    ui->comboBoxLanguage->setProperty("cssClass", "btn-combo-small");
+    ui->comboBoxLanguage->setProperty("cssClass", "btn-combo");
     ui->comboBoxLanguage->setView(new QListView());
-    ui->comboBoxLanguage->setEditable(true);
-    QLineEdit* LanguageEdit = new QLineEdit(ui->comboBoxLanguage);
-    LanguageEdit->setReadOnly(true);
-    LanguageEdit->setAlignment(Qt::AlignRight);
-    ui->comboBoxLanguage->setLineEdit(LanguageEdit);
-    ui->comboBoxLanguage->setStyleSheet("selection-background-color:transparent; selection-color:transparent;");
+    ui->comboBoxLanguage->setEditable(false);
 
 
     ui->comboBoxUnit->setProperty("cssClass", "btn-combo");
     ui->comboBoxUnit->setView(new QListView());
     ui->comboBoxUnit->setModel(new BitcoinUnits(this));
     ui->comboBoxUnit->setModelColumn(Qt::DisplayRole);
-    ui->comboBoxUnit->setEditable(true);
-    QLineEdit* UnitEdit = new QLineEdit(ui->comboBoxUnit);
-    UnitEdit->setReadOnly(true);
-    UnitEdit->setAlignment(Qt::AlignRight);
-    ui->comboBoxUnit->setLineEdit(UnitEdit);
-    ui->comboBoxUnit->setStyleSheet("selection-background-color:transparent; selection-color:transparent; color:white;");
 
-    ui->comboBoxDigits->setProperty("cssClass", "btn-combo-options");
+    ui->comboBoxUnit->setEditable(false);
+
+    ui->comboBoxDigits->setProperty("cssClass", "btn-combo");
 
     ui->comboBoxDigits->setView(new QListView());
-    ui->comboBoxDigits->setEditable(true);
-    QLineEdit* DigitsEdit = new QLineEdit(ui->comboBoxDigits);
-    DigitsEdit->setReadOnly(true);
-    DigitsEdit->setAlignment(Qt::AlignRight);
-    ui->comboBoxDigits->setLineEdit(DigitsEdit);
-    ui->comboBoxDigits->setStyleSheet("selection-background-color:transparent; selection-color:transparent; color:white;");
+    ui->comboBoxDigits->setEditable(false);
 
     /* Number of displayed decimal digits selector */
     QString digits;
@@ -106,7 +92,7 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWi
     connect(ui->pushButtonClean, SIGNAL(clicked()), parent, SLOT(onDiscardChanges()));
 }
 
-void SettingsDisplayOptionsWidget::initLanguages(){
+void SettingsDisplayOptionsWidget::initLanguages() {
     /* Language selector */
     QDir translations(":translations");
     QString defaultStr = QString("(") + tr("default") + QString(")");
@@ -115,15 +101,16 @@ void SettingsDisplayOptionsWidget::initLanguages(){
         QLocale locale(langStr);
 
         /** check if the locale name consists of 2 parts (language_country) */
-        if(langStr.contains("_")){
+        if(langStr.contains("_")) {
             /** display language strings as "native language - native country (locale name)", e.g. "Deutsch - Deutschland (de)" */
             ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" - ") + locale.nativeCountryName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
         }
-        else{
+        else {
             /** display language strings as "native language (locale name)", e.g. "Deutsch (de)" */
             ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
         }
     }
+    ui->comboBoxLanguage->setCurrentIndex(0);
 }
 
 void SettingsDisplayOptionsWidget::onResetClicked() {

@@ -46,10 +46,8 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(ALQOGUI* _window, QWidget
     /* Button Group */
     ui->pushSign->setText(tr("Sign"));
     ui->pushVerify->setText(tr("Verify"));
-    setCssProperty(ui->pushSign, "btn-check-right");
-    setCssProperty(ui->pushVerify, "btn-check-right");
-    ui->labelSubtitleSwitch->setText(tr("Select mode"));
-    setCssProperty(ui->labelSubtitleSwitch, "text-subtitle");
+    setCssProperty(ui->pushSign, "btn-nav");
+    setCssProperty(ui->pushVerify, "btn-nav");
     ui->pushSign->setChecked(true);
     updateMode();
 
@@ -265,7 +263,7 @@ void SettingsSignMessageWidgets::onAddressesClicked(){
         return;
     }
 
-    int height = (addressSize <= 2) ? ui->addressIn_SM->height() * ( 2 * (addressSize + 1 )) : ui->addressIn_SM->height() * 4;
+    int height = 300; //(addressSize <= 2) ? ui->addressIn_SM->height() * ( 2 * (addressSize + 1 )) : ui->addressIn_SM->height() * 4;
     int width = ui->containerAddress->width();
 
     if(!menuContacts){
@@ -290,8 +288,9 @@ void SettingsSignMessageWidgets::onAddressesClicked(){
     menuContacts->setStyleSheet(this->styleSheet());
     menuContacts->adjustSize();
 
-    QPoint pos = ui->container_sign->mapToParent(ui->containerAddress->rect().bottomLeft());
-    pos.setY(pos.y() + (ui->containerAddress->height() * 1.4) - 10);
+    QPoint pos;
+    pos.setY(ui->containerAddress->pos().y() + ui->containerAddress->height());
+    pos.setX(ui->containerAddress->pos().x());
     menuContacts->move(pos);
     menuContacts->show();
 }
