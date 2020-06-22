@@ -10,9 +10,6 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 *[cssClass="main-frame"] {
     background-color:  rgb(26, 29, 49);
 }
-*[cssClass="black-frame"] {
-    background-color:  #0f0f1f;
-}
 *[cssClass="container-list-address"] {
     background-color: transparent;
 }
@@ -2221,48 +2218,37 @@ QRadioButton::indicator:unchecked {
 HH       SCROLL BAR
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
+QScrollBar:vertical
+ {
+    background-color:#0f0f1f;
+    width:4px;
+    margin: 0;
+    border:none;
+ }
 
-QScrollBar:vertical {
-    background:#0f0f1f;
-    width:5px;
-    margin: 0px 0px 0px 0px;
-}
+QScrollBar::handle:vertical
+ {
+    background-color: #3de4cd;
+    min-height: 5px;
+    margin:0;
+ }
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+ {
+     background: none;
+ }
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+ {
+     background: none;
+ }
+QScrollBar::sub-line:vertical
+ {
+     height: 0px;
+ }
 
-
-QScrollBar::handle:vertical {
-    background: #3de4cd;
-    min-height: 0px;
-}
-
-QScrollBar::add-line:vertical {
-    height: 0px;
-    subcontrol-position: bottom;
-    subcontrol-origin: margin;
-}
-QScrollBar::sub-line:vertical {
-    height: 0 px;
-    subcontrol-position: top;
-    subcontrol-origin: margin;
-}
-
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-    height: 0px;
-}
-
-
-QScrollBar::right-arrow:horizontal, QScrollBar::left-arrow:horizontal
-{
-    border: none;
-    background: none;
-    color: none;
-}
-
-QScrollBar::top-arrow:horizontal, QScrollBar::bottom-arrow:horizontal
-{
-    border: none;
-    background: none;
-    color: none;
-}
+QScrollBar::add-line:vertical
+ {
+     height: 0px;
+ }
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 HH       DIALOG MASTER NODE

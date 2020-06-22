@@ -170,8 +170,8 @@
           <property name="styleSheet">
            <string notr="true">#helpMessage {
 	color:#3de4cd;
-	border:1px solid #3de4cd;
-background:transparent;
+	border: none;
+background:#0f0f1f;
 }</string>
           </property>
           <property name="readOnly">
@@ -184,8 +184,10 @@ background:transparent;
           <item>
            <widget class="QScrollArea" name="scrollArea">
             <property name="styleSheet">
-             <string notr="true">
-background-color: transparent;</string>
+             <string notr="true">#scrollArea {
+border:none;
+background-color: #0f0f1f;
+}</string>
             </property>
             <property name="verticalScrollBarPolicy">
              <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -198,12 +200,12 @@ background-color: transparent;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>735</width>
+               <width>737</width>
                <height>263</height>
               </rect>
              </property>
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">background: transparent;</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>

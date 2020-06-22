@@ -180,6 +180,9 @@ void ChartsWidget::initChart() {
     chart = new QChart();
     axisX = new QBarCategoryAxis();
     axisY = new QValueAxis();
+    QFont labelFont = axisX->labelsFont();
+    labelFont.setPixelSize(11);
+    axisX->setLabelsFont(labelFont);
 
     QBrush axisBrush(Qt::white);
     axisX->setLabelsBrush(axisBrush);

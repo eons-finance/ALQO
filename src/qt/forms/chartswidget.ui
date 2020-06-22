@@ -553,7 +553,13 @@ margin:0px;</string>
                 <property name="leftMargin">
                  <number>0</number>
                 </property>
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
                 <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -569,6 +575,9 @@ margin:0px;</string>
                     <width>16777215</width>
                     <height>16777215</height>
                    </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Days</string>
@@ -660,7 +669,7 @@ margin:0px;</string>
               <widget class="QGroupBox" name="container_chart_dropboxes">
                <property name="minimumSize">
                 <size>
-                 <width>55</width>
+                 <width>120</width>
                  <height>80</height>
                 </size>
                </property>
@@ -681,7 +690,7 @@ margin:0px;</string>
                  <number>0</number>
                 </property>
                 <property name="topMargin">
-                 <number>0</number>
+                 <number>5</number>
                 </property>
                 <property name="rightMargin">
                  <number>0</number>
@@ -717,7 +726,7 @@ margin:0px;</string>
                     <widget class="QComboBox" name="comboBoxMonths">
                      <property name="minimumSize">
                       <size>
-                       <width>55</width>
+                       <width>60</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -760,7 +769,7 @@ margin:0px;</string>
                     <widget class="QComboBox" name="comboBoxYears">
                      <property name="minimumSize">
                       <size>
-                       <width>40</width>
+                       <width>60</width>
                        <height>0</height>
                       </size>
                      </property>
