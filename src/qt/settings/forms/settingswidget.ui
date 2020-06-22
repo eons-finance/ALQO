@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>876</width>
-    <height>660</height>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -104,8 +104,7 @@ background-color: #3de4cd;
             <property name="styleSheet">
              <string notr="true">text-align:center;
 background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 29, 49, 255), stop:1 rgba(58, 65, 109, 255));;
-border-top-left-radius: 20px;
-font-weight: 800;</string>
+border-top-left-radius: 20px;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Wallet Data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -123,7 +122,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -160,7 +159,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -191,7 +190,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -222,7 +221,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -267,8 +266,7 @@ font-weight: 800;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">text-align:center;
-background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 29, 49, 255), stop:1 rgba(58, 65, 109, 255));
-font-weight: 800;</string>
+background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 29, 49, 255), stop:1 rgba(58, 65, 109, 255));</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -286,7 +284,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -323,7 +321,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -354,7 +352,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -385,7 +383,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -419,7 +417,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -450,7 +448,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -481,7 +479,7 @@ font-weight: 800;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
