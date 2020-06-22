@@ -192,7 +192,7 @@ void DashboardWidget::onSendClicked(){
     // will call relock
     if(!GUIUtil::requestUnlock(walletModel, AskPassphraseDialog::Context::Send_PIV, true)){
         // Unlock wallet was cancelled
-        inform(tr("Cannot send, wallet locked"));
+        inform_message(tr("Cannot send, wallet locked"));
         return;
     }
 
@@ -222,7 +222,8 @@ bool DashboardWidget::send(QList<SendCoinsRecipient> recipients){
     );
 
     if (prepareStatus.status != WalletModel::OK) {
-        inform(tr("Cannot create transaction."));
+        LogPrintf("Cannot create transaction\n");
+        inform_message(tr("Cannot create transaction."));
         return false;
     }
 
@@ -248,7 +249,7 @@ bool DashboardWidget::send(QList<SendCoinsRecipient> recipients){
         );
 
         if (sendStatus.status == WalletModel::OK) {
-            inform(tr("Transaction sent"));
+            inform_message(tr("Transaction sent"));
             dialog->deleteLater();
             return true;
         }
@@ -261,7 +262,7 @@ bool DashboardWidget::send(QList<SendCoinsRecipient> recipients){
 
 void DashboardWidget::onBtnReceiveClicked(){
     if(walletModel) {
-        showHideOp(true);
+        window->showHide(true);
         ReceiveDialog *receiveDialog = new ReceiveDialog(window);
 
         receiveDialog->updateQr(walletModel->getAddressTableModel()->getLastUnusedAddress());
@@ -269,20 +270,21 @@ void DashboardWidget::onBtnReceiveClicked(){
 		receiveDialog->setWindowFlags(Qt::CustomizeWindowHint);
 		receiveDialog->setAttribute(Qt::WA_TranslucentBackground, true);
 
-		receiveDialog->resize(window->width(),window->height());
+        receiveDialog->resize(600, 600);
 
 		QPropertyAnimation* animation = new QPropertyAnimation(receiveDialog, "pos");
 		animation->setDuration(300);
-		int xPos = 0;
+        int xPos = (window->width() - 600) / 2;
 		animation->setStartValue(QPoint(xPos, window->height()));
-		animation->setEndValue(QPoint(xPos, 0));
+        animation->setEndValue(QPoint(xPos, (window->height() - 600) / 2));
 		animation->setEasingCurve(QEasingCurve::OutQuad);
 		animation->start(QAbstractAnimation::DeleteWhenStopped);
 
 		bool res = receiveDialog->exec();
+        window->showHide(false);
 
         if (res) {
-            inform(tr("Address Copied"));
+            inform_message(tr("Address Copied"));
         }
 
         receiveDialog->deleteLater();
@@ -433,8 +435,13 @@ void DashboardWidget::changeTheme(bool isLightTheme, QString& theme){
 
 void DashboardWidget::run(int type) {
 }
+
+void DashboardWidget::inform_message(const QString& message) {
+    emit infomessage("", message, CClientUIInterface::MSG_INFORMATION_SNACK);
+}
+
 void DashboardWidget::onError(QString error, int type) {
-    inform(tr("Error loading chart: %1").arg(error));
+    inform_message(tr("Error loading chart: %1").arg(error));
 }
 
 void DashboardWidget::processNewTransaction(const QModelIndex& parent, int start, int /*end*/) {
@@ -509,8 +516,15 @@ void DashboardWidget::loadContacts(){
 		buttons[j] = new QPushButton();
         buttons[j]->setCheckable(true);
         buttons[j]->setAutoExclusive(true);
-		buttons[j]->setProperty("name", i.value());
-        buttons[j]->setText(i.key());
+        buttons[j]->setProperty("name", i.value());
+        int length = 24 / strings.size();
+        if (i.key().length() <= length) {
+            buttons[j]->setText(i.key());
+        }
+        else {
+            QString truncated = i.key().left((length - 2) / 2) + "..." + i.key().right((length - 2) / 2);
+            buttons[j]->setText(truncated);
+        }
         setCssProperty(buttons[j], "dash-btn-contact");
 		ui->horizontalLayoutcontacts->addWidget(buttons[j]);
 		connect(buttons[j], SIGNAL(clicked()), this, SLOT(onContactsClicked()));

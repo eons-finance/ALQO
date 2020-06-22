@@ -59,8 +59,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../pivx.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

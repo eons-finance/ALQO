@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
+    <width>834</width>
     <height>672</height>
    </rect>
   </property>
@@ -190,7 +190,7 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>601</width>
+           <width>800</width>
            <height>0</height>
           </size>
          </property>
@@ -500,7 +500,7 @@ margin:0px;</string>
           </item>
           <item alignment="Qt::AlignVCenter">
            <widget class="QWidget" name="containerSort" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="3,0,2">
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="0,0,0,0,0">
              <property name="spacing">
               <number>0</number>
              </property>
@@ -516,6 +516,19 @@ margin:0px;</string>
              <property name="bottomMargin">
               <number>0</number>
              </property>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
              <item>
               <widget class="QGroupBox" name="groupBoxChart">
                <property name="minimumSize">
@@ -547,7 +560,7 @@ margin:0px;</string>
                  <widget class="QPushButton" name="pushButtonMonth">
                   <property name="minimumSize">
                    <size>
-                    <width>50</width>
+                    <width>100</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -572,7 +585,7 @@ margin:0px;</string>
                  <widget class="QPushButton" name="pushButtonYear">
                   <property name="minimumSize">
                    <size>
-                    <width>50</width>
+                    <width>100</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -603,7 +616,7 @@ margin:0px;</string>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>50</width>
+                    <width>100</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -758,6 +771,19 @@ margin:0px;</string>
                 </item>
                </layout>
               </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_13">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </widget>

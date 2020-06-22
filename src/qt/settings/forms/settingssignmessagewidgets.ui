@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
+    <width>809</width>
     <height>574</height>
    </rect>
   </property>
@@ -65,7 +65,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="3,1">
            <property name="spacing">
-            <number>40</number>
+            <number>5</number>
            </property>
            <item>
             <layout class="QVBoxLayout" name="verticalLayoutTitle">
@@ -84,6 +84,18 @@
              </item>
              <item>
               <widget class="QLabel" name="labelSubtitle1">
+               <property name="minimumSize">
+                <size>
+                 <width>550</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>550</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">color:white;</string>
                </property>

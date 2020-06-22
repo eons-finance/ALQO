@@ -36,7 +36,6 @@ class SortEdit : public QLineEdit{
     Q_OBJECT
 public:
     explicit SortEdit(QWidget* parent = nullptr) : QLineEdit(parent){}
-
     inline void mousePressEvent(QMouseEvent *) override{
         emit Mouse_Pressed();
     }
@@ -69,6 +68,7 @@ public:
 
     void loadWalletModel() override;
     void run(int type) override;
+    void inform_message(const QString& message);
     void UpdateTxDialogPos();
     void onError(QString error, int type) override;
 
@@ -86,7 +86,7 @@ public slots:
 signals:
     /** Notify that a new transaction appeared */
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
-   
+   void infomessage(const QString& title, const QString& message, unsigned int style);
 protected:
     CAmount getAmountValue(QString amount);
 
