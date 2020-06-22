@@ -75,7 +75,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     border: 1px solid #3de4cd;
     border-radius: 4px;
     background-color:  rgb(26, 29, 49);
-    padding: 3px 12px;
+    padding: 2px;
     font-size: 9px;
 }
 
@@ -922,7 +922,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-list-body1"] {
-    color:#ffffff;
+    color:#3de4cd;
     font-size:12px;
     text-align:right;
 }
@@ -947,11 +947,6 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     font-size:12px;
 }
 
-*[cssClass="text-list-body2-grey"] {
-    color:#E6000000;
-    font-size:14px;
-}
-
 *[cssClass="text-list-caption"] {
     color:#ffffff;
     font-size:11px;
@@ -961,29 +956,11 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     color:#ffffff;
     font-size:14px;
 }
-
-*[cssClass="text-list-caption-medium-green"] {
-    color:#B3000000;
-    font-size:14px;
-}
-
 *[cssClass="text-list-caption-unconfirmed"] {
-    color:#B6B6B6;
-}
-
-*[cssClass="text-list-caption-grey"] {
-    color:#000000;
-    font-size:12px;
+    color:#959696;
 }
 
 *[cssClass="text-list-amount-receive"] {
-    /*color:#505BB9;
-    background-color: #3DE4CD;
-    text-align: center;
-    font-size:14px;
-    font-weight: bold;
-    border-radius:18px;
-    padding: 4px;*/
     color: #3de4cd;
     font-size: 13px;
     border: none;
@@ -992,13 +969,6 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-list-amount-send"] {
-    /*color:#ffffff;
-    background-color: #505BB9;
-    text-align: center;
-    font-size:14px;
-    font-weight: bold;
-    border-radius:18px;
-    padding: 4px;*/
     color: red;
     font-size: 13px;
     border: none;
@@ -1008,8 +978,11 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
 *[cssClass="text-list-amount-unconfirmed"] {
-    color:#B6B6B6;
-    font-size:13px;
+    color:#959696;
+    font-size: 13px;
+    border: none;
+    background: transparent;
+    padding: 4px;
 }
 
 
@@ -1699,13 +1672,6 @@ QPushButton[cssClass="btn-expand"] {
 HH      SPLASH
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
-*[cssClass="container-splash"] {
-    background-color:rgb(26, 29, 49);
-    background-image: url("://bg-splash-png");
-    background-repeat:no-repeat;
-    background-position:center;
-}
-
 *[cssClass="img-splash-logo"] {
     qproperty-icon: url("://img-logo-pivx");
     qproperty-iconSize: 300px 100px;
@@ -1714,23 +1680,16 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="bg-progress"] {
-    border-top:2px solid #b088ff ;
+    border-top:1px solid #3de4cd;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
-    background-color:transparent;
+    background-color:#0f0f1f;
 }
 
 QProgressBar[cssClass="progress-splash"]::chunk:horizontal {
-    background: qlineargradient(x1: 0,
-    y1: 0.5,
-    x2: 1,
-    y2: 0.5,
-    stop: 0 #80211a2f,
-    stop: 1 #80b088ff,
-    stop: 2 #80211a2f,);
-    margin-right: 2px;
+    background: #3de4cd;
 }
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
@@ -2023,11 +1982,12 @@ HH        RECEIVE
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="label-address-box"] {
-    color:#707070;
-    background-color: #f2f2f2;
-    font-size:22px;
-    padding:10px 10px;
-    border-radius:20px;
+    border:  1px solid #0f0f1f;
+    background-color: #0f0f1f;
+    font-size: 22px;
+    border-radius: 6px;
+    padding: 8px;
+    color: #3de4cd;
 }
 
 
@@ -2163,22 +2123,14 @@ QComboBox {
     border-radius:0px;
     border: 0px;
 }
-
-QComboBox QFrame { border: 0px solid #bababa; border-radius:0px;}
-
-QComboBox:on { /* shift the text when the popup opens */
-    padding: 5px 3px;
-    background-color: transparent;
+QComboBox:on {
+    border: 1px solid #3de4cd;
 }
-
 QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: center right;
     width: 15px;
     right:3px;
-    border-top-right-radius: 0px; /* same radius as the QComboBox */
-    border-bottom-right-radius: 0px;
-    border-radius:0px;
     background:none;
 }
 
@@ -2271,26 +2223,23 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
 QScrollBar:vertical {
-    border: 0px solid #bababa;
-    background:white;
-    width:4px;
+    background:#0f0f1f;
+    width:5px;
     margin: 0px 0px 0px 0px;
 }
 
 
 QScrollBar::handle:vertical {
-    background: #bababa;
+    background: #3de4cd;
     min-height: 0px;
 }
 
 QScrollBar::add-line:vertical {
-    background: #bababa;
     height: 0px;
     subcontrol-position: bottom;
     subcontrol-origin: margin;
 }
 QScrollBar::sub-line:vertical {
-    background: #bababa;
     height: 0 px;
     subcontrol-position: top;
     subcontrol-origin: margin;
@@ -2490,9 +2439,6 @@ QComboBox[cssClass="btn-combo"] {
     selection-color: #0f0f1f;
     color: #3de4cd;
     text-align: left;
-}
-QComboBox[cssClass="btn-combo"]:focus {
-    border: 1px solid #3de4cd;
 }
 QComboBox[cssClass="btn-combo"]::down-arrow {
     image: url("://ic-arrow-drop-down");
@@ -2925,7 +2871,11 @@ HH        Tooltip
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 
-QToolTip { color: black; background-color: #dddddd; border: none; padding: 2px; border-radius:2px;}
+QToolTip {
+    color: #3de4cd;
+    background-color: #0f0f1f;
+    border: none;
+}
 
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH

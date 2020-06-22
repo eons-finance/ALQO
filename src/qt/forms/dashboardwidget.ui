@@ -44,6 +44,9 @@
          </property>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <property name="spacing">
+            <number>15</number>
+           </property>
            <item>
             <widget class="QLabel" name="labelAmountPiv">
              <property name="styleSheet">
@@ -570,7 +573,7 @@ background-color: #3de4cd;
              <bool>true</bool>
             </property>
             <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
+             <enum>Qt::ScrollBarAsNeeded</enum>
             </property>
             <property name="horizontalScrollBarPolicy">
              <enum>Qt::ScrollBarAlwaysOff</enum>

@@ -63,7 +63,7 @@ SettingsWidget::SettingsWidget(ALQOGUI* parent) :
     settingsMultisendWidget = new SettingsMultisendWidget(this);
     settingsInformationWidget = new SettingsInformationWidget(window, this);
     settingsConsoleWidget = new SettingsConsoleWidget(window, this);
-    ui->stackedWidgetContainer->setSpeed(300);
+
     ui->stackedWidgetContainer->addWidget(settingsBackupWallet);
     ui->stackedWidgetContainer->addWidget(settingsBitToolWidget);
     ui->stackedWidgetContainer->addWidget(settingsSingMessageWidgets);
@@ -189,44 +189,44 @@ void SettingsWidget::onSaveOptionsClicked(){
 }
 
 void SettingsWidget::onBackupWalletClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsBackupWallet, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsBackupWallet);
     selectOption(ui->pushButtonBackup);
 }
 
 void SettingsWidget::onSignMessageClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsSingMessageWidgets, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsSingMessageWidgets);
     selectOption(ui->pushButtonSignVerify);
 }
 
 void SettingsWidget::onBipToolClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsBitToolWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsBitToolWidget);
     selectOption(ui->pushButtonBip38);
 }
 
 void SettingsWidget::onMultisendClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsMultisendWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsMultisendWidget);
     selectOption(ui->pushButtonMultisend);
 }
 
 
 void SettingsWidget::onMainOptionsClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsMainOptionsWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsMainOptionsWidget);
     selectOption(ui->pushButtonMain);
 }
 
 void SettingsWidget::onWalletOptionsClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsWalletOptionsWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsWalletOptionsWidget);
     selectOption(ui->pushButtonWallet);
 }
 
 void SettingsWidget::onDisplayOptionsClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsDisplayOptionsWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsDisplayOptionsWidget);
     selectOption(ui->pushButtonDisplay);
 }
 
 
 void SettingsWidget::onInformationClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsInformationWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsInformationWidget);
     selectOption(ui->pushButtonInformation);
 }
 
@@ -236,12 +236,12 @@ void SettingsWidget::showDebugConsole(){
 }
 
 void SettingsWidget::onDebugConsoleClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsConsoleWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsConsoleWidget);
     selectOption(ui->pushButtonConsole);
 }
 
 void SettingsWidget::onWalletRepairClicked() {
-    ui->stackedWidgetContainer->slideInWgt(settingsWalletRepairWidget, QSlideStackedWidget::LEFT2RIGHT);
+    ui->stackedWidgetContainer->setCurrentWidget(settingsWalletRepairWidget);
     selectOption(ui->pushButtonRepair);
 }
 

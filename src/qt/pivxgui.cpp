@@ -254,6 +254,7 @@ void ALQOGUI::setClientModel(ClientModel* clientModel) {
 
         // Receive and report messages from client model
         connect(clientModel, SIGNAL(message(QString, QString, unsigned int)), this, SLOT(message(QString, QString, unsigned int)));
+        connect(dashboard, SIGNAL(infomessage(QString, QString, unsigned int)), this, SLOT(message(QString, QString, unsigned int)));
         connect(dashboard, SIGNAL(walletSynced(bool)), this, SLOT(walletSynced(bool)));
 
         // Get restart command-line parameters and handle restart

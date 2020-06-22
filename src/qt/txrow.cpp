@@ -125,19 +125,11 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
         setConfirmStatus(true);
     }
 
-//    ui->icon->setIcon(QIcon(path));
-    ui->icon->setVisible(false);
-    
-//    QString amount =  ui->lblAmount->text();
-//    ui->lblAmount->setTextFormat(Qt::RichText);
-//    ui->lblAmount->setText(amount);
-
     if(!mini){
-		//ui->lblType->setTextFormat(Qt::RichText);
 		ui->lblType->setText(txtype);		
 		ui->lblType->setStyleSheet("color:"+color+"; text-align:center; font-weight: bold;");
 	}else{		
-		ui->lblType->setVisible(false);
+        ui->typeWidget->setVisible(false);
 	}
     setCssProperty(ui->lblAmount, css, true);
     

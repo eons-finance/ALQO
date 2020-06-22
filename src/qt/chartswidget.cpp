@@ -41,8 +41,8 @@ ChartsWidget::ChartsWidget(ALQOGUI* parent) :
     ui->labelAmountPiv->setText("0 XLQ");
     setCssProperty(ui->labelAmountPiv, "text-stake-piv-disable");
 
-    setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
-    setCssProperty({ui->comboBoxMonths,  ui->comboBoxYears}, "btn-combo-chart-selected");
+    setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-primary");
+    setCssProperty({ui->comboBoxMonths,  ui->comboBoxYears}, "btn-combo");
 
     ui->comboBoxMonths->setView(new QListView());
     ui->comboBoxMonths->setStyleSheet("selection-background-color:transparent; selection-color:transparent;");

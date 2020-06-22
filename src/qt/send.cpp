@@ -82,9 +82,9 @@ SendWidget::SendWidget(ALQOGUI* parent) :
     connect(ui->btnChangeAddress, SIGNAL(clicked()), this, SLOT(onChangeAddressClicked()));
     connect(ui->btnUri, SIGNAL(clicked()), this, SLOT(onOpenUriClicked()));
     connect(ui->pushButtonReset, &QPushButton::clicked, [this](){ onResetCustomOptions(true); });    
-    connect(ui->checkBoxAdv, SIGNAL(clicked(bool)), ui->advframe, SLOT(setVisible(bool)));
+    connect(ui->checkBoxAdv, SIGNAL(clicked(bool)), ui->advWidget, SLOT(setVisible(bool)));
     
-    ui->advframe->setVisible(false);
+    ui->advWidget->setVisible(false);
 
     // Entry
     addEntry();
