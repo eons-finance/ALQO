@@ -35,7 +35,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
 {
     ui->setupUi(this);
     this->setStyleSheet(parent->styleSheet());
-    this->setProperty("cssClass", "black-frame");
+    this->setProperty("cssClass", "main-frame");
     GUIUtil::restoreWindowGeometry("nHelpMessageDialogWindow", this->size(), this);
 
     QString version = tr("ALQO") + " " + tr("version") + " " + QString::fromStdString(FormatFullVersion());
