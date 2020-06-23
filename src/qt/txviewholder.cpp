@@ -33,7 +33,8 @@ void TxViewHolder::init(QWidget* holder,const QModelIndex &index, bool isHovered
             type !=  TransactionRecord::StakeZPIV &&
             type != TransactionRecord::Other){
         QString address = rIndex.data(Qt::DisplayRole).toString();
-        if(address.length() > 20) {
+        if(mini && address.length() > 20)
+        {
             address = address.left(ADDRESSLEFT_SIZE) + "..." + address.right(ADDRESSRIGHT_SIZE);
         }
         label += address;

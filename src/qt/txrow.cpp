@@ -21,6 +21,13 @@ void TxRow::init(bool isLightTheme, bool _mini) {
 	this->mini=_mini;
     setConfirmStatus(true);
     updateStatus(isLightTheme, false, false);
+    if (_mini) {
+        ui->addressWidget->setMaximumWidth(160);
+        ui->addressWidget->setMinimumWidth(160);
+    } else {
+        ui->addressWidget->setMaximumWidth(230);
+        ui->addressWidget->setMinimumWidth(230);
+    }
 }
 
 void TxRow::setConfirmStatus(bool isConfirm){
@@ -45,10 +52,17 @@ void TxRow::setDate(QDateTime date){
 }
 
 void TxRow::setLabel(QString str){
-    ui->lblAddress->setText(str);
+    QString add = str;
+    if (mini && add.length() > 23)
+        add = add.left(15) + "..." + add.right(5);
+    else if(add.length() > 40) {
+        add = add.left(30) + "..." + add.right(10);
+    }
+    ui->lblAddress->setText(add);
 }
 
 void TxRow::setAmount(QString str){
+    //QString amount = QString::number(str.toDouble(), 'f', 2);
     ui->lblAmount->setText(str);
 }
 
@@ -129,7 +143,7 @@ void TxRow::setType(bool isLightTheme, int type, bool isConfirmed){
 		ui->lblType->setText(txtype);		
 		ui->lblType->setStyleSheet("color:"+color+"; text-align:center; font-weight: bold;");
 	}else{		
-        ui->typeWidget->setVisible(false);
+        ui->widget->setVisible(false);
 	}
     setCssProperty(ui->lblAmount, css, true);
     

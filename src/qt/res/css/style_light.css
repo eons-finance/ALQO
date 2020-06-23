@@ -2892,7 +2892,7 @@ HH        EMPTY LIST
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="text-empty"]{
-    color: #707070;
+    color: #fff;
     font-size: 18px;
 }
 
@@ -3225,3 +3225,4 @@ QRadioButton[cssClass="radio-welcome"]::indicator:unchecked {
     background-repeat:no-repeat;
     background-position:center;
 }
+
