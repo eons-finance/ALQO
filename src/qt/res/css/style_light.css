@@ -1473,7 +1473,7 @@ QPushButton[cssClass="btn-secundary-copy"] {
     border: 1px solid #3de4cd;
     border-radius: 6px;
     background-color:  rgb(26, 29, 49);
-    padding: 5px 12px;
+    padding: 0px 12px;
     font-size: 12px;
     min-height: 30px;
 }
@@ -1490,7 +1490,7 @@ QPushButton[cssClass="btn-secondary-edit"] {
     border: 1px solid #3de4cd;
     border-radius: 6px;
     background-color:  rgb(26, 29, 49);
-    padding: 5px 12px;
+    padding: 0px 12px;
     font-size: 12px;
     min-height: 30px;
 }
@@ -1507,7 +1507,7 @@ QPushButton[cssClass="btn-secondary-delete"] {
     border: 1px solid #3de4cd;
     border-radius: 6px;
     background-color:  rgb(26, 29, 49);
-    padding: 5px 12px;
+    padding: 0px 12px;
     font-size: 12px;
     min-height: 30px;
 }

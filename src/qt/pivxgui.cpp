@@ -26,8 +26,8 @@
 #include <QWindowStateChangeEvent>
 #include "util.h"
 
-#define BASE_WINDOW_WIDTH 1200
-#define BASE_WINDOW_HEIGHT 800
+#define BASE_WINDOW_WIDTH 900
+#define BASE_WINDOW_HEIGHT 730
 
 
 const QString ALQOGUI::DEFAULT_WALLET = "~Default";
@@ -41,7 +41,6 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
     this->setMinimumSize(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT);
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
 	QFont font("Gotham Book");
 	//font.setStyleHint(QFont::Monospace);
 	QApplication::setFont(font);

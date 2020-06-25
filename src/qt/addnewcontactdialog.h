@@ -26,6 +26,7 @@ public:
     bool res = false;
 
 public slots:
+    void labelChanged(const QString& text);
     void ok();
 private:
     Ui::AddNewContactDialog *ui;

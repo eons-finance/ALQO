@@ -621,7 +621,7 @@ public:
     DBErrors ZapWalletTx(std::vector<CWalletTx>& vWtx);
 
     bool SetAddressBook(const CTxDestination& address, const std::string& strName, const std::string& purpose);
-    bool DelAddressBook(const CTxDestination& address) const;
+    bool DelAddressBook(const CTxDestination& address);
     bool HasAddressBook(const CTxDestination& address) const;
     bool HasDelegator(const CTxOut& out) const;
 

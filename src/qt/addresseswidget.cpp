@@ -74,6 +74,7 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     // List Addresses
     setCssProperty(ui->listAddresses, "listTransactions");
     setCssProperty(ui->framecontacts, "dash-frame");
+    setCssProperty(ui->emptyContainer, "dash-frame");
 
     ui->listAddresses->setItemDelegate(delegate);
     ui->listAddresses->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
@@ -90,14 +91,14 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     //fillAddressSortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
     ui->comboBoxSort->setView(new QListView());
 
-    ui->comboBoxSort->addItem(QObject::tr("by Label"), AddressTableModel::Label);
-    ui->comboBoxSort->addItem(QObject::tr("by Address"), AddressTableModel::Address);
-    ui->comboBoxSort->addItem(QObject::tr("by Date"), AddressTableModel::Date);
+    ui->comboBoxSort->addItem(QObject::tr("By Label"), AddressTableModel::Label);
+    ui->comboBoxSort->addItem(QObject::tr("By Address"), AddressTableModel::Address);
+    ui->comboBoxSort->addItem(QObject::tr("By Date"), AddressTableModel::Date);
     ui->comboBoxSort->setCurrentIndex(0);
 
     ui->comboBoxSortOrder->setView(new QListView());
-    ui->comboBoxSortOrder->addItem("asc", Qt::AscendingOrder);
-    ui->comboBoxSortOrder->addItem("desc", Qt::DescendingOrder);
+    ui->comboBoxSortOrder->addItem("Asc", Qt::AscendingOrder);
+    ui->comboBoxSortOrder->addItem("Desc", Qt::DescendingOrder);
     ui->comboBoxSortOrder->setCurrentIndex(0);
 
     //Empty List
@@ -113,7 +114,7 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     setCssEditLine(ui->lineEditName, true);
 
 
-    connect(ui->lineEditName, SIGNAL(textChanged(const QString &)), this, SLOT(lineEditTextCahnged(const QString&)));
+    connect(ui->lineEditName, SIGNAL(textChanged(const QString &)), this, SLOT(lineEditTextChanged(const QString&)));
 
     ui->lineEditName->setAttribute(Qt::WA_MacShowFocusRect, 0);
     ui->lineEditAddress->setAttribute(Qt::WA_MacShowFocusRect, 0);
@@ -152,12 +153,12 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     loadWalletModel();
 }
 
-void AddressesWidget::lineEditTextCahnged(const QString& text)
+void AddressesWidget::lineEditTextChanged(const QString& text)
 {
-	if (text.length() > 8)
+    if (text.length() > 20)
 	{
 		ui->lineEditName->setText(text.left(text.length()-1));
-		inform(tr("Contacts name cannot exceed 8 characters"));
+        inform(tr("Contacts name cannot exceed 20 characters"));
 	}
 }
 
@@ -184,9 +185,10 @@ void AddressesWidget::loadWalletModel(){
 }
 
 void AddressesWidget::updateListView(){
-    bool empty = addressTablemodel->sizeSend() == 0;
-   // ui->emptyContainer->setVisible(empty);
-    //ui->framecontacts->setVisible(!empty);
+    bool empty = walletModel->getAddressTableModel()->sizeSend() == 0;
+    ui->emptyContainer->setVisible(empty);
+    ui->framecontacts->setVisible(!empty);
+    ui->framemodify->setVisible(false);
 }
 
 void AddressesWidget::onStoreContactClicked(){
@@ -230,6 +232,7 @@ void AddressesWidget::onStoreContactClicked(){
 				inform("New Contact store failed");
         }
     }
+    updateListView();
 }
 
 void AddressesWidget::onEditClicked(){
@@ -251,7 +254,9 @@ void AddressesWidget::onEditClicked(){
 void AddressesWidget::onDeleteClicked(){
     if(walletModel) {
             if (this->walletModel->getAddressTableModel()->removeRows(index.row(), 1, index)) {
-                updateListView();
+                QTimer::singleShot(100, this, [this]() {
+                    updateListView();
+                });
                 inform(tr("Contact Deleted"));
             } else {
                 inform(tr("Error deleting a contact"));
