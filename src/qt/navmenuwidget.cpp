@@ -54,7 +54,6 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     connect(ui->btnHistory,SIGNAL(clicked()),this, SLOT(onHistoryClicked()));
     connect(ui->btnCharts,SIGNAL(clicked()),this, SLOT(onChartsClicked()));
     connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
-    setCssProperty(ui->labelLogo, "label-logo");
     connect(logoButton, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
     
     connectActions();

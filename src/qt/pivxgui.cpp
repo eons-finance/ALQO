@@ -46,6 +46,7 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 	//font.setStyleHint(QFont::Monospace);
 	QApplication::setFont(font);
 
+    background.load("://ALQO_WALLET_BG_4x");
 
  //   setWindowFlags(Qt::FramelessWindowHint);
 
@@ -85,7 +86,7 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         centralWidgetLayouot->setContentsMargins(0,0,0,0);
         centralWidgetLayouot->setSpacing(0);
 
-        centralWidget->setProperty("cssClass", "container");
+        //centralWidget->setProperty("cssClass", "container");
         centralWidget->setStyleSheet("padding:0px; border:none; margin:0px;");
 
         // First the nav
@@ -167,6 +168,30 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
     // Subscribe to notifications from core
     subscribeToCoreSignals();
 
+}
+
+void ALQOGUI::paintEvent(QPaintEvent *event) {
+    QPainter painter(this);
+
+    auto winSize = this->size();
+    auto pixmapRatio = (float)background.width() / background.height();
+    auto windowRatio = (float)winSize.width() / winSize.height();
+    QBrush brush(QColor("#1a1d31"));
+    painter.setBrush(brush);
+    painter.drawRect(0, 0, winSize.width(), winSize.height());
+
+    if(pixmapRatio > windowRatio)
+    {
+      auto newWidth = (int)(winSize.height() * pixmapRatio);
+      auto offset = (newWidth - winSize.width()) / -2;
+      painter.drawPixmap(offset, 0, newWidth, winSize.height(), background);
+    }
+    else
+    {
+      auto newHeight = (int)(winSize.width() / pixmapRatio);
+      painter.drawPixmap(0, 0, winSize.width(), newHeight, background);
+    }
+    QMainWindow::paintEvent(event);
 }
 
 void ALQOGUI::createActions(const NetworkStyle* networkStyle){

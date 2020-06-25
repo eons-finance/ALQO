@@ -72,9 +72,10 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     setCssProperty(ui->frameSendReceive, "dash-frame");
     setCssProperty(ui->sendpagebtn, "tab-button");
     setCssProperty(ui->receivepagebtn, "tab-button");
-    setCssProperty(ui->pushButtonSend, "dash-btn-send");
+    //setCssProperty(ui->pushButtonSend, "dash-btn-send");
 
-    ui->lineEditAmount->setPlaceholderText(QString("  ") + " 0.00 XLQ ");
+    ui->lineEditAmount->setPlaceholderText("0.00 XLQ");
+    ui->lineEditAmount->setAttribute(Qt::WA_MacShowFocusRect, 0);
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
     setCssProperty(ui->lineEditAmount, "edit-primary");
     connect(ui->lineEditAmount, &QLineEdit::textChanged, this, [this]() {
@@ -85,12 +86,12 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
 //    ui->lineEditContact->setPlaceholderText(QString("  ") + " Select Contact");
 //    setCssProperty(ui->lineEditContact, "edit-primary-multi-book-sm");
 
-    //ui->labelSendAddress->setVisible(false);
+    ui->labelSendAddress->setVisible(false);
     setCssProperty(ui->labelSendAddress, "dash-label-sm");
     ui->sendpagebtn->setChecked(true);
 
     //Receive
-    setCssProperty(ui->pushButtonQR, "dash-btn-send");
+    //setCssProperty(ui->pushButtonQR, "dash-btn-send");
     setCssProperty(ui->labelAddress, "dash-label-sm");
 
     // QR image
@@ -124,6 +125,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
     ui->labelusdxlq->setTextFormat(Qt::RichText);
     ui->lblwalletvalue->setTextFormat(Qt::RichText);
     ui->labeltime->setTextFormat(Qt::RichText);
+    ui->label_nocontact->setVisible(true);
 
     //connect(parent, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
@@ -511,6 +513,10 @@ void DashboardWidget::loadContacts(){
     QMap<QString, QString> strings = menuContacts->getMini();
     QMap<QString, QString>::const_iterator i;
     int j =0;
+    if (strings.size() > 0) {
+        ui->label_nocontact->setVisible(false);
+        ui->labelSendAddress->setVisible(true);
+    }
 	for(i = strings.begin(); i != strings.end(); i++)
 	{
 		buttons[j] = new QPushButton();
@@ -526,7 +532,7 @@ void DashboardWidget::loadContacts(){
             buttons[j]->setText(truncated);
         }
         setCssProperty(buttons[j], "dash-btn-contact");
-		ui->horizontalLayoutcontacts->addWidget(buttons[j]);
+        ui->horizontalLayoutcontacts->addWidget(buttons[j]);
 		connect(buttons[j], SIGNAL(clicked()), this, SLOT(onContactsClicked()));
 	}
 

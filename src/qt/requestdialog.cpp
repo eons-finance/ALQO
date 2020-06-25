@@ -42,6 +42,9 @@ RequestDialog::RequestDialog(QWidget *parent) :
     ui->labelSubtitleAmount->setText(tr("Amount"));
     setCssProperty(ui->labelSubtitleAmount, "text-title2-dialog");
     ui->lineEditAmount->setPlaceholderText("0.00 ALQO");
+    ui->lineEditAmount->setAttribute(Qt::WA_MacShowFocusRect, 0);
+    ui->lineEditDescription->setAttribute(Qt::WA_MacShowFocusRect, 0);
+    ui->lineEditLabel->setAttribute(Qt::WA_MacShowFocusRect, 0);
     setCssEditLineDialog(ui->lineEditAmount, true);
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
 

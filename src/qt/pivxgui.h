@@ -105,6 +105,7 @@ protected:
 
     void changeEvent(QEvent* e) override;
     void closeEvent(QCloseEvent* event) override;
+    void paintEvent(QPaintEvent *event) override;
 
     /*
     void dragEnterEvent(QDragEnterEvent* event);
@@ -114,6 +115,7 @@ protected:
 
 private:
     bool enableWallet;
+    QPixmap background;
     ClientModel* clientModel = nullptr;
 
     // Actions

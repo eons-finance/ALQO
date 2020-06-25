@@ -288,7 +288,7 @@ void SendMultiRow::leaveEvent(QEvent *) {
 }
 
 int SendMultiRow::getMenuBtnWidth(){
-    //return ui->btnMenu->width();
+    return 0;
 }
 
 SendMultiRow::~SendMultiRow(){

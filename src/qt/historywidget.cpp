@@ -87,6 +87,7 @@ HistoryWidget::HistoryWidget(ALQOGUI *parent) :
 
     /* Filter */
     ui->lineEditFilter->setPlaceholderText("Filter by address/date/amount");
+    ui->lineEditFilter->setAttribute(Qt::WA_MacShowFocusRect, 0);
     setCssProperty(ui->lineEditFilter, "edit-primary-bg");
 
     // Button Search
@@ -142,6 +143,7 @@ void HistoryWidget::loadWalletModel(){
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
         if(txModel->size() == 0){
+            ui->lineEditFilter->setVisible(false);
             ui->emptyContainer->setVisible(true);
             ui->frametransactions->setVisible(false);
             ui->comboBoxSortType->setVisible(false);
@@ -175,11 +177,13 @@ void HistoryWidget::handleTransactionClicked(const QModelIndex &index){
 
 void HistoryWidget::showList(){
     if (filter->rowCount() == 0){
+        ui->lineEditFilter->setVisible(false);
         ui->emptyContainer->setVisible(true);
         ui->frametransactions->setVisible(false);
         ui->comboBoxSortType->setVisible(false);
         ui->comboBoxSort->setVisible(false);
     } else {
+        ui->lineEditFilter->setVisible(true);
         ui->emptyContainer->setVisible(false);
         ui->frametransactions->setVisible(true);
         ui->comboBoxSortType->setVisible(true);
@@ -233,6 +237,7 @@ void HistoryWidget::onSortTypeChanged(const QString& value){
     ui->listTransactions->update();
 
     if (filter->rowCount() == 0){
+        ui->lineEditFilter->setVisible(false);
         ui->emptyContainer->setVisible(true);
         ui->frametransactions->setVisible(false);
     } else {

@@ -112,8 +112,11 @@ AddressesWidget::AddressesWidget(ALQOGUI* parent) :
     setCssProperty(ui->lineEditName, "edit-primary");
     setCssEditLine(ui->lineEditName, true);
 
+
     connect(ui->lineEditName, SIGNAL(textChanged(const QString &)), this, SLOT(lineEditTextCahnged(const QString&)));
 
+    ui->lineEditName->setAttribute(Qt::WA_MacShowFocusRect, 0);
+    ui->lineEditAddress->setAttribute(Qt::WA_MacShowFocusRect, 0);
     // Address
     ui->lineEditAddress->setPlaceholderText("ALQO Address");
     setCssEditLine(ui->lineEditAddress, true);

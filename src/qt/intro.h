@@ -54,6 +54,8 @@ signals:
     void requestCheck();
     void stopThread();
 
+protected:
+    virtual void paintEvent(QPaintEvent *event);
 public slots:
     void setStatus(int status, const QString& message, quint64 bytesAvailable);
 
@@ -66,6 +68,7 @@ private slots:
 private:
     Ui::Intro* ui;
     QThread* thread;
+    QPixmap background;
     QMutex mutex;
     bool signalled;
     QString pathToCheck;

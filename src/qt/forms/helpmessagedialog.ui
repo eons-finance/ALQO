@@ -168,10 +168,10 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">#helpMessage {
+           <string notr="true">QTextEdit {
 	color:#3de4cd;
 	border: none;
-background:#0f0f1f;
+   background:#0f0f1f;
 }</string>
           </property>
           <property name="readOnly">
@@ -184,7 +184,7 @@ background:#0f0f1f;
           <item>
            <widget class="QScrollArea" name="scrollArea">
             <property name="styleSheet">
-             <string notr="true">#scrollArea {
+             <string notr="true">QScrollArea#scrollArea {
 border:none;
 background-color: #0f0f1f;
 }</string>
@@ -220,8 +220,8 @@ background-color: #0f0f1f;
                  <cursorShape>IBeamCursor</cursorShape>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">#aboutMessage {
-background:transparent;
+                 <string notr="true">QLabel#aboutMessage {
+	background:transparent;
     color: #3de4cd;
 }</string>
                 </property>
