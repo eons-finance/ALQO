@@ -148,7 +148,7 @@ DashboardWidget::DashboardWidget(ALQOGUI* parent) :
 	//Timer is not set,lets create one.
 	timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(SetExchangeInfoTextLabels()));
-	timer->start(60000);
+	timer->start(300000);
 	timerid = timer->timerId();
 
 }
