@@ -96,10 +96,9 @@ MasterNodesWidget::MasterNodesWidget(ALQOGUI *parent) :
     ui->pushButtonSave->setText(tr("Create Masternode"));
     setCssBtnPrimary(ui->pushButtonSave);
 
-    setCssProperty(ui->listMn, "dash-frame");
+    setCssProperty(ui->frame, "dash-frame");
     ui->listMn->setItemDelegate(delegate);
     ui->listMn->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
-    ui->listMn->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listMn->setAttribute(Qt::WA_MacShowFocusRect, false);
     ui->listMn->setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -135,20 +134,17 @@ void MasterNodesWidget::loadWalletModel(){
 
 void MasterNodesWidget::updateListState() {
     if (mnModel->rowCount() > 0) {
-        ui->listMn->setVisible(true);
+        ui->frame->setVisible(true);
         ui->emptyContainer->setVisible(false);
     } else {
-        ui->listMn->setVisible(false);
+        ui->frame->setVisible(false);
         ui->emptyContainer->setVisible(true);
     }
 }
 
 void MasterNodesWidget::onMNClicked(const QModelIndex &index){
     ui->listMn->setCurrentIndex(index);
-    QRect rect = ui->listMn->visualRect(index);
-    QPoint pos = rect.topRight();
-    pos.setX(pos.x() - (DECORATION_SIZE * 2));
-    pos.setY(pos.y() + (DECORATION_SIZE * 1.5));
+    QPoint pos = this->mapFromGlobal(QCursor::pos());
     if(!this->menu){
         this->menu = new TooltipMenu(window, this);
         this->menu->setEditBtnText(tr("Start"));

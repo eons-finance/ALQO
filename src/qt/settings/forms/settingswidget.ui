@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>876</width>
-    <height>656</height>
+    <height>568</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,7 +52,7 @@ font-size:20px;
 QPushButton {
 color: #3de4cd;
 border: none;
-padding: 10px 30px;
+padding: 0px 30px;
 font-size: 16px;
 }
 QPushButton:hover{
@@ -84,7 +84,7 @@ background-color: #3de4cd;
           <item>
            <widget class="QLabel" name="label">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -92,7 +92,7 @@ background-color: #3de4cd;
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -122,7 +122,7 @@ border-top-left-radius: 20px;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -159,7 +159,7 @@ border-top-left-radius: 20px;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -190,7 +190,7 @@ border-top-left-radius: 20px;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -221,7 +221,7 @@ border-top-left-radius: 20px;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -247,7 +247,7 @@ border-top-left-radius: 20px;</string>
           <item>
            <widget class="QLabel" name="label_2">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -255,7 +255,7 @@ border-top-left-radius: 20px;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>45</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -284,7 +284,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -321,7 +321,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -352,7 +352,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -383,7 +383,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -417,7 +417,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -448,7 +448,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -479,7 +479,7 @@ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(26, 
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -494,7 +494,7 @@ QPushButton {
 color: #3de4cd;
 border: none;
 border-bottom-left-radius: 20px;
-padding: 10px 30px;
+padding: 0px 30px;
 font-size: 16px;
 }
 QPushButton:hover{

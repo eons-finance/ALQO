@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/icons">
-        <file alias="bitcoin">res/icons/bitcoin.png</file>
         <file alias="address-book">res/icons/address-book.png</file>
         <file alias="send">res/icons/send.png</file>
         <file alias="send_dark">res/icons/send_dark.png</file>
@@ -69,6 +68,7 @@
         <file alias="abstainvote">res/icons/abstainvote.png</file>
         <file alias="onion">res/icons/onion.png</file>
         <file alias="quit">res/icons/quit.png</file>
+        <file alias="bitcoin">res/icons/bitcoin.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default-dark">res/css/style_dark.css</file>
@@ -309,13 +309,14 @@
         <file alias="staking">res/img/staking.png</file>
         <file alias="staking_unlocked">res/img/staking_unlocked.png</file>
         <file alias="staking_off">res/img/staking_off.png</file>
-        <file alias="ALQO_WALLET_BG_4x">res/img/ALQO-Wallet-BG@4x.png</file>
-        <file alias="alqo_logo">res/img/alqo_logo.png</file>
         <file alias="ic-delete">res/img/ic-delete.svg</file>
         <file alias="ic-edit">res/img/ic-edit.svg</file>
         <file alias="ic-delete-sm">res/img/ic-delete-sm.png</file>
-        <file alias="alqo-bg-sm">res/img/AlqoWalletBG-SM.jpg</file>
         <file alias="img-empty-multisend">res/img/img-empty-multisend.png</file>
         <file alias="img-empty-masternode">res/img/img-empty-masternode.png</file>
+        <file alias="ALQO_WALLET_BG_4x">res/img/ALQO-Wallet-BG@4x.png</file>
+        <file alias="alqo-welcome">res/img/ALQO-Welcome.png</file>
+        <file alias="ic-radio-liliac-off">res/img/ic-radio-liliac-off.svg</file>
+        <file alias="alqo_logo">res/img/alqo-logo.png</file>
     </qresource>
 </RCC>

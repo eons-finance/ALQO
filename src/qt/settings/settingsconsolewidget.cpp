@@ -255,7 +255,7 @@ SettingsConsoleWidget::SettingsConsoleWidget(ALQOGUI* _window, QWidget *parent) 
 
     // Console container
     ui->consoleWidget->setProperty("cssClass", "dash-frame");
-    setShadow(ui->consoleWidget);
+    //setShadow(ui->consoleWidget);
 
     // Edit
     ui->lineEdit->setPlaceholderText(tr("Console input"));
@@ -504,24 +504,26 @@ void SettingsConsoleWidget::changeTheme(bool isLightTheme, QString &theme)
     // Set default style sheet
     if (isLightTheme) {
         ui->messagesWidget->document()->setDefaultStyleSheet(
-                "table { color: #000000;  }"
-                "td.time { color: #ffffff; padding-top: 3px; } "
+                "table { color: #fff;  }"
+                "td.time { color: #cccccc; padding-top: 3px;  font-size: 12px;} "
                 "td.message { color: #ffffff;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
                 "td.cmd-request { color: #3DE4CD; } "
                 "td.cmd-error { color: red; } "
                 ".secwarning { color: red; }"
-                "b { color: #707070; } "
-                "body { color: #000000; }");
+                ".icon{color:white;}"
+                "b { color: #3DE4CD; } "
+                "body { color: #cccccc; }");
     } else {
         ui->messagesWidget->document()->setDefaultStyleSheet(
-                "table { color: #000000; }"
-                "td.time { color: #808080; padding-top: 3px; } "
-                "td.message { color: #222222;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
-                "td.cmd-request { color: #006060; } "
+                "table { color: #fff; }"
+                "td.time { color: #cccccc; padding-top: 3px; font-size: 12px;} "
+                "td.message { color: #fff;font-family: Courier, Courier New, Lucida Console, monospace; font-size: 12px; } " // Todo: Remove fixed font-size
+                "td.cmd-request { color: #3DE4CD; } "
                 "td.cmd-error { color: red; } "
                 ".secwarning { color: red; }"
-                "b { color: #222222; } "
-                "body { color: #000000; }");
+                ".icon{color:white;}"
+                "b { color: #3DE4CD; } "
+                "body { color: #cccccc; }");
     }
     updateStyle(ui->messagesWidget);
 }

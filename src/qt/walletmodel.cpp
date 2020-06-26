@@ -233,8 +233,9 @@ void WalletModel::updateTransaction()
 void WalletModel::updateAddressBook(const QString& address, const QString& label, bool isMine, const QString& purpose, int status)
 {
     try {
-        if (addressTableModel)
+        if (addressTableModel) {
             addressTableModel->updateEntry(address, label, isMine, purpose, status);
+        }
     }catch (...){
         std::cout << "Exception updateAddressBook" << std::endl;
     }

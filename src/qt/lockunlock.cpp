@@ -16,9 +16,9 @@ LockUnlock::LockUnlock(QWidget *parent) :
 
     ui->container->setProperty("cssClass", "top-sub-menu");
 
-    ui->pushButtonUnlocked->setProperty("cssClass", "btn-check-lock-sub-menu-unlocked");
-    ui->pushButtonLocked->setProperty("cssClass", "btn-check-lock-sub-menu-locked");
-    ui->pushButtonStaking->setProperty("cssClass", "btn-check-lock-sub-menu-staking");
+    //ui->pushButtonUnlocked->setProperty("cssClass", "btn-check-lock-sub-menu-unlocked");
+    //ui->pushButtonLocked->setProperty("cssClass", "btn-check-lock-sub-menu-locked");
+    //ui->pushButtonStaking->setProperty("cssClass", "btn-check-lock-sub-menu-staking");
 
     ui->pushButtonUnlocked->setText(tr("Unlock"));
     ui->pushButtonLocked->setText(tr("Lock"));

@@ -113,8 +113,8 @@ Intro::Intro(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::W
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 
     setCssProperty(ui->frame, "container-welcome-step2");
-    setCssProperty(ui->container, "container-welcome-stack");
-    setCssProperty(ui->frame_2, "container-welcome");
+    //setCssProperty(ui->container, "container-welcome-stack");
+    //setCssProperty(ui->frame_2, "container-welcome");
     setCssProperty(ui->label_2, "text-title-welcome");
     setCssProperty(ui->label_4, "text-intro-white");
     setCssProperty(ui->sizeWarningLabel, "text-intro-white");
@@ -132,6 +132,7 @@ Intro::Intro(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::W
     connect(ui->pushButtonCancel, SIGNAL(clicked()), this, SLOT(close()));
 
     ui->sizeWarningLabel->setText(ui->sizeWarningLabel->text().arg(BLOCK_CHAIN_SIZE / GB_BYTES));
+    background.load("://alqo-welcome");
     startThread();
 }
 
@@ -141,6 +142,31 @@ Intro::~Intro()
     /* Ensure thread is finished before it is deleted */
     emit stopThread();
     thread->wait();
+}
+
+void Intro::paintEvent(QPaintEvent *event) {
+
+    QPainter painter(this);
+
+    auto winSize = this->size();
+    auto pixmapRatio = (float)background.width() / background.height();
+    auto windowRatio = (float)winSize.width() / winSize.height();
+    QBrush brush(QColor("#1a1d31"));
+    painter.setBrush(brush);
+    painter.drawRect(0, 0, winSize.width(), winSize.height());
+
+    if(pixmapRatio > windowRatio)
+    {
+      auto newWidth = (int)(winSize.height() * pixmapRatio);
+      auto offset = (newWidth - winSize.width()) / -2;
+      painter.drawPixmap(offset, 0, newWidth, winSize.height(), background);
+    }
+    else
+    {
+      auto newHeight = (int)(winSize.width() / pixmapRatio);
+      painter.drawPixmap(0, 0, winSize.width(), newHeight, background);
+    }
+    QWidget::paintEvent(event);
 }
 
 QString Intro::getDataDirectory()

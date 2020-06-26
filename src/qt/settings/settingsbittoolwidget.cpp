@@ -64,7 +64,7 @@ SettingsBitToolWidget::SettingsBitToolWidget(ALQOGUI* _window, QWidget *parent) 
     initCssEditLine(ui->lineEditDecryptResult);
 
     // Buttons
-    ui->pushButtonDecrypt->setText(tr("DECRYPT KEY"));
+    ui->pushButtonDecrypt->setText(tr("DECRYPT"));
     setCssBtnPrimary(ui->pushButtonDecrypt);
 
     ui->pushButtonImport->setText(tr("Import Address"));
@@ -90,7 +90,7 @@ SettingsBitToolWidget::SettingsBitToolWidget(ALQOGUI* _window, QWidget *parent) 
     setCssProperty(ui->labelSubtitleMessage, "text-title");
 
     setCssProperty(ui->passphraseIn_ENC, "edit-primary");
-    ui->passphraseIn_ENC->setPlaceholderText(tr("Write a message"));
+    ui->passphraseIn_ENC->setPlaceholderText(tr("Enter a passphrase"));
     setCssProperty(ui->passphraseIn_ENC,"edit-primary");
     setShadow(ui->passphraseIn_ENC);
     ui->passphraseIn_ENC->setAttribute(Qt::WA_MacShowFocusRect, 0);
@@ -104,11 +104,12 @@ SettingsBitToolWidget::SettingsBitToolWidget(ALQOGUI* _window, QWidget *parent) 
 
     btnContact = ui->addressIn_ENC->addAction(QIcon("://ic-contact-arrow-down"), QLineEdit::TrailingPosition);
     ui->pushButtonEncrypt->setText(tr("ENCRYPT"));
-    ui->pushButtonClear->setText(tr("CLEAR ALL"));
+    ui->pushButtonClear->setText(tr("CLEAR"));
     ui->pushButtonDecryptClear->setText(tr("CLEAR"));
     setCssBtnPrimary(ui->pushButtonEncrypt);
     setCssBtnSecondary(ui->pushButtonClear);
     setCssBtnSecondary(ui->pushButtonDecryptClear);
+    ui->pushButtonImport->setVisible(false);
 
     ui->statusLabel_ENC->setStyleSheet("QLabel { color: transparent; }");
     ui->statusLabel_DEC->setStyleSheet("QLabel { color: transparent; }");
@@ -128,9 +129,9 @@ void SettingsBitToolWidget::setAddress_ENC(const QString& address){
 
 void SettingsBitToolWidget::onEncryptSelected(bool isEncr) {
     if (isEncr)
-        ui->stackedWidget->slideInIdx(0, QSlideStackedWidget::RIGHT2LEFT);
+        ui->stackedWidget->slideInIdx(0, QSlideStackedWidget::LEFT2RIGHT);
     else
-        ui->stackedWidget->slideInIdx(1, QSlideStackedWidget::LEFT2RIGHT);
+        ui->stackedWidget->slideInIdx(1, QSlideStackedWidget::RIGHT2LEFT);
 }
 
 QString specialChar = "\"@!#$%&'()*+,-./:;<=>?`{|}~^_[]\\";
@@ -262,6 +263,7 @@ void SettingsBitToolWidget::onClearDecrypt(){
     ui->lineEditKey->clear();
     ui->lineEditDecryptResult->clear();
     ui->lineEditPassphrase->clear();
+    ui->pushButtonImport->setVisible(false);
     key = CKey();
 }
 
@@ -281,6 +283,7 @@ void SettingsBitToolWidget::onDecryptClicked(){
     CPubKey pubKey = key.GetPubKey();
     CBitcoinAddress address(pubKey.GetID());
     ui->lineEditDecryptResult->setText(QString::fromStdString(address.ToString()));
+    ui->pushButtonImport->setVisible(true);
 }
 
 void SettingsBitToolWidget::importAddressFromDecKey(){

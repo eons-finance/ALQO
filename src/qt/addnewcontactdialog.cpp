@@ -26,6 +26,7 @@ AddNewContactDialog::AddNewContactDialog(QWidget *parent) :
     // Address
     ui->lineEditName->setPlaceholderText(tr("Enter a name for the address (e.g Exchange)"));
     initCssEditLine(ui->lineEditName, true);
+    connect(ui->lineEditName, SIGNAL(textChanged(const QString &)), this, SLOT(labelChanged(const QString&)));
 
     // Buttons
     ui->btnEsc->setText("");
@@ -38,6 +39,12 @@ AddNewContactDialog::AddNewContactDialog(QWidget *parent) :
     connect(ui->btnEsc, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->btnCancel, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->btnOk, SIGNAL(clicked()), this, SLOT(ok()));
+}
+void AddNewContactDialog::labelChanged(const QString &text) {
+    if (text.length() > 20)
+    {
+        ui->lineEditName->setText(text.left(text.length()-1));
+    }
 }
 
 void AddNewContactDialog::setTexts(QString title, const char* message) {

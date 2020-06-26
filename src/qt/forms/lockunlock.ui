@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>117</width>
-    <height>161</height>
+    <height>122</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,15 +65,40 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>36</width>
-            <height>36</height>
+            <width>0</width>
+            <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>36</height>
+            <height>40</height>
            </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+QPushButton {
+    qproperty-icon: url(&quot;://ic-submenu-staking&quot;);
+    qproperty-iconSize: 30px 30px;
+    background-color: #0f0f1f;
+    color:#FFFFFF;
+    border: none;
+    text-align: left;
+}
+
+QPushButton:checked {
+    background-color:#3de4cd;
+    color: rgb(26, 29, 49);
+}
+
+QPushButton:hover:checked {
+    background-color:#3de4cd;
+    color: rgb(26, 29, 49);
+}
+QPushButton:hover {
+    background-color:#7febdc;
+    color: rgb(26, 29, 49);
+}</string>
           </property>
           <property name="text">
            <string/>
@@ -102,15 +127,41 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>36</width>
-            <height>36</height>
+            <width>0</width>
+            <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>36</height>
+            <height>40</height>
            </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+QPushButton {
+    qproperty-icon: url(&quot;://ic-submenu-lock&quot;);
+    qproperty-iconSize: 30px 30px;
+    background-color: #0f0f1f;
+    color:#FFFFFF;
+    border: none;
+    text-align: left;
+}
+
+QPushButton:checked {
+    background-color:#3de4cd;
+    color: rgb(26, 29, 49);
+}
+
+QPushButton:hover:checked {
+    background-color:#3de4cd;
+    color: rgb(26, 29, 49);
+}
+QPushButton:hover {
+    background-color:#7febdc;
+    color: rgb(26, 29, 49);
+}
+</string>
           </property>
           <property name="text">
            <string/>
@@ -139,15 +190,39 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>36</width>
-            <height>36</height>
+            <width>0</width>
+            <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>36</height>
+            <height>40</height>
            </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    qproperty-icon: url(&quot;://ic-submenu-unlock&quot;);
+    qproperty-iconSize: 30px 30px;
+    background-color: #0f0f1f;
+    color:#FFFFFF;
+    border: none;
+    text-align: left;
+}
+
+QPushButton:checked {
+    background-color:#3de4cd;
+    color: rgb(26, 29, 49);
+}
+
+QPushButton:hover:checked {
+    background-color:#3de4cd;
+    color: rgb(26, 29, 49);
+}
+QPushButton:hover {
+    background-color:#7febdc;
+    color: rgb(26, 29, 49);
+}</string>
           </property>
           <property name="text">
            <string/>

@@ -25,8 +25,8 @@ void TxRow::init(bool isLightTheme, bool _mini) {
         ui->addressWidget->setMaximumWidth(160);
         ui->addressWidget->setMinimumWidth(160);
     } else {
-        ui->addressWidget->setMaximumWidth(230);
-        ui->addressWidget->setMinimumWidth(230);
+        ui->addressWidget->setMaximumWidth(250);
+        ui->addressWidget->setMinimumWidth(250);
     }
 }
 

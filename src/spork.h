@@ -38,26 +38,26 @@ public:
     int64_t nValue;
     int64_t nTimeSigned;
 
-    CSporkMessage() :
-        CSignedMessage(),
-        nSporkID((SporkId)0),
-        nValue(0),
-        nTimeSigned(0)
-    {}
+    CSporkMessage() : CSignedMessage(),
+                      nSporkID((SporkId)0),
+                      nValue(0),
+                      nTimeSigned(0)
+    {
+    }
 
-    CSporkMessage(SporkId nSporkID, int64_t nValue, int64_t nTimeSigned) :
-        CSignedMessage(),
-        nSporkID(nSporkID),
-        nValue(nValue),
-        nTimeSigned(nTimeSigned)
-    { }
+    CSporkMessage(SporkId nSporkID, int64_t nValue, int64_t nTimeSigned) : CSignedMessage(),
+                                                                           nSporkID(nSporkID),
+                                                                           nValue(nValue),
+                                                                           nTimeSigned(nTimeSigned)
+    {
+    }
 
     uint256 GetHash() const { return HashQuark(BEGIN(nSporkID), END(nTimeSigned)); }
 
     // override CSignedMessage functions
     uint256 GetSignatureHash() const override;
     std::string GetStrMessage() const override;
-    const CPubKey GetPublicKey(std::string& strErrorRet) const;
+    const CPubKey GetPublicKey(std::string& strErrorRet) const override;
     const CTxIn GetVin() const override { return CTxIn(); };
 
     void Relay();
@@ -71,8 +71,7 @@ public:
         READWRITE(nValue);
         READWRITE(nTimeSigned);
         READWRITE(vchSig);
-        try
-        {
+        try {
             READWRITE(nMessVersion);
         } catch (...) {
             nMessVersion = MessageVersion::MESS_VER_STRMESS;

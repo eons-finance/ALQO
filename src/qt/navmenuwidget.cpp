@@ -54,7 +54,6 @@ NavMenuWidget::NavMenuWidget(ALQOGUI *mainWindow, QWidget *parent) :
     connect(ui->btnHistory,SIGNAL(clicked()),this, SLOT(onHistoryClicked()));
     connect(ui->btnCharts,SIGNAL(clicked()),this, SLOT(onChartsClicked()));
     connect(window, SIGNAL(windowResizeEvent(QResizeEvent*)), this, SLOT(windowResizeEvent(QResizeEvent*)));
-    setCssProperty(ui->labelLogo, "label-logo");
     connect(logoButton, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
     
     connectActions();
@@ -157,7 +156,7 @@ void NavMenuWidget::openLockUnlock(){
     lockUnlockWidget->setFixedWidth(ui->pushButtonLock->width());
     lockUnlockWidget->adjustSize();
 
-    lockUnlockWidget->move(window->getNavWidth() - ui->pushButtonLock->pos().x() - 8, ui->pushButtonLock->y() + ui->pushButtonLock->height() + 12);
+    lockUnlockWidget->move(window->getNavWidth() - ui->pushButtonLock->width() - 18, ui->pushButtonLock->y() + ui->pushButtonLock->height() + 12);
 
     lockUnlockWidget->raise();
     lockUnlockWidget->activateWindow();

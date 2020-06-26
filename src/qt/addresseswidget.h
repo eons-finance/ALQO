@@ -7,7 +7,6 @@
 
 #include "qt/pwidget.h"
 #include "addresstablemodel.h"
-//#include "qt/tooltipmenu.h"
 #include "furabstractlistitemdelegate.h"
 #include "qt/addressfilterproxymodel.h"
 
@@ -46,7 +45,7 @@ private slots:
     void onCopyClicked();
     void onSortChanged(int idx);
     void onSortOrderChanged(int idx);
-    void lineEditTextCahnged(const QString& text);
+    void lineEditTextChanged(const QString& text);
 
     void changeTheme(bool isLightTheme, QString &theme) override;
 private:
