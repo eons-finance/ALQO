@@ -790,6 +790,9 @@ font-size: 16px;</string>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_11">
+                <property name="bottomMargin">
+                 <number>10</number>
+                </property>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_9">
                   <item>
@@ -1024,8 +1027,11 @@ font-size: 16px;</string>
                   </item>
                   <item>
                    <widget class="QLabel" name="labeltime">
+                    <property name="styleSheet">
+                     <string notr="true">color:  #3de4cd;</string>
+                    </property>
                     <property name="text">
-                     <string>10 min ago</string>
+                     <string>5 mins ago</string>
                     </property>
                    </widget>
                   </item>

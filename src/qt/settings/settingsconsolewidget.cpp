@@ -255,7 +255,7 @@ SettingsConsoleWidget::SettingsConsoleWidget(ALQOGUI* _window, QWidget *parent) 
 
     // Console container
     ui->consoleWidget->setProperty("cssClass", "dash-frame");
-    setShadow(ui->consoleWidget);
+    //setShadow(ui->consoleWidget);
 
     // Edit
     ui->lineEdit->setPlaceholderText(tr("Console input"));

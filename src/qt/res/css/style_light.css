@@ -19,7 +19,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="dash-frame"] {
-    border: 3px;
+    border: none;
     border-radius: 20px;
     background-color: rgba(26, 29, 49, 0.8);
 }
@@ -2870,21 +2870,24 @@ HH        ROW LIST
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container-list-menu"]{
-    background-color:white;
+    background-color:#0f0f1f;
     border-radius:2px;
-    padding:15px;
-    border: 1px solid #bababa;
+    border: 1px solid rgb(26, 29, 49);
 }
 
 *[cssClass="btn-list-menu"]{
     border: 0;
-    background-color:#FFFFFF;
+    text-align: left;
+    background-color:#0f0f1f;
     font-size:16px;
-    color: #707070;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #3de4cd;
 }
 
 *[cssClass="btn-list-menu"]:hover{
-    color: #222222;
+    background-color: #3de4cd;
+    color: rgb(26,29,49);
 }
 
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>727</width>
-    <height>538</height>
+    <width>732</width>
+    <height>749</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -153,16 +153,37 @@ color:white;
            <layout class="QVBoxLayout" name="verticalLayout_6"/>
           </item>
           <item>
-           <widget class="QListView" name="listMn">
+           <widget class="QFrame" name="frame">
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>0</height>
+              <height>350</height>
              </size>
             </property>
-            <property name="mouseTracking">
-             <bool>true</bool>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
             </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QListView" name="listMn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="mouseTracking">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background:transparent;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item>

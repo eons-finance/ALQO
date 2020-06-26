@@ -7,7 +7,6 @@
 
 #include "qt/pwidget.h"
 #include "addresstablemodel.h"
-//#include "qt/tooltipmenu.h"
 #include "furabstractlistitemdelegate.h"
 #include "qt/addressfilterproxymodel.h"
 

@@ -8,46 +8,45 @@
 #include "macdockiconhandler.h"
 #endif
 
-#include "qt/guiutil.h"
 #include "clientmodel.h"
-#include "optionsmodel.h"
+#include "guiinterface.h"
 #include "networkstyle.h"
 #include "notificator.h"
-#include "guiinterface.h"
+#include "optionsmodel.h"
+#include "qt/guiutil.h"
 #include "qt/qtutils.h"
 #include "qt/settings/settingsfaqwidget.h"
 
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include "util.h"
 #include <QApplication>
 #include <QColor>
-#include <QShortcut>
+#include <QHBoxLayout>
 #include <QKeySequence>
+#include <QShortcut>
+#include <QVBoxLayout>
 #include <QWindowStateChangeEvent>
-#include "util.h"
 
 #define BASE_WINDOW_WIDTH 900
-#define BASE_WINDOW_HEIGHT 730
+#define BASE_WINDOW_HEIGHT 750
 
 
 const QString ALQOGUI::DEFAULT_WALLET = "~Default";
 
-ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
-        QMainWindow(parent),
-        clientModel(0){
-
+ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMainWindow(parent),
+                                                                      clientModel(0)
+{
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
     this->setMinimumSize(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT);
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-	QFont font("Gotham Book");
-	//font.setStyleHint(QFont::Monospace);
-	QApplication::setFont(font);
+    QFont font("Gotham Book");
+    //font.setStyleHint(QFont::Monospace);
+    QApplication::setFont(font);
 
     background.load("://ALQO_WALLET_BG_4x");
 
- //   setWindowFlags(Qt::FramelessWindowHint);
+    //   setWindowFlags(Qt::FramelessWindowHint);
 
     GUIUtil::restoreWindowGeometry("nWindow", QSize(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT), this);
 
@@ -71,18 +70,15 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 #endif
 
 
-
-
 #ifdef ENABLE_WALLET
     // Create wallet frame
-    if(enableWallet){
-
+    if (enableWallet) {
         QFrame* centralWidget = new QFrame(this);
         this->setMinimumWidth(BASE_WINDOW_WIDTH);
         this->setMinimumHeight(BASE_WINDOW_HEIGHT);
         QHBoxLayout* centralWidgetLayouot = new QHBoxLayout();
         centralWidget->setLayout(centralWidgetLayouot);
-        centralWidgetLayouot->setContentsMargins(0,0,0,0);
+        centralWidgetLayouot->setContentsMargins(0, 0, 0, 0);
         centralWidgetLayouot->setSpacing(0);
 
         //centralWidget->setProperty("cssClass", "container");
@@ -93,31 +89,31 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         //centralWidgetLayouot->addWidget(navMenu);
 
         this->setCentralWidget(centralWidget);
-        this->setContentsMargins(0,0,0,0);
+        this->setContentsMargins(0, 0, 0, 0);
 
-        QFrame *container = new QFrame(centralWidget);
-        container->setContentsMargins(0,0,0,0);
+        QFrame* container = new QFrame(centralWidget);
+        container->setContentsMargins(0, 0, 0, 0);
         centralWidgetLayouot->addWidget(container);
 
         // Then topbar + the stackedWidget
-        QVBoxLayout *baseScreensContainer = new QVBoxLayout(this);
+        QVBoxLayout* baseScreensContainer = new QVBoxLayout(this);
         baseScreensContainer->setMargin(0);
         baseScreensContainer->setSpacing(0);
-        baseScreensContainer->setContentsMargins(0,0,0,0);
+        baseScreensContainer->setContentsMargins(0, 0, 0, 0);
         container->setLayout(baseScreensContainer);
 
         // Insert the topbar
-//        topBar = new TopBar(this);
-//        topBar->setContentsMargins(0,0,0,0);
+        //        topBar = new TopBar(this);
+        //        topBar->setContentsMargins(0,0,0,0);
         baseScreensContainer->addWidget(navMenu);
         //baseScreensContainer->addWidget(topBar);
-        
+
 
         // Now stacked widget
         stackedContainer = new QSlideStackedWidget(this);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         stackedContainer->setSizePolicy(sizePolicy);
-        stackedContainer->setContentsMargins(0,200,0,0);
+        stackedContainer->setContentsMargins(0, 200, 0, 0);
         baseScreensContainer->addWidget(stackedContainer);
         stackedContainer->setSpeed(300);
 
@@ -166,10 +162,10 @@ ALQOGUI::ALQOGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
     // Subscribe to notifications from core
     subscribeToCoreSignals();
-
 }
 
-void ALQOGUI::paintEvent(QPaintEvent *event) {
+void ALQOGUI::paintEvent(QPaintEvent* event)
+{
     QPainter painter(this);
 
     auto winSize = this->size();
@@ -179,21 +175,19 @@ void ALQOGUI::paintEvent(QPaintEvent *event) {
     painter.setBrush(brush);
     painter.drawRect(0, 0, winSize.width(), winSize.height());
 
-    if(pixmapRatio > windowRatio)
-    {
-      auto newWidth = (int)(winSize.height() * pixmapRatio);
-      auto offset = (newWidth - winSize.width()) / -2;
-      painter.drawPixmap(offset, 0, newWidth, winSize.height(), background);
-    }
-    else
-    {
-      auto newHeight = (int)(winSize.width() / pixmapRatio);
-      painter.drawPixmap(0, 0, winSize.width(), newHeight, background);
+    if (pixmapRatio > windowRatio) {
+        auto newWidth = (int)(winSize.height() * pixmapRatio);
+        auto offset = (newWidth - winSize.width()) / -2;
+        painter.drawPixmap(offset, 0, newWidth, winSize.height(), background);
+    } else {
+        auto newHeight = (int)(winSize.width() / pixmapRatio);
+        painter.drawPixmap(0, 0, winSize.width(), newHeight, background);
     }
     QMainWindow::paintEvent(event);
 }
 
-void ALQOGUI::createActions(const NetworkStyle* networkStyle){
+void ALQOGUI::createActions(const NetworkStyle* networkStyle)
+{
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
@@ -209,16 +203,17 @@ void ALQOGUI::createActions(const NetworkStyle* networkStyle){
 /**
  * Here add every event connection
  */
-void ALQOGUI::connectActions() {
-    QShortcut *consoleShort = new QShortcut(this);
+void ALQOGUI::connectActions()
+{
+    QShortcut* consoleShort = new QShortcut(this);
     consoleShort->setKey(QKeySequence(SHORT_KEY + Qt::Key_C));
-    connect(consoleShort, &QShortcut::activated, [this](){
+    connect(consoleShort, &QShortcut::activated, [this]() {
         navMenu->selectSettings();
         settingsWidget->showDebugConsole();
         goToSettings();
     });
-//    connect(topBar, &TopBar::showHide, this, &ALQOGUI::showHide);
-//    connect(topBar, &TopBar::themeChanged, this, &ALQOGUI::changeTheme);
+    //    connect(topBar, &TopBar::showHide, this, &ALQOGUI::showHide);
+    //    connect(topBar, &TopBar::themeChanged, this, &ALQOGUI::changeTheme);
     connect(settingsWidget, &SettingsWidget::showHide, this, &ALQOGUI::showHide);
     connect(sendWidget, &SendWidget::showHide, this, &ALQOGUI::showHide);
     connect(chartsWidget, &ChartsWidget::showHide, this, &ALQOGUI::showHide);
@@ -231,7 +226,8 @@ void ALQOGUI::connectActions() {
 }
 
 
-void ALQOGUI::createTrayIcon(const NetworkStyle* networkStyle) {
+void ALQOGUI::createTrayIcon(const NetworkStyle* networkStyle)
+{
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
     QString toolTip = tr("ALQO") + " " + networkStyle->getTitleAddText();
@@ -243,7 +239,8 @@ void ALQOGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 }
 
 //
-ALQOGUI::~ALQOGUI() {
+ALQOGUI::~ALQOGUI()
+{
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
 
@@ -257,16 +254,17 @@ ALQOGUI::~ALQOGUI() {
 
 
 /** Get restart command-line parameters and request restart */
-void ALQOGUI::handleRestart(QStringList args){
+void ALQOGUI::handleRestart(QStringList args)
+{
     if (!ShutdownRequested())
         emit requestedRestart(args);
 }
 
 
-void ALQOGUI::setClientModel(ClientModel* clientModel) {
+void ALQOGUI::setClientModel(ClientModel* clientModel)
+{
     this->clientModel = clientModel;
-    if(this->clientModel) {
-
+    if (this->clientModel) {
         // Create system tray menu (or setup the dock menu) that late to prevent users from calling actions,
         // while the client has not yet fully loaded
         createTrayIconMenu();
@@ -282,7 +280,7 @@ void ALQOGUI::setClientModel(ClientModel* clientModel) {
         connect(dashboard, SIGNAL(walletSynced(bool)), this, SLOT(walletSynced(bool)));
 
         // Get restart command-line parameters and handle restart
-        connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg){handleRestart(arg);});
+        connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg) { handleRestart(arg); });
 
         if (rpcConsole) {
             rpcConsole->setClientModel(clientModel);
@@ -301,7 +299,8 @@ void ALQOGUI::setClientModel(ClientModel* clientModel) {
     }
 }
 
-void ALQOGUI::createTrayIconMenu() {
+void ALQOGUI::createTrayIconMenu()
+{
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-Mac OSes)
     if (!trayIcon)
@@ -311,7 +310,7 @@ void ALQOGUI::createTrayIconMenu() {
     trayIcon->setContextMenu(trayIconMenu);
 
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-            this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
+        this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
 #else
     // Note: On Mac, the dock icon is used to provide the tray's functionality.
     MacDockIconHandler* dockIconHandler = MacDockIconHandler::instance();
@@ -368,16 +367,18 @@ void ALQOGUI::closeEvent(QCloseEvent* event)
 }
 
 
-void ALQOGUI::messageInfo(const QString& text){
-    if(!this->snackBar) this->snackBar = new SnackBar(this, this);
+void ALQOGUI::messageInfo(const QString& text)
+{
+    if (!this->snackBar) this->snackBar = new SnackBar(this, this);
     this->snackBar->setText(text);
     this->snackBar->resize(this->width(), snackBar->height());
     openDialog(this->snackBar, this);
 }
 
 
-void ALQOGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
-    QString strTitle =  tr("ALQO"); // default title
+void ALQOGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
+{
+    QString strTitle = tr("ALQO"); // default title
     // Default to information icon
     int nNotifyIcon = Notificator::Information;
 
@@ -388,18 +389,18 @@ void ALQOGUI::message(const QString& title, const QString& message, unsigned int
         msgType = title;
     } else {
         switch (style) {
-            case CClientUIInterface::MSG_ERROR:
-                msgType = tr("Error");
-                break;
-            case CClientUIInterface::MSG_WARNING:
-                msgType = tr("Warning");
-                break;
-            case CClientUIInterface::MSG_INFORMATION:
-                msgType = tr("Information");
-                break;
-            default:
-                msgType = tr("System Message");
-                break;
+        case CClientUIInterface::MSG_ERROR:
+            msgType = tr("Error");
+            break;
+        case CClientUIInterface::MSG_WARNING:
+            msgType = tr("Warning");
+            break;
+        case CClientUIInterface::MSG_INFORMATION:
+            msgType = tr("Information");
+            break;
+        default:
+            msgType = tr("System Message");
+            break;
         }
     }
 
@@ -415,27 +416,27 @@ void ALQOGUI::message(const QString& title, const QString& message, unsigned int
         // Check for buttons, use OK as default, if none was supplied
         int r = 0;
         showNormalIfMinimized();
-        if(style & CClientUIInterface::BTN_MASK){
+        if (style & CClientUIInterface::BTN_MASK) {
             r = openStandardDialog(
-                    (title.isEmpty() ? strTitle : title), message, "OK", "CANCEL"
-                );
-        }else{
+                (title.isEmpty() ? strTitle : title), message, "OK", "CANCEL");
+        } else {
             r = openStandardDialog((title.isEmpty() ? strTitle : title), message, "OK");
         }
         if (ret != NULL)
             *ret = r;
-    } else if(style & CClientUIInterface::MSG_INFORMATION_SNACK){
+    } else if (style & CClientUIInterface::MSG_INFORMATION_SNACK) {
         messageInfo(message);
-    }else {
+    } else {
         // Append title to "ALQO - "
         if (!msgType.isEmpty())
             strTitle += " - " + msgType;
-        notificator->notify((Notificator::Class) nNotifyIcon, strTitle, message);
+        notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
     }
 }
 
-bool ALQOGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
-    DefaultDialog *dialog;
+bool ALQOGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
+{
+    DefaultDialog* dialog;
     showHide(true);
     if (isVisible()) {
         dialog = new DefaultDialog(this);
@@ -457,7 +458,8 @@ bool ALQOGUI::openStandardDialog(QString title, QString body, QString okBtn, QSt
 }
 
 
-void ALQOGUI::showNormalIfMinimized(bool fToggleHidden) {
+void ALQOGUI::showNormalIfMinimized(bool fToggleHidden)
+{
     if (!clientModel)
         return;
     // activateWindow() (sometimes) helps with keyboard focus on Windows
@@ -474,11 +476,13 @@ void ALQOGUI::showNormalIfMinimized(bool fToggleHidden) {
         hide();
 }
 
-void ALQOGUI::toggleHidden() {
+void ALQOGUI::toggleHidden()
+{
     showNormalIfMinimized(true);
 }
 
-void ALQOGUI::detectShutdown() {
+void ALQOGUI::detectShutdown()
+{
     if (ShutdownRequested()) {
         if (rpcConsole)
             rpcConsole->hide();
@@ -486,8 +490,9 @@ void ALQOGUI::detectShutdown() {
     }
 }
 
-void ALQOGUI::goToDashboard(){
-    if(stackedContainer->currentWidget() != dashboard){
+void ALQOGUI::goToDashboard()
+{
+    if (stackedContainer->currentWidget() != dashboard) {
         stackedContainer->slideInWgt(dashboard, QSlideStackedWidget::LEFT2RIGHT);
     }
 }
@@ -497,42 +502,49 @@ void ALQOGUI::goToHistory()
     showTop(historyWidget);
 }
 
-void ALQOGUI::goToSend(){
+void ALQOGUI::goToSend()
+{
     showTop(sendWidget);
 }
 
-void ALQOGUI::goToAddresses(){
+void ALQOGUI::goToAddresses()
+{
     addressesWidget->updateListView();
     showTop(addressesWidget);
 }
 
-void ALQOGUI::goToMasterNodes(){
+void ALQOGUI::goToMasterNodes()
+{
     showTop(masterNodesWidget);
 }
 
-void ALQOGUI::goToSettings(){
+void ALQOGUI::goToSettings()
+{
     showTop(settingsWidget);
 }
 
-void ALQOGUI::goToReceive(){
+void ALQOGUI::goToReceive()
+{
     showTop(receiveWidget);
 }
 
-void ALQOGUI::goToCharts(){
+void ALQOGUI::goToCharts()
+{
     showTop(chartsWidget);
 }
 
-void ALQOGUI::showTop(QWidget* view){
+void ALQOGUI::showTop(QWidget* view)
+{
     int newIndex = stackedContainer->indexOf(view);
     int oldIndex = stackedContainer->currentIndex();
-    if(newIndex != oldIndex){
+    if (newIndex != oldIndex) {
         stackedContainer->slideInIdx(newIndex, (newIndex > oldIndex ? QSlideStackedWidget::RIGHT2LEFT : QSlideStackedWidget::LEFT2RIGHT));
-       // topBar->showTop();
+        // topBar->showTop();
     }
 }
 
-void ALQOGUI::changeTheme(bool isLightTheme){
-
+void ALQOGUI::changeTheme(bool isLightTheme)
+{
     QString css = GUIUtil::loadStyleSheet();
     this->setStyleSheet(css);
 
@@ -543,31 +555,34 @@ void ALQOGUI::changeTheme(bool isLightTheme){
     updateStyle(this);
 }
 
-void ALQOGUI::resizeEvent(QResizeEvent* event){
+void ALQOGUI::resizeEvent(QResizeEvent* event)
+{
     // Parent..
     QMainWindow::resizeEvent(event);
     // background
     showHide(opEnabled);
     // Notify
-//    if (dialog) {
-//        dialog->move(QPoint((this->width() - dialog->width()) / 2, (this->height()  - dialog->height()) / 2));
-//    }
+    //    if (dialog) {
+    //        dialog->move(QPoint((this->width() - dialog->width()) / 2, (this->height()  - dialog->height()) / 2));
+    //    }
     emit windowResizeEvent(event);
 }
 
-bool ALQOGUI::execDialog(QDialog *dialog, int xDiv, int yDiv){
+bool ALQOGUI::execDialog(QDialog* dialog, int xDiv, int yDiv)
+{
     return openDialogWithOpaqueBackgroundY(dialog, this);
 }
 
-void ALQOGUI::showHide(bool show){
-    if(!op) op = new QLabel(this);
-    if(!show){
+void ALQOGUI::showHide(bool show)
+{
+    if (!op) op = new QLabel(this);
+    if (!show) {
         op->setVisible(false);
         opEnabled = false;
-    }else{
+    } else {
         QColor bg("#0f0f1f");
         bg.setAlpha(200);
-        if(!isLightTheme()){
+        if (!isLightTheme()) {
             bg = QColor(15, 15, 31, 0);
             bg.setAlpha(100);
         }
@@ -577,7 +592,7 @@ void ALQOGUI::showHide(bool show){
         op->setAutoFillBackground(true);
         op->setPalette(palette);
         op->setWindowFlags(Qt::CustomizeWindowHint);
-        op->move(0,0);
+        op->move(0, 0);
         op->show();
         op->activateWindow();
         op->resize(width(), height());
@@ -586,11 +601,13 @@ void ALQOGUI::showHide(bool show){
     }
 }
 
-int ALQOGUI::getNavWidth(){
+int ALQOGUI::getNavWidth()
+{
     return this->navMenu->width();
 }
 
-void ALQOGUI::openFAQ(int section){
+void ALQOGUI::openFAQ(int section)
+{
 }
 
 
@@ -598,7 +615,7 @@ void ALQOGUI::openFAQ(int section){
 bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
 {
     // Single wallet supported for now..
-    if(!stackedContainer || !clientModel || !walletModel)
+    if (!stackedContainer || !clientModel || !walletModel)
         return false;
 
     // set the model for every view
@@ -615,12 +632,12 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
     // Connect actions..
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &ALQOGUI::message);
     //connect(navMenu, &NavMenuWidget::message, this, &ALQOGUI::message);
-    connect(sendWidget, &SendWidget::message,this, &ALQOGUI::message);
-    connect(receiveWidget, &ReceiveWidget::message,this, &ALQOGUI::message);
-    connect(addressesWidget, &AddressesWidget::message,this, &ALQOGUI::message);
+    connect(sendWidget, &SendWidget::message, this, &ALQOGUI::message);
+    connect(receiveWidget, &ReceiveWidget::message, this, &ALQOGUI::message);
+    connect(addressesWidget, &AddressesWidget::message, this, &ALQOGUI::message);
     connect(settingsWidget, &SettingsWidget::message, this, &ALQOGUI::message);
-    connect(historyWidget, &HistoryWidget::message,this, &ALQOGUI::message);
-    connect(chartsWidget, &ChartsWidget::message,this, &ALQOGUI::message);
+    connect(historyWidget, &HistoryWidget::message, this, &ALQOGUI::message);
+    connect(chartsWidget, &ChartsWidget::message, this, &ALQOGUI::message);
 
     // Pass through transaction notifications
     connect(dashboard, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
@@ -630,18 +647,21 @@ bool ALQOGUI::addWallet(const QString& name, WalletModel* walletModel)
     return true;
 }
 
-bool ALQOGUI::setCurrentWallet(const QString& name) {
+bool ALQOGUI::setCurrentWallet(const QString& name)
+{
     // Single wallet supported.
     return true;
 }
 
-void ALQOGUI::removeAllWallets() {
+void ALQOGUI::removeAllWallets()
+{
     // Single wallet supported.
 }
 
-void ALQOGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address) {
+void ALQOGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
+{
     // Only send notifications when not disabled
-    if(!bdisableSystemnotifications){
+    if (!bdisableSystemnotifications) {
         // On new transaction, make an info balloon
         message((amount) < 0 ? (pwalletMain->fMultiSendNotify == true ? tr("Sent MultiSend transaction") : tr("Sent transaction")) : tr("Incoming transaction"),
             tr("Date: %1\n"
@@ -671,11 +691,11 @@ static bool ThreadSafeMessageBox(ALQOGUI* gui, const std::string& message, const
     std::cout << "thread safe box: " << message << std::endl;
     // In case of modal message, use blocking connection to wait for user to click a button
     QMetaObject::invokeMethod(gui, "message",
-              modal ? GUIUtil::blockingGUIThreadConnection() : Qt::QueuedConnection,
-              Q_ARG(QString, QString::fromStdString(caption)),
-              Q_ARG(QString, QString::fromStdString(message)),
-              Q_ARG(unsigned int, style),
-              Q_ARG(bool*, &ret));
+        modal ? GUIUtil::blockingGUIThreadConnection() : Qt::QueuedConnection,
+        Q_ARG(QString, QString::fromStdString(caption)),
+        Q_ARG(QString, QString::fromStdString(message)),
+        Q_ARG(unsigned int, style),
+        Q_ARG(bool*, &ret));
     return ret;
 }
 

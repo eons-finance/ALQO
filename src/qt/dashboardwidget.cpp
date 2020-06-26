@@ -517,6 +517,7 @@ void DashboardWidget::loadContacts(){
         ui->label_nocontact->setVisible(false);
         ui->labelSendAddress->setVisible(true);
     }
+    ui->horizontalLayoutcontacts->setSpacing(2);
 	for(i = strings.begin(); i != strings.end(); i++)
 	{
 		buttons[j] = new QPushButton();
