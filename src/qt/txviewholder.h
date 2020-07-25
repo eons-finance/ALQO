@@ -7,7 +7,7 @@
 
 #include "qt/furlistrow.h"
 #include "qt/txrow.h"
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include <transactionfilterproxy.h>
 
 QT_BEGIN_NAMESPACE

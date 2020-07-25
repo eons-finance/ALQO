@@ -4,7 +4,7 @@
 
 #include "qt/coldstakingmodel.h"
 #include "uint256.h"
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include "guiutil.h"
 #include <iostream>
 #include "addressbook.h"

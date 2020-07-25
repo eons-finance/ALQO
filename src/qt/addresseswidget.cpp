@@ -9,7 +9,7 @@
 #include "qt/tooltipmenu.h"
 
 #include "qt/addnewcontactdialog.h"
-#include "qt/pivxgui.h"
+#include "qt/alqogui.h"
 #include "guiutil.h"
 #include "qt/qtutils.h"
 #include "walletmodel.h"

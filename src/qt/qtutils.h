@@ -17,7 +17,7 @@
 #include <QPixmap>
 #include <QStandardPaths>
 #include <initializer_list>
-#include "qt/pivxgui.h"
+#include "qt/alqogui.h"
 
 // Repair parameters
 const QString SALVAGEWALLET("-salvagewallet");

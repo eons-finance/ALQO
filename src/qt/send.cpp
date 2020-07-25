@@ -15,9 +15,7 @@
 #include "addresstablemodel.h"
 #include "coincontrol.h"
 #include "script/standard.h"
-#include "zpiv/deterministicmint.h"
 #include "openuridialog.h"
-#include "zpivcontroldialog.h"
 #include <QScrollBar>
 
 SendWidget::SendWidget(ALQOGUI* parent) :
@@ -331,99 +329,6 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients){
     return false;
 }
 
-bool SendWidget::sendZpiv(QList<SendCoinsRecipient> recipients){
-    if (!walletModel || !walletModel->getOptionsModel())
-        return false;
-
-    if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
-        emit message(tr("Spend Zerocoin"), tr("zALQO is currently undergoing maintenance."), CClientUIInterface::MSG_ERROR);
-        return false;
-    }
-
-    std::list<std::pair<CBitcoinAddress*, CAmount>> outputs;
-    CAmount total = 0;
-    for (SendCoinsRecipient rec : recipients){
-        total += rec.amount;
-        outputs.push_back(std::pair<CBitcoinAddress*, CAmount>(new CBitcoinAddress(rec.address.toStdString()),rec.amount));
-    }
-
-    // use mints from zALQO selector if applicable
-    std::vector<CMintMeta> vMintsToFetch;
-    std::vector<CZerocoinMint> vMintsSelected;
-    if (!ZPivControlDialog::setSelectedMints.empty()) {
-        vMintsToFetch = ZPivControlDialog::GetSelectedMints();
-
-        for (auto& meta : vMintsToFetch) {
-            CZerocoinMint mint;
-            if (!walletModel->getMint(meta.hashSerial, mint)){
-                inform(tr("Coin control mint not found"));
-                return false;
-            }
-            vMintsSelected.emplace_back(mint);
-        }
-    }
-
-    QString sendBody = outputs.size() == 1 ?
-            tr("Sending %1 to address %2\n")
-            .arg(BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), total, false, BitcoinUnits::separatorAlways))
-            .arg(recipients.first().address)
-            :
-           tr("Sending %1 to addresses:\n%2")
-           .arg(BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), total, false, BitcoinUnits::separatorAlways))
-           .arg(recipientsToString(recipients));
-
-    bool ret = false;
-    emit message(
-            tr("Spend Zerocoin"),
-            sendBody,
-            CClientUIInterface::MSG_INFORMATION | CClientUIInterface::BTN_MASK | CClientUIInterface::MODAL,
-            &ret);
-
-    if(!ret) return false;
-
-    CZerocoinSpendReceipt receipt;
-
-    std::string changeAddress = "";
-    if(!boost::get<CNoDestination>(&CoinControlDialog::coinControl->destChange)){
-        changeAddress = CBitcoinAddress(CoinControlDialog::coinControl->destChange).ToString();
-//  }else{
-//      changeAddress = walletModel->getAddressTableModel()->getAddressToShow().toStdString();
-    }
-
-    if (walletModel->sendZpiv(
-            vMintsSelected,
-            true,
-            true,
-            receipt,
-            outputs,
-            changeAddress
-    )
-            ) {
-        inform(tr("zALQO transaction sent!"));
-        ZPivControlDialog::setSelectedMints.clear();
-        clearAll();
-        return true;
-    } else {
-        QString body;
-        if (receipt.GetStatus() == ZPIV_SPEND_V1_SEC_LEVEL) {
-            body = tr("Version 1 zALQO require a security level of 100 to successfully spend.");
-        } else {
-            int nNeededSpends = receipt.GetNeededSpends(); // Number of spends we would need for this transaction
-            const int nMaxSpends = Params().Zerocoin_MaxSpendsPerTransaction(); // Maximum possible spends for one zALQO transaction
-            if (nNeededSpends > nMaxSpends) {
-                body = tr("Too much inputs (") + QString::number(nNeededSpends, 10) +
-                       tr(") needed.\nMaximum allowed: ") + QString::number(nMaxSpends, 10);
-                body += tr(
-                        "\nEither mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.");
-            } else {
-                body = QString::fromStdString(receipt.GetStatusMessage());
-            }
-        }
-        emit message("zALQO transaction failed", body, CClientUIInterface::MSG_ERROR);
-        return false;
-    }
-}
-
 QString SendWidget::recipientsToString(QList<SendCoinsRecipient> recipients){
     QString s = "";
     for (SendCoinsRecipient rec : recipients){
@@ -524,7 +429,7 @@ void SendWidget::onChangeCustomFeeClicked(){
 }
 
 void SendWidget::onCoinControlClicked(){
-    if(isPIV){
+
         if (walletModel->getBalance() > 0) {
             showHideOp(true);
             if (!coinControlDialog) {
@@ -538,16 +443,7 @@ void SendWidget::onCoinControlClicked(){
         } else {
             inform(tr("You don't have any ALQO to select."));
         }
-    }else{
-        if (walletModel->getZerocoinBalance() > 0) {
-            ZPivControlDialog *zPivControl = new ZPivControlDialog(window);
-            zPivControl->setModel(walletModel);
-            openDialogWithOpaqueBackgroundY(zPivControl, window);
-            zPivControl->deleteLater();
-        } else {
-            inform(tr("You don't have any ALQO in your balance to select."));
-        }
-    }
+
 }
 
 void SendWidget::onValueChanged() {

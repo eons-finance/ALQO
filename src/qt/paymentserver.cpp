@@ -6,7 +6,7 @@
 
 #include "paymentserver.h"
 
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -41,8 +41,8 @@
 #include <QUrlQuery>
 
 
-const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("alqo:");
+const int ALQO_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
+const QString ALQO_IPC_PREFIX("alqo:");
 // BIP70 payment protocol messages
 const char* BIP70_MESSAGE_PAYMENTACK = "PaymentACK";
 const char* BIP70_MESSAGE_PAYMENTREQUEST = "PaymentRequest";
@@ -187,7 +187,7 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         // network as that would require fetching and parsing the payment request.
         // That means clicking such an URI which contains a testnet payment request
         // will start a mainnet instance and throw a "wrong network" error.
-        if (arg.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // alqo: URI
+        if (arg.startsWith(ALQO_IPC_PREFIX, Qt::CaseInsensitive)) // alqo: URI
         {
             savedPaymentRequests.append(arg);
 
@@ -233,7 +233,7 @@ bool PaymentServer::ipcSendCommandLine()
     foreach (const QString& r, savedPaymentRequests) {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
-        if (!socket->waitForConnected(BITCOIN_IPC_CONNECT_TIMEOUT)) {
+        if (!socket->waitForConnected(ALQO_IPC_CONNECT_TIMEOUT)) {
             delete socket;
             socket = NULL;
             return false;
@@ -247,7 +247,7 @@ bool PaymentServer::ipcSendCommandLine()
 
         socket->write(block);
         socket->flush();
-        socket->waitForBytesWritten(BITCOIN_IPC_CONNECT_TIMEOUT);
+        socket->waitForBytesWritten(ALQO_IPC_CONNECT_TIMEOUT);
         socket->disconnectFromServer();
 
         delete socket;
@@ -362,7 +362,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // alqo: URI
+    if (s.startsWith(ALQO_IPC_PREFIX, Qt::CaseInsensitive)) // alqo: URI
     {
         QUrlQuery uri((QUrl(s)));
         if (uri.hasQueryItem("r")) // payment request URI

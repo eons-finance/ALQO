@@ -5,7 +5,7 @@
 #ifndef ALQO_QT_TRANSACTIONTABLEMODEL_H
 #define ALQO_QT_TRANSACTIONTABLEMODEL_H
 
-#include "bitcoinunits.h"
+#include "alqounits.h"
 
 #include <QAbstractTableModel>
 #include <QStringList>
