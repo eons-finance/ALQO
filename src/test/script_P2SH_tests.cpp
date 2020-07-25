@@ -8,7 +8,7 @@
 #include "script/script.h"
 #include "script/script_error.h"
 #include "script/sign.h"
-#include "test_pivx.h"
+#include "test_alqo.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet/wallet_ismine.h"

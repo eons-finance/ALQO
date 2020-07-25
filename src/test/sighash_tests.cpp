@@ -11,7 +11,7 @@
 #include "script/interpreter.h"
 #include "util.h"
 #include "version.h"
-#include "test_pivx.h"
+#include "test_alqo.h"
 
 #include <iostream>
 

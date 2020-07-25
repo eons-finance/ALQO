@@ -8,7 +8,7 @@
 #include "key.h"
 #include "uint256.h"
 #include "util.h"
-#include "test/test_bitcoin.h"
+#include "test/test_alqo.h"
 
 #include <string>
 #include <vector>

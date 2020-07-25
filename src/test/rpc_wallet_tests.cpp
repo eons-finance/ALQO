@@ -9,7 +9,7 @@
 #include "base58.h"
 #include "wallet/wallet.h"
 
-#include "test/test_pivx.h"
+#include "test/test_alqo.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/test/unit_test.hpp>
