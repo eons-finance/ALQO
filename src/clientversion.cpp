@@ -42,10 +42,11 @@ const std::string CLIENT_NAME("ALQO");
 #include "obj/build.h"
 #endif
 
-//! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. $Format:%n#define GIT_ARCHIVE 1$
+//! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
+#define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
-#define GIT_COMMIT_ID "$Format:%H$"
-#define GIT_COMMIT_DATE "$Format:%cD$"
+#define GIT_COMMIT_ID "dfadacbab94c0b19e72dfd77482781b8b6f2eed1"
+#define GIT_COMMIT_DATE "Thu, 25 Jun 2020 19:07:46 -0700"
 #endif
 
 #define BUILD_DESC_WITH_SUFFIX(maj, min, rev, build, suffix) \
@@ -97,7 +98,7 @@ std::string FormatFullVersion()
 }
 
 /** 
- * Format the subversion field according to BIP 14 spec (https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki) 
+ * Format the subversion field according to BIP 14 spec (https://github.com/alqo/bips/blob/master/bip-0014.mediawiki) 
  */
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments)
 {

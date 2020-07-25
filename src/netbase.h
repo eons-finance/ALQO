@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NETBASE_H
-#define BITCOIN_NETBASE_H
+#ifndef ALQO_NETBASE_H
+#define ALQO_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/alqo-config.h"
@@ -224,4 +224,4 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking);
  */
 struct timeval MillisToTimeval(int64_t nTimeout);
 
-#endif // BITCOIN_NETBASE_H
+#endif // ALQO_NETBASE_H
