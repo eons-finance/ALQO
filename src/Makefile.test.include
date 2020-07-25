@@ -27,14 +27,6 @@ ALQO_TEST_SUITE = \
   test/test_alqo.cpp
 # test_alqo binary #
 ALQO_TESTS =\
-  test/zerocoin_implementation_tests.cpp\
-  test/zerocoin_denomination_tests.cpp\
-  test/zerocoin_transactions_tests.cpp \
-  test/zerocoin_coinspend_tests.cpp \
-  test/zerocoin_bignum_tests.cpp \
-  test/benchmark_zerocoin.cpp \
-  test/tutorial_zerocoin.cpp \
-  test/libzerocoin_tests.cpp \
   test/addrman_tests.cpp \
   test/allocator_tests.cpp \
   test/base32_tests.cpp \
@@ -83,7 +75,7 @@ endif
 
 test_test_alqo_SOURCES = $(ALQO_TEST_SUITE) $(ALQO_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
 test_test_alqo_CPPFLAGS = $(AM_CPPFLAGS) $(ALQO_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_FLAGS)
-test_test_alqo_LDADD = $(LIBALQO_SERVER) $(LIBALQO_CLI) $(LIBALQO_COMMON) $(LIBALQO_UTIL) $(LIBALQO_CRYPTO) $(LIBUNIVALUE) $(LIBALQO_ZEROCOIN) \
+test_test_alqo_LDADD = $(LIBALQO_SERVER) $(LIBALQO_CLI) $(LIBALQO_COMMON) $(LIBALQO_UTIL) $(LIBALQO_CRYPTO) $(LIBUNIVALUE) \
   $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
 if ENABLE_WALLET
 test_test_alqo_LDADD += $(LIBALQO_WALLET)

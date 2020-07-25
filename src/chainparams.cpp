@@ -121,18 +121,8 @@ public:
         nLastPOWBlock = 300;
         nHeaderCastBug = 20000;
         nModifierUpdateBlock = 33554432;
-        nZerocoinStartHeight = 33554432;
-        nZerocoinStartTime = 2147483647;
-        nBlockEnforceSerialRange = 0;
-        nBlockRecalculateAccumulators = 0;
-        nBlockLastGoodCheckpoint = nZerocoinStartHeight;
-        nBlockEnforceInvalidUTXO = 0;
         nInvalidAmountFiltered = 0;
-        nBlockZerocoinV2 = nZerocoinStartHeight;
-        nBlockDoubleAccumulated = nZerocoinStartHeight;
-        nBlockStakeModifierlV2 = nZerocoinStartHeight;
-        nPublicZCSpends = nZerocoinStartHeight;
-        nFakeSerialBlockheightEnd = nZerocoinStartHeight;
+
         nSupplyBeforeFakeSerial = 0;
 
         /**
@@ -235,18 +225,8 @@ public:
         /** Height or Time Based Activations **/
         nLastPOWBlock = 250;
         nModifierUpdateBlock = 50;
-        nZerocoinStartHeight = 33554432;
-        nZerocoinStartTime = 2147483647;
-        nBlockEnforceSerialRange = 0;
-        nBlockRecalculateAccumulators = 0;
-        nBlockLastGoodCheckpoint = 0;
-        nBlockEnforceInvalidUTXO = 0;
         nInvalidAmountFiltered = 0;
-        nBlockZerocoinV2 = nZerocoinStartHeight;
-        nBlockDoubleAccumulated = nZerocoinStartHeight;
         nBlockStakeModifierlV2 = 1967000;
-        nPublicZCSpends = nZerocoinStartHeight;
-        nFakeSerialBlockheightEnd = nZerocoinStartHeight;
         nSupplyBeforeFakeSerial = 0;
 
         // New P2P messages signatures
@@ -305,21 +285,9 @@ public:
         strObfuscationPoolDummyAddress = "aixE2v6zn2e2pznDKoAPvii17MmbkdLjHS";
         nStartMasternodePayments = genesis.nTime + 5400;
 
-        /** Zerocoin */
-        zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
-            "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
-            "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
-            "7259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133"
-            "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
-            "31438167899885040445364023527381951378636564391212010397122822120720357";
-        nMaxZerocoinSpendsPerTransaction = 7; // Assume about 20kb each
-        nMaxZerocoinPublicSpendsPerTransaction = 637; // Assume about 220 bytes each input
-        nMinZerocoinMintFee = 1 * CENT; //high fee required for zerocoin mints
         nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
         nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
-        nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
-        nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zpiv to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
         nProposalEstablishmentTime = 60 * 60 * 24; // Proposals must be at least a day old to make it into a budget
@@ -367,18 +335,9 @@ public:
         /** Height or Time Based Activations **/
         nLastPOWBlock = 250;
         nModifierUpdateBlock = 50;
-        nZerocoinStartHeight = 33554432;
-        nZerocoinStartTime = 2147483647;
-        nBlockEnforceSerialRange = 0;
-        nBlockRecalculateAccumulators = 0;
-        nBlockLastGoodCheckpoint = 0;
-        nBlockEnforceInvalidUTXO = 0;
-        nInvalidAmountFiltered = 0;
-        nBlockZerocoinV2 = nZerocoinStartHeight;
-        nBlockDoubleAccumulated = nZerocoinStartHeight;
+
         nBlockStakeModifierlV2 = 1967000;
-        nPublicZCSpends = nZerocoinStartHeight;
-        nFakeSerialBlockheightEnd = nZerocoinStartHeight;
+
         nSupplyBeforeFakeSerial = 0;
 
         /**
@@ -434,21 +393,6 @@ public:
         strObfuscationPoolDummyAddress = "aixE2v6zn2e2pznDKoAPvii17MmbkdLjHS";
         nStartMasternodePayments = genesis.nTime + 5400;
 
-        /** Zerocoin */
-        zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
-            "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
-            "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
-            "7259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133"
-            "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
-            "31438167899885040445364023527381951378636564391212010397122822120720357";
-        nMaxZerocoinSpendsPerTransaction = 7; // Assume about 20kb each
-        nMaxZerocoinPublicSpendsPerTransaction = 637; // Assume about 220 bytes each input
-        nMinZerocoinMintFee = 1 * CENT; //high fee required for zerocoin mints
-        nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
-        nRequiredAccumulation = 1;
-        nDefaultSecurityLevel = 100; //full security level for accumulators
-        nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
-        nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zpiv to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
         nProposalEstablishmentTime = 60 * 60 * 24; // Proposals must be at least a day old to make it into a budget

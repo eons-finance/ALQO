@@ -119,8 +119,6 @@ public:
     int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
 
-    int Block_Enforce_Invalid() const { return nBlockEnforceInvalidUTXO; }
-
     bool IsStakeModifierV2(const int nHeight) const { return nHeight >= nBlockStakeModifierlV2; }
     bool NewSigsActive(const int nHeight) const { return true; }
 
@@ -180,29 +178,14 @@ protected:
     std::string strSporkPubKey;
     std::string strObfuscationPoolDummyAddress;
     int64_t nStartMasternodePayments;
-    std::string zerocoinModulus;
-    int nMaxZerocoinSpendsPerTransaction;
-    int nMaxZerocoinPublicSpendsPerTransaction;
-    CAmount nMinZerocoinMintFee;
+
     CAmount nInvalidAmountFiltered;
     int nMintRequiredConfirmations;
     int nRequiredAccumulation;
     int nDefaultSecurityLevel;
-    int nZerocoinHeaderVersion;
     int64_t nBudget_Fee_Confirmations;
-    int nZerocoinStartHeight;
-    int nZerocoinStartTime;
-    int nZerocoinRequiredStakeDepth;
     int64_t nProposalEstablishmentTime;
 
-    int nBlockEnforceSerialRange;
-    int nBlockRecalculateAccumulators;
-    int nBlockFirstFraudulent;
-    int nBlockLastGoodCheckpoint;
-    int nBlockEnforceInvalidUTXO;
-    int nBlockZerocoinV2;
-    int nBlockDoubleAccumulated;
-    int nPublicZCSpends;
     int nBlockStakeModifierlV2;
     bool nBlockEnforceNewMessageSignatures;
 
