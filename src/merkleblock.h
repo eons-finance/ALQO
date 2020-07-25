@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_MERKLEBLOCK_H
-#define BITCOIN_MERKLEBLOCK_H
+#ifndef ALQO_MERKLEBLOCK_H
+#define ALQO_MERKLEBLOCK_H
 
 #include "bloom.h"
 #include "primitives/block.h"
@@ -151,4 +151,4 @@ public:
     }
 };
 
-#endif // BITCOIN_MERKLEBLOCK_H
+#endif // ALQO_MERKLEBLOCK_H

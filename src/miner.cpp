@@ -459,7 +459,7 @@ bool fGenerateBitcoins = false;
 bool fMintableCoins = false;
 int nMintableLastCheck = 0;
 
-// ***TODO*** that part changed in bitcoin, we are using a mix with old one here for now
+// ***TODO*** that part changed in alqo, we are using a mix with old one here for now
 
 void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 {

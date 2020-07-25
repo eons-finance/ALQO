@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_MINER_H
-#define BITCOIN_MINER_H
+#ifndef ALQO_MINER_H
+#define ALQO_MINER_H
 
 #include <stdint.h>
 
@@ -38,4 +38,4 @@ void UpdateTime(CBlockHeader* block, const CBlockIndex* pindexPrev);
 extern double dHashesPerSec;
 extern int64_t nHPSTimerStart;
 
-#endif // BITCOIN_MINER_H
+#endif // ALQO_MINER_H
