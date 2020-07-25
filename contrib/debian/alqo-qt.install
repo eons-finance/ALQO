@@ -1,0 +1,6 @@
+usr/local/bin/alqo-qt usr/bin
+share/pixmaps/alqo32.xpm usr/share/pixmaps
+share/pixmaps/alqo16.xpm usr/share/pixmaps
+share/pixmaps/alqo128.png usr/share/pixmaps
+debian/alqo-qt.desktop usr/share/applications
+debian/alqo-qt.protocol usr/share/kde4/services/

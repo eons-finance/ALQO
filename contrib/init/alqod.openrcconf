@@ -1,0 +1,33 @@
+# /etc/conf.d/alqod: config file for /etc/init.d/alqod
+
+# Config file location
+#ALQOD_CONFIGFILE="/etc/alqo/alqo.conf"
+
+# What directory to write pidfile to?  (created and owned by $ALQOD_USER)
+#ALQOD_PIDDIR="/var/run/alqod"
+
+# What filename to give the pidfile
+#ALQOD_PIDFILE="${ALQOD_PIDDIR}/alqod.pid"
+
+# Where to write alqod data (be mindful that the blockchain is large)
+#ALQOD_DATADIR="/var/lib/alqod"
+
+# User and group to own alqod process
+#ALQOD_USER="alqo"
+#ALQOD_GROUP="alqo"
+
+# Path to alqod executable
+#ALQOD_BIN="/usr/bin/alqod"
+
+# Nice value to run alqod under
+#ALQOD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#ALQOD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for alqod to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+ALQOD_SIGTERM_TIMEOUT=60
