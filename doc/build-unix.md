@@ -22,7 +22,7 @@ make
 make install # optional
 ```
 
-This will build pivx-qt as well, if the dependencies are met.
+This will build alqo-qt as well, if the dependencies are met.
 
 Dependencies
 ---------------------
@@ -81,11 +81,11 @@ by passing `--with-incompatible-ssl` to configure (NOT RECOMMENDED!).
 
 BerkeleyDB is required for the wallet.
 
- **For Ubuntu only:** db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
+ **For Ubuntu only:** db4.8 packages are available [here](https://launchpad.net/~alqo/+archive/alqo).
  You can add the repository using the following command:
 
     sudo apt-get install software-properties-common
-    sudo add-apt-repository ppa:bitcoin/bitcoin
+    sudo add-apt-repository ppa:alqo/alqo
     sudo apt-get update
     sudo apt-get install libdb4.8-dev libdb4.8++-dev
 
@@ -109,7 +109,7 @@ ZMQ dependencies (provides ZMQ API):
 
 GUI dependencies:
 
-If you want to build pivx-qt, make sure that the required packages for Qt development
+If you want to build alqo-qt, make sure that the required packages for Qt development
 are installed. Qt 5 is necessary to build the GUI.
 To build without GUI pass `--without-gui`.
 
@@ -121,7 +121,7 @@ libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
 
-Once these are installed, they will be found by configure and a pivx-qt executable will be
+Once these are installed, they will be found by configure and a alqo-qt executable will be
 built by default.
 
 
@@ -147,7 +147,7 @@ libqrencode (optional) can be installed with:
 
 Notes
 -----
-The release is built with GCC and then "strip pivxd" to strip the debug
+The release is built with GCC and then "strip alqod" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -218,7 +218,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    	scanelf -e ./pivxd
+    	scanelf -e ./alqod
 
     The output should contain:
 
@@ -232,7 +232,7 @@ Hardening enables the following features:
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./pivxd`
+    `scanelf -e ./alqod`
 
     The output should contain:
 	STK/REL/PTL

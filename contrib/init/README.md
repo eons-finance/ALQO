@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: pivxd.service
-Upstart: pivxd.conf
-OpenRC:  pivxd.openrc
-         pivxd.openrcconf
-CentOS:  pivxd.init
-macOS:    org.pivx.pivxd.plist
+SystemD: alqod.service
+Upstart: alqod.conf
+OpenRC:  alqod.openrc
+         alqod.openrcconf
+CentOS:  alqod.init
+macOS:    org.alqo.alqod.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

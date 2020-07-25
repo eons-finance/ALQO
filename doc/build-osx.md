@@ -43,8 +43,8 @@ Build PIVX Core
 
 1. Clone the PIVX Core source code:
 
-        git clone https://github.com/pivx-project/pivx
-        cd pivx
+        git clone https://github.com/alqo-project/alqo
+        cd alqo
 
 2.  Make the Homebrew OpenSSL headers visible to the configure script  (do ```brew info openssl``` to find out why this is necessary, or if you use Homebrew with installation folders different from the default).
 
@@ -79,17 +79,17 @@ In this case there is no dependency on Berkeley DB 4.8.
 Running
 -------
 
-PIVX Core is now available at `./src/pivxd`
+PIVX Core is now available at `./src/alqod`
 
 Before running, you may create an empty configuration file:
 
     mkdir -p "/Users/${USER}/Library/Application Support/PIVX"
 
-    touch "/Users/${USER}/Library/Application Support/PIVX/pivx.conf"
+    touch "/Users/${USER}/Library/Application Support/PIVX/alqo.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/PIVX/pivx.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/PIVX/alqo.conf"
 
-The first time you run pivxd, it will start downloading the blockchain. This process could take many hours, or even days on slower than average systems.
+The first time you run alqod, it will start downloading the blockchain. This process could take many hours, or even days on slower than average systems.
 
 You can monitor the download process by looking at the debug.log file:
 
@@ -98,16 +98,16 @@ You can monitor the download process by looking at the debug.log file:
 Other commands:
 -------
 
-    ./src/pivxd -daemon # Starts the pivx daemon.
-    ./src/pivx-cli --help # Outputs a list of command-line options.
-    ./src/pivx-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/alqod -daemon # Starts the alqo daemon.
+    ./src/alqo-cli --help # Outputs a list of command-line options.
+    ./src/alqo-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Notes
 -----
 
 * Tested on OS X 10.10 Yosemite through macOS 10.13 High Sierra on 64-bit Intel processors only.
 
-* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitcoin/bitcoin/issues/7714)
+* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/alqo/alqo/issues/7714)
 
 Deterministic macOS DMG Notes
 -----------------------------
@@ -204,7 +204,7 @@ build process to remain somewhat deterministic. Here's how it works:
   that have been previously (deterministically) built in order to create a
   final dmg.
 - The Apple keyholder uses this unsigned app to create a detached signature,
-  using the script that is also included there. Detached signatures are available from this [repository](https://github.com/bitcoin-core/bitcoin-detached-sigs).
+  using the script that is also included there. Detached signatures are available from this [repository](https://github.com/alqo-core/alqo-detached-sigs).
 - Builders feed the unsigned app + detached signature back into Gitian. It
   uses the pre-built tools to recombine the pieces into a deterministic dmg.
 
