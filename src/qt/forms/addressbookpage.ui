@@ -190,7 +190,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../pivx.qrc"/>
+  <include location="../alqo.qrc"/>
  </resources>
  <connections/>
 </ui>

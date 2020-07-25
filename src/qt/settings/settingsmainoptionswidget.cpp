@@ -10,7 +10,7 @@
 #include "config/alqo-config.h"
 #endif
 
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "clientmodel.h"
