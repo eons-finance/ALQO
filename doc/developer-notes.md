@@ -22,7 +22,7 @@ Developer Notes
     - [Threads](#threads)
     - [Ignoring IDE/editor files](#ignoring-ideeditor-files)
 - [Development guidelines](#development-guidelines)
-    - [General PIVX Core](#general-pivx-core)
+    - [General PIVX Core](#general-alqo-core)
     - [Wallet](#wallet)
     - [General C++](#general-c)
     - [C++ data structures](#c-data-structures)
@@ -234,15 +234,15 @@ debug.log file if inconsistencies are detected.
 
 Valgrind is a programming tool for memory debugging, memory leak detection, and
 profiling. The repo contains a Valgrind suppressions file
-([`valgrind.supp`](https://github.com/pivx-project/pivx/blob/master/contrib/valgrind.supp))
+([`valgrind.supp`](https://github.com/alqo-project/alqo/blob/master/contrib/valgrind.supp))
 which includes known Valgrind warnings in our dependencies that cannot be fixed
 in-tree. Example use:
 
 ```shell
-$ valgrind --suppressions=contrib/valgrind.supp src/test/test_pivx
+$ valgrind --suppressions=contrib/valgrind.supp src/test/test_alqo
 $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
-      --show-leak-kinds=all src/test/test_pivx --log_level=test_suite
-$ valgrind -v --leak-check=full src/pivxd -printtoconsole
+      --show-leak-kinds=all src/test/test_alqo --log_level=test_suite
+$ valgrind -v --leak-check=full src/alqod -printtoconsole
 ```
 
 ### Compiling for test coverage
@@ -258,7 +258,7 @@ To enable LCOV report generation during test runs:
 make
 make cov
 
-# A coverage report will now be accessible at `./test_pivx.coverage/index.html`.
+# A coverage report will now be accessible at `./test_alqo.coverage/index.html`.
 ```
 
 Locking/mutex usage notes
@@ -631,13 +631,13 @@ namespace {
   - *Rationale*: Avoids confusion about the namespace context
 
 - Use include guards to avoid the problem of double inclusion. The header file
-  `foo/bar.h` should use the include guard identifier `BITCOIN_FOO_BAR_H`, e.g.
+  `foo/bar.h` should use the include guard identifier `ALQO_FOO_BAR_H`, e.g.
 
 ```c++
-#ifndef BITCOIN_FOO_BAR_H
-#define BITCOIN_FOO_BAR_H
+#ifndef ALQO_FOO_BAR_H
+#define ALQO_FOO_BAR_H
 ...
-#endif // BITCOIN_FOO_BAR_H
+#endif // ALQO_FOO_BAR_H
 ```
 
 GUI
@@ -674,10 +674,10 @@ Current subtrees include:
     merging upstream changes to the LevelDB subtree.
 
 - src/libsecp256k1
-  - Upstream at https://github.com/bitcoin-core/secp256k1/ ; actively maintained by Core contributors.
+  - Upstream at https://github.com/alqo-core/secp256k1/ ; actively maintained by Core contributors.
 
 - src/univalue
-  - Upstream at https://github.com/bitcoin-core/univalue ; actively maintained by Core contributors, deviates from upstream https://github.com/jgarzik/univalue
+  - Upstream at https://github.com/alqo-core/univalue ; actively maintained by Core contributors, deviates from upstream https://github.com/jgarzik/univalue
 
 Upgrading LevelDB
 ---------------------
@@ -700,7 +700,7 @@ In addition to reviewing the upstream changes in `env_posix.cc`, you can use `ls
 check this. For example, on Linux this command will show open `.ldb` file counts:
 
 ```bash
-$ lsof -p $(pidof pivxd) |\
+$ lsof -p $(pidof alqod) |\
     awk 'BEGIN { fd=0; mem=0; } /ldb$/ { if ($4 == "mem") mem++; else fd++ } END { printf "mem = %s, fd = %s\n", mem, fd}'
 mem = 119, fd = 0
 ```
@@ -753,7 +753,7 @@ For development, it might be more convenient to verify all scripted-diffs in a r
 test/lint/commit-script-check.sh origin/master..HEAD
 ```
 
-Commit [`bb81e173`](https://github.com/bitcoin/bitcoin/commit/bb81e173) is an example of a scripted-diff.
+Commit [`bb81e173`](https://github.com/alqo/alqo/commit/bb81e173) is an example of a scripted-diff.
 
 Git and GitHub tips
 -------------
@@ -858,7 +858,7 @@ A few guidelines for introducing and reviewing new RPC interfaces:
 - Try not to overload methods on argument type. E.g. don't make `getblock(true)` and `getblock("hash")`
   do different things.
 
-  - *Rationale*: This is impossible to use with `pivx-cli`, and can be surprising to users.
+  - *Rationale*: This is impossible to use with `alqo-cli`, and can be surprising to users.
 
   - *Exception*: Some RPC calls can take both an `int` and `bool`, most notably when a bool was switched
     to a multi-value, or due to other historical reasons. **Always** have false map to 0 and
@@ -877,7 +877,7 @@ A few guidelines for introducing and reviewing new RPC interfaces:
 
 - Add every non-string RPC argument `(method, idx, name)` to the table `vRPCConvertParams` in `rpc/client.cpp`.
 
-  - *Rationale*: `pivx-cli` and the GUI debug console use this table to determine how to
+  - *Rationale*: `alqo-cli` and the GUI debug console use this table to determine how to
     convert a plaintext command line to JSON. If the types don't match, the method can be unusable
     from there.
 

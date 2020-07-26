@@ -48,13 +48,13 @@ contrib/devtools/split-debug.sh
 src/univalue/gen
 
 src/qt/*.moc
-src/qt/pivx/*.moc
+src/qt/alqo/*.moc
 src/qt/moc_*.cpp
-src/qt/pivx/moc_*.cpp
-src/qt/pivx/settings/moc_*.cpp
+src/qt/alqo/moc_*.cpp
+src/qt/alqo/settings/moc_*.cpp
 src/qt/forms/ui_*.h
-src/qt/pivx/settings/forms/ui_*.h
-src/qt/pivx/forms/ui_*.h
+src/qt/alqo/settings/forms/ui_*.h
+src/qt/alqo/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
@@ -121,7 +121,7 @@ linux-build
 win32-build
 test/config.ini
 test/cache/*
-qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/run-alqod-for-test.sh
 qa/pull-tester/tests-config.sh
 qa/pull-tester/cache/*
 qa/pull-tester/test.*/*
@@ -133,7 +133,7 @@ cache/*
 .project
 /doc/doxygen/
 /nbproject/
-libbitcoinconsensus.pc
+libalqoconsensus.pc
 .idea
 CMakeLists.txt
 cmake-build-debug

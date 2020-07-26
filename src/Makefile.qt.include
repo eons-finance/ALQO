@@ -3,43 +3,43 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 bin_PROGRAMS += qt/alqo-qt
-EXTRA_LIBRARIES += qt/libbitcoinqt.a
+EXTRA_LIBRARIES += qt/libalqoqt.a
 
-# pivx qt core #
+# alqo qt core #
 QT_TS = \
-  qt/locale/pivx_bg.ts \
-  qt/locale/pivx_ca.ts \
-  qt/locale/pivx_cs.ts \
-  qt/locale/pivx_da.ts \
-  qt/locale/pivx_de.ts \
-  qt/locale/pivx_en.ts \
-  qt/locale/pivx_en_GB.ts \
-  qt/locale/pivx_en_US.ts \
-  qt/locale/pivx_eo.ts \
-  qt/locale/pivx_es.ts \
-  qt/locale/pivx_es_ES.ts \
-  qt/locale/pivx_fi.ts \
-  qt/locale/pivx_fr_FR.ts \
-  qt/locale/pivx_hi_IN.ts \
-  qt/locale/pivx_hr.ts \
-  qt/locale/pivx_hr_HR.ts \
-  qt/locale/pivx_it.ts \
-  qt/locale/pivx_ja.ts \
-  qt/locale/pivx_ko_KR.ts \
-  qt/locale/pivx_lt_LT.ts \
-  qt/locale/pivx_nl.ts \
-  qt/locale/pivx_pl.ts \
-  qt/locale/pivx_pt.ts \
-  qt/locale/pivx_pt_BR.ts \
-  qt/locale/pivx_ro_RO.ts \
-  qt/locale/pivx_ru.ts \
-  qt/locale/pivx_sk.ts \
-  qt/locale/pivx_sv.ts \
-  qt/locale/pivx_tr.ts \
-  qt/locale/pivx_uk.ts \
-  qt/locale/pivx_vi.ts \
-  qt/locale/pivx_zh_CN.ts \
-  qt/locale/pivx_zh_TW.ts
+  qt/locale/alqo_bg.ts \
+  qt/locale/alqo_ca.ts \
+  qt/locale/alqo_cs.ts \
+  qt/locale/alqo_da.ts \
+  qt/locale/alqo_de.ts \
+  qt/locale/alqo_en.ts \
+  qt/locale/alqo_en_GB.ts \
+  qt/locale/alqo_en_US.ts \
+  qt/locale/alqo_eo.ts \
+  qt/locale/alqo_es.ts \
+  qt/locale/alqo_es_ES.ts \
+  qt/locale/alqo_fi.ts \
+  qt/locale/alqo_fr_FR.ts \
+  qt/locale/alqo_hi_IN.ts \
+  qt/locale/alqo_hr.ts \
+  qt/locale/alqo_hr_HR.ts \
+  qt/locale/alqo_it.ts \
+  qt/locale/alqo_ja.ts \
+  qt/locale/alqo_ko_KR.ts \
+  qt/locale/alqo_lt_LT.ts \
+  qt/locale/alqo_nl.ts \
+  qt/locale/alqo_pl.ts \
+  qt/locale/alqo_pt.ts \
+  qt/locale/alqo_pt_BR.ts \
+  qt/locale/alqo_ro_RO.ts \
+  qt/locale/alqo_ru.ts \
+  qt/locale/alqo_sk.ts \
+  qt/locale/alqo_sv.ts \
+  qt/locale/alqo_tr.ts \
+  qt/locale/alqo_uk.ts \
+  qt/locale/alqo_vi.ts \
+  qt/locale/alqo_zh_CN.ts \
+  qt/locale/alqo_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -54,7 +54,6 @@ QT_FORMS_UI = \
   qt/forms/optionsdialog.ui \
   qt/forms/rpcconsole.ui \
   qt/forms/loadingdialog.ui \
-  qt/forms/zpivcontroldialog.ui \
   qt/forms/snackbar.ui \
   qt/forms/navmenuwidget.ui \
   qt/forms/lockunlock.ui \
@@ -110,10 +109,10 @@ QT_MOC_CPP = \
   qt/moc_addresstablemodel.cpp \
   qt/moc_askpassphrasedialog.cpp \
   qt/moc_bantablemodel.cpp \
-  qt/moc_bitcoinaddressvalidator.cpp \
-  qt/moc_bitcoinamountfield.cpp \
-  qt/moc_pivxgui.cpp \
-  qt/moc_bitcoinunits.cpp \
+  qt/moc_alqoaddressvalidator.cpp \
+  qt/moc_alqoamountfield.cpp \
+  qt/moc_alqogui.cpp \
+  qt/moc_alqounits.cpp \
   qt/moc_blockexplorer.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
@@ -144,7 +143,6 @@ QT_MOC_CPP = \
   qt/moc_utilitydialog.cpp \
   qt/moc_walletmodel.cpp \
   qt/moc_loadingdialog.cpp \
-  qt/moc_zpivcontroldialog.cpp \
   qt/moc_pwidget.cpp \
   qt/moc_snackbar.cpp \
   qt/moc_navmenuwidget.cpp \
@@ -200,35 +198,35 @@ QT_MOC_CPP = \
   qt/moc_splash.cpp \
   qt/moc_chartswidget.cpp
 
-BITCOIN_MM = \
+ALQO_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/pivx.moc \
-  qt/bitcoinamountfield.moc \
+  qt/alqo.moc \
+  qt/alqoamountfield.moc \
   qt/intro.moc \
   qt/rpcconsole.moc \
   qt/settings/moc_settingsconsolewidget.cpp
 
-QT_QRC_CPP = qt/qrc_pivx.cpp
-QT_QRC = qt/pivx.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_pivx_locale.cpp
-QT_QRC_LOCALE = qt/pivx_locale.qrc
+QT_QRC_CPP = qt/qrc_alqo.cpp
+QT_QRC = qt/alqo.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_alqo_locale.cpp
+QT_QRC_LOCALE = qt/alqo_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
 PROTOBUF_PROTO = qt/paymentrequest.proto
 
-BITCOIN_QT_H = \
+ALQO_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
   qt/bantablemodel.h \
-  qt/bitcoinaddressvalidator.h \
-  qt/bitcoinamountfield.h \
-  qt/pivxgui.h \
-  qt/bitcoinunits.h \
+  qt/alqoaddressvalidator.h \
+  qt/alqoamountfield.h \
+  qt/alqogui.h \
+  qt/alqounits.h \
   qt/blockexplorer.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
@@ -268,7 +266,6 @@ BITCOIN_QT_H = \
   qt/pfborderimage.h \
   qt/loadingdialog.h \
   qt/winshutdownmonitor.h \
-  qt/zpivcontroldialog.h \
   qt/pwidget.h \
   qt/guitransactionsutils.h \
   qt/snackbar.h \
@@ -335,11 +332,11 @@ RES_ICONS = \
   qt/res/icons/address-book.png \
   qt/res/icons/automint_active.png \
   qt/res/icons/automint_inactive.png \
-  qt/res/icons/bitcoin.ico \
-  qt/res/icons/bitcoin.png \
-  qt/res/icons/bitcoin_testnet.ico \
-  qt/res/icons/bitcoin_testnet.png \
-  qt/res/icons/bitcoin_regtest.png \
+  qt/res/icons/alqo.ico \
+  qt/res/icons/alqo.png \
+  qt/res/icons/alqo_testnet.ico \
+  qt/res/icons/alqo_testnet.png \
+  qt/res/icons/alqo_regtest.png \
   qt/res/icons/browse.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
@@ -393,22 +390,22 @@ RES_ICONS = \
   qt/res/icons/ic-transaction-mint.svg \
   qt/res/icons/ic-transaction-sent.svg \
   qt/res/icons/ic-transaction-staked.svg \
-  qt/res/icons/unit_pivx.png \
-  qt/res/icons/unit_mpivx.png \
-  qt/res/icons/unit_upivx.png \
-  qt/res/icons/unit_tpivx.png \
-  qt/res/icons/unit_tmpivx.png \
-  qt/res/icons/unit_tupivx.png \
+  qt/res/icons/unit_alqo.png \
+  qt/res/icons/unit_malqo.png \
+  qt/res/icons/unit_ualqo.png \
+  qt/res/icons/unit_talqo.png \
+  qt/res/icons/unit_tmalqo.png \
+  qt/res/icons/unit_tualqo.png \
   qt/res/icons/yesvote.png \
   qt/res/icons/novote.png \
   qt/res/icons/abstainvote.png
 
-BITCOIN_QT_BASE_CPP = \
+ALQO_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
-  qt/bitcoinaddressvalidator.cpp \
-  qt/bitcoinamountfield.cpp \
-  qt/pivxgui.cpp \
-  qt/bitcoinunits.cpp \
+  qt/alqoaddressvalidator.cpp \
+  qt/alqoamountfield.cpp \
+  qt/alqogui.cpp \
+  qt/alqounits.cpp \
   qt/blockexplorer.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
@@ -427,9 +424,9 @@ BITCOIN_QT_BASE_CPP = \
   qt/trafficgraphwidget.cpp \
   qt/utilitydialog.cpp
 
-BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+ALQO_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
 
-BITCOIN_QT_WALLET_CPP = \
+ALQO_QT_WALLET_CPP = \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
@@ -450,7 +447,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/loadingdialog.cpp \
-  qt/zpivcontroldialog.cpp \
   qt/pwidget.cpp \
   qt/guitransactionsutils.cpp \
   qt/snackbar.cpp \
@@ -512,12 +508,12 @@ BITCOIN_QT_WALLET_CPP = \
   qt/chartswidget.cpp
 
 
-BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
+ALQO_QT_CPP = $(ALQO_QT_BASE_CPP)
 if TARGET_WINDOWS
-BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
+ALQO_QT_CPP += $(ALQO_QT_WINDOWS_CPP)
 endif
 if ENABLE_WALLET
-BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
+ALQO_QT_CPP += $(ALQO_QT_WALLET_CPP)
 endif
 
 RES_IMAGES = \
@@ -525,7 +521,7 @@ RES_IMAGES = \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
   qt/res/images/splash_regtest.png \
-  qt/res/images/pivx_logo_horizontal.png \
+  qt/res/images/alqo_logo_horizontal.png \
   qt/res/images/downArrow_dark.png \
   qt/res/images/downArrow_small_dark.png \
   qt/res/images/downArrow_small.png \
@@ -641,22 +637,22 @@ RES_IMG = \
   qt/res/img/ic-arrow-drop-up.svg \
   qt/res/img/ic-coin-zpiv.svg \
   qt/res/img/ic-received.svg \
-  qt/res/img/img-logo-pivx.png \
+  qt/res/img/img-logo-alqo.png \
   qt/res/img/ic-arrow-drop-white-down.svg \
   qt/res/img/ic-combo-box.svg \
   qt/res/img/ic-send.svg \
-  qt/res/img/img-logo-pivx@2x.png \
+  qt/res/img/img-logo-alqo@2x.png \
   qt/res/img/ic-arrow-purple-down.svg \
   qt/res/img/ic-connect.svg \
   qt/res/img/ic-submenu-lock.svg \
-  qt/res/img/img-logo-pivx@3x.png \
-  qt/res/img/img-logo-pivx.svg \
+  qt/res/img/img-logo-alqo@3x.png \
+  qt/res/img/img-logo-alqo.svg \
   qt/res/img/ic-arrow-right-white.svg \
   qt/res/img/ic-arrow-left-white.svg \
   qt/res/img/ic-arrow-left.svg \
   qt/res/img/ic-copy-liliac.svg \
   qt/res/img/ic-submenu-staking.svg \
-  qt/res/img/img-nav-logo-pivx.png \
+  qt/res/img/img-nav-logo-alqo.png \
   qt/res/img/ic-arrow-right.svg \
   qt/res/img/ic-copy.svg \
   qt/res/img/ic-copy-big.svg \
@@ -725,20 +721,20 @@ RES_IMG = \
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/alqo-qt-res.rc
+ALQO_RC = qt/res/alqo-qt-res.rc
 
-BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+ALQO_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms
 
-qt_libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_libalqoqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(ALQO_INCLUDES) $(ALQO_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
-qt_libbitcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
-qt_libbitcoinqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
+qt_libalqoqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libalqoqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+qt_libalqoqt_a_SOURCES = $(ALQO_QT_CPP) $(ALQO_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_IMG) $(RES_CSS) $(RES_MOVIES)
 
-nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+nodist_qt_libalqoqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
 
 # forms/foo.h -> forms/ui_foo.h
@@ -747,33 +743,33 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_alqo_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libalqoqt_a_OBJECTS) $(qt_alqo_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# pivx-qt binary #
-qt_alqo_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# alqo-qt binary #
+qt_alqo_qt_CPPFLAGS = $(AM_CPPFLAGS) $(ALQO_INCLUDES) $(ALQO_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
 qt_alqo_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_alqo_qt_SOURCES = qt/pivx.cpp
+qt_alqo_qt_SOURCES = qt/alqo.cpp
 if TARGET_DARWIN
-  qt_alqo_qt_SOURCES += $(BITCOIN_MM)
+  qt_alqo_qt_SOURCES += $(ALQO_MM)
 endif
 if TARGET_WINDOWS
-  qt_alqo_qt_SOURCES += $(BITCOIN_RC)
+  qt_alqo_qt_SOURCES += $(ALQO_RC)
 endif
-qt_alqo_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_alqo_qt_LDADD = qt/libalqoqt.a $(LIBALQO_SERVER)
 if ENABLE_WALLET
-qt_alqo_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+qt_alqo_qt_LDADD += $(LIBALQO_UTIL) $(LIBALQO_WALLET)
 endif
 if ENABLE_ZMQ
-qt_alqo_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_alqo_qt_LDADD += $(LIBALQO_ZMQ) $(ZMQ_LIBS)
 endif
-qt_alqo_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_alqo_qt_LDADD += $(LIBALQO_CLI) $(LIBALQO_COMMON) $(LIBALQO_UTIL) $(LIBALQO_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 qt_alqo_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
@@ -784,34 +780,34 @@ QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-$(srcdir)/qt/pivxstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+$(srcdir)/qt/alqostrings.cpp: $(libalqo_server_a_SOURCES) $(libalqo_wallet_a_SOURCES) $(libalqo_common_a_SOURCES) $(libalqo_zmq_a_SOURCES) $(libalqo_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: $(srcdir)/qt/pivxstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/pivx.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: $(srcdir)/qt/alqostrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(ALQO_QT_BASE_CPP) qt/alqo.cpp $(ALQO_QT_WINDOWS_CPP) $(ALQO_QT_WALLET_CPP) $(ALQO_QT_H) $(ALQO_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/pivx_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/alqo_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@cp -f $< $(@D)/temp_$(<F)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name pivx_locale $(@D)/temp_$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name alqo_locale $(@D)/temp_$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_IMG) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name pivx $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name alqo $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_pivx_locale.qrc
+CLEAN_QT = $(nodist_qt_libalqoqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_alqo_locale.qrc
 
 CLEANFILES += $(CLEAN_QT)
 
-pivx_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_alqo_qt_OBJECTS) qt/pivx-qt$(EXEEXT) $(LIBBITCOINQT)
+alqo_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libalqoqt_a_OBJECTS) $(qt_alqo_qt_OBJECTS) qt/alqo-qt$(EXEEXT) $(LIBALQOQT)
 
-pivx_qt : qt/pivx-qt$(EXEEXT)
+alqo_qt : qt/alqo-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

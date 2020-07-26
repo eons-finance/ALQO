@@ -3,10 +3,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_BLOOM_H
-#define BITCOIN_BLOOM_H
+#ifndef ALQO_BLOOM_H
+#define ALQO_BLOOM_H
 
-#include "libzerocoin/bignum.h"
 #include "serialize.h"
 
 #include <vector>
@@ -104,4 +103,4 @@ public:
     void UpdateEmptyFull();
 };
 
-#endif // BITCOIN_BLOOM_H
+#endif // ALQO_BLOOM_H

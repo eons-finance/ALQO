@@ -360,7 +360,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         } else if (!fProofOfStake) {
             txNew.vin[0].scriptSig = CScript() << nHeight << OP_0;
             pblock->vtx[0] = txNew;
-	    pblock->vtx[0].vout[0].nValue = GetBlockValue(pindexPrev->nHeight);
+            pblock->vtx[0].vout[0].nValue = GetBlockValue(pindexPrev->nHeight);
             pblocktemplate->vTxFees[0] = -nFees;
         }
 
@@ -459,7 +459,7 @@ bool fGenerateBitcoins = false;
 bool fMintableCoins = false;
 int nMintableLastCheck = 0;
 
-// ***TODO*** that part changed in bitcoin, we are using a mix with old one here for now
+// ***TODO*** that part changed in alqo, we are using a mix with old one here for now
 
 void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 {

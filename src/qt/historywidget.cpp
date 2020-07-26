@@ -4,7 +4,7 @@
 
 #include <qt/historywidget.h>
 #include <qt/forms/ui_historywidget.h>
-#include <qt/pivxgui.h>
+#include <qt/alqogui.h>
 #include <qt/qtutils.h>
 #include "qt/txrow.h"
 #include "guiutil.h"

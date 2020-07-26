@@ -139,9 +139,7 @@ public:
     CAmount getUnconfirmedBalance() const;
     CAmount getImmatureBalance() const;
     CAmount getLockedBalance() const;
-    CAmount getZerocoinBalance() const;
-    CAmount getUnconfirmedZerocoinBalance() const;
-    CAmount getImmatureZerocoinBalance() const;
+
     bool haveWatchOnly() const;
     CAmount getWatchBalance() const;
     CAmount getWatchUnconfirmedBalance() const;
@@ -153,9 +151,6 @@ public:
     void encryptKey(const CKey key, const std::string& pwd, const std::string& slt, std::vector<unsigned char>& crypted);
     void decryptKey(const std::vector<unsigned char>& crypted, const std::string& slt, const std::string& pwd, CKey& key);
     void emitBalanceChanged(); // Force update of UI-elements even when no values have changed
-
-    // return minted zALQO
-    bool getMint(const uint256& hashSerial, CZerocoinMint& mint);
 
     // Check address for validity
     bool validateAddress(const QString& address);
@@ -179,34 +174,6 @@ public:
     SendCoinsReturn sendCoins(WalletModelTransaction& transaction);
     // Mint zALQO
     bool mintCoins(CAmount value, CCoinControl* coinControl, std::string &strError);
-
-    bool createZpivSpend(
-            CWalletTx &wtxNew,
-            std::vector<CZerocoinMint> &vMintsSelected,
-            bool fMintChange,
-            bool fMinimizeChange,
-            CZerocoinSpendReceipt &receipt,
-            std::list<std::pair<CBitcoinAddress*, CAmount>> outputs,
-            std::string changeAddress = ""
-    );
-
-    bool sendZpiv(
-            std::vector<CZerocoinMint> &vMintsSelected,
-            bool fMintChange,
-            bool fMinimizeChange,
-            CZerocoinSpendReceipt &receipt,
-            std::list<std::pair<CBitcoinAddress*, CAmount>> outputs,
-            std::string changeAddress = ""
-    );
-
-    bool convertBackZpiv(
-            CAmount value,
-            std::vector<CZerocoinMint> &vMintsSelected,
-            bool fMintChange,
-            bool fMinimizeChange,
-            CZerocoinSpendReceipt &receipt,
-            CBitcoinAddress addressTo
-    );
 
     // Wallet encryption
     bool setWalletEncrypted(bool encrypted, const SecureString& passphrase);
@@ -261,14 +228,9 @@ public:
     void unlockCoin(COutPoint& output);
     void listLockedCoins(std::vector<COutPoint>& vOutpts);
 
-    void listZerocoinMints(std::set<CMintMeta>& setMints, bool fUnusedOnly = false, bool fMaturedOnly = false, bool fUpdateStatus = false, bool fWrongSeed = false);
-
     std::string GetUniqueWalletBackupName();
     void loadReceiveRequests(std::vector<std::string>& vReceiveRequests);
     bool saveReceiveRequest(const std::string& sAddress, const int64_t nId, const std::string& sRequest);
-
-    std::string resetMintZerocoin();
-    std::string resetSpentZerocoin();
 
 private:
     CWallet* wallet;
@@ -288,9 +250,6 @@ private:
     CAmount cachedBalance;
     CAmount cachedUnconfirmedBalance;
     CAmount cachedImmatureBalance;
-    CAmount cachedZerocoinBalance;
-    CAmount cachedUnconfirmedZerocoinBalance;
-    CAmount cachedImmatureZerocoinBalance;
     CAmount cachedWatchOnlyBalance;
     CAmount cachedWatchUnconfBalance;
     CAmount cachedWatchImmatureBalance;
@@ -307,8 +266,7 @@ private:
 
 signals:
     // Signal that balance in wallet changed
-    void balanceChanged(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
-                        const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
+    void balanceChanged(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,                        
                         const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
 
     // Encryption status of wallet changed

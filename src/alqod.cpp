@@ -62,7 +62,7 @@ bool AppInit(int argc, char* argv[])
     //
     // Parameters
     //
-    // If Qt is used, parameters/alqo.conf are parsed in qt/pivx.cpp's main()
+    // If Qt is used, parameters/alqo.conf are parsed in qt/alqo.cpp's main()
     ParseParameters(argc, argv);
 
     // Process help and version before taking care about datadir
@@ -75,7 +75,7 @@ bool AppInit(int argc, char* argv[])
             strUsage += "\n" + _("Usage:") + "\n" +
                         "  alqod [options]                     " + _("Start ALQO Core Daemon") + "\n";
 
-            strUsage += "\n" + HelpMessage(HMM_BITCOIND);
+            strUsage += "\n" + HelpMessage(HMM_ALQOD);
         }
 
         fprintf(stdout, "%s", strUsage.c_str());

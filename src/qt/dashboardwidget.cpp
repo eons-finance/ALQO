@@ -349,8 +349,8 @@ void DashboardWidget::loadWalletModel(){
 		}
     }
 
-    connect(walletModel, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this,
-            SLOT(updateBalances(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
+    connect(walletModel, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this,
+            SLOT(updateBalances(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
     // update the display unit, to not use the default ("ALQO")
     updateDisplayUnit();
     	loadContacts();
@@ -369,7 +369,6 @@ void DashboardWidget::showList(){
 }
 
 void DashboardWidget::updateBalances(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
-                            const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                             const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance){
 
     CAmount nLockedBalance = 0;
@@ -405,7 +404,6 @@ void DashboardWidget::updateDisplayUnit() {
 
         if (displayUnitPrev != nDisplayUnit)
             updateBalances(walletModel->getBalance(), walletModel->getUnconfirmedBalance(), walletModel->getImmatureBalance(),
-                           walletModel->getZerocoinBalance(), walletModel->getUnconfirmedZerocoinBalance(), walletModel->getImmatureZerocoinBalance(),
                            walletModel->getWatchBalance(), 0, 0);
 
     }

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_CRYPTER_H
-#define BITCOIN_CRYPTER_H
+#ifndef ALQO_CRYPTER_H
+#define ALQO_CRYPTER_H
 
 #include "allocators.h"
 #include "keystore.h"
@@ -193,10 +193,6 @@ public:
         }
     }
 
-    bool GetDeterministicSeed(const uint256& hashSeed, uint256& seed);
-    bool AddDeterministicSeed(const uint256& seed);
-
-
     /**
      * Wallet status (encrypted, locked) changed.
      * Note: Called without locks held.
@@ -204,4 +200,4 @@ public:
     boost::signals2::signal<void(CCryptoKeyStore* wallet)> NotifyStatusChanged;
 };
 
-#endif // BITCOIN_CRYPTER_H
+#endif // ALQO_CRYPTER_H

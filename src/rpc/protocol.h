@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_RPCPROTOCOL_H
-#define BITCOIN_RPCPROTOCOL_H
+#ifndef ALQO_RPCPROTOCOL_H
+#define ALQO_RPCPROTOCOL_H
 
 #include <list>
 #include <map>
@@ -89,4 +89,4 @@ bool GetAuthCookie(std::string *cookie_out);
 /** Delete RPC authentication cookie from disk */
 void DeleteAuthCookie();
 
-#endif // BITCOIN_RPCPROTOCOL_H
+#endif // ALQO_RPCPROTOCOL_H

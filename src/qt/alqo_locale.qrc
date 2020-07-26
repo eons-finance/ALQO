@@ -1,0 +1,37 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/alqo_bg.qm</file>
+        <file alias="ca">locale/alqo_ca.qm</file>
+        <file alias="cs">locale/alqo_cs.qm</file>
+        <file alias="da">locale/alqo_da.qm</file>
+        <file alias="de">locale/alqo_de.qm</file>
+        <file alias="en">locale/alqo_en.qm</file>
+        <file alias="en_GB">locale/alqo_en_GB.qm</file>
+        <file alias="en_US">locale/alqo_en_US.qm</file>
+        <file alias="eo">locale/alqo_eo.qm</file>
+        <file alias="es">locale/alqo_es.qm</file>
+        <file alias="es_ES">locale/alqo_es_ES.qm</file>
+        <file alias="fi">locale/alqo_fi.qm</file>
+        <file alias="fr_FR">locale/alqo_fr_FR.qm</file>
+        <file alias="hi_IN">locale/alqo_hi_IN.qm</file>
+        <file alias="hr">locale/alqo_hr.qm</file>
+        <file alias="hr_HR">locale/alqo_hr_HR.qm</file>
+        <file alias="it">locale/alqo_it.qm</file>
+        <file alias="ja">locale/alqo_ja.qm</file>
+        <file alias="ko_KR">locale/alqo_ko_KR.qm</file>
+        <file alias="lt_LT">locale/alqo_lt_LT.qm</file>
+        <file alias="nl">locale/alqo_nl.qm</file>
+        <file alias="pl">locale/alqo_pl.qm</file>
+        <file alias="pt">locale/alqo_pt.qm</file>
+        <file alias="pt_BR">locale/alqo_pt_BR.qm</file>
+        <file alias="ro_RO">locale/alqo_ro_RO.qm</file>
+        <file alias="ru">locale/alqo_ru.qm</file>
+        <file alias="sk">locale/alqo_sk.qm</file>
+        <file alias="sv">locale/alqo_sv.qm</file>
+        <file alias="tr">locale/alqo_tr.qm</file>
+        <file alias="uk">locale/alqo_uk.qm</file>
+        <file alias="vi">locale/alqo_vi.qm</file>
+        <file alias="zh_CN">locale/alqo_zh_CN.qm</file>
+        <file alias="zh_TW">locale/alqo_zh_TW.qm</file>
+    </qresource>
+</RCC>

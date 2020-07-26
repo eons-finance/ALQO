@@ -4,7 +4,7 @@
 
 #include <qt/navmenuwidget.h>
 #include <qt/forms/ui_navmenuwidget.h>
-#include <qt/pivxgui.h>
+#include <qt/alqogui.h>
 #include <qt/qtutils.h>
 #include <clientversion.h>
 #include <qt/optionsmodel.h>

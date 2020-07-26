@@ -4,7 +4,6 @@
 
 #include "blocksignature.h"
 #include "main.h"
-#include "zpivchain.h"
 
 bool SignBlockWithKey(CBlock& block, const CKey& key)
 {
@@ -69,21 +68,16 @@ bool CheckBlockSignature(const CBlock& block)
      *  UTXO: The public key that signs must match the public key associated with the first utxo of the coinstake tx.
      */
     CPubKey pubkey;
-    bool fzPIVStake = block.vtx[1].vin[0].IsZerocoinSpend();
-    if (fzPIVStake) {
-        libzerocoin::CoinSpend spend = TxInToZerocoinSpend(block.vtx[1].vin[0]);
-        pubkey = spend.getPubKey();
-    } else {
-        txnouttype whichType;
-        std::vector<valtype> vSolutions;
-        const CTxOut& txout = block.vtx[1].vout[1];
-        if (!Solver(txout.scriptPubKey, whichType, vSolutions))
-            return false;
-        if (whichType == TX_PUBKEY || whichType == TX_PUBKEYHASH) {
-            valtype& vchPubKey = vSolutions[0];
-            pubkey = CPubKey(vchPubKey);
-        }
-    }
+	txnouttype whichType;
+	std::vector<valtype> vSolutions;
+	const CTxOut& txout = block.vtx[1].vout[1];
+	if (!Solver(txout.scriptPubKey, whichType, vSolutions))
+		return false;
+	if (whichType == TX_PUBKEY || whichType == TX_PUBKEYHASH) {
+		valtype& vchPubKey = vSolutions[0];
+		pubkey = CPubKey(vchPubKey);
+	}
+    
 
     if (!pubkey.IsValid())
         return error("%s: invalid pubkey %s", __func__, HexStr(pubkey));

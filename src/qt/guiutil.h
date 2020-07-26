@@ -42,7 +42,7 @@ QString dateTimeStrWithSeconds(const QDateTime& date);
 QString dateTimeStr(qint64 nTime);
 
 // Render ALQO addresses in monospace font
-QFont bitcoinAddressFont();
+QFont alqoAddressFont();
 
 // Parse string into a CAmount value
 CAmount parseValue(const QString& text, int displayUnit, bool* valid_out = 0);

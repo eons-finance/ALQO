@@ -8,7 +8,7 @@
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "guiutil.h"
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include "qt/qtutils.h"
 
 SendMultiRow::SendMultiRow(PWidget *parent) :

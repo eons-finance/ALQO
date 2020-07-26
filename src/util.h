@@ -9,8 +9,8 @@
  * Server/client environment: argument handling, config file parsing,
  * logging, thread wrappers
  */
-#ifndef BITCOIN_UTIL_H
-#define BITCOIN_UTIL_H
+#ifndef ALQO_UTIL_H
+#define ALQO_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/alqo-config.h"
@@ -246,4 +246,4 @@ void TraceThread(const char* name, Callable func)
     }
 }
 
-#endif // BITCOIN_UTIL_H
+#endif // ALQO_UTIL_H

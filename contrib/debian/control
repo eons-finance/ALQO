@@ -1,4 +1,4 @@
-Source: pivx
+Source: alqo
 Section: utils
 Priority: optional
 Maintainer: Fuzzbawls <fuzzbawls@gmail.com>
@@ -28,11 +28,11 @@ Build-Depends: debhelper,
  libzmq3-dev,
  dh-systemd
 Standards-Version: 3.9.2
-Homepage: http://www.pivx.org
+Homepage: http://www.alqo.org
 Vcs-Git: git://github.com/PIVX-Project/PIVX.git
 Vcs-Browser: http://github.com/PIVX-Project/PIVX
 
-Package: pivxd
+Package: alqod
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
@@ -45,10 +45,10 @@ Description: peer-to-peer network based digital currency - daemon
  Full transaction history is stored locally at each client.  This
  requires 10+ GB of space, slowly growing.
  .
- This package provides the daemon, pivxd, and the CLI tool
- pivx-cli to interact with the daemon.
+ This package provides the daemon, alqod, and the CLI tool
+ alqo-cli to interact with the daemon.
 
-Package: pivx-qt
+Package: alqo-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI

@@ -1,0 +1,3 @@
+usr/local/bin/alqod usr/bin
+usr/local/bin/alqo-cli usr/bin
+debian/examples/alqo.conf etc/alqo

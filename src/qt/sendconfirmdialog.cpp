@@ -4,7 +4,7 @@
 
 #include "qt/sendconfirmdialog.h"
 #include "qt/forms/ui_sendconfirmdialog.h"
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include "walletmodel.h"
 #include "transactiontablemodel.h"
 #include "transactionrecord.h"

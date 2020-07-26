@@ -126,7 +126,7 @@
            <string notr="true"/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../pivx.qrc">:/bg-splash-png</pixmap>
+           <pixmap resource="../alqo.qrc">:/bg-splash-png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -312,7 +312,7 @@ background-color: #0f0f1f;
   </layout>
  </widget>
  <resources>
-  <include location="../pivx.qrc"/>
+  <include location="../alqo.qrc"/>
  </resources>
  <connections/>
 </ui>

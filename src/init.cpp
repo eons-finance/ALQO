@@ -12,7 +12,6 @@
 
 #include "init.h"
 
-#include "zpiv/accumulators.h"
 #include "activemasternode.h"
 #include "addrman.h"
 #include "amount.h"
@@ -40,8 +39,6 @@
 #include "util.h"
 #include "utilmoneystr.h"
 #include "validationinterface.h"
-#include "zpiv/accumulatorcheckpoints.h"
-#include "zpivchain.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet/db.h"
@@ -243,8 +240,6 @@ void PrepareShutdown()
         pcoinsdbview = NULL;
         delete pblocktree;
         pblocktree = NULL;
-        delete zerocoinDB;
-        zerocoinDB = NULL;
         delete pSporkDB;
         pSporkDB = NULL;
     }
@@ -288,10 +283,7 @@ void Shutdown()
     }
     // Shutdown part 2: Stop TOR thread and delete wallet instance
     StopTorControl();
-    // Shutdown witness thread if it's enabled
-    if (nLocalServices == NODE_BLOOM_LIGHT_ZC) {
-        lightWorker.StopLightZpivThread();
-    }
+
 #ifdef ENABLE_WALLET
     delete pwalletMain;
     pwalletMain = NULL;
@@ -390,7 +382,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-blocksizenotify=<cmd>", _("Execute command when the best block changes and its size is over (%s in cmd is replaced by block hash, %d with the block size)"));
     strUsage += HelpMessageOpt("-checkblocks=<n>", strprintf(_("How many blocks to check at startup (default: %u, 0 = all)"), 500));
     strUsage += HelpMessageOpt("-conf=<file>", strprintf(_("Specify configuration file (default: %s)"), "alqo.conf"));
-    if (mode == HMM_BITCOIND) {
+    if (mode == HMM_ALQOD) {
 #if !defined(WIN32)
         strUsage += HelpMessageOpt("-daemon", _("Run in the background as a daemon and accept commands"));
 #endif
@@ -476,7 +468,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-upgradewallet", _("Upgrade wallet to latest format") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-wallet=<file>", _("Specify wallet file (within data directory)") + " " + strprintf(_("(default: %s)"), "wallet.dat"));
     strUsage += HelpMessageOpt("-walletnotify=<cmd>", _("Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)"));
-    if (mode == HMM_BITCOIN_QT)
+    if (mode == HMM_ALQO_QT)
         strUsage += HelpMessageOpt("-windowtitle=<name>", _("Wallet window title"));
     strUsage += HelpMessageOpt("-zapwallettxes=<mode>", _("Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup") +
         " " + _("(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)"));
@@ -509,7 +501,7 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += HelpMessageOpt("-sporkkey=<privkey>", _("Enable spork administration functionality with the appropriate private key."));
     }
     std::string debugCategories = "addrman, alert, bench, coindb, db, lock, rand, rpc, selectcoins, tor, mempool, net, proxy, http, libevent, alqo, (obfuscation, swiftx, masternode, mnpayments, mnbudget, zero, precompute, staking)"; // Don't translate these and qt below
-    if (mode == HMM_BITCOIN_QT)
+    if (mode == HMM_ALQO_QT)
         debugCategories += ", qt";
     strUsage += HelpMessageOpt("-debug=<category>", strprintf(_("Output debugging information (default: %u, supplying <category> is optional)"), 0) + ". " +
         _("If <category> is not supplied, output all debugging information.") + _("<category> can be:") + " " + debugCategories + ".");
@@ -560,19 +552,6 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-masternodeprivkey=<n>", _("Set the masternode private key"));
     strUsage += HelpMessageOpt("-masternodeaddr=<n>", strprintf(_("Set external address:port to get to this masternode (example: %s)"), "128.127.106.235:20480"));
     strUsage += HelpMessageOpt("-budgetvotemode=<mode>", _("Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)"));
-
-    strUsage += HelpMessageGroup(_("Zerocoin options:"));
-#ifdef ENABLE_WALLET
-    strUsage += HelpMessageOpt("-enablezeromint=<n>", strprintf(_("Enable automatic Zerocoin minting (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-enableautoconvertaddress=<n>", strprintf(_("Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)"), DEFAULT_AUTOCONVERTADDRESS));
-    strUsage += HelpMessageOpt("-zeromintpercentage=<n>", strprintf(_("Percentage of automatically minted Zerocoin  (1-100, default: %u)"), 10));
-    strUsage += HelpMessageOpt("-preferredDenom=<n>", strprintf(_("Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)"), 0));
-    strUsage += HelpMessageOpt("-backupzpiv=<n>", strprintf(_("Enable automatic wallet backups triggered after each zPIV minting (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-precompute=<n>", strprintf(_("Enable precomputation of zPIV spends and stakes (0-1, default %u)"), 1));
-    strUsage += HelpMessageOpt("-precomputecachelength=<n>", strprintf(_("Set the number of included blocks to precompute per cycle. (minimum: %d) (maximum: %d) (default: %d)"), MIN_PRECOMPUTE_LENGTH, MAX_PRECOMPUTE_LENGTH, DEFAULT_PRECOMPUTE_LENGTH));
-    strUsage += HelpMessageOpt("-zpivbackuppath=<dir|file>", _("Specify custom backup path to add a copy of any automatic zPIV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen"));
-#endif // ENABLE_WALLET
-    strUsage += HelpMessageOpt("-reindexzerocoin=<n>", strprintf(_("Delete all zerocoin spends and mints that have been recorded to the blockchain database and reindex them (0-1, default: %u)"), 0));
 
     strUsage += HelpMessageGroup(_("SwiftX options:"));
     strUsage += HelpMessageOpt("-enableswifttx=<n>", strprintf(_("Enable SwiftX, show confirmations for locked transactions (bool, default: %s)"), "true"));
@@ -1177,7 +1156,6 @@ bool AppInit2()
             boost::filesystem::path blocksDir = GetDataDir() / "blocks";
             boost::filesystem::path chainstateDir = GetDataDir() / "chainstate";
             boost::filesystem::path sporksDir = GetDataDir() / "sporks";
-            boost::filesystem::path zerocoinDir = GetDataDir() / "zerocoin";
 
             LogPrintf("Deleting blockchain folders blocks, chainstate, sporks and zerocoin\n");
             // We delete in 4 individual steps in case one of the folder is missing already
@@ -1195,11 +1173,6 @@ bool AppInit2()
                 if (boost::filesystem::exists(sporksDir)){
                     boost::filesystem::remove_all(sporksDir);
                     LogPrintf("-resync: folder deleted: %s\n", sporksDir.string().c_str());
-                }
-
-                if (boost::filesystem::exists(zerocoinDir)){
-                    boost::filesystem::remove_all(zerocoinDir);
-                    LogPrintf("-resync: folder deleted: %s\n", zerocoinDir.string().c_str());
                 }
             } catch (boost::filesystem::filesystem_error& error) {
                 LogPrintf("Failed to delete blockchain folders %s\n", error.what());
@@ -1392,9 +1365,6 @@ bool AppInit2()
 
     // ********************************************************* Step 7: load block chain
 
-    //ALQO: Load Accumulator Checkpoints according to network (main/test/regtest)
-    assert(AccumulatorCheckpoints::LoadCheckpoints(Params().NetworkIDString()));
-
     fReindex = GetBoolArg("-reindex", false);
 
     // Create blocks directory if it doesn't already exist
@@ -1430,11 +1400,9 @@ bool AppInit2()
                 delete pcoinsdbview;
                 delete pcoinscatcher;
                 delete pblocktree;
-                delete zerocoinDB;
                 delete pSporkDB;
 
                 //ALQO specific: zerocoin and spork DB's
-                zerocoinDB = new CZerocoinDB(0, false, fReindex);
                 pSporkDB = new CSporkDB(0, false, false);
 
                 pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReindex);
@@ -1875,11 +1843,6 @@ bool AppInit2()
         StartTorControl(threadGroup);
 
     StartNode(threadGroup, scheduler);
-
-    if (nLocalServices & NODE_BLOOM_LIGHT_ZC) {
-        // Run a thread to compute witnesses
-        lightWorker.StartLightZpivThread(threadGroup);
-    }
 
 #ifdef ENABLE_WALLET
     // Generate coins in the background

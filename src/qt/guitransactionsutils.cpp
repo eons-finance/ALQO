@@ -3,7 +3,7 @@
 //
 
 #include "qt/guitransactionsutils.h"
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include "optionsmodel.h"
 
 namespace GuiTransactionsUtils {

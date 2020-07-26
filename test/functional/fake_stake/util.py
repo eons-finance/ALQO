@@ -15,11 +15,11 @@ from test_framework.util import wait_until
 ''' -------------------------------------------------------------------------
 TestNode CLASS --------------------------------------------------------------
 
-A peer we use to send messsages to pivxd and store responses
+A peer we use to send messsages to alqod and store responses
 Extends P2PInterface.
 '''
 
-# TestNode: A peer we use to send messages to bitcoind, and store responses.
+# TestNode: A peer we use to send messages to alqod, and store responses.
 class TestNode(P2PInterface):
     def __init__(self):
         super().__init__()

@@ -1,8 +1,8 @@
 // Copyright (c) 2012-2013 The PPCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef BITCOIN_KERNEL_H
-#define BITCOIN_KERNEL_H
+#ifndef ALQO_KERNEL_H
+#define ALQO_KERNEL_H
 
 #include <primitives/transaction.h>
 #include <streams.h>
@@ -30,7 +30,7 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexPrev, uint64_t& nStakeMod
 // Sets hashProofOfStake on success return
 bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, const CTransaction& txPrev, const COutPoint& prevout, unsigned int nTimeTx, uint256& hashProofOfStake, bool fMinting = true, bool fValidate = true);
 
-// wrapper for checkstakekernelhash (bitcoin routine) for traditional method
+// wrapper for checkstakekernelhash (alqo routine) for traditional method
 bool CheckStake(unsigned int nBits, const CBlock blockFrom, const CTransaction txPrev, const COutPoint prevout, unsigned int& nTimeTx, unsigned int nHashDrift, bool fCheck, uint256& hashProofOfStake, bool fPrintProofOfStake);
 
 // Check kernel hash target and coinstake signature
@@ -43,4 +43,4 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex);
 // Check stake modifier hard checkpoints
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum);
 
-#endif // BITCOIN_KERNEL_H
+#endif // ALQO_KERNEL_H

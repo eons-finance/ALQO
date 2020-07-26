@@ -34,20 +34,20 @@ int64_t GetAdjustedTime()
     return GetTime() + GetTimeOffset();
 }
 
-#define BITCOIN_TIMEDATA_MAX_SAMPLES 200
+#define ALQO_TIMEDATA_MAX_SAMPLES 200
 
 void AddTimeData(const CNetAddr& ip, int64_t nOffsetSample, int nOffsetLimit)
 {
     LOCK(cs_nTimeOffset);
     // Ignore duplicates (Except on regtest where all nodes have the same ip)
     static std::set<CNetAddr> setKnown;
-    if (setKnown.size() == BITCOIN_TIMEDATA_MAX_SAMPLES)
+    if (setKnown.size() == ALQO_TIMEDATA_MAX_SAMPLES)
         return;
     if (!setKnown.insert(ip).second && Params().NetworkID() != CBaseChainParams::REGTEST)
         return;
 
     // Add data
-    static CMedianFilter<int64_t> vTimeOffsets(BITCOIN_TIMEDATA_MAX_SAMPLES, 0);
+    static CMedianFilter<int64_t> vTimeOffsets(ALQO_TIMEDATA_MAX_SAMPLES, 0);
     vTimeOffsets.input(nOffsetSample);
     LogPrintf("Added time data, samples %d, offset %+d (%+d minutes)\n", vTimeOffsets.size(), nOffsetSample, nOffsetSample / 60);
 

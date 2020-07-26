@@ -24,7 +24,7 @@
 #include "libzerocoin/Coin.h"
 #include "libzerocoin/CoinSpend.h"
 #include "libzerocoin/Accumulator.h"
-#include "test_pivx.h"
+#include "test_alqo.h"
 
 
 #define COLOR_STR_GREEN   "\033[32m"

@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_MAIN_H
-#define BITCOIN_MAIN_H
+#ifndef ALQO_MAIN_H
+#define ALQO_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/alqo-config.h"
@@ -20,8 +20,6 @@
 #include "pow.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
-#include "zpiv/zerocoin.h"
-#include "zpiv/zpivmodule.h"
 #include "script/script.h"
 #include "script/sigcache.h"
 #include "script/standard.h"
@@ -40,8 +38,6 @@
 #include <utility>
 #include <vector>
 
-#include "libzerocoin/CoinSpend.h"
-#include "lightzpivthread.h"
 
 #include <boost/unordered_map.hpp>
 
@@ -171,13 +167,9 @@ extern int64_t nReserveBalance;
 
 extern std::map<uint256, int64_t> mapRejectedBlocks;
 extern std::map<unsigned int, unsigned int> mapHashedBlocks;
-extern std::map<uint256, int64_t> mapZerocoinspends; //txid, time received
 
 /** Best header we've seen so far (used for getheaders queries' starting points). */
 extern CBlockIndex* pindexBestHeader;
-
-/**  */
-extern CLightWorker lightWorker;
 
 /** Minimum disk space required - used in CheckDiskSpace() */
 static const uint64_t nMinDiskSpace = 52428800;
@@ -350,18 +342,12 @@ bool CheckInputs(const CTransaction& tx, CValidationState& state, const CCoinsVi
 void UpdateCoins(const CTransaction& tx, CValidationState& state, CCoinsViewCache& inputs, CTxUndo& txundo, int nHeight);
 
 /** Context-independent validity checks */
-bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fRejectBadUTXO, CValidationState& state, bool fFakeSerialAttack = false);
-bool CheckZerocoinMint(const uint256& txHash, const CTxOut& txout, CValidationState& state, bool fCheckOnly = false);
-bool CheckZerocoinSpend(const CTransaction& tx, bool fVerifySignature, CValidationState& state, bool fFakeSerialAttack = false);
-bool ContextualCheckZerocoinSpend(const CTransaction& tx, const libzerocoin::CoinSpend* spend, CBlockIndex* pindex, const uint256& hashBlock);
-bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const libzerocoin::CoinSpend* spend, CBlockIndex* pindex, const uint256& hashBlock);
+bool CheckTransaction(const CTransaction& tx, bool fRejectBadUTXO, CValidationState& state);
 bool IsTransactionInChain(const uint256& txId, int& nHeightTx, CTransaction& tx);
 bool IsTransactionInChain(const uint256& txId, int& nHeightTx);
 bool IsBlockHashInChain(const uint256& hashBlock);
 bool ValidOutPoint(const COutPoint out, int nHeight);
 void AddWrappedSerialsInflation();
-void RecalculateZPIVSpent();
-void RecalculateZPIVMinted();
 bool RecalculatePIVSupply(int nHeightStart);
 bool ReindexAccumulators(std::list<uint256>& listMissingCheckpoints, std::string& strError);
 
@@ -648,4 +634,4 @@ struct CBlockTemplate {
     std::vector<int64_t> vTxSigOps;
 };
 
-#endif // BITCOIN_MAIN_H
+#endif // ALQO_MAIN_H

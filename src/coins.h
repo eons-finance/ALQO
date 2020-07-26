@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_COINS_H
-#define BITCOIN_COINS_H
+#ifndef ALQO_COINS_H
+#define ALQO_COINS_H
 
 #include "compressor.h"
 #include "script/standard.h"
@@ -271,7 +271,7 @@ public:
     //! check whether a particular output is still available
     bool IsAvailable(unsigned int nPos) const
     {
-        return (nPos < vout.size() && !vout[nPos].IsNull() && !vout[nPos].IsZerocoinMint());
+        return (nPos < vout.size() && !vout[nPos].IsNull());
     }
 
     //! check whether the entire CCoins is spent
@@ -457,7 +457,7 @@ public:
     unsigned int GetCacheSize() const;
 
     /** 
-     * Amount of pivx coming in to a transaction
+     * Amount of alqo coming in to a transaction
      * Note that lightweight clients may not know anything besides the hash of previous transactions,
      * so may not be able to calculate this.
      *
@@ -481,4 +481,4 @@ private:
     CCoinsMap::const_iterator FetchCoins(const uint256& txid) const;
 };
 
-#endif // BITCOIN_COINS_H
+#endif // ALQO_COINS_H

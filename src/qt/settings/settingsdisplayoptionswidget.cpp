@@ -10,7 +10,7 @@
 #include "guiutil.h"
 #include "clientmodel.h"
 #include "optionsmodel.h"
-#include "bitcoinunits.h"
+#include "alqounits.h"
 #include "qt/qtutils.h"
 
 SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(ALQOGUI* _window, QWidget *parent) :

@@ -14,7 +14,7 @@
 #include "qt/qtutils.h"
 #include "qt/loadingdialog.h"
 #include "qt/defaultdialog.h"
-#include "qt/pivxgui.h"
+#include "qt/alqogui.h"
 #include <QDebug>
 
 #include <QKeyEvent>

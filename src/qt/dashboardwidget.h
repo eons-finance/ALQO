@@ -81,7 +81,6 @@ public slots:
     void processNewTransaction(const QModelIndex& parent, int start, int /*end*/);
 
     void updateBalances(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
-                        const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                         const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
 signals:
     /** Notify that a new transaction appeared */
