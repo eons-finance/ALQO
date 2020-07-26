@@ -367,7 +367,8 @@ bool CheckProofOfStake(const CBlock &block, uint256& hashProofOfStake)
 
     unsigned int nTime = block.nTime;
     if (!CheckStakeKernelHash(block.nBits, blockprev, txPrev, txin.prevout, nTime, hashProofOfStake, false, true))
-        return error("CheckProofOfStake() : INFO: check kernel failed on coinstake %s, hashProof=%s \n", tx.GetHash().ToString().c_str(), hashProofOfStake.ToString().c_str());
+         if (GetBoolArg("-debugstake", false))
+            return error("CheckProofOfStake() : INFO: check kernel failed on coinstake %s, hashProof=%s \n", tx.GetHash().ToString().c_str(), hashProofOfStake.ToString().c_str());
 
     return true;
 }

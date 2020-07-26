@@ -2703,7 +2703,7 @@ bool CWallet::NewKeyPool()
         if (IsLocked())
             return false;
 
-        int64_t nKeys = std::max(GetArg("-keypool", 1000), (int64_t)0);
+        int64_t nKeys = std::max(GetArg("-keypool", 250), (int64_t)0); //reduced for start up performance
         for (int i = 0; i < nKeys; i++) {
             int64_t nIndex = i + 1;
             walletdb.WritePool(nIndex, CKeyPool(GenerateNewKey()));
