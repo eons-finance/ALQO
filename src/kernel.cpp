@@ -152,17 +152,15 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexCurrent, uint64_t &nStake
     if (!GetLastStakeModifier(pindexPrev, nStakeModifier, nModifierTime))
         return error("%s: unable to get last modifier", __func__);
 
-    LogPrintf("%s : prev modifier= %s time=%s\n", __func__, std::to_string(nStakeModifier).c_str(), DateTimeStrFormat("%Y-%m-%d %H:%M:%S", nModifierTime).c_str());
+    //LogPrintf("%s : prev modifier= %s time=%s\n", __func__, std::to_string(nStakeModifier).c_str(), DateTimeStrFormat("%Y-%m-%d %H:%M:%S", nModifierTime).c_str());
     if (nModifierTime / nModifierInterval >= pindexPrev->GetBlockTime() / nModifierInterval)
     {
-        LogPrintf("%s: no new interval keep current modifier: pindexPrev nHeight=%d nTime=%u\n",
-            __func__, pindexPrev->nHeight, (unsigned int)pindexPrev->GetBlockTime());
+        //LogPrintf("%s: no new interval keep current modifier: pindexPrev nHeight=%d nTime=%u\n",__func__, pindexPrev->nHeight, (unsigned int)pindexPrev->GetBlockTime());
         return true;
     }
     if (nModifierTime / nModifierInterval >= pindexCurrent->GetBlockTime() / nModifierInterval)
     {
-        LogPrintf("%s: no new interval keep current modifier: pindexCurrent nHeight=%d nTime=%u\n",
-            __func__, pindexCurrent->nHeight, (unsigned int)pindexCurrent->GetBlockTime());
+        //LogPrintf("%s: no new interval keep current modifier: pindexCurrent nHeight=%d nTime=%u\n",__func__, pindexCurrent->nHeight, (unsigned int)pindexCurrent->GetBlockTime());
         return true;
     }
 
