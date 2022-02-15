@@ -15,9 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-import subprocess, sys, re, os, shutil, stat, os.path, time
-from string import Template
+import plistlib
 from argparse import ArgumentParser
 
 # This is ported from the original macdeployqt with modifications
@@ -154,7 +152,7 @@ class FrameworkInfo(object):
 class ApplicationBundleInfo(object):
     def __init__(self, path):
         self.path = path
-        appName = "PIVX-Qt"
+        appName = "ALQO-Qt"
         self.binaryPath = os.path.join(path, "Contents", "MacOS", appName)
         if not os.path.exists(self.binaryPath):
             raise RuntimeError("Could not find bundle binary for " + path)
@@ -602,7 +600,7 @@ else:
 
 # ------------------------------------------------
 
-target = os.path.join("dist", "PIVX-Qt.app")
+target = os.path.join("dist", "ALQO-Qt.app")
 
 if verbose >= 2:
     print("+ Copying source bundle +")
