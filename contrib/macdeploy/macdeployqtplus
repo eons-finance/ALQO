@@ -15,9 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-import subprocess, sys, re, os, shutil, stat, os.path, time
-from string import Template
+import plistlib
 from argparse import ArgumentParser
 
 # This is ported from the original macdeployqt with modifications
