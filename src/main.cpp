@@ -4720,6 +4720,18 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
             vRecv >> LIMITED_STRING(pfrom->strSubVer, MAX_SUBVERSION_LENGTH);
             pfrom->cleanSubVer = SanitizeString(pfrom->strSubVer);
         }
+		// broken releases with wrong blockchain data
+                if (pfrom->cleanSubVer == "/ALQO:6.5.1/" ||
+                    pfrom->cleanSubVer == "/ALQO:6.5.0.0/" ||
+                    pfrom->cleanSubVer == "/ALQO:6.5.0/" ||
+                    pfrom->cleanSubVer == "/ALQO:6.4.0/" ||
+		    pfrom->cleanSubVer == "/ALQO:6.3.0/") { 
+                    LOCK(cs_main);
+                    Misbehaving(pfrom->GetId(), 100); // instantly ban them because they have bad block data
+                    LogPrintf("node %s using obsolete version %s; banning and disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->cleanSubVer.c_str());
+	            pfrom->fDisconnect = true;
+		    return false;
+                }
         if (!vRecv.empty())
             vRecv >> pfrom->nStartingHeight;
         if (!vRecv.empty())
